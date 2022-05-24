@@ -12,7 +12,8 @@ workflows:
 
 jobs:
   Test:
-    executor: node
+    macos:
+      xcode: 13.2.1
     steps:
       - run:
           name: Prepare vars
