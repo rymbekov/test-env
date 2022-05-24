@@ -13,9 +13,11 @@ workflows:
 jobs:
   Test:
     executor: node
-    environment:
-      CIRCLE_TAG: "7.22.7-ios"
-      VERSION_NUMBER: $(echo "${CIRCLE_TAG}" | awk -F "-" '{print $1}')
+    run:
+      name: Prepare vars
+      command: |
+      echo 'export CIRCLE_TAG="7.22.7-ios"' >> $BASH_ENV
+      echo 'VERSION_NUMBER=$(echo "${CIRCLE_TAG}" | awk -F "-" '{print $1}')' >> $BASH_ENV
       #BUILD_NUMBER:
     steps:
       - run:
