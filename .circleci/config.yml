@@ -14,7 +14,8 @@ jobs:
   Test:
     executor: node
     environment:
-      VERSION_NUMBER: ${CIRCLE_TAG%"-ios"}
+      CIRCLE_TAG: "7.22.7-ios"
+      VERSION_NUMBER: $(echo "${CIRCLE_TAG}" | awk -F "-" '{print $1}')
       #BUILD_NUMBER:
     steps:
       - run:
