@@ -19,7 +19,7 @@ jobs:
           name: Prepare vars
           command: |
             echo 'export CIRCLE_TAG="7.22.7-ios"' >> $BASH_ENV
-            echo 'VERSION_NUMBER=${CIRCLE_TAG%"-ios"}' >> $BASH_ENV
+            echo 'export VERSION_NUMBER=${CIRCLE_TAG%"-ios"}' >> $BASH_ENV
             #BUILD_NUMBER:
       - run:
           name: Echo var
