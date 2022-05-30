@@ -32,6 +32,11 @@ jobs:
       - run: 
           name: Check JDK version
           command: java --version
+      - checkout
+      - run: cd android
+      - run:
+          name: Run gradle
+          command: ./gradlew tasks
       # - run: *login-to-npm
       # - checkout
       # - restore_cache: *restore_cache

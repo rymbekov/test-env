@@ -1,0 +1,79 @@
+{
+  "project_info": {
+    "project_number": "223710944687",
+    "firebase_url": "https://io-pics-app.firebaseio.com",
+    "project_id": "io-pics-app",
+    "storage_bucket": "io-pics-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223710944687:android:61b2603096eee3d299a35a",
+        "android_client_info": {
+          "package_name": "io.pics.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "223710944687-7b2pd9gomqgkvnq57kau6r4vq6i22bqr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.pics.app",
+            "certificate_hash": "84f6d0e0a7d2c911ab59b5303b8b4094b51a4043"
+          }
+        },
+        {
+          "client_id": "223710944687-7dg7f09tmo93vb62qf3uedtp1p2506vn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.pics.app",
+            "certificate_hash": "8fbab84f5086ea350b2a2d45dcd45cd78f80880f"
+          }
+        },
+        {
+          "client_id": "223710944687-ebd3uabl74c1as72u637lh4ao2bmg20g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.pics.app",
+            "certificate_hash": "91912238b63576dcc762c5e9800f598afb1b27bc"
+          }
+        },
+        {
+          "client_id": "223710944687-poveirau6q56ll752mp68m631rcn44j1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.pics.app",
+            "certificate_hash": "54466c20aa8155a7f6d311aadc33f3bd157f27a0"
+          }
+        },
+        {
+          "client_id": "223710944687-4lpera7iua1heutc7qjhqfjm1sl9he55.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbERGJChlAJjeScjIqPH9rtPXPWdUv_bY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "223710944687-4lpera7iua1heutc7qjhqfjm1sl9he55.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "223710944687-1cptc99q5q9fkgp83bmmpipdc7g2ja3h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.pics.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
