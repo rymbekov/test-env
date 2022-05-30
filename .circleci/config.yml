@@ -15,10 +15,10 @@ workflows:
 
 jobs:
   Test:
-    # executor:
-    #   name : android/android-machine
-    #   resource-class: large
-    #   tag: 2021.10.2
+    executor:
+      name : android/android-machine
+      resource-class: large
+      tag: 2021.10.2
     steps:
       - run:
           name: Update Version Number & Build Number
