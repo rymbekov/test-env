@@ -29,6 +29,9 @@ jobs:
       - run:
           name: Install node 14.17
           command: nvm install 14.17 && nvm alias default 14.17
+      - run: 
+          name: Check JDK version
+          command: java --version
       # - run: *login-to-npm
       # - checkout
       # - restore_cache: *restore_cache
