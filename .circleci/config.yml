@@ -18,7 +18,7 @@ jobs:
     executor:
       name : android/android-machine
       resource-class: large
-      tag: 2021.10.2-node
+      # tag: 2021.10.2-node
     steps:
       - run:
           name: Update Version Number & Build Number
