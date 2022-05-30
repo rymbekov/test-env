@@ -27,17 +27,11 @@ jobs:
             echo 'export VERSION_NUMBER=${CIRCLE_TAG/-*}' >> $BASH_ENV
             echo 'export BUILD_NUMBER=$(date '+%y%m%d%H%M')' >> $BASH_ENV
       - run:
-          name: Install node 14.17
-          command: nvm install 14.17 && nvm alias default 14.17
-      - run: 
-          name: Check JDK version
-          command: java --version
-      - checkout
+          name: Check ruby version
+          command: ruby --version
       - run:
-          name: Run gradle
-          command: | 
-            cd android
-            ./gradlew tasks
+          name: Install Gemfile
+          command: bundle install
       # - run: *login-to-npm
       # - checkout
       # - restore_cache: *restore_cache
