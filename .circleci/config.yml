@@ -29,10 +29,12 @@ jobs:
       - run:
           name: Check ruby version
           command: ruby --version
-      # - checkout
+      - checkout
       - run:
-          name: Check n[x]
-          command: npx --version
+          name: Install Gemfile
+          command: | 
+            sudo gem install bundler:2.3.3
+            bundle install
       # - run: *login-to-npm
       # - checkout
       # - restore_cache: *restore_cache
