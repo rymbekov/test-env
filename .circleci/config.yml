@@ -32,7 +32,9 @@ jobs:
       - checkout
       - run:
           name: Install Gemfile
-          command: bundle install
+          command: | 
+            gem install bundler:2.3.3
+            bundle install
       # - run: *login-to-npm
       # - checkout
       # - restore_cache: *restore_cache
