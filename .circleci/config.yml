@@ -5,6 +5,9 @@ executors:
 
 version: 2.1
 
+orbs:
+  android: circleci/android@2.0.3
+
 workflows:
   Test:
     jobs:
@@ -12,7 +15,7 @@ workflows:
 
 jobs:
   Test:
-   executor:
+    executor:
       name : android/android-machine
       resource-class: large
       tag: 2021.10.2-node
@@ -27,7 +30,7 @@ jobs:
           name: Install node 14.17
           command: nvm install 14.17 && nvm alias default 14.17
       # - run: *login-to-npm
-      - checkout
+      # - checkout
       # - restore_cache: *restore_cache
       # - run: *install-dependencies
       # - save_cache: *save_cache
