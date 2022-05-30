@@ -31,7 +31,7 @@ jobs:
       # - run:
       #     name: Check ruby version
       #     command: ruby --version
-      # - checkout
+      - checkout
       - run:
           name: Install Gemfile
           command: | 
