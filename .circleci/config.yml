@@ -28,16 +28,16 @@ jobs:
             echo 'export CIRCLE_TAG="7.22.7-test+android"' >> $BASH_ENV
             echo 'export VERSION_NUMBER=${CIRCLE_TAG/-*}' >> $BASH_ENV
             echo 'export BUILD_NUMBER=$(date '+%y%m%d%H%M')' >> $BASH_ENV
-      # - run:
-      #     name: Check ruby version
-      #     command: ruby --version
-      - checkout
       - run:
-          name: Install Gemfile
-          command: | 
-            gem install bundler:2.3.3
-            bundle install
-      - run: bundle exec fastlane --version
+          name: Check node version
+          command: node --version
+      # - checkout
+      # - run:
+      #     name: Install Gemfile
+      #     command: | 
+      #       gem install bundler:2.3.3
+      #       bundle install
+      # - run: bundle exec fastlane --version
       # - checkout
       # - restore_cache: *restore_cache
       # - run: *install-dependencies
