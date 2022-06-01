@@ -15,12 +15,12 @@ workflows:
 
 jobs:
   Test:
-    macos:
-      xcode: 13.2.1
-    # executor:
-    #   name : android/android-machine
-    #   resource-class: large
-    #   tag: 2021.10.1
+    # macos:
+      # xcode: 13.2.1
+    executor:
+      name : android/android-machine
+      resource-class: large
+      tag: 2021.10.1
     steps:
       - run:
           name: Update Version Number & Build Number
@@ -29,7 +29,7 @@ jobs:
             echo 'export VERSION_NUMBER=${CIRCLE_TAG/-*}' >> $BASH_ENV
             echo 'export BUILD_NUMBER=$(date '+%y%m%d%H%M')' >> $BASH_ENV
       - run:
-          name: Check node version
+          name: Check ruby version
           command: ruby --version
       # - checkout
       # - run:
