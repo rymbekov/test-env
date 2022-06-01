@@ -40,7 +40,7 @@ jobs:
       - checkout
       - run: *ruby_dependencies
       - run: bundle exec fastlane --version
-      - run: pod install
+      - run: pod --version
       # - restore_cache: *restore_cache
       # - run: *install-dependencies
       # - save_cache: *save_cache
