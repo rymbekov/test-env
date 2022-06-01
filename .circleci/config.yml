@@ -27,6 +27,7 @@ jobs:
     #   name : android/android-machine
     #   resource-class: large
     #   tag: 2021.10.1
+    recource_class: xlarge
     steps:
       - run:
           name: Update Version Number & Build Number
