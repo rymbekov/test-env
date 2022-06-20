@@ -1,47 +1,47 @@
-executors:
-  node:
-    docker:
-      - image: cimg/node:14.17
+# executors:
+#   node:
+#     docker:
+#       - image: cimg/node:14.17
 
-ruby_dependencies: &ruby_dependencies
-  name: Install Ruby Dependencies
-  command: |
-    gem install bundler:2.3.14
-    bundle install
+# ruby_dependencies: &ruby_dependencies
+#   name: Install Ruby Dependencies
+#   command: |
+#     gem install bundler:2.3.14
+#     bundle install
 
-version: 2.1
+# version: 2.1
 
-orbs:
-  android: circleci/android@2.0.3
+# orbs:
+#   android: circleci/android@2.0.3
 
-workflows:
-  Test:
-    jobs:
-      - Test
+# workflows:
+#   Test:
+#     jobs:
+#       - Test
 
-jobs:
-  Test:
-    macos:
-      xcode: 13.2.1
-    # executor:
-    #   name : android/android-machine
-    #   resource-class: large
-    #   tag: 2021.10.1
-    resource_class: xlarge
-    steps:
-      - run:
-          name: Update Version Number & Build Number
-          command: |
-            echo 'export CIRCLE_TAG="7.22.7-test+android"' >> $BASH_ENV
-            echo 'export VERSION_NUMBER=${CIRCLE_TAG/-*}' >> $BASH_ENV
-            echo 'export BUILD_NUMBER=$(date '+%y%m%d%H%M')' >> $BASH_ENV
-      - run:
-          name: Check ruby version
-          command: ruby --version
-      - checkout
-      - run: *ruby_dependencies
-      - run: bundle exec fastlane --version
-      - run: pod --version
-      # - restore_cache: *restore_cache
-      # - run: *install-dependencies
-      # - save_cache: *save_cache
+# jobs:
+#   Test:
+#     macos:
+#       xcode: 13.2.1
+#     # executor:
+#     #   name : android/android-machine
+#     #   resource-class: large
+#     #   tag: 2021.10.1
+#     resource_class: xlarge
+#     steps:
+#       - run:
+#           name: Update Version Number & Build Number
+#           command: |
+#             echo 'export CIRCLE_TAG="7.22.7-test+android"' >> $BASH_ENV
+#             echo 'export VERSION_NUMBER=${CIRCLE_TAG/-*}' >> $BASH_ENV
+#             echo 'export BUILD_NUMBER=$(date '+%y%m%d%H%M')' >> $BASH_ENV
+#       - run:
+#           name: Check ruby version
+#           command: ruby --version
+#       - checkout
+#       - run: *ruby_dependencies
+#       - run: bundle exec fastlane --version
+#       - run: pod --version
+#       # - restore_cache: *restore_cache
+#       # - run: *install-dependencies
+#       # - save_cache: *save_cache

@@ -1,0 +1,24 @@
+name: Build Docker image
+
+on:
+  push:
+#    tags:
+    #  - '^[0-9]+.[0-9]+.[0-9]+(-(?!npm).+)*$'
+
+jobs:
+   Build:
+     name: Build Docker image
+     if: github.event_name == 'push' && contains(github.ref, 'refs/tags/^[0-9]+.[0-9]+.[0-9]+(-(?!npm).+)*$')
+     runs-on: ubuntu-20.04
+     steps:
+    #    - uses: actions/checkout@v3
+    #    - name: Use node.js 14
+    #      uses: actions/setup-node@v3
+    #      with:
+    #        node-version: '14'
+    #        cache: 'npm'
+    #        registry-url: 'https://registry.npmjs.org'
+    #      env:
+    #        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+       - name: Build docker image for service
+         run: echo 'Hi, this job triggered only by Git Tag'
