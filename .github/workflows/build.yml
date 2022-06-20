@@ -7,34 +7,34 @@ on:
     #   - '^[0-9]+.[0-9]+.[0-9]+(-(?!npm).+)*$'
 
 jobs:
-  check_tag:
-    runs-on: ubuntu-latest
-    outputs:
-      run_other_jobs: ${{ steps.check-tag.outputs.run_jobs }}
-    steps:
-      - name: check tag ${{ github.ref }}
-        id: check-tag
-        run: |
-          if [[${{ github.ref }} =~ refs\/tags\/release\/v[0-9]+\.[0-9]+\.0\.[0-9]+ ]]; then
-            echo "::set-output name=run_jobs::true"
-          else
-            echo "::set-output name=run_jobs::false"
-          fi
-  Build:
-    name: Build Docker image
-    #  if: github.ref =~ 'refs/tags/^[0-9]+.[0-9]+.[0-9]+(-(?!npm).+)*$'
-    needs: [check_tag]
-    if: needs.check_tag.outputs.run_other_jobs == 'true'
-    runs-on: ubuntu-20.04
-    steps:
-    #    - uses: actions/checkout@v3
-    #    - name: Use node.js 14
-    #      uses: actions/setup-node@v3
-    #      with:
-    #        node-version: '14'
-    #        cache: 'npm'
-    #        registry-url: 'https://registry.npmjs.org'
-    #      env:
-    #        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Build docker image for service
-        run: echo ${{ github.ref }}
+   check_tag:
+     runs-on: ubuntu-latest
+     outputs:
+       run_other_jobs: ${{ steps.check-tag.outputs.run_jobs }}
+     steps:
+       - name: check tag ${{ github.ref }}
+         id: check-tag
+         run: |
+           if [[${{ github.ref }} =~ refs\/tags\/release\/^[0-9]+.[0-9]+.[0-9]+(-(?!npm).+)*$ ]]; then
+             echo "::set-output name=run_jobs::true"
+           else
+             echo "::set-output name=run_jobs::false"
+           fi
+   Build:
+     name: Build Docker image
+     #  if: github.ref =~ 'refs/tags/^[0-9]+.[0-9]+.[0-9]+(-(?!npm).+)*$'
+     needs: [check_tag]
+     if: needs.check_tag.outputs.run_other_jobs == 'true'
+     runs-on: ubuntu-20.04
+     steps:
+     #    - uses: actions/checkout@v3
+     #    - name: Use node.js 14
+     #      uses: actions/setup-node@v3
+     #      with:
+     #        node-version: '14'
+     #        cache: 'npm'
+     #        registry-url: 'https://registry.npmjs.org'
+     #      env:
+     #        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+       - name: Build docker image for service
+         run: echo ${{ github.ref }}
