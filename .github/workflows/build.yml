@@ -18,10 +18,13 @@ jobs:
          run: |
            pattern='refs/tags/release/^[0-9]+.[0-9]+.[0-9]+(-(?!npm).+)*$'
            tag=$(echo ${{ github.ref }}##*/)
+           echo $tag
            if [[ $tag =~ $pattern ]]; then
              echo "::set-output name=run_jobs::true"
+             echo 'true'
            else
              echo "::set-output name=run_jobs::false"
+             echo 'false'
            fi
 #    Build:
 #      name: Build Docker image
