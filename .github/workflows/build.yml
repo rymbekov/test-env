@@ -8,7 +8,7 @@ on:
 jobs:
    Build:
      name: Build Docker image
-    #  if: github.ref == 'refs/tags/^[0-9]+.[0-9]+.[0-9]+(-(?!npm).+)*$'
+     if: github.ref == 'refs/tags/^[0-9]+.[0-9]+.[0-9]+(-(?!npm).+)*$'
      runs-on: ubuntu-20.04
      steps:
     #    - uses: actions/checkout@v3
