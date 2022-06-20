@@ -17,7 +17,7 @@ jobs:
          id: check-tag
          run: |
            pattern='refs/tags/release/^[0-9]+.[0-9]+.[0-9]+(-(?!npm).+)*$'
-           tag=$(echo ${{ github.ref##*/ }})
+           tag=$(echo ${{ github.ref }}##*/)
            if '[[ =~ '$pattern ]]'; then
              echo "::set-output name=run_jobs::true"
            else
