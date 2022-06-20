@@ -8,7 +8,7 @@ on:
 jobs:
    Build:
      name: Build Docker image
-     if: github.ref == 'refs/tags/^[0-9]+.[0-9]+.[0-9]+(-(?!npm).+)*$'
+    #  if: github.ref == 'refs/tags/^[0-9]+.[0-9]+.[0-9]+(-(?!npm).+)*$'
      runs-on: ubuntu-20.04
      steps:
     #    - uses: actions/checkout@v3
@@ -21,4 +21,4 @@ jobs:
     #      env:
     #        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
        - name: Build docker image for service
-         run: echo 'Hi, this job triggered only by Git Tag'
+         run: echo [[${{ github.ref }}
