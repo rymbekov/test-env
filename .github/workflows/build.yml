@@ -1,9 +1,8 @@
 name: Build Docker image
 
 on:
-    push
-#   release:
-#     types: [published]
+  release:
+    types: [published]
     # tags:
     #   - '^[0-9]+.[0-9]+.[0-9]+(-(?!npm).+)*$'
 
@@ -16,7 +15,7 @@ jobs:
        - name: check tag ${{ github.ref }}
          id: check-tag
          run: |
-           pattern='refs/tags/release/^[0-9]+.[0-9]+.[0-9]+(-(?!npm).+)*$'
+           pattern='^[0-9]+.[0-9]+.[0-9]+(-(?!npm).+)*$'
            tag=${{ github.ref }}
            parsedTag=$(echo ${tag##*/})
            echo $parsedTag
