@@ -20,7 +20,7 @@ jobs:
          uses: actions/github-script@v5
          with:
            script: |
-            const pattern = new RexExp('^[0-9]+\.[0-9]+\.[0-9]+(-(?!npm).+)*$')
+            const pattern = new RegExp('^[0-9]+\.[0-9]+\.[0-9]+(-(?!npm).+)*$')
             const tag = '${{ github.ref }}'
             let splitted = tag.split('/')
             const parsedTag = splitted[splitted.length - 1]
