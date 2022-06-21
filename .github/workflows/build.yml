@@ -3,7 +3,7 @@ name: Build Docker image
 on:
   push:
     tags:
-      - "[0-9]+.[0-9]+.[0-9]+-(?!npm|ios|android).*"
+      - "[0-9]+.[0-9]+.[0-9]+-(!npm|ios|android).*"
     #   - "[0-9]+.[0-9]+.[0-9]+"
 #   release:
 #     types: [published]
