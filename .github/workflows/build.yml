@@ -1,9 +1,9 @@
 name: Build Docker image
 
 on:
-  push:
-    # tags:
-    #   - ^refs\/tags\/[0-9]+\.[0-9]+\.[0-9]+$
+  create:
+    tags:
+      - ^refs\/tags\/[0-9]+\.[0-9]+\.[0-9]+$
 #   release:
 #     types: [published]
 
@@ -25,8 +25,7 @@ jobs:
             
    Build:
      name: Build Docker image
-     if: github.ref =~ 'refs\/tags\/^[0-9]+.[0-9]+.[0-9]+(-(?!npm).+)*$'
-     needs: [check_tag]
+    #  needs: [check_tag]
     #  if: needs.check_tag.outputs.run_other_jobs == 'true'
      runs-on: ubuntu-20.04
      steps:
