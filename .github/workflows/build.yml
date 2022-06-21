@@ -19,6 +19,7 @@ jobs:
          id: check-tag
          uses: actions/github-script@v5
          with:
+           result-encoding: string
            script: |
             const pattern = new RegExp('^[0-9]+\.[0-9]+\.[0-9]+(-(?!npm).+)*$')
             const tag = '${{ github.ref }}'
@@ -28,10 +29,10 @@ jobs:
             console.log(parsedTag)
             if (pattern.test(parsedTag)) {
                 console.log('true')
-                return "::set-output name=run_jobs::true"
+                return "true"
             } else {
                 console.log('false')
-                return "::set-output name=run_jobs::false"
+                return "false"
             }
             
    Build:
