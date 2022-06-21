@@ -13,7 +13,7 @@ jobs:
    check_tag:
      runs-on: ubuntu-latest
      outputs:
-       run_other_jobs: ${{ steps.check-tag.outputs.run_jobs }}
+       run_other_jobs: ${{ steps.check-tag.outputs.result }}
      steps:
        - name: check tag ${{ github.ref }}
          id: check-tag
@@ -25,16 +25,11 @@ jobs:
             const tag = '${{ github.ref }}'
             let splitted = tag.split('/')
             const parsedTag = splitted[splitted.length - 1]
-            //const parsedTag = $(echo ${tag##*/})
             console.log(parsedTag)
             if (pattern.test(parsedTag)) {
-                console.log('true')
-                // return "true"
-                core.setOutput('run_jobs', 'true')
+                return "true"
             } else {
-                console.log('false')
-                core.setOutput('run_jobs', 'false')
-                // return "false"
+                return "false"
             }
             
    Build:
