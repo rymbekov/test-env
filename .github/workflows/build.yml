@@ -17,7 +17,7 @@ jobs:
      steps:
        - name: check tag ${{ github.ref }}
          id: check-tag
-         uses: actions/github-script@v5
+         uses: satackey/action-js-inline@v0.0.2
          with:
            script: |
             const pattern = new RexExp('^[0-9]+\.[0-9]+\.[0-9]+(-(?!npm).+)*$')
