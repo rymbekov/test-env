@@ -3,7 +3,7 @@ name: Build Docker image
 on:
   create:
     tags:
-      - ^refs\/tags\/[0-9]+\.[0-9]+\.[0-9]+(-(?!npm).+)*$
+      - ^refs\/tags\/[0-9]+\.[0-9]+\.[0-9]+-(?!npm|ios|android).+\\+android$
 #   release:
 #     types: [published]
 
