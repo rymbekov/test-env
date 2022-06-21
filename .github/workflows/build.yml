@@ -1,33 +1,43 @@
 name: Build Docker image
 
 on:
-  push:
-    tags:
-      - "[0-9]+.[0-9]+.[0-9]+-!npm|ios|android.*"
-    #   - "[0-9]+.[0-9]+.[0-9]+"
-#   release:
-#     types: [published]
+#   push:
+#     tags:
+#       - "[0-9]+.[0-9]+.[0-9]+-!npm|ios|android.*"
+#     #   - "[0-9]+.[0-9]+.[0-9]+"
+  release:
+    types: [published]
 
 
 jobs:
-#    check_tag:
-#      runs-on: ubuntu-latest
-#      outputs:
-#        run_other_jobs: ${{ steps.check-tag.outputs.run_jobs }}
-#      steps:
-#        - name: check tag ${{ github.ref }}
-#          id: check-tag
-#          uses: actions/github-script@v5
-#          with:
-#            script: |
-#             pattern='^[0-9]+.[0-9]+.[0-9]+.*$'
-#             tag=${{ github.ref }}
-#             parsedTag=$(echo ${tag##*/})
+   check_tag:
+     runs-on: ubuntu-latest
+     outputs:
+       run_other_jobs: ${{ steps.check-tag.outputs.run_jobs }}
+     steps:
+       - name: check tag ${{ github.ref }}
+         id: check-tag
+         uses: actions/github-script@v5
+         with:
+           script: |
+            const pattern = new RexExp('^[0-9]+\.[0-9]+\.[0-9]+(-(?!npm).+)*$')
+            const tag = ${{ github.ref }}
+            let splitted = tag.split('/')
+            const parsedTag = splitted[splitted.length - 1]
+            # const parsedTag = $(echo ${tag##*/})
+            console.log(parsedTag)
+            if (pattern.test(parsedTag)) {
+                console.log('true')
+                return "::set-output name=run_jobs::true"
+            } else {
+                console.log('false')
+                return "::set-output name=run_jobs::false"
+            }
             
    Build:
      name: Build Docker image
-    #  needs: [check_tag]
-    #  if: needs.check_tag.outputs.run_other_jobs == 'true'
+     needs: [check_tag]
+     if: needs.check_tag.outputs.run_other_jobs == 'true'
      runs-on: ubuntu-20.04
      steps:
      #    - uses: actions/checkout@v3
