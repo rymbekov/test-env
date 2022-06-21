@@ -12,8 +12,8 @@ on:
 jobs:
    check_tag:
      runs-on: ubuntu-latest
-    #  outputs:
-    #    run_other_jobs: ${{ steps.check-tag.outputs.run_jobs }}
+     outputs:
+       run_other_jobs: ${{ steps.check-tag.outputs.run_jobs }}
      steps:
        - name: check tag ${{ github.ref }}
          id: check-tag
@@ -29,16 +29,18 @@ jobs:
             console.log(parsedTag)
             if (pattern.test(parsedTag)) {
                 console.log('true')
-                return "true"
+                // return "true"
+                core.setOutput('run_jobs', 'true')
             } else {
                 console.log('false')
-                return "false"
+                core.setOutput('run_jobs', 'false')
+                // return "false"
             }
             
    Build:
      name: Build Docker image
      needs: [check_tag]
-     if: needs.check_tag.outputs.result == 'true'
+     if: needs.check_tag.outputs.run_other_jobs == 'true'
      runs-on: ubuntu-20.04
      steps:
      #    - uses: actions/checkout@v3
