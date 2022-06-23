@@ -21,8 +21,8 @@ else
 	shouldPush=$3
 fi
 
-# echo 'Change version in package.json'
-# npm version --commit-hooks=false --git-tag-version=false $tag
+echo 'Change version in package.json'
+npm version --commit-hooks=false --git-tag-version=false $tag
 
 echo 'Building docker container'
 # Login to docker registry

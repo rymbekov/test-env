@@ -58,16 +58,8 @@ jobs:
           env:
             SLACK_CHANNEL: es-test
             SLACK_COLOR: ${{ job.status }}
+            SLACK_TITLE: 'Project: ${{ env.REPO_NAME }}'
             SLACK_MESSAGE: '📦 Docker image *${{ env.REPO_NAME }}@${{ env.GIT_TAG }}* created! (by ${{ github.actor }})!'
             SLACK_USERNAME: GitHub Action Releases
             SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
             # MSG_MINIMAL: true
-        # - name: Slack notification
-        #   env:
-        #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-        #     SLACK_USERNAME: GitHub Action Releases
-        #     SLACK_CHANNEL: es-test
-        #     SLACK_AVATAR: repository
-        #   uses: Ilshidur/action-slack@2.1.0
-        #   with:
-        #     args: '📦 Docker image *${{ env.REPO_NAME }}@${{ env.GIT_TAG }}* created! (by ${{ github.actor }})!'
