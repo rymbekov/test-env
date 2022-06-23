@@ -52,16 +52,16 @@ jobs:
             aws-region: us-east-1
         - name: Build docker image for service
           run: ./scripts/build.sh test $GIT_TAG true
-        # - name: Slack Notification
-        #   uses: rtCamp/action-slack-notify@v2
-        #   if: always()
-        #   env:
-        #     SLACK_CHANNEL: es-test
-        #     SLACK_COLOR: ${{ job.status }}
-        #     SLACK_MESSAGE: '📦 Docker image *${{ env.REPO_NAME }}@${{ env.GIT_TAG }}* created! (by ${{ github.actor }})!'
-        #     SLACK_USERNAME: GitHub Action Releases
-        #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-        #     MSG_MINIMAL: true
+        - name: Slack Notification
+          uses: rtCamp/action-slack-notify@v2
+          if: always()
+          env:
+            SLACK_CHANNEL: es-test
+            SLACK_COLOR: ${{ job.status }}
+            SLACK_MESSAGE: '📦 Docker image *${{ env.REPO_NAME }}@${{ env.GIT_TAG }}* created! (by ${{ github.actor }})!'
+            SLACK_USERNAME: GitHub Action Releases
+            SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+            # MSG_MINIMAL: true
         # - name: Slack notification
         #   env:
         #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
@@ -71,27 +71,3 @@ jobs:
         #   uses: Ilshidur/action-slack@2.1.0
         #   with:
         #     args: '📦 Docker image *${{ env.REPO_NAME }}@${{ env.GIT_TAG }}* created! (by ${{ github.actor }})!'
-        - name: Slack Notification
-          uses: tokorom/action-slack-incoming-webhook@main
-          env:
-            INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
-          with:
-            text: '📦 Docker image *${{ env.REPO_NAME }}@${{ env.GIT_TAG }}* created! (by ${{ github.actor }})!'
-            attachments: |
-                [
-                    {
-                        "color": "${{ job.status }}",
-                        "author_name": "${{ github.actor }}",
-                        "author_icon": "${{ github.event.sender.avatar_url }}",
-                        "fields": [
-                            {
-                                "title": "GitHub Actions URL",
-                                "value": "${{ github.event.repository.url }}/actions/runs/${{ github.run_id }}"
-                            },
-                            {
-                                "title": "Compare URL",
-                                "value": "${{ github.event.compare }}"
-                            }
-                        ]
-                    }
-                ]
