@@ -58,7 +58,7 @@ jobs:
             SLACK_CHANNEL: es-test
             SLACK_COLOR: ${{ job.status }}
             SLACK_ICON: https://github.com/rtCamp.png?size=48
-            SLACK_MESSAGE: '📦 Docker image *${{ github.event.repository.name }}@${GIT_TAG} * created! $SLACK_MENTIONS'
+            SLACK_MESSAGE: '📦 Docker image *${{ github.event.repository.name }}@${{ GIT_TAG} }* created! (by ${GITHUB_ACTOR})!'
             SLACK_USERNAME: GitHub Action Releases
             SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
             MSG_MINIMAL: true
@@ -68,6 +68,6 @@ jobs:
         #     SLACK_USERNAME: GitHub Action Releases
         #     SLACK_CHANNEL: es-test
         #     SLACK_AVATAR: repository
-        #   uses: Ilshidur/action-slack@2.0.2
+        #   uses: Ilshidur/action-slack@2.1.0
         #   with:
         #     args: '📦 Docker image *${GITHUB_REPOSITORY#*/}@$GIT_TAG* created! $SLACK_MENTIONS'
