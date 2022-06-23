@@ -36,7 +36,6 @@ jobs:
         #   uses: actions/setup-node@v3
         #   with:
         #     node-version: '14'
-        #     cache: 'npm'
         #     registry-url: 'https://registry.npmjs.org'
         #   env:
         #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -60,6 +59,7 @@ jobs:
             SLACK_CHANNEL: es-test
             SLACK_COLOR: ${{ job.status }}
             SLACK_USERNAME: GitHub Action Releases
+            SLACK_ICON: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
             SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
             SLACK_TITLE: 'Project: ${{ env.REPO_NAME }}'
             MSG_MINIMAL: actions url,commit
