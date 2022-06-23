@@ -59,7 +59,9 @@ jobs:
             SLACK_CHANNEL: es-test
             SLACK_COLOR: ${{ job.status }}
             SLACK_TITLE: 'Project: ${{ env.REPO_NAME }}'
+            SLACK_ICON_EMOJI: ":красный_круг:"
             SLACK_MESSAGE: '📦 Docker image *${{ env.REPO_NAME }}@${{ env.GIT_TAG }}* created! (by ${{ github.actor }})!'
             SLACK_USERNAME: GitHub Action Releases
             SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-            # MSG_MINIMAL: true
+            MSG_MINIMAL: 
+            # :красный_круг: A Build Container job has failed!
