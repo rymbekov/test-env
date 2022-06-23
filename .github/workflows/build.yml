@@ -1,11 +1,12 @@
 name: Build Docker image
 
 on:
-  release:
-    types: [published]
+  push:
+#   release:
+#     types: [published]
 
 env:
-  GIT_TAG: ${{ github.event.release.tag_name}}
+  GIT_TAG: "1.0.0" #${{ github.event.release.tag_name}}
   REPO_NAME: ${{ github.event.repository.name }}
 
 jobs:
@@ -21,13 +22,8 @@ jobs:
             result-encoding: string
             script: |
              const pattern = new RegExp('^[0-9]+\.[0-9]+\.[0-9]+(-(?!npm).+)*$')
-             const tag = process.env.GIT_TAG
-             console.log(tag)
-             if (pattern.test(tag)) {
-                 return "true"
-             } else {
-                 return "false"
-             }
+             console.log(process.env.GIT_TAG)
+             pattern.test(process.env.GIT_TAG) ? return "true" : return "false"
             
    Build:
      name: Build Docker image
