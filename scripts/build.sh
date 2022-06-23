@@ -27,7 +27,8 @@ fi
 echo 'Building docker container'
 # Login to docker registry
 aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $PICSIO_DOCKER_REGISTRY
-DOCKER_BUILDKIT=1 docker build -t picsio/$appname:$tag --secret id=npm,src=$HOME/.npmrc .
+DOCKER_BUILDKIT=1 docker build -t picsio/$appname:$tag .
+# --secret id=npm,src=$HOME/.npmrc
 docker tag picsio/$appname:$tag $PICSIO_DOCKER_REGISTRY/picsio/$appname:$tag
 echo 'Build completed'
 
