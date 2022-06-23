@@ -52,15 +52,16 @@ jobs:
             aws-region: us-east-1
         - name: Build docker image for service
           run: ./scripts/build.sh test $GIT_TAG true
-        - name: Slack Notification
-          uses: rtCamp/action-slack-notify@v2
-          if: always()
+        - name: Set SLACK_MESSAGE
           run: |
             if [[ job.status }} == success ]]; then
                 echo "SLACK_MESSAGE='📦 Docker image *${{ env.REPO_NAME }}@${{ env.GIT_TAG }}* created! (by ${{ github.actor }})!'" >> $GITHUB_ENV
             else
                 echo "SLACK_MESSAGE=':красный_круг: A Build Docker Image job has failed!'" >> $GITHUB_ENV
             fi
+        - name: Slack Notification
+          uses: rtCamp/action-slack-notify@v2
+          if: always()
           env:
             SLACK_CHANNEL: es-test
             SLACK_COLOR: ${{ job.status }}
