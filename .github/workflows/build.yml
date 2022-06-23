@@ -56,7 +56,7 @@ jobs:
           if: always()
           run: |
             [[ ${{ job.status }} == success ]] && echo "SLACK_MESSAGE=📦 Docker image *${{ env.REPO_NAME }}@${{ env.GIT_TAG }}* created! (by ${{ github.actor }})!" >> $GITHUB_ENV \
-                echo "SLACK_MESSAGE=:red_circle: A Build Docker Image job has failed!" >> $GITHUB_ENV
+                || echo "SLACK_MESSAGE=:red_circle: A Build Docker Image job has failed!" >> $GITHUB_ENV
         - name: Slack Notification
           uses: rtCamp/action-slack-notify@v2
           if: always()
