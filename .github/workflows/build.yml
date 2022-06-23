@@ -14,8 +14,6 @@ jobs:
      outputs:
        run_other_jobs: ${{ steps.check-tag.outputs.result }}
      steps:
-        # - name: Get git tag
-        #   run: echo "GIT_TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
         - name: check tag ${{ github.ref }}
           id: check-tag
           uses: actions/github-script@v5
@@ -38,8 +36,6 @@ jobs:
      runs-on: ubuntu-20.04
      steps:
         - uses: actions/checkout@v3
-        # - name: Get git tag
-        #   run: echo "GIT_TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
         # - name: Use node.js 14
         #   uses: actions/setup-node@v3
         #   with:
@@ -74,4 +70,4 @@ jobs:
             SLACK_AVATAR: repository
           uses: Ilshidur/action-slack@2.1.0
           with:
-            args: '📦 Docker image *$REPO_NAME@$GIT_TAG* created! (by ${{ github.actor }})!'
+            args: '📦 Docker image *${{ env.REPO_NAME }}@${{ env.GIT_TAG }}* created! (by ${{ github.actor }})!'
