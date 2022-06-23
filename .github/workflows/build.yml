@@ -61,5 +61,5 @@ jobs:
             SLACK_ICON: https://github.com/rtCamp.png?size=48
             SLACK_MESSAGE: '📦 Docker image *${GITHUB_REPOSITORY#*/}@$GIT_TAG* created! $SLACK_MENTIONS'
             SLACK_USERNAME: GitHub Action Releases
-            SLACK_WEBHOOK: 'https://hooks.slack.com/services/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'
+            SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
             MSG_MINIMAL: true
