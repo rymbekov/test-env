@@ -53,3 +53,13 @@ jobs:
             aws-region: us-east-1
         - name: Build docker image for service
           run: ./scripts/build.sh test $GIT_TAG true
+        - name: Slack Notification
+          uses: rtCamp/action-slack-notify@v2
+          env:
+            SLACK_CHANNEL: es-test
+            SLACK_COLOR: ${{ job.status }}
+            SLACK_ICON: https://github.com/rtCamp.png?size=48
+            SLACK_MESSAGE: '📦 Docker image *${GITHUB_REPOSITORY#*/}@$GIT_TAG* created! $SLACK_MENTIONS'
+            SLACK_USERNAME: GitHub Action Releases
+            SLACK_WEBHOOK: 'https://hooks.slack.com/services/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'
+            MSG_MINIMAL: true
