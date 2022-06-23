@@ -34,15 +34,15 @@ jobs:
      if: needs.check_tag.outputs.run_other_jobs == 'true'
      runs-on: ubuntu-20.04
      steps:
-        - uses: actions/checkout@v3
-        - name: Use node.js 14
-          uses: actions/setup-node@v3
-          with:
-            node-version: '14'
-            cache: 'npm'
-            registry-url: 'https://registry.npmjs.org'
-          env:
-            NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        # - uses: actions/checkout@v3
+        # - name: Use node.js 14
+        #   uses: actions/setup-node@v3
+        #   with:
+        #     node-version: '14'
+        #     cache: 'npm'
+        #     registry-url: 'https://registry.npmjs.org'
+        #   env:
+        #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         - name: Configure AWS credentials
           uses: aws-actions/configure-aws-credentials@v1
           with:
