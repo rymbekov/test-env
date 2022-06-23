@@ -20,7 +20,7 @@ jobs:
             result-encoding: string
             script: |
              const pattern = new RegExp('^[0-9]+\.[0-9]+\.[0-9]+(-(?!npm).+)*$')
-             const tag = procces.env.GIT_TAG
+             const tag = process.env.GIT_TAG
              console.log(tag)
              if (pattern.test(tag)) {
                  return "true"
