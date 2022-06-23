@@ -11,22 +11,22 @@ jobs:
      outputs:
        run_other_jobs: ${{ steps.check-tag.outputs.result }}
      steps:
-       - name: check tag ${{ github.ref }}
-         id: check-tag
-         uses: actions/github-script@v5
-         with:
-           result-encoding: string
-           script: |
-            const pattern = new RegExp('^[0-9]+\.[0-9]+\.[0-9]+(-(?!npm).+)*$')
-            const tag = '${{ github.ref }}'
-            let splitted = tag.split('/')
-            const parsedTag = splitted[splitted.length - 1]
-            console.log(parsedTag)
-            if (pattern.test(parsedTag)) {
-                return "true"
-            } else {
-                return "false"
-            }
+        - name: Get git tag
+          run: echo "GIT_TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+        - name: check tag ${{ github.ref }}
+          id: check-tag
+          uses: actions/github-script@v5
+          with:
+            result-encoding: string
+            script: |
+             const pattern = new RegExp('^[0-9]+\.[0-9]+\.[0-9]+(-(?!npm).+)*$')
+             const tag = procces.env.GIT_TAG
+             console.log(tag)
+             if (pattern.test(tag)) {
+                 return "true"
+             } else {
+                 return "false"
+             }
             
    Build:
      name: Build Docker image
