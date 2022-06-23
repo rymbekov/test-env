@@ -35,6 +35,8 @@ jobs:
      runs-on: ubuntu-20.04
      steps:
         - uses: actions/checkout@v3
+        - name: Get git tag
+          run: echo "GIT_TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
         # - name: Use node.js 14
         #   uses: actions/setup-node@v3
         #   with:
@@ -50,4 +52,4 @@ jobs:
             aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
             aws-region: us-east-1
         - name: Build docker image for service
-          run: ./scripts/build.sh test $CIRCLE_TAG true
+          run: ./scripts/build.sh test $GIT_TAG true
