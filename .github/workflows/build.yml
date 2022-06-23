@@ -23,7 +23,7 @@ jobs:
             script: |
              const pattern = new RegExp('^[0-9]+\.[0-9]+\.[0-9]+(-(?!npm).+)*$')
              console.log(process.env.GIT_TAG)
-             pattern.test(process.env.GIT_TAG) ? "true" : "false"
+             return pattern.test(process.env.GIT_TAG) ? "true" : "false"
             
    Build:
      name: Build Docker image
