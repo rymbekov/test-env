@@ -55,13 +55,18 @@ jobs:
         - name: Slack Notification
           uses: rtCamp/action-slack-notify@v2
           if: always()
+          run: |
+            if [[ job.status }} == success ]]; then
+                echo "SLACK_MESSAGE='📦 Docker image *${{ env.REPO_NAME }}@${{ env.GIT_TAG }}* created! (by ${{ github.actor }})!'" >> $GITHUB_ENV
+            else
+                echo "SLACK_MESSAGE=':красный_круг: A Build Docker Image job has failed!'" >> $GITHUB_ENV
+            fi
           env:
             SLACK_CHANNEL: es-test
             SLACK_COLOR: ${{ job.status }}
             SLACK_TITLE: 'Project: ${{ env.REPO_NAME }}'
-            SLACK_ICON_EMOJI: ":красный_круг:"
-            SLACK_MESSAGE: '📦 Docker image *${{ env.REPO_NAME }}@${{ env.GIT_TAG }}* created! (by ${{ github.actor }})!'
+            # SLACK_MESSAGE: '📦 Docker image *${{ env.REPO_NAME }}@${{ env.GIT_TAG }}* created! (by ${{ github.actor }})!'
             SLACK_USERNAME: GitHub Action Releases
             SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-            MSG_MINIMAL: 
+            MSG_MINIMAL: actions,commit
             # :красный_круг: A Build Container job has failed!
