@@ -53,6 +53,7 @@ jobs:
         - name: Build docker image for service
           run: ./scripts/build.sh test $GIT_TAG true
         - name: Set SLACK_MESSAGE
+          if: always()
           run: |
             if [[ job.status }} == success ]]; then
                 echo "SLACK_MESSAGE='📦 Docker image *${{ env.REPO_NAME }}@${{ env.GIT_TAG }}* created! (by ${{ github.actor }})!'" >> $GITHUB_ENV
@@ -67,7 +68,8 @@ jobs:
             SLACK_COLOR: ${{ job.status }}
             SLACK_TITLE: 'Project: ${{ env.REPO_NAME }}'
             # SLACK_MESSAGE: '📦 Docker image *${{ env.REPO_NAME }}@${{ env.GIT_TAG }}* created! (by ${{ github.actor }})!'
+            # SLACK_MESSAGE: 
             SLACK_USERNAME: GitHub Action Releases
             SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-            MSG_MINIMAL: actions,commit
+            MSG_MINIMAL: actions url,commit
             # :красный_круг: A Build Container job has failed!
