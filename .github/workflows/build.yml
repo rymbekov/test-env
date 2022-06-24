@@ -1,12 +1,11 @@
 name: Build Docker image
 
 on:
-  push:
-#   release:
-#     types: [published]
+  release:
+    types: [published]
 
 env:
-  GIT_TAG: "1.0.0" #${{ github.event.release.tag_name}}
+  GIT_TAG: ${{ github.event.release.tag_name}}
   REPO_NAME: ${{ github.event.repository.name }}
 
 jobs:
