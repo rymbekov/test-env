@@ -72,6 +72,7 @@ jobs:
           target_commitish: ${{ env.PR_HEAD_SHA }}
           name: ${{ env.PRERELEASE_NAME }} - [${{ env.ISSUE_KEY }}]
           prerelease: true
+          draft: false
       - name: Comment back PR
         uses: actions/github-script@v5
         with:
