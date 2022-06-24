@@ -3,6 +3,9 @@ name: Create Git tag + Pre-Release on PR comment (/build)
 on:
   issue_comment:
     types: [created]
+    
+env:
+  GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
 
 jobs:
   pr_commented:
