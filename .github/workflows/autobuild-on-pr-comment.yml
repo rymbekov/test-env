@@ -1,0 +1,94 @@
+name: Create Git tag + Pre-Release on PR comment (/build)
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  pr_commented:
+    name: PR commented '/build'
+    if: ${{ github.event.issue.pull_request && startsWith(github.event.comment.body, '/build')}}
+    runs-on: ubuntu-latest
+    steps:
+      # Debug step to see env
+      # - name: Print enviroment variables
+      #   run: env
+      # PR, it's branch and SHA are available via github variable (node module `oktokit``)
+      - run: |
+          echo "PR #${{ github.event.issue.number }} commented '/build'"
+      - name: Fetch related Github PR
+        uses: actions/github-script@v4
+        id: get-pr
+        with:
+          script: |
+            const request = {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number
+            }
+            core.info(`Getting PR #${request.pull_number} from ${request.owner}/${request.repo}`)
+            try {
+              const result = await github.pulls.get(request)
+              return result.data
+            } catch (err) {
+              core.setFailed(`Request failed with error ${err}`)
+            }
+      - name: Get PR HEAD REF
+        env:
+          PR_HEAD_REF: "${{ fromJSON(steps.get-pr.outputs.result).head.ref }}"
+        run: |
+          echo "ISSUE_KEY=$(echo $PR_HEAD_REF | grep -oE "([A-Z]{2,30}-[0-9]+)" )" >> $GITHUB_ENV
+          echo "PR_HEAD_REF_SHORT=$(echo ${PR_HEAD_REF##*/})" >> $GITHUB_ENV
+      - name: Get PR HEAD SHA
+        env:
+          PR_HEAD_SHA: "${{ fromJSON(steps.get-pr.outputs.result).head.sha }}"
+        run: echo "PR_HEAD_SHA=$PR_HEAD_SHA" >> $GITHUB_ENV
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      # The tag has format `x.y.z-{suffix}.{n}`
+      # x.y.z — latest production release
+      # {suffix} — branch name after latest slash character
+      # {n} — build number, unique for branch and incremental
+      - name: Generate release name
+        run: |
+          SUFFIX_FROM_BRANCH=$(echo ${PR_HEAD_REF_SHORT##*/})
+          GITHUB_LATEST_RELEASE=$(git tag -l --sort -version:refname | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$' | head -n 1)
+          INCREMENTED_GITHUB_LATEST_RELEASE=`echo $GITHUB_LATEST_RELEASE | awk -F. -v OFS=. 'NF==1{print ++$NF}; NF>1{if(length($NF+1)>length($NF))$(NF-1)++; $NF=sprintf("%0*d", length($NF), ($NF+1)%(10^length($NF))); print}'`
+          PRERELEASE_NAME=$(echo $INCREMENTED_GITHUB_LATEST_RELEASE-$SUFFIX_FROM_BRANCH)
+          LATEST_RELEASE=$(git tag --list --sort=-version:refname "$PRERELEASE_NAME.*" | head -n 1)
+          LATEST_BUILD_NUMBER=${LATEST_RELEASE##*.}
+          RELEASE_BUILD_NUMBER=$(($LATEST_BUILD_NUMBER+1))
+          echo "PRERELEASE_NAME=$PRERELEASE_NAME.$RELEASE_BUILD_NUMBER" >> $GITHUB_ENV
+      # Create unified git tag and then Github Pre-Release on top
+      - name: Create git tag
+        run: |
+          git tag "$PRERELEASE_NAME" "$PR_HEAD_SHA"
+          git push origin "$PRERELEASE_NAME"
+      - name: Create Pre-release from PR
+        uses: softprops/action-gh-release@v0.1.14
+        with:
+          tag_name: ${{ env.PRERELEASE_NAME }}
+          target_commitish: ${{ env.PR_HEAD_SHA }}
+          name: ${{ env.PRERELEASE_NAME }} - [${{ env.ISSUE_KEY }}]
+          prerelease: true
+      - name: Comment back PR
+        uses: actions/github-script@v5
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `👍 Pre-Release [${{ env.PRERELEASE_NAME }}](https://github.com/${context.repo.owner}/${context.repo.repo}/releases/tag/${{ env.PRERELEASE_NAME }}) created!`
+            })
+#       Redundand configuration that invokes CircleCI workflow directly
+#       - name: Trigger CircleCI workflow
+#         env:
+#           PR_HEAD_REF: "${{ fromJSON(steps.get-pr.outputs.result).head.ref }}"
+#         uses: promiseofcake/circleci-trigger-action@v1
+#         with:
+#           user-token: ${{ secrets.CIRCLECI_TOKEN }}
+#           project-slug: TopTechPhoto/boilerplate
+#           branch: ${{ env.PR_HEAD_REF }}
+#           payload: '{ "workflow-api-call": true, "workflow-autobuild": true }'
