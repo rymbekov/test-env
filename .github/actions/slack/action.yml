@@ -5,9 +5,8 @@ inputs:
     required: true
     description: Slack Webhook Token
   SLACK_SUCCESS_MESSAGE:
-    required: false
+    required: true
     description: Message for slack body
-    default: "📦 Docker image *${{ env.REPO_NAME }}@${{ env.GIT_TAG }}* created! (by ${{ github.actor }})!"
 runs:
   using: 'composite'
   steps:
