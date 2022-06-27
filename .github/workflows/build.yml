@@ -51,19 +51,3 @@ jobs:
           with:
             SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
             SLACK_SUCCESS_MESSAGE: "📦 Docker image *${{ env.REPO_NAME }}@${{ env.GIT_TAG }}* created! (by ${{ github.actor }})!"
-        # - name: Set SLACK_MESSAGE
-        #   if: always()
-        #   run: |
-        #     [[ ${{ job.status }} == success ]] && echo "SLACK_MESSAGE=📦 Docker image *${{ env.REPO_NAME }}@${{ env.GIT_TAG }}* created! (by ${{ github.actor }})!" >> $GITHUB_ENV \
-        #         || echo "SLACK_MESSAGE=:red_circle: A Build Docker Image job has failed!" >> $GITHUB_ENV
-        # - name: Slack Notification
-        #   uses: rtCamp/action-slack-notify@v2
-        #   if: always()
-        #   env:
-        #     SLACK_CHANNEL: es-test
-        #     SLACK_COLOR: ${{ job.status }}
-        #     SLACK_USERNAME: GitHub Action Releases
-        #     SLACK_ICON: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
-        #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-        #     SLACK_TITLE: 'Project: ${{ env.REPO_NAME }}'
-        #     MSG_MINIMAL: actions url,commit

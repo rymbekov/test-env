@@ -25,4 +25,3 @@ runs:
         SLACK_WEBHOOK: ${{ inputs.SLACK_WEBHOOK }}
         SLACK_TITLE: 'Project: ${{ env.REPO_NAME }}'
         MSG_MINIMAL: actions url,commit
-        # SLACK_MESSAGE: ${{ inputs.SLACK_SUCCESS_MESSAGE }}
