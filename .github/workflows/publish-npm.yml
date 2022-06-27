@@ -28,8 +28,8 @@ jobs:
     
     Build_NPM:
         name: Build NPM package
-        # needs: [check_tag]
-        # if: needs.check_tag.outputs.run_other_jobs == 'true'
+        needs: [check_tag]
+        if: needs.check_tag.outputs.run_other_jobs == 'true'
         runs-on: ubuntu-20.04
         steps:
             - name: Use node.js 14
