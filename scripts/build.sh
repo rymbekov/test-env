@@ -22,7 +22,7 @@ else
 fi
 
 # echo 'Change version in package.json'
-# npm version --commit-hooks=false --git-tag-version=false $tag
+npm version --commit-hooks=false --git-tag-version=false $tag
 
 echo 'Building docker container'
 # Login to docker registry
