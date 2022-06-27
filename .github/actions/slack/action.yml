@@ -16,8 +16,7 @@ runs:
                 || echo "SLACK_MESSAGE=:red_circle: A ${{ github.workflow }} has failed!" >> $GITHUB_ENV
       shell: bash
     - name: Slack alert
-    #   uses: rtCamp/action-slack-notify@v2
-      uses: rymbekov/slack-alert@1.0.0
+      uses: rtCamp/action-slack-notify@v2
       env:
         SLACK_CHANNEL: es-test
         SLACK_COLOR: ${{ job.status }}

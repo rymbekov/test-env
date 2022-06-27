@@ -46,7 +46,8 @@ jobs:
             aws-region: us-east-1
         - name: Build docker image for service
           run: ./scripts/build.sh test $GIT_TAG true
-        - uses: ./.github/actions/slack
+        # - uses: ./.github/actions/slack
+        - uses: rymbekov/slack-alert@1.0.0
           if: always()
           with:
             SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
