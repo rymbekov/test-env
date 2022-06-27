@@ -12,7 +12,7 @@ runs:
   steps:
     - name: Slack success alert
       uses: rtCamp/action-slack-notify@v2
-      if: always() && ${{ job.status }} == 'success'
+      if: success()
       env:
         SLACK_CHANNEL: es-test
         SLACK_COLOR: ${{ job.status }}
@@ -24,7 +24,7 @@ runs:
         SLACK_MESSAGE: ${{ inputs.SLACK_SUCCESS_MESSAGE }}
     - name: Slack failed alert
       uses: rtCamp/action-slack-notify@v2
-      if:  always() && ${{ job.status }} =! 'success'
+      if: failure()
       env:
         SLACK_CHANNEL: es-test
         SLACK_COLOR: ${{ job.status }}
