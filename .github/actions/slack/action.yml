@@ -12,7 +12,7 @@ runs:
   steps:
     - name: Set SLACK_MESSAGE
       run: |
-         [[ ${{ job.status }} == success ]] && echo "SLACK_MESSAGE=${{ inputs.SLACK_SUCCESS_MESSAGE }} >> $GITHUB_ENV \
+         [[ ${{ job.status }} == success ]] && echo "SLACK_MESSAGE=${{ inputs.SLACK_SUCCESS_MESSAGE }}" >> $GITHUB_ENV \
                 || echo "SLACK_MESSAGE=:red_circle: A Build Docker Image job has failed!" >> $GITHUB_ENV
       shell: bash
     - name: Slack success alert
