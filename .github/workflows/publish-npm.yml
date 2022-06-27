@@ -5,8 +5,7 @@ on:
     types: [published]
 
 env:
-#   GIT_TAG: ${{ github.event.release.tag_name}}
-  GIT_TAG: ${GITHUB_REF#refs/*/}"
+  GIT_TAG: ${{ github.event.release.tag_name}}
   REPO_NAME: ${{ github.event.repository.name }}
 
 jobs:
