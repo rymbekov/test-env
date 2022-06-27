@@ -24,7 +24,7 @@ runs:
         SLACK_MESSAGE: ${{ inputs.SLACK_SUCCESS_MESSAGE }}
     - name: Slack failed alert
       uses: rtCamp/action-slack-notify@v2
-      if: failure()
+      if: failure() && ${{ job.status }} != success
       env:
         SLACK_CHANNEL: es-test
         SLACK_COLOR: ${{ job.status }}
