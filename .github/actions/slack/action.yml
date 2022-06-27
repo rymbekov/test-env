@@ -13,9 +13,9 @@ runs:
     - name: Set SLACK_MESSAGE
       run: |
          [[ ${{ job.status }} == success ]] && echo "SLACK_MESSAGE=${{ inputs.SLACK_SUCCESS_MESSAGE }}" >> $GITHUB_ENV \
-                || echo "SLACK_MESSAGE=:red_circle: A Build Docker Image job has failed!" >> $GITHUB_ENV
+                || echo "SLACK_MESSAGE=:red_circle: A ${{ github.worflow }} has failed!" >> $GITHUB_ENV
       shell: bash
-    - name: Slack success alert
+    - name: Slack alert
       uses: rtCamp/action-slack-notify@v2
       env:
         SLACK_CHANNEL: es-test
