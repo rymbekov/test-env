@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
         git_tag: ${{ steps.generate_release.outputs.git_tag }}
+        branch: ${{ (steps.get-pr-ref.outputs.branch}}
     steps:
       - run: |
           echo "PR #${{ github.event.issue.number }} commented '/build'"
@@ -35,12 +36,13 @@ jobs:
               core.setFailed(`Request failed with error ${err}`)
             }
       - name: Get PR HEAD REF
+        id: get-pr-ref
         env:
           PR_HEAD_REF: "${{ fromJSON(steps.get-pr.outputs.result).head.ref }}"
         run: |
           echo "ISSUE_KEY=$(echo $PR_HEAD_REF | grep -oE "([A-Z]{2,30}-[0-9]+)" )" >> $GITHUB_ENV
           echo "PR_HEAD_REF_SHORT=$(echo ${PR_HEAD_REF##*/})" >> $GITHUB_ENV
-          echo $PR_HEAD_REF
+          echo "::set-output name=branch::$PR_HEAD_REF"
       - name: Get PR HEAD SHA
         env:
           PR_HEAD_SHA: "${{ fromJSON(steps.get-pr.outputs.result).head.sha }}"
@@ -88,8 +90,12 @@ jobs:
     runs-on: ubuntu-20.04
     env:
       GIT_TAG: ${{ needs.pr_commented.outputs.git_tag }}
+      BRANCH: ${{ needs.pr_commented.outputs.branch}}
     steps:
        - uses: actions/checkout@v3
+         with:
+            fetch-depth: 0
+            ref: ${{ env.BRANCH }}
     #    - name: Use node.js 14
     #      uses: actions/setup-node@v3
     #      with:
