@@ -58,7 +58,7 @@ jobs:
           LATEST_BUILD_NUMBER=${LATEST_RELEASE##*.}
           RELEASE_BUILD_NUMBER=$(($LATEST_BUILD_NUMBER+1))
           echo "PRERELEASE_NAME=$PRERELEASE_NAME.$RELEASE_BUILD_NUMBER" >> $GITHUB_ENV
-          echo "::set-output name=git_tag::${PRERELEASE_NAME}"
+          echo "::set-output name=git_tag::$PRERELEASE_NAME.$RELEASE_BUILD_NUMBER"
       - name: Create git tag
         run: |
           git tag "$PRERELEASE_NAME" "$PR_HEAD_SHA"
