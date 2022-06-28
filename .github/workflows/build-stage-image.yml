@@ -104,11 +104,10 @@ jobs:
            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
            aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
            aws-region: us-east-1
-       - run: echo ${{ env.GIT_TAG }}
-    #    - name: Build docker image for service
-    #      run: ./scripts/build.sh test $GIT_TAG true
-    #    - uses: ./.github/actions/slack
-    #      if: always()
-    #      with:
-    #        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-    #        SLACK_SUCCESS_MESSAGE: "📦 Docker image *${{ env.REPO_NAME }}@${{ env.PRERELEASE_NAME }}* created! (by ${{ github.actor }})!"
+       - name: Build docker image for service
+         run: ./scripts/build.sh test $GIT_TAG true
+       - uses: ./.github/actions/slack
+         if: always()
+         with:
+           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+           SLACK_SUCCESS_MESSAGE: "📦 Docker image *${{ env.REPO_NAME }}@${{ env.GIT_TAG }}* created! (by ${{ github.actor }})!"
