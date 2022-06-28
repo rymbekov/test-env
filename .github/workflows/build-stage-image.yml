@@ -12,6 +12,8 @@ jobs:
     name: PR commented '/build'
     if: ${{ github.event.issue.pull_request && startsWith(github.event.comment.body, '/build-test')}}
     runs-on: ubuntu-latest
+    outputs:
+        git_tag: ${{ steps.generate_release.outputs.git_tag }}
     steps:
       - run: |
           echo "PR #${{ github.event.issue.number }} commented '/build'"
@@ -46,6 +48,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Generate release name
+        id: generate_release
         run: |
           SUFFIX_FROM_BRANCH=$(echo ${PR_HEAD_REF_SHORT##*/})
           GITHUB_LATEST_RELEASE=$(git tag -l --sort -version:refname | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$' | head -n 1)
@@ -55,6 +58,7 @@ jobs:
           LATEST_BUILD_NUMBER=${LATEST_RELEASE##*.}
           RELEASE_BUILD_NUMBER=$(($LATEST_BUILD_NUMBER+1))
           echo "PRERELEASE_NAME=$PRERELEASE_NAME.$RELEASE_BUILD_NUMBER" >> $GITHUB_ENV
+          echo "::set-output name=git_tag::$PRERELEASE_NAME.$RELEASE_BUILD_NUMBER"
       - name: Create git tag
         run: |
           git tag "$PRERELEASE_NAME" "$PR_HEAD_SHA"
@@ -81,6 +85,8 @@ jobs:
     name: Build Docker image
     needs: [pr_commented]
     runs-on: ubuntu-20.04
+    env:
+      GIT_TAG: ${{ needs.pr_commented.outputs.git_tag }}
     steps:
        - uses: actions/checkout@v3
     #    - name: Use node.js 14
@@ -98,11 +104,10 @@ jobs:
            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
            aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
            aws-region: us-east-1
-       - run: echo ${{ env.PRERELEASE_NAME }}
-    #    - name: Build docker image for service
-    #      run: ./scripts/build.sh test $GIT_TAG true
-    #    - uses: ./.github/actions/slack
-    #      if: always()
-    #      with:
-    #        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-    #        SLACK_SUCCESS_MESSAGE: "📦 Docker image *${{ env.REPO_NAME }}@${{ env.PRERELEASE_NAME }}* created! (by ${{ github.actor }})!"
+       - name: Build docker image for service
+         run: ./scripts/build.sh test $GIT_TAG true
+       - uses: ./.github/actions/slack
+         if: always()
+         with:
+           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+           SLACK_SUCCESS_MESSAGE: "📦 Docker image *${{ env.REPO_NAME }}@${{ env.GIT_TAG }}* created! (by ${{ github.actor }})!"
