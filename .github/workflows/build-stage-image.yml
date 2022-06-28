@@ -58,7 +58,7 @@ jobs:
           LATEST_BUILD_NUMBER=${LATEST_RELEASE##*.}
           RELEASE_BUILD_NUMBER=$(($LATEST_BUILD_NUMBER+1))
           echo "PRERELEASE_NAME=$PRERELEASE_NAME.$RELEASE_BUILD_NUMBER" >> $GITHUB_ENV
-          echo "::set-output name=git_tag::"${{ env.PRERELEASE_NAME }}
+          echo "::set-output name=git_tag::${{ env.PRERELEASE_NAME }}"
       - name: Create git tag
         run: |
           git tag "$PRERELEASE_NAME" "$PR_HEAD_SHA"
@@ -104,7 +104,7 @@ jobs:
            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
            aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
            aws-region: us-east-1
-       - run: echo ${{ needs.pr_commented.outputs.git_tag }}
+       - run: echo ${{ env.GIT_TAG }}
     #    - name: Build docker image for service
     #      run: ./scripts/build.sh test $GIT_TAG true
     #    - uses: ./.github/actions/slack
