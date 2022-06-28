@@ -1,19 +1,18 @@
-name: Create Git tag + Pre-Release on PR comment (/build)
+name: Build stage docker image
 
 on:
   issue_comment:
     types: [created]
 
+env:
+  REPO_NAME: ${{ github.event.repository.name }}
+
 jobs:
   pr_commented:
     name: PR commented '/build'
-    if: ${{ github.event.issue.pull_request && startsWith(github.event.comment.body, '/build')}}
+    if: ${{ github.event.issue.pull_request && startsWith(github.event.comment.body, '/build-test')}}
     runs-on: ubuntu-latest
     steps:
-      # Debug step to see env
-      # - name: Print enviroment variables
-      #   run: env
-      # PR, it's branch and SHA are available via github variable (node module `oktokit``)
       - run: |
           echo "PR #${{ github.event.issue.number }} commented '/build'"
       - name: Fetch related Github PR
@@ -46,10 +45,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      # The tag has format `x.y.z-{suffix}.{n}`
-      # x.y.z — latest production release
-      # {suffix} — branch name after latest slash character
-      # {n} — build number, unique for branch and incremental
       - name: Generate release name
         run: |
           SUFFIX_FROM_BRANCH=$(echo ${PR_HEAD_REF_SHORT##*/})
@@ -60,7 +55,6 @@ jobs:
           LATEST_BUILD_NUMBER=${LATEST_RELEASE##*.}
           RELEASE_BUILD_NUMBER=$(($LATEST_BUILD_NUMBER+1))
           echo "PRERELEASE_NAME=$PRERELEASE_NAME.$RELEASE_BUILD_NUMBER" >> $GITHUB_ENV
-      # Create unified git tag and then Github Pre-Release on top
       - name: Create git tag
         run: |
           git tag "$PRERELEASE_NAME" "$PR_HEAD_SHA"
@@ -82,13 +76,33 @@ jobs:
               repo: context.repo.repo,
               body: `👍 Pre-Release [${{ env.PRERELEASE_NAME }}](https://github.com/${context.repo.owner}/${context.repo.repo}/releases/tag/${{ env.PRERELEASE_NAME }}) created!`
             })
-#       Redundand configuration that invokes CircleCI workflow directly
-#       - name: Trigger CircleCI workflow
-#         env:
-#           PR_HEAD_REF: "${{ fromJSON(steps.get-pr.outputs.result).head.ref }}"
-#         uses: promiseofcake/circleci-trigger-action@v1
-#         with:
-#           user-token: ${{ secrets.CIRCLECI_TOKEN }}
-#           project-slug: TopTechPhoto/boilerplate
-#           branch: ${{ env.PR_HEAD_REF }}
-#           payload: '{ "workflow-api-call": true, "workflow-autobuild": true }'
+  
+  Build:
+    name: Build Docker image
+    needs: [pr_commented]
+    runs-on: ubuntu-20.04
+    steps:
+       - uses: actions/checkout@v3
+    #    - name: Use node.js 14
+    #      uses: actions/setup-node@v3
+    #      with:
+    #        node-version: '14'
+    #        registry-url: 'https://registry.npmjs.org'
+    #      env:
+    #        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    #    - name: Copy .npmrc
+    #      run: cp $NPM_CONFIG_USERCONFIG $HOME/.npmrc
+       - name: Configure AWS credentials
+         uses: aws-actions/configure-aws-credentials@v1
+         with:
+           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+           aws-region: us-east-1
+       - run: echo ${{ env.PRERELEASE_NAME }}
+    #    - name: Build docker image for service
+    #      run: ./scripts/build.sh test $GIT_TAG true
+    #    - uses: ./.github/actions/slack
+    #      if: always()
+    #      with:
+    #        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+    #        SLACK_SUCCESS_MESSAGE: "📦 Docker image *${{ env.REPO_NAME }}@${{ env.PRERELEASE_NAME }}* created! (by ${{ github.actor }})!"

@@ -1,4 +1,4 @@
-name: Build and Publish NPM package
+name: Build and Publish Production NPM package
 
 on:
   release:
@@ -24,7 +24,6 @@ jobs:
                     console.log(process.env.GIT_TAG)
                     return pattern.test(process.env.GIT_TAG) ? "true" : "false"
 
-    
     Build_NPM:
         name: Build NPM package
         needs: [check_tag]
