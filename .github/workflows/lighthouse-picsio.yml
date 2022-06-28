@@ -1,0 +1,13 @@
+name: Lighthouse test Pics.io
+
+on: push
+
+jobs:
+    lighthouse_test_picsio:
+        name: Lighthouse test Pics.io
+        runs-on: ubuntu-20.04
+        steps:
+          - name: Check tools
+            run: |
+              google-chrome --version
+              chromedriver --version
