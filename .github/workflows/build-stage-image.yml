@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
         git_tag: ${{ steps.generate_release.outputs.git_tag }}
-        branch: ${{ (steps.get-pr-ref.outputs.branch}}
+        branch: ${{ steps.get-pr-ref.outputs.branch }}
     steps:
       - run: |
           echo "PR #${{ github.event.issue.number }} commented '/build'"
