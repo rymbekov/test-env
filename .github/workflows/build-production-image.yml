@@ -81,8 +81,8 @@ jobs:
         #     registry-url: 'https://registry.npmjs.org'
         #   env:
         #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        - name: Copy .npmrc
-          run: cp $NPM_CONFIG_USERCONFIG $HOME/.npmrc
+        # - name: Copy .npmrc
+        #   run: cp $NPM_CONFIG_USERCONFIG $HOME/.npmrc
         - name: Configure AWS credentials
           uses: aws-actions/configure-aws-credentials@v1
           with:
