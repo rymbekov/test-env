@@ -70,7 +70,7 @@ jobs:
    Build:
      name: Build Docker image
     #  needs: [check_tag, unit_tests, code_style]
-     if: ${{ !endsWith(env.GIT_TAG, '-npm') }}
+     if: ${{ !endsWith(github.ref_name, '-npm') }}
      runs-on: ubuntu-20.04
      steps:
         - uses: actions/checkout@v3
