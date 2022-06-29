@@ -24,4 +24,4 @@ runs:
         SLACK_ICON: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
         SLACK_WEBHOOK: ${{ inputs.SLACK_WEBHOOK }}
         SLACK_TITLE: 'Project: ${{ env.REPO_NAME }}'
-        MSG_MINIMAL: actions url,commit
+        MSG_MINIMAL: actions url
