@@ -1,43 +1,46 @@
 name: Build and Publish Production NPM package
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+-npm'
 
 env:
-  GIT_TAG: ${{ github.event.release.tag_name}}
+  GIT_TAG: ${GITHUB_REF##*/}"
   REPO_NAME: ${{ github.event.repository.name }}
 
 jobs:
-    check_tag:
-        runs-on: ubuntu-20.04
-        outputs:
-            run_other_jobs: ${{ steps.check-tag.outputs.result }}
-        steps:
-          - name: check tag ${{ github.ref }}
-            id: check-tag
-            uses: actions/github-script@v5
-            with:
-                result-encoding: string
-                script: |
-                    const pattern = new RegExp('^[0-9]+\.[0-9]+\.[0-9]+-npm$') // production npm
-                    console.log(process.env.GIT_TAG)
-                    return pattern.test(process.env.GIT_TAG) ? "true" : "false"
+    # check_tag:
+    #     runs-on: ubuntu-20.04
+    #     outputs:
+    #         run_other_jobs: ${{ steps.check-tag.outputs.result }}
+    #     steps:
+    #       - name: check tag ${{ github.ref }}
+    #         id: check-tag
+    #         uses: actions/github-script@v5
+    #         with:
+    #             result-encoding: string
+    #             script: |
+    #                 const pattern = new RegExp('^[0-9]+\.[0-9]+\.[0-9]+-npm$') // production npm
+    #                 console.log(process.env.GIT_TAG)
+    #                 return pattern.test(process.env.GIT_TAG) ? "true" : "false"
 
     Build_NPM:
         name: Build NPM package
-        needs: [check_tag]
-        if: needs.check_tag.outputs.run_other_jobs == 'true'
+        # needs: [check_tag]
+        # if: needs.check_tag.outputs.run_other_jobs == 'true'
         runs-on: ubuntu-20.04
         steps:
-          - name: Use node.js 14
-            uses: actions/setup-node@v3
-            with:
-               node-version: '14'
-               registry-url: 'https://registry.npmjs.org'
-            env:
-               NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          - name: Change npm version in package.json
-            run: npm version ${GIT_TAG%"-npm"}
-          - name: Publish new package version to npm
-            run: npm publish
+          - name: Check git tag
+            run: echo ${{ env.GIT_TAG }}
+        #   - name: Use node.js 14
+        #     uses: actions/setup-node@v3
+        #     with:
+        #        node-version: '14'
+        #        registry-url: 'https://registry.npmjs.org'
+        #     env:
+        #        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        #   - name: Change npm version in package.json
+        #     run: npm version ${GIT_TAG%"-npm"}
+        #   - name: Publish new package version to npm
+        #     run: npm publish
