@@ -1,1 +1,1 @@
-FROM nginx:latest
+FROM mbentley/cowsay

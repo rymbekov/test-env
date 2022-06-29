@@ -1,4 +1,4 @@
-name: Build production Docker image
+name: Build Production Docker image
 
 on:
   release:
@@ -23,23 +23,65 @@ jobs:
              const pattern = new RegExp('^[0-9]+\.[0-9]+\.[0-9]+$') // only productiom semver - 1.0.0
              console.log(process.env.GIT_TAG)
              return pattern.test(process.env.GIT_TAG) ? "true" : "false"
-            
-   Build:
-     name: Build Docker image
+
+   unit_tests:
+     name: Unit Tests
      needs: [check_tag]
      if: needs.check_tag.outputs.run_other_jobs == 'true'
      runs-on: ubuntu-20.04
      steps:
+       - name: Hi
+         run: echo "Hello world"
+       - uses: actions/checkout@v3
+       - name: Use node.js 14
+         uses: actions/setup-node@v3
+         with:
+           node-version: '14'
+           cache: 'npm'
+           registry-url: 'https://registry.npmjs.org'
+         env:
+           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+       - name: Install Dependencies
+         run: npm ci
+       - name: Run unit tests
+         run: npm run test:unit -- --runInBand --ci --reporters=default --reporters=jest-junit
+
+   code_style:
+     name: Code Style
+     needs: [check_tag]
+     if: needs.check_tag.outputs.run_other_jobs == 'true'
+     runs-on: ubuntu-20.04
+     steps:
+       - uses: actions/checkout@v3
+       - name: Use node.js 14
+         uses: actions/setup-node@v3
+         with:
+           node-version: '14'
+           cache: 'npm'
+           registry-url: 'https://registry.npmjs.org'
+         env:
+           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+       - name: Install Dependencies
+         run: npm ci
+       - name: Run lint
+         run: npm run lint -- --format junit --output-file reports/elsint/js-lint-results.xml
+            
+   Build:
+     name: Build Docker image
+     needs: [check_tag, unit_tests, code_style]
+     if: needs.check_tag.outputs.run_other_jobs == 'true'
+     runs-on: ubuntu-20.04
+     steps:
         - uses: actions/checkout@v3
-        # - name: Use node.js 14
-        #   uses: actions/setup-node@v3
-        #   with:
-        #     node-version: '14'
-        #     registry-url: 'https://registry.npmjs.org'
-        #   env:
-        #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        # - name: Copy .npmrc
-        #   run: cp $NPM_CONFIG_USERCONFIG $HOME/.npmrc
+        - name: Use node.js 14
+          uses: actions/setup-node@v3
+          with:
+            node-version: '14'
+            registry-url: 'https://registry.npmjs.org'
+          env:
+            NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        - name: Copy .npmrc
+          run: cp $NPM_CONFIG_USERCONFIG $HOME/.npmrc
         - name: Configure AWS credentials
           uses: aws-actions/configure-aws-credentials@v1
           with:

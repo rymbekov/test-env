@@ -1,13 +1,38 @@
-name: Lighthouse test Pics.io
+# name: Lighthouse test Pics.io
 
-on: push
+# on: push
 
-jobs:
-    lighthouse_test_picsio:
-        name: Lighthouse test Pics.io
-        runs-on: ubuntu-20.04
-        steps:
-          - name: Check tools
-            run: |
-              google-chrome --version
-              chromedriver --version
+# jobs:
+#     lighthouse_test_picsio:
+#         name: Lighthouse test Pics.io
+#         runs-on: ubuntu-20.04
+#         steps:
+#           - uses: actions/checkout@v3
+#           - name: Use node.js 14
+#             uses: actions/setup-node@v3
+#             with:
+#                node-version: '14'
+#                cache: 'npm'
+#                registry-url: 'https://registry.npmjs.org'
+#             env:
+#                NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+#           - name: Install Dependencies
+#             run: npm ci
+#           - name: Compile html pages
+#             run: npx grunt sass && npx grunt cssmin && npx grunt compile
+#           - name: Run Lighthouse tests (Pics.io)
+#             run: npm run test:lighthouse -- --runInBand --ci --reporters=default --reporters=jest-html-reporter --reporters=jest-junit
+#             timeout-minutes: 30
+#             env:
+#                TEST_DOMAIN: "pics.io"
+#                JEST_JUNIT_OUTPUT: "reports/junit/report.xml"
+#                LIGHTHOUSE_REPORT_OUTPUT: "reports/lighthouse"
+#                JEST_HTML_REPORTER_OUTPUT_PATH: "reports/jest/report.html"
+#           - uses: actions/upload-artifact@v3
+#             if: always()
+#             with:
+#                path: |
+#                   reports/junit/
+#                   reports/jest/
+#                   reports/lighthouse/
+
