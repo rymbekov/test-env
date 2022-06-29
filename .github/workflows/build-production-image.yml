@@ -53,7 +53,7 @@ jobs:
   build:
      name: Build Docker image
     #  needs: [unit_tests, code_style]
-     if: ${{ !endsWith(github.ref_name, '-npm|docs') }}
+    #  if: ${{ !endsWith(github.ref_name, '-npm|docs') }}
      runs-on: ubuntu-20.04
      steps:
         - uses: actions/checkout@v3
