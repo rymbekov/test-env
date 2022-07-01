@@ -59,7 +59,7 @@ jobs:
            LATEST_RELEASE=$(git tag --list --sort=-version:refname "$PRERELEASE_NAME.*" | head -n 1)
            LATEST_BUILD_NUMBER=${LATEST_RELEASE##*.}
            RELEASE_BUILD_NUMBER=$(($LATEST_BUILD_NUMBER+1))
-           echo "PRERELEASE_NAME=$PRERELEASE_NAME.$RELEASE_BUILD_NUMBER" >> $GITHUB_ENV
+           echo "PRERELEASE_NAME=$PRERELEASE_NAME.$RELEASE_BUILD_NUMBER+android" >> $GITHUB_ENV
            echo "::set-output name=git_tag::$PRERELEASE_NAME.$RELEASE_BUILD_NUMBER"
        - name: Create git tag
          run: |
@@ -90,11 +90,12 @@ jobs:
       runs-on: ubuntu-20.04
       env:
         GIT_TAG: ${{ needs.pr_commented.outputs.git_tag }}
-        VERSION_NUMBER: ${GIT_TAG%"*"}
         BRANCH: ${{ needs.pr_commented.outputs.git_branch}}
       steps:
         - name: Update $BUILD_NUMBER
-          run: echo "BUILD_NUMBER=$(date +%y%m%d%H)" >> $GITHUB_ENV
+          run: |
+            echo "BUILD_NUMBER=$(date +%y%m%d%H)" >> $GITHUB_ENV
+            echo "VERSION_NUMBER=${GIT_TAG/-*}"
         - uses: actions/checkout@v3
           with:
             fetch-depth: 0
@@ -105,6 +106,7 @@ jobs:
             ruby-version: 3.1
             bundler-cache: true
         - run: echo $GIT_TAG $VERSION_NUMBER $BUILD_NUMBER
+        - run: bundle exec fastlane --version
         #     working-directory: ./fastlane
         # - name: Use node.js 14
         #   uses: actions/setup-node@v3
