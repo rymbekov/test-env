@@ -18,4 +18,4 @@ jobs:
         BUILD_NUMBER: date '+%y%m%d%H'
       steps:
         - name: List Version Number & Build Number
-          run: echo $VERSION_NUMBER ${{ fromJSON($BUILD_NUMBER) }}
+          run: echo $VERSION_NUMBER ${{ fromJSON(env.BUILD_NUMBER) }}
