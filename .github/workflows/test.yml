@@ -2,18 +2,20 @@ name: Build Production Docker image
 
 on:
   push:
-    tags:
-      - "[0-9]+.[0-9]+.[0-9]+-tests"
+    # tags:
+    #   - "[0-9]+.[0-9]+.[0-9]+-tests"
 
-env:
-  GIT_TAG: ${{ github.ref_name }}
-  REPO_NAME: ${{ github.event.repository.name }}
+# env:
+#   GIT_TAG: ${{ github.ref_name }}
+#   REPO_NAME: ${{ github.event.repository.name }}
 
 jobs:
-            
-  test_job:
-     name: Tests
-     runs-on: ubuntu-20.04
-     steps:
-        - name: Check git tag
-          run: echo ${{ env.GIT_TAG }}
+   build_and_upload:
+      name: Build and Upload Android app - stage
+      runs-on: ubuntu-20.04
+      env:
+        VERSION_NUMBER: ${{ github.ref_name }}
+        BUILD_NUMBER: $(date '+%y%m%d%H')
+      steps:
+        - name: List Version Number & Build Number
+          run: echo $VERSION_NUMBER $BUILD_NUMBER
