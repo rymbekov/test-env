@@ -1,4 +1,4 @@
-name: Build Production Docker image
+name: Build and Upload Android app - stage
 
 on:
   push:
@@ -15,7 +15,7 @@ jobs:
       runs-on: ubuntu-20.04
       env:
         VERSION_NUMBER: ${{ github.ref_name }}
-        BUILD_NUMBER: $(date '+%y%m%d%H')
+        BUILD_NUMBER: date '+%y%m%d%H'
       steps:
         - name: List Version Number & Build Number
           run: echo $VERSION_NUMBER $BUILD_NUMBER
