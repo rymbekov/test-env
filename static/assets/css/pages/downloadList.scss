@@ -1,0 +1,490 @@
+.downloadPanel {
+	position: fixed;
+	overflow: hidden;
+	z-index: 102;
+	left: 50px;
+	width: 0;
+	top: 0;
+	height: 100vh;
+	background: #242424;
+	transition: all .3s ease-in-out;
+	color: #999;
+	box-sizing: border-box;
+	font-size: 14px;
+
+  .proofing & {
+    left: 0;
+  }
+
+	* {
+		box-sizing: border-box;
+	}
+
+	.showDownloadPanel & {
+		width: calc(100vw - 50px);
+
+    .proofing & {
+      width: 100%;
+    }
+	}
+}
+
+.downloadPanelTop {
+	position: relative;
+	height: 50px;
+	line-height: 50px;
+	padding-left: 25px;
+	background: #000;
+	font-size: 15px;
+
+	.importHideView {
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+}
+
+.downloadPanelInner {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.downloadPanelMain {
+	display: flex;
+	flex-direction: column;
+	height: calc(100% - 50px);
+}
+
+.downloadPanelAdditional {
+	padding: 13px 15px 8px 5px;
+	color: #666;
+
+	.svg-icon {
+		line-height: 25px;
+		height: 25px;
+
+		&:hover {
+			color: #fff;
+		}
+	}
+
+	.btnClearDownloadQueue {
+		font-size: 10px;
+		margin-right: 7px;
+		cursor: pointer;
+		padding: 0 5px;
+
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	&.hideBtn {
+		.btnClearDownloadQueue {visibility: hidden;}
+	}
+
+	@include media('<tablet') {
+		padding-bottom: 10px;
+	}
+}
+
+.downloadPanelList {
+	flex: 1;
+	overflow: auto;
+	padding: 5px 10px 5px 5px;
+}
+
+.downloadPanelPlaceholder {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #ccc;
+	font-size: 36px;
+	font-weight: 200;
+	padding: 15px;
+	text-align: center;
+}
+
+.downloadPanelButtons {
+	margin-top: auto;
+	display: flex;
+	position: relative;
+	padding: 15px;
+	justify-content: space-between;
+	align-items: center;
+
+	@include media('<tablet') {
+		flex-wrap: wrap;
+
+		.downloadPanelTotalSize,
+		.picsioDefBtn {
+			flex: 0 0 100%;
+			text-align: center;
+		}
+
+		.downloadPanelTotalSize {
+			order: -1;
+			margin-bottom: 10px;
+			line-height: 1.2;
+		}
+	}
+
+	&::before {
+		content: '';
+		height: 10px;
+		width: 100%;
+		position: absolute;
+		top: -10px;
+		left: 0;
+		background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0, 0, 0, 0.3));
+		z-index: 2;
+	}
+
+	.picsioDefBtn {
+		padding: 0 30px;
+		min-width: 0;
+		order: 1;
+	}
+}
+
+.downloadPanelTotalSize {
+	font: 14px/35px $base-font-mono;
+	padding: 0 5px;
+	color: #fff;
+	order: 2;
+	margin-left: auto;
+}
+
+
+.downloadListItem {
+	position: relative;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 0 5px 0 0;
+	height: 25px;
+	line-height: 26px;
+	color: #999;
+	font-family: $base-font-mono;
+	cursor: default;
+
+	&:nth-child(odd) {
+		background: #1f1f1f;
+	}
+
+	&.tmp {
+		display: block;
+		background: rgba(255, 255, 255, .05) !important;
+		border: 2px solid #242424;
+		border-radius: 5px;
+		animation: blink 1.2s linear infinite;
+	}
+
+	&:hover {
+		color: #fff;
+	}
+
+	.svg-icon {
+		height: 25px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+
+		&:not(.icon-close) {
+			font-size: 16px;
+		}
+	}
+
+	.downloadListItemCell {
+		> .svg-icon {
+			margin: 0 5px;
+		}
+	}
+
+	.icon-ok {
+		font-size: 12px !important;
+		//margin: 0 -1px;
+	}
+
+	&.error {
+		background: #fc0d1b !important;
+		color: #fff;
+	}
+
+	&.isDownloading {
+		overflow: hidden;
+
+		&.error {
+			&::before {
+				content: none;
+			}
+		}
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			height: 100%;
+			width: 20%;
+			background-image: linear-gradient(to left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0) 100%);
+			animation: progressMoving 3s linear infinite;
+		}
+	}
+
+	&.isRemoving {
+		color: #fff;
+
+		.downloadListItemProgress {
+			display: none;
+		}
+	}
+}
+
+.downloadListItemCurrentName {
+	display: inline-block;
+	min-width: 170px;
+}
+
+.downloadListItemButton {
+	line-height: 21px;
+	height: 21px;
+	padding: 0 10px 0 6px;
+	background: rgba(51,51,51,0.5);
+	font-family: $base-font;
+	margin: 0 0 0 10px;
+	cursor: pointer;
+	color: #fff;
+	align-self: center;
+	white-space: nowrap;
+
+	&:hover {
+		background: rgba(51,51,51,0.7);
+	}
+
+	.svg-icon {
+		padding: 0;
+		line-height: inherit;
+		margin: 0 6px 0 0;
+		height: inherit;
+		vertical-align: top;
+	}
+}
+
+@keyframes progressMoving {
+	0% {
+		left: -20%;
+	}
+	50% {
+		left: 50%;
+	}
+	100% {
+		left: 120%;
+	}
+}
+
+
+.downloadListItemCell {
+	position: relative;
+	z-index: 2;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	display: flex;
+}
+
+.downloadListItemBtnAction {
+	cursor: pointer;
+	// padding: 5px;
+	padding: 0 5px;
+	font-size: 10px;
+	height: 25px;
+}
+
+.downloadListItemProgress {
+	position: absolute;
+	z-index: 3;
+	left: 0;
+	top: 0;
+	height: 100%;
+	background: $brandColor;
+	width: 0;
+	overflow: hidden;
+	color: #fff;
+	transition: width 0.1s linear;
+}
+
+.downloadListItemProgressBody {
+	padding: 0 5px 0 0;
+	display: flex;
+	justify-content: space-between;
+	transition: width 0.1s linear;
+}
+
+.downloadListItemSize {
+	margin-left: auto;
+	padding-left: 10px;
+	flex: 0 0 auto;
+	text-transform: uppercase;
+}
+
+.importTotalSize {
+	position: absolute;
+	right: 15px;
+	top: 0;
+	font-size: 14px;
+	line-height: 35px;
+	padding: 0 5px;
+	color: #fff;
+	font-family: $base-font-mono;
+}
+
+.downloadListItemStatus {
+	margin-left: 10px;
+}
+
+@media screen and (max-width: $mediaDevice) {
+	.downloadPanel {
+		left: 0;
+		width: 100%;
+		height: 100%;
+		transition: height 0.3s ease-in-out,
+								left 0.3s ease,
+								width 0.3s ease,
+								transform 0.3s ease;
+		z-index: 11;
+		transform: translate3d(0, -100%, 0);
+		background-color: #000;
+
+		.showDownloadPanel & {
+			height: 100%;
+			width: 100%;
+			transform: translate3d(0, 0, 0);
+			z-index: 102;
+		}
+
+		// .isLeftMenuActive & {
+		// 	width: calc(100% - 50px);
+		// 	left: 0;
+		// 	transform: translate3d(51px, -100%, 0);
+		// }
+
+		// .isLeftMenuActive &.showDownloadPanel {
+		// 	transform: translate3d(51px, 0, 0);
+		// }
+
+		.downloadListItem {
+			line-height: 50px;
+			height: 50px;
+		}
+
+		.downloadListItemCell {
+			display: flex;
+			align-items: center;
+		}
+
+		.downloadListItem {
+			.svg-icon {
+				height: 50px;
+			}
+
+			.downloadListItemBtnAction {
+				height: 50px;
+			}
+		}
+
+		.downloadListItemButton {
+			height: 40px;
+			line-height: 40px;
+
+			.svg-icon {
+				height: inherit;
+				line-height: inherit;
+			}
+		}
+	}
+}
+
+.flyingFiles {
+	position: absolute;
+	transition: all 1.2s ease-in;
+	z-index: 99;
+	opacity: 1;
+	display: block;
+	font-size: 32px;
+
+	svg {
+		color: $brandColor;
+	}
+}
+
+
+
+/*************************************/
+/************ LIGHT THEME ************/
+/*************************************/
+
+.picsioThemeLight {
+	.downloadPanel {
+		color: #666;
+		background: #fff;
+	}
+
+	.downloadPanelButtons {
+		&::before {
+			background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.10));
+		}
+	}
+
+	.downloadPanelTop {
+		background: #f4f4f4;
+		color: #666;
+	}
+
+	.downloadPanelTotalSize {
+		color: #666;
+	}
+
+	.downloadListItem {
+		&:nth-child(odd) {
+			background: #f4f4f4;
+		}
+
+		&:hover {
+			color: #242424;
+		}
+
+		&.tmp {
+			background: rgba(0, 0, 0, .05) !important;
+			border: 2px solid #fff;
+		}
+
+		&.isDownloading {
+			&::before {
+				background-image: linear-gradient(to left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0) 100%);
+			}
+		}
+	}
+
+	.downloadListItemProgress {
+		background: $brandColorLightTheme;
+	}
+
+	.downloadPanelAdditional {
+		color: #666;
+
+		.svg-icon {
+			&:hover {
+				color: #000;
+			}
+		}
+	}
+
+	.flyingFiles {
+		svg {
+			color: $brandColorLightTheme;
+		}
+	}
+}

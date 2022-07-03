@@ -1,0 +1,75 @@
+@import 'cssVariables';
+
+.twoFactorScreen {
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+  h2 {
+    line-height: 1.5;
+  }
+
+  .react-code-input,
+  .digitsSkeleton {
+    margin: 10px -2px;
+  }
+
+  &__code {
+    margin-top: 10px;
+
+    &-label {
+      line-height: 16px;
+    }
+
+    &-error {
+      margin-top: 4px;
+      color: red;
+    }
+  }
+
+  .digitSkeleton {
+    display: inline-block;
+    margin: 4px;
+    border-radius: 4px;
+    width: 50px;
+    height: 66px;
+    font-size: 24px;
+    padding: 0px;
+  }
+
+  .react-code-input {
+    @include media('<phone') {
+      display: flex !important;
+      justify-content: space-between;
+    }
+
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+
+    input {
+      display: inline-block;
+      -moz-appearance: textfield;
+      width: 40px;
+      height: 60px;
+      text-align: center;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 1.2;
+
+    .PicsioButton {
+      margin-left: 15px;
+      min-width: 100px;
+    }
+  }
+}
+

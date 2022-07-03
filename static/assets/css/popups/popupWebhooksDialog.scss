@@ -1,0 +1,18 @@
+.wrapperWebhooksDialog {
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 1001;
+
+	&:empty {
+		display: none;
+	}
+
+	.disabled {
+		pointer-events: none;
+	}
+
+	.UIRadio {
+		align-items: center;
+	}
+}

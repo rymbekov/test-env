@@ -1,0 +1,92 @@
+.mobileTrees {
+  width: calc(100vw - 50px);
+  flex: 0 0 calc(100vw - 50px);
+  padding-left: 50px;
+  position: relative;
+
+  .listFolderTree {
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+  }
+
+  .tree {
+    float: none;
+    background-color: var(--background-main-color);
+    border-right: 0;
+
+    * {
+      user-select: none;
+    }
+  }
+
+  .folderTreeView {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100% !important;
+  }
+
+  // fixes
+  // .wrapperTree {
+  .tree {
+    width: 100%;
+    float: none;
+    border-right: 0;
+  }
+
+  .searchBar {
+    padding: 5px;
+    position: static;
+
+    &-sort {
+      right: 6px;
+      top: 1px;
+      height: auto;
+    }
+  }
+
+  .toolbarButton {
+    .PicsioIcon {
+      margin: auto;
+    }
+  }
+
+
+  .slideCheckbox {
+    min-width: 25px;
+  }
+}
+
+// fix Proofing tree on mobiles
+@include media('<desktop') {
+  .proofing {
+    .content {
+      > .tree {
+        padding-top: 50px;
+      }
+    }
+  }
+}
+
+
+.toolbarMobileTrees {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50px;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--background-sidebar-color);
+}
+
+.mobileTreesPanel {
+  padding: 0;
+  margin: 0;
+
+  &.react-tabs__tab-panel--selected {
+    height: 100%;
+  }
+}

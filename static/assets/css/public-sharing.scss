@@ -1,0 +1,98 @@
+@import "picsio.scss";
+
+.wrapperPicsioApp {
+	.appMain {
+		.content{
+			margin: 0 0 0 0;
+			#itemlogoPicsio{
+				display: none;
+			}
+		}
+	}
+	.proofingTitle {
+		@include toolbarTitle;
+		color: #fff;
+		line-height: 50px;
+		width: calc(100% - 15px);
+		height: 50px;
+		background: none;
+		margin: 0 0 0 15px;
+		cursor: default;
+		white-space: nowrap;
+	}
+}
+#itemlogoPicsio{
+	display: none;
+}
+
+.tileStars {
+	left: 6px !important;
+}
+
+.preview{
+	.previewTopBox{
+		left: 10px;
+	}
+	.wrapperGallery{
+		margin: 50px 0 50px 0;
+		.galleryArrowPrev{
+			&span{
+				left: -30px;
+			}
+		}
+	}	
+}
+
+.blockUI{
+	&.blockMsg{
+		&.blockPage{
+			top: 47% !important;
+		}
+	}
+}
+
+.folderTreeView {
+	margin-top: 0;
+	height: 100%;
+}
+
+@media screen and (max-width: $mediaDevice) {
+	$bgBlackMobile: rgba(0,0,0,0.7);
+
+	.wrapperPicsioApp {
+		.appMain {
+			.content{
+				margin: 0 0 0 0;
+				#itemlogoPicsio{
+					display: none;
+				}
+			}
+		}
+		.proofingTitle{
+			color: #fff;
+			line-height: 50px;
+			width: 100% !important;
+			height: 50px;
+			background: none;
+			color: #fff;
+			display: inline-block !important;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			&.center{
+				margin-left: 0px;
+				display: inline-block;
+			}
+		}
+	}
+
+	.preview{
+		.previewTopBox{
+			left: 50px;
+
+			.download & {
+				width: calc(100% - 200px) !important;
+			}
+		}
+	}
+}

@@ -1,0 +1,18 @@
+@import '../../../css/mixins.scss';
+
+.importItemsWrapper {
+  height: 100%;
+  overflow: auto;
+
+  @include media('<desktop') {
+    min-height: 61px;
+  }
+}
+
+.importItemsWrapperHidden {
+  height: 0;
+}
+
+.importItemsHolder {
+  position: relative;
+}

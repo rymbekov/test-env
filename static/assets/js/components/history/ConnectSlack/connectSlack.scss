@@ -1,0 +1,41 @@
+:root,
+html.picsioThemeDark {
+  --connectSlack-border: #000;
+  --connectSlack-hover: #000;
+}
+
+html.picsioThemeLight {
+  --connectSlack-border: #eee;
+  --connectSlack-hover: #eee;
+}
+
+.connectSlack {
+  border: 2px solid var(--connectSlack-border);
+  padding: 15px;
+  text-align: center;
+  position: relative;
+  margin: 0 7px 7px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: var(--connectSlack-hover);
+  }
+
+  &-logo {
+    vertical-align: middle;
+    margin: -2px 0 0 6px;
+  }
+
+  .PicsioButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    &:hover {
+      color: var(--secondary-contrast-color)
+    }
+  }
+}

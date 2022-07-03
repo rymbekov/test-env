@@ -1,0 +1,34 @@
+.keywordsBlock {
+	margin-bottom: 24px;
+  max-width: 100%;
+}
+
+.keywords_progressBarTitle {
+	display: flex;
+	margin-bottom: 8px;
+	font-size: 13px;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.progressBarTitle {
+	padding-bottom: 1px;
+}
+
+.picsioThemeLight {
+	.detailsPanel__keywords {
+		background: #F4F4F4;
+	}
+}
+
+.detailsPanel__keywords {
+	margin-bottom: 17px;
+	background: #272727;
+	padding: 12px;
+}
+
+.detailsPanel__keywords_button {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 24px;
+}

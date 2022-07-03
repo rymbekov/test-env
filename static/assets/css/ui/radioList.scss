@@ -1,0 +1,33 @@
+
+// radioList
+.radioList {
+  font-size: 14px;
+
+  .UIInput__label + & {
+    margin-top: 15px;
+  }
+}
+
+.radioListItem {
+  margin-bottom: 20px;
+
+  .UIRadio__label {
+    font-size: 14px;
+  }
+
+  .UIRadio__icon {
+    width: 14px;
+    font-size: 14px;
+    text-align: center;
+    margin-right: 10px;
+  }
+}
+
+.radioListVertical {
+  .radioListItem {
+    .UIRadio {
+      margin-bottom: 0;
+      line-height: 16px;
+    }
+	}
+}

@@ -1,0 +1,110 @@
+.simpleDropdown {
+	position: relative;
+
+	&--active {
+		z-index: 50;
+	}
+
+	&--active &__content {
+		display: block;
+	}
+
+	&__content {
+		position: absolute;
+		top: calc(100% + 12px);
+		right: -5px;
+		width: 210px;
+		padding: 12px 0 8px;
+		background-color: $bgColor;
+		color: #ccc;
+		box-shadow: 0 0 30px 0 rgba(0,0,0,0.5);
+		font-size: 14px;
+		z-index: 4;
+		display: none;
+
+		&::before {
+			content: "";
+			display: block;
+			width: 10px;
+			height: 10px;
+			position: absolute;
+			left: auto;
+			right: 13px;
+			top: -5px;
+			transform: rotate(45deg);
+			background-color: inherit;
+		}
+	}
+
+	&-item {
+		cursor: pointer;
+		padding: 10px 30px 10px 57px;
+		position: relative;
+		display: flex;
+		align-items: flex-start;
+		// &:not(:first-child)::before {
+		// 	content: "";
+		// 	position: absolute;
+		// 	height: 1px;
+		// 	top: 0;
+		// 	left: 30px;
+		// 	right: 30px;
+		// 	z-index: -1;
+		// 	background-color: rgba(0,0,0, 0.25);
+		// }
+
+		&.is-active {
+			.icon-ok {
+				visibility: visible;
+			}
+		}
+
+		&:hover {
+			background-color: $brandColor;
+			color: $bgColor;
+		}
+
+		.svg-icon {
+			position: absolute;
+			top: 8px;
+			left: 30px;
+			width: auto;
+			margin: 0;
+			color: currentColor;
+			font-size: 16px;
+		}
+
+		.icon-ok {
+			visibility: hidden;
+		}
+
+		.lock & {
+			padding-left: 30px;
+			.svg-icon {
+				font-size: 16px;
+				top: 8px;
+				left: calc(100% - 30px - 16px);
+			}
+		}
+	}
+}
+
+.picsioThemeLight {
+	.simpleDropdown {
+		&__content {
+			background-color: $bgColorLightTheme;
+			color: #666;
+			box-shadow: $shadowModalLightTheme;
+		}
+
+		&-item {
+			// &::before {
+			// 	background-color: $light-lightgray;
+			// }
+			&:hover {
+				background-color: $brandColorLightTheme;
+				color: $bgColorLightTheme;
+			}
+		}
+	}
+}

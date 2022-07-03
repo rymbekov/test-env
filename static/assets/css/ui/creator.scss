@@ -1,0 +1,15 @@
+.creator {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	font-size: 20px;
+	font-weight: 300;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+.creatorText {
+	display: flex;
+	flex-direction: column;
+	padding: 0 0 0 15px;
+}

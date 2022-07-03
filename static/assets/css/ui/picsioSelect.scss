@@ -1,0 +1,123 @@
+.customSelect {
+	&.disabled {
+		select {
+			cursor: default;
+			pointer-events: none;
+			// opacity: 0.5;
+			background-color: rgba(48,48,48,0.2);
+			color: #999;
+			border-top-color: rgba(24, 24, 24, 0.2);
+			border-bottom-color: rgba(53, 53, 53, 0.2);
+		}
+	}
+
+	select {
+		-webkit-appearance: none;
+		-moz-appearance:none;
+		display: block;
+		width: 100%;
+		padding: 4px 25px 4px 10px;
+		font-size: 14px;
+		line-height: 20px;
+		height: $formElementHeight;
+		color: #999;
+		background: #303030 url("data:image/svg+xml;utf8,<svg fill='gray' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>") calc(100% - 5px) 50% no-repeat;
+		background-size: 22px 22px;
+		background-clip: padding-box;
+		box-sizing: border-box;
+		border: 0;
+		border-radius: 0;
+		border-top: 1px solid #181818;
+		border-bottom: 1px solid #353535;
+		transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+		margin-bottom: 15px;
+		text-indent: .01px;
+		text-overflow: '';
+
+		&:focus {
+			outline: none;
+			box-shadow: 0 0 0 2px $brandColorLightTheme;
+			background-color: #000;
+			color: #fff;
+			border-color: #000;
+			border: 0;
+		}
+	}
+
+	select::-ms-expand {
+		display: none;
+	}
+
+	&__label {
+		font-size: 14px;
+		color: #ccc;
+		margin-bottom: 5px;
+	}
+}
+
+.customSelectWithIcon {
+	position: relative;
+
+	select {
+		padding-left: 30px;
+	}
+
+	.customSelectIcon {
+		position: absolute;
+		top: 9px;
+		left: 9px;
+	}
+}
+
+
+@include media('<desktop') {
+	.customSelect {
+		select {
+			height: $formElementHeightMobile;
+			padding: 14px 10px;
+		}
+	}
+
+	.customSelectWithIcon {
+		select {
+			padding-left: 30px;
+		}
+
+		.customSelectIcon {
+			position: absolute;
+			top: 18px;
+		}
+	}
+}
+
+.picsioThemeLight {
+	.customSelect {
+		select {
+			color: #333;
+			background: #f4f4f4 url("data:image/svg+xml;utf8,<svg fill='gray' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>") calc(100% - 5px) 50% no-repeat;
+			background-size: 22px 22px;
+			border-top-color: #dfdede;
+			border-bottom-color: #f4f4f4;
+
+			&:focus {
+				box-shadow: 0 0 0 2px $brandColorLightTheme;
+				background-color: #fff;
+				color: #000;
+				border-color: #fff;
+			}
+		}
+
+		&.disabled {
+			select {
+				background-color: rgba(244, 244, 244, 0.3);
+				color: $darkgray;
+				border-top-color: rgba(223, 222, 222, 0.3);
+				border-bottom-color: rgba(244, 244, 244, 0.3);
+			}
+		}
+
+		&__label {
+			color: #666;
+		}
+	}
+}

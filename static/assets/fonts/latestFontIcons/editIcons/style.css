@@ -1,0 +1,100 @@
+@font-face {
+  font-family: 'editIcons';
+  src:  url('fonts/editIcons.eot?9ki14d');
+  src:  url('fonts/editIcons.eot?9ki14d#iefix') format('embedded-opentype'),
+    url('fonts/editIcons.woff2?9ki14d') format('woff2'),
+    url('fonts/editIcons.ttf?9ki14d') format('truetype'),
+    url('fonts/editIcons.woff?9ki14d') format('woff'),
+    url('fonts/editIcons.svg?9ki14d#editIcons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="iconEdit_"], [class*=" iconEdit_"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'editIcons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.iconEdit_arrowUndo:before {
+  content: "\e101";
+}
+.iconEdit_arrowRedo:before {
+  content: "\e102";
+}
+.iconEdit_pipette:before {
+  content: "\e103";
+}
+.iconEdit_adjustments:before {
+  content: "\e104";
+}
+.iconEdit_presets:before {
+  content: "\e105";
+}
+.iconEdit_about:before {
+  content: "\e106";
+}
+.iconEdit_exit:before {
+  content: "\e107";
+}
+.iconEdit_open:before {
+  content: "\e201";
+}
+.iconEdit_download:before {
+  content: "\e202";
+}
+.iconEdit_saveAdj:before {
+  content: "\e203";
+}
+.iconEdit_loadAdj:before {
+  content: "\e204";
+}
+.iconEdit_shortcuts:before {
+  content: "\e205";
+}
+.iconEdit_crop:before {
+  content: "\e301";
+}
+.iconEdit_rotateCkw:before {
+  content: "\e302";
+}
+.iconEdit_gradient:before {
+  content: "\e303";
+}
+.iconEdit_hsl:before {
+  content: "\e304";
+}
+.iconEdit_brightness:before {
+  content: "\e305";
+}
+.iconEdit_curves:before {
+  content: "\e307";
+}
+.iconEdit_sepia:before {
+  content: "\e308";
+}
+.iconEdit_temperature:before {
+  content: "\e309";
+}
+.iconEdit_grayscale:before {
+  content: "\e310";
+}
+.iconEdit_sharpen:before {
+  content: "\e311";
+}
+.iconEdit_blur:before {
+  content: "\e312";
+}
+.iconEdit_invert:before {
+  content: "\e314";
+}
+

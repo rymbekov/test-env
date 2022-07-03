@@ -1,0 +1,107 @@
+
+.dropOpenerSelect {
+	cursor: pointer;
+	position: relative;
+	-webkit-appearance: none;
+	-moz-appearance:none;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 100%;
+	padding: 4px 10px;
+	font-size: 14px;
+	line-height: 20px;
+	height: $formElementHeight;
+	color: #999;
+	background: #303030 url("data:image/svg+xml;utf8,<svg fill='gray' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>") calc(100% - 5px) 50% no-repeat;
+	background-size: 22px 22px;
+	background-clip: padding-box;
+	box-sizing: border-box;
+	border: 0;
+	border-radius: 0;
+	border-top: 1px solid #181818;
+	border-bottom: 1px solid #353535;
+	transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+	margin-bottom: 0;
+	text-indent: .01px;
+	text-overflow: '';
+
+	&:focus {
+		outline: none;
+		box-shadow: 0 0 5px $brandColorLightTheme;
+		background-color: #000;
+		color: #fff;
+		border-color: #000;
+	}
+
+	@include media('>=tablet') {
+		.dropdownSort {
+			top: 40px;
+		}
+	
+		.toolbarDropdownWrapper {
+			flex: 1 0 100%;
+			background: transparent;
+			padding: 0 0 30px 0;
+		}
+	}
+
+	&.drop-active {
+		.toolbarDropdownWrapper {
+			display: flex;
+		}
+	}
+}
+
+.dropOpenerSelectIcon {
+	width: 22px;
+	display: flex;
+	align-items: center;
+}
+
+.sortDirections {
+	margin-left: auto;
+	display: flex;
+	align-items: center;
+	opacity: 0;
+	margin-right: -10px;
+}
+
+[class^='sortDirection-'] {
+	display: inline-block;
+	padding: 0 6px;
+	margin: 0 2px;
+	line-height: 25px;
+	font-size: 14px;
+
+	&:not(.sortDirection-disabled) {
+		font-weight: 600;
+		background: rgba(209,209,209,0.27);
+		box-shadow: inset 0 1px 2px 0 rgba(0,0,0,0.50);
+		border-radius: 3px;
+	}
+}
+
+@include media('<desktop') {
+	.dropOpenerSelect {
+		height: $formElementHeightMobile;
+		padding: 14px 10px;
+	}
+}
+
+.picsioThemeLight {
+	.dropOpenerSelect {
+		color: #7f7f7f;
+		background: #f4f4f4 url("data:image/svg+xml;utf8,<svg fill='gray' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>") calc(100% - 5px) 50% no-repeat;
+		background-size: 22px 22px;
+		border-top-color: #dfdede;
+		border-bottom-color: #f4f4f4;
+		
+		&:focus {
+			box-shadow: 0 0 5px $brandColorLightTheme;
+			background-color: #fff;
+			color: #000;
+			border-color: #fff;
+		}
+	}
+}

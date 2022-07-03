@@ -1,0 +1,35 @@
+.customFieldsSchemaSort {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+
+  li {
+    margin-right: 5px;
+  }
+  .label {
+    line-height: 25px;
+  }
+  button {
+    padding: 0 8px;
+    font-size: 0.875rem;
+    line-height: 1.71429em;
+    color: inherit;
+    border-radius: 3px;
+    background: transparent;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    cursor: default;
+
+    &.active {
+      background: rgba(209, 209, 209, 0.27);
+      color: var(--menu-active-color);
+      cursor: default;
+    }
+    &:hover:not(.disabled) {
+      cursor: pointer;
+      color: var(--menu-active-color);
+    }
+  }
+}

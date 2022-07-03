@@ -1,0 +1,30 @@
+@import 'variables.scss';
+@import 'base/animations';
+@import 'layout/page'; // 2columns layout (vertical tabs)
+
+.skeletonRadio {
+	margin: 0 15px 0 0;
+}
+
+// chess background image for transparent assets
+.chessBg {
+	background-color:#1c1c1c;
+	@include checkers(#fff, $size: 10px, $contrast: 0.07);
+
+	.picsioThemeLight & {
+		background-color:#f4f4f4;
+		@include checkers(#000, $size: 10px, $contrast: 0.07);
+	}
+}
+
+.heightAuto {
+	height: auto;
+}
+
+.noResize {
+	resize: none;
+}
+
+.react-datepicker-popper.datepickerFixed {
+	z-index: 6;
+}

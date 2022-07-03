@@ -1,0 +1,15 @@
+.circleci
+.github
+.gradle
+.storybook
+.vscode
+.security_audit
+.license_audit
+coverage
+node_modules
+cache
+*.code-workspace
+.env
+.env*
+static/assets/js/components/Icon/notSavedIcons.js
+static/assets/js/lib

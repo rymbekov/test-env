@@ -1,0 +1,62 @@
+.warning {
+	display: flex;
+	align-items: flex-start;
+	margin-bottom: 30px;
+	line-height: 1.2;
+
+	&Icon {
+		flex: 0 0 22px;
+		color: $orange;
+
+		.svg-icon {
+			color: inherit;
+		}
+	}
+
+	&Text {
+		flex: 1;
+	}
+}
+
+.warningLarge {
+	.warningIcon {
+		flex: 0 0 44px;
+		font-size: 32px;
+	}
+}
+
+.warningHelp {
+	display: flex;
+	align-items: flex-start;
+	margin-bottom: 15px;
+	line-height: 1.2;
+	color: $brandColor;
+	cursor: pointer;
+
+	&Icon {
+		flex: 0 0 22px;
+		color: inherit;
+
+		.svg-icon {
+			color: inherit;
+		}
+	}
+
+	&Text {
+		flex: 1;
+	}
+
+	&:hover {
+		color: $brandColorHover;
+	}
+}
+
+.picsioThemeLight {
+	.warningHelp {
+		color: $brandColorLightTheme;
+
+		&:hover {
+			color: $brandColorLightThemeHover;
+		}
+	}
+}

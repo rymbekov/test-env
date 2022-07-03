@@ -1,0 +1,22 @@
+.openClose {
+	&Content {
+		overflow: hidden;
+	}
+
+	&Opener {
+		margin-top: 5px;
+		height: 24px;
+		line-height: 24px;
+		text-align: center;
+		color: $brandColor;
+		cursor: pointer;
+	}
+}
+
+.picsioThemeLight {
+	.openClose {
+		&Opener {
+			color: $brandColorLightTheme;
+		}
+	}
+}

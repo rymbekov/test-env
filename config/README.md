@@ -1,0 +1,3 @@
+This folder contains configs for frontend. Since env is managed by backend frontend just asks for config file and we sends this file back. That was created as a temporary solutions, should be refactored as part of separating client and backend.
+
+This config contains a lot of settings, some of them can be calculated in runtime, some of them is a raw.pics.io settings, some of them deprecated. Those configs are static, should be served or bundles accordingly.

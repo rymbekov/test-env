@@ -1,0 +1,70 @@
+.bottomNavigation {
+  position: relative;
+  z-index: 21;
+
+  height: 56px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  background-color: var(--background-contrast-color);
+}
+
+.bottomNavigationButton {
+  padding: 0;
+  border: 0;
+  outline: none;
+  flex: 1;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--secondary-button-color);
+  background-color: var(--background-contrast-color);
+  font-size: 16px;
+
+  &.isActive {
+    color: var(--secondary-contrast-color);
+  }
+
+  &.isDisabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &-icon {
+    margin-bottom: 2px;
+    position: relative;
+  }
+
+  &-label {
+    font-size: 11px;
+  }
+
+  .badge {
+    position: absolute;
+    left: 10px;
+    top: -4px;
+    color: var(--primary-contrast-color);
+    background-color: var(--primary-main-color);
+    font-size: 10px;
+    font-family: fira_monoregular,Fira Sans,Helvetica,Arial,sans-serif;
+    border-radius: 8px;
+    line-height: 16px;
+    min-width: 15px;
+    height: 15px;
+    padding: 0 3px;
+    text-align: center;
+  }
+
+  .miniBadge {
+    position: absolute;
+    left: 18px;
+    top: -2px;
+    background-color: var(--primary-main-color);
+    border-radius: 8px;
+    min-width: 6px;
+    height: 6px;
+    text-align: center;
+  }
+}

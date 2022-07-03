@@ -1,0 +1,61 @@
+.wrapperPageSync {
+	.pageSync {
+		color: #ccc;
+
+		.pageInnerContent {
+			max-width: 570px;
+			margin: 0 auto;
+			padding: 0 8px;
+			overflow: visible;
+		}
+
+		.pageContent {
+			padding: 30px 10px;
+			font-size: 14px;
+			overflow: auto;
+
+			@media screen and (min-width: 768px) {
+				padding: 73px 0 40px;
+			}
+		}
+	}
+
+	.syncTitle {
+		display: block;
+		margin-bottom: 25px;
+		font-weight: 300;
+		font-size: 24px;
+	}
+
+	p {
+		margin-bottom: 25px;
+		line-height: 17px;
+
+		b {
+			color: #fff;
+		}
+	}
+
+	.syncButton {
+		.svg-icon {
+			margin-right: 10px;
+		}
+	}
+
+	.warningLarge {
+		margin-bottom: 25px;
+	}
+}
+
+.picsioThemeLight {
+	.wrapperPageSync {
+		.page {
+			color: $darkgray;
+		}
+		p {
+			b {
+				color: #000;
+			}
+		}
+	}
+}

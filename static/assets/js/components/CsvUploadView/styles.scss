@@ -1,0 +1,274 @@
+
+
+.picsioThemeLight {
+  .csvUploadViewWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 5% 25% 0 25%;
+  
+    .browseButton {
+      position: relative;
+      margin-right: 4px;
+      cursor: pointer;
+      label {
+        cursor: pointer;
+      }
+      .browseInput {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0.01;
+        border: none;
+        cursor: pointer;
+      }
+    }
+  
+    .chooseCsvWrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: flex-start;
+  
+      .chooseCsvTitle {
+        font-family: Fira Sans;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 34px;
+        line-height: 41px;
+        text-align: center;
+        color: #1F1F1F;
+        padding: 0px 0 26px 0;
+        &.validate {
+          color: #9393A1;
+        }
+  
+      }
+      .chooseCsvSubtitle {
+        font-family: Fira Sans;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 28px;
+        color: #80808E;
+    
+      }
+      .chooseCsvDragnDrop {
+        border: 1px dashed #DADADA;
+        box-sizing: border-box;
+        border-radius: 6px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 66px 110px 56px 110px;
+  
+        .title {
+          font-family: Fira Sans;
+          font-style: normal;
+          font-weight: 300;
+          font-size: 34px;
+          line-height: 41px;
+          /* identical to box height */
+  
+          text-align: center;
+  
+          color: #9393A1;
+          margin-bottom: 16px;
+        }
+        .subtitle {
+          font-family: Fira Sans;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 22px;
+          text-align: center;
+          color: #9393A1;
+          margin-bottom: 24px;
+        }
+        .csvUploadIcon {
+          font-size: 4rem;
+          color: #CFCCC1;
+          margin-bottom: 26px;
+          &.dragEnter {
+            color: #3B94FB
+          }
+        }
+      }
+      .validateIcon {
+        font-size: 4rem;
+        color: #CFCCC1;
+        margin-bottom: 26px;
+        &.error {
+          color: #CC0000;
+        }
+        &.success {
+          color: #3B94FB;
+        }
+      }
+      &.validatePage {
+        justify-content: center;
+        align-items: center;
+  
+        .errorReason {
+          text-align: center;
+          margin-bottom: 25px;
+        }
+        .doneButtons {
+          margin-top: 26px;
+          margin-bottom: 10px;
+          .importNew {
+            margin-right: 4px;
+          }
+        }
+      }
+      .csvImportHelpLink {
+        padding: 26px 0 43px 0;
+      }
+    }
+    .validateCsvPage {
+      height: 65vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+.csvUploadViewWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 5% 25% 0 25%;
+
+  .browseButton {
+    position: relative;
+    margin-right: 4px;
+    cursor: pointer;
+    label {
+      cursor: pointer;
+    }
+    .browseInput {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0.01;
+      border: none;
+      cursor: pointer;
+    }
+  }
+
+  .chooseCsvWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+
+    .chooseCsvTitle {
+      font-family: Fira Sans;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 34px;
+      line-height: 41px;
+      text-align: center;
+      color: #ccc;
+      padding: 0px 0 26px 0;
+      &.validate {
+        color: #ccc;
+      }
+
+    }
+    .chooseCsvSubtitle {
+      font-family: Fira Sans;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 20px;
+      line-height: 28px;
+      color: #ccc;
+  
+    }
+    .chooseCsvDragnDrop {
+      border: 1px dashed #DADADA;
+      box-sizing: border-box;
+      border-radius: 6px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 66px 110px 56px 110px;
+
+      .title {
+        font-family: Fira Sans;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 34px;
+        line-height: 41px;
+        /* identical to box height */
+
+        text-align: center;
+
+        color: #ccc;
+        margin-bottom: 16px;
+      }
+      .subtitle {
+        font-family: Fira Sans;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+        text-align: center;
+        color: #ccc;
+        margin-bottom: 24px;
+      }
+      .csvUploadIcon {
+        font-size: 4rem;
+        color: #ccc;
+        margin-bottom: 26px;
+        &.dragEnter {
+          color: #FFC000;
+        }
+      }
+    }
+    .validateIcon {
+      font-size: 4rem;
+      color: #ccc;
+      margin-bottom: 26px;
+      &.error {
+        color: #CC0000;
+      }
+      &.success {
+        color: #FFC000;
+      }
+    }
+    &.validatePage {
+      justify-content: center;
+      align-items: center;
+
+      .errorReason {
+        text-align: center;
+        margin-bottom: 25px;
+      }
+      .doneButtons {
+        margin-top: 26px;
+        margin-bottom: 10px;
+        .importNew {
+          margin-right: 4px;
+        }
+      }
+    }
+    .csvImportHelpLink {
+      padding: 26px 0 43px 0;
+    }
+  }
+  .validateCsvPage {
+    height: 65vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+

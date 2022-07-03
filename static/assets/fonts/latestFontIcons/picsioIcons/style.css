@@ -1,0 +1,436 @@
+@font-face {
+  font-family: 'picsioIcons';
+  src:  url('fonts/picsioIcons.eot?s1nhkk');
+  src:  url('fonts/picsioIcons.eot?s1nhkk#iefix') format('embedded-opentype'),
+    url('fonts/picsioIcons.woff2?s1nhkk') format('woff2'),
+    url('fonts/picsioIcons.ttf?s1nhkk') format('truetype'),
+    url('fonts/picsioIcons.woff?s1nhkk') format('woff'),
+    url('fonts/picsioIcons.svg?s1nhkk#picsioIcons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon_"], [class*=" icon_"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'picsioIcons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon_logoPicsio:before {
+  content: "\e000";
+}
+.icon_logoGD:before {
+  content: "\e001";
+}
+.icon_logoFB:before {
+  content: "\e002";
+}
+.icon_upload:before {
+  content: "\e101";
+}
+.icon_collections:before {
+  content: "\e102";
+}
+.icon_liveSupport:before {
+  content: "\e103";
+}
+.icon_rotateckw:before {
+  content: "\e104";
+}
+.icon_rotateantickw:before {
+  content: "\e105";
+}
+.icon_flipx:before {
+  content: "\e106";
+}
+.icon_flipy:before {
+  content: "\e107";
+}
+.icon_develop:before {
+  content: "\e108";
+}
+.icon_download:before {
+  content: "\e109";
+}
+.icon_accountMenu:before {
+  content: "\e110";
+}
+.icon_infobox:before {
+  content: "\e111";
+}
+.icon_closePreview:before {
+  content: "\e112";
+}
+.icon_backToCatalog:before {
+  content: "\e113";
+}
+.icon_filter:before {
+  content: "\e114";
+}
+.icon_rightSidebar:before {
+  content: "\e115";
+}
+.icon_history:before {
+  content: "\e116";
+}
+.icon_remove:before {
+  content: "\e118";
+}
+.icon_fitSizeImg:before {
+  content: "\e119";
+}
+.icon_originalSizeImg:before {
+  content: "\e120";
+}
+.icon_myAccount:before {
+  content: "\e151";
+}
+.icon_settings:before {
+  content: "\e152";
+}
+.icon_sync:before {
+  content: "\e153";
+}
+.icon_help:before {
+  content: "\e154";
+}
+.icon_logout:before {
+  content: "\e155";
+}
+.icon_filterNewFirst:before {
+  content: "\e157";
+}
+.icon_filterOldFirst:before {
+  content: "\e158";
+}
+.icon_filterAtoZ:before {
+  content: "\e159";
+}
+.icon_filterZtoA:before {
+  content: "\e160";
+}
+.icon_filterCustom:before {
+  content: "\e161";
+}
+.icon_customFields:before {
+  content: "\e162";
+}
+.icon_myTeam:before {
+  content: "\e163";
+}
+.icon_tutorials:before {
+  content: "\e165";
+}
+.icon_exifSchema:before {
+  content: "\e166";
+}
+.icon_whatsNew:before {
+  content: "\e167";
+}
+.icon_downloadCatalogItem:before {
+  content: "\e501";
+}
+.icon_editCatalogItem:before {
+  content: "\e502";
+}
+.icon_removeCatalogItem:before {
+  content: "\e503";
+}
+.icon_folder:before {
+  content: "\e522";
+}
+.icon_folderInternal:before {
+  content: "\e523";
+}
+.icon_folderPublic:before {
+  content: "\e524";
+}
+.icon_folderSmart:before {
+  content: "\e525";
+}
+.icon_folderSavedSearch:before {
+  content: "\e526";
+}
+.icon_btnFolderInternal:before {
+  content: "\e527";
+}
+.icon_btnFolderPublic:before {
+  content: "\e528";
+}
+.icon_addCollection:before {
+  content: "\e529";
+}
+.icon_renameCollection:before {
+  content: "\e530";
+}
+.icon_removeCollection:before {
+  content: "\e531";
+}
+.icon_btnCollectionUpload:before {
+  content: "\e532";
+}
+.icon_btnCollectionFavorites:before {
+  content: "\e533";
+}
+.icon_folderFavorite:before {
+  content: "\e534";
+}
+.icon_arrowPrevPreview:before {
+  content: "\e551";
+}
+.icon_arrowNextPreview:before {
+  content: "\e552";
+}
+.icon_imageImportView:before {
+  content: "\e553";
+}
+.icon_uploadImportView:before {
+  content: "\e554";
+}
+.icon_duplicateCreated:before {
+  content: "\e555";
+}
+.icon_duplicateTags:before {
+  content: "\e556";
+}
+.icon_previewTitle:before {
+  content: "\e558";
+}
+.icon_sharePopup:before {
+  content: "\e559";
+}
+.icon_addFileImport:before {
+  content: "\e560";
+}
+.icon_replaceFileImport:before {
+  content: "\e561";
+}
+.icon_addRevisionImport:before {
+  content: "\e562";
+}
+.icon_multiRemove:before {
+  content: "\e564";
+}
+.icon_prevIntroJS:before {
+  content: "\e565";
+}
+.icon_nextIntroJS:before {
+  content: "\e566";
+}
+.icon_removeKeywordTextarea:before {
+  content: "\e567";
+}
+.icon_popupShareCollection:before {
+  content: "\e568";
+}
+.icon_popupEnterPassword:before {
+  content: "\e569";
+}
+.icon_authPubSharing:before {
+  content: "\e570";
+}
+.icon_multiDownload:before {
+  content: "\e571";
+}
+.icon_revisionDiff:before {
+  content: "\e575";
+}
+.icon_myAccAccount:before {
+  content: "\e576";
+}
+.icon_myAccSettings:before {
+  content: "\e577";
+}
+.icon_myAccNotifications:before {
+  content: "\e578";
+}
+.icon_myAccSyncFromGD:before {
+  content: "\e579";
+}
+.icon_myAccSyncToGD:before {
+  content: "\e580";
+}
+.icon_myAccUnlinkGD:before {
+  content: "\e581";
+}
+.icon_websiteMain:before {
+  content: "\e582";
+}
+.icon_websitePass:before {
+  content: "\e583";
+}
+.icon_websiteCustom:before {
+  content: "\e584";
+}
+.icon_websiteSeo:before {
+  content: "\e585";
+}
+.icon_noPreviewCatalogItem:before {
+  content: "\e587";
+}
+.icon_notFoundCatalogItem:before {
+  content: "\e588";
+}
+.icon_lockedCatalogItem:before {
+  content: "\e589";
+}
+.icon_noAccessCatalogItem:before {
+  content: "\e590";
+}
+.icon_notGeneratedCatalogItem:before {
+  content: "\e591";
+}
+.icon_generationThumbnailCatalogItem:before {
+  content: "\e592";
+}
+.icon_epsCatalogItem:before {
+  content: "\e594";
+}
+.icon_aiCatalogItem:before {
+  content: "\e595";
+}
+.icon_mp3CatalogItem:before {
+  content: "\e596";
+}
+.icon_wavCatalogItem:before {
+  content: "\e597";
+}
+.icon_emptyLogo:before {
+  content: "\e600";
+}
+.icon_emptyAvatar:before {
+  content: "\e601";
+}
+.icon_emptyBackgroundLoginPage:before {
+  content: "\e602";
+}
+.icon_uploadFromGD:before {
+  content: "\e603";
+}
+.icon_uploadToGD:before {
+  content: "\e604";
+}
+.icon_ok:before {
+  content: "\e801";
+}
+.icon_cancel:before {
+  content: "\e802";
+}
+.icon_star:before {
+  content: "\e803";
+}
+.icon_unflag:before {
+  content: "\e804";
+}
+.icon_flag:before {
+  content: "\e805";
+}
+.icon_lightX:before {
+  content: "\e806";
+}
+.icon_regularX:before {
+  content: "\e807";
+}
+.icon_boldX:before {
+  content: "\e808";
+}
+.icon_warning:before {
+  content: "\e810";
+}
+.icon_notification:before {
+  content: "\e811";
+}
+.icon_regularPrevArrow:before {
+  content: "\e812";
+}
+.icon_regularNextArrow:before {
+  content: "\e813";
+}
+.icon_lock:before {
+  content: "\e814";
+}
+.icon_gear:before {
+  content: "\e815";
+}
+.icon_roundPlus:before {
+  content: "\e816";
+}
+.icon_files:before {
+  content: "\e817";
+}
+.icon_pen:before {
+  content: "\e818";
+}
+.icon_chat:before {
+  content: "\e819";
+}
+.icon_eyeOpen:before {
+  content: "\e820";
+}
+.icon_eyeClosed:before {
+  content: "\e821";
+}
+.icon_trashbin:before {
+  content: "\e822";
+}
+.icon_search:before {
+  content: "\e823";
+}
+.icon_questionCircle:before {
+  content: "\e824";
+}
+.icon_enter:before {
+  content: "\e825";
+}
+.icon_microphone:before {
+  content: "\e826";
+}
+.icon_text:before {
+  content: "\e827";
+}
+.icon_directory:before {
+  content: "\e828";
+}
+.icon_date:before {
+  content: "\e829";
+}
+.icon_checkboxChecked:before {
+  content: "\e830";
+}
+.icon_eyeCrossed:before {
+  content: "\e831";
+}
+.icon_dollar:before {
+  content: "\e832";
+}
+.icon_m_collectionHierarchy:before {
+  content: "\e901";
+}
+.icon_m_closePopup:before {
+  content: "\e904";
+}
+.icon_m_back:before {
+  content: "\e905";
+}
+.icon_m_toolbarFilters:before {
+  content: "\e906";
+}
+.icon_runListMode:before {
+  content: "\e907";
+}
+.icon_runGridMode:before {
+  content: "\e908";
+}
+.icon_m_logoutItem:before {
+  content: "\e920";
+}
+

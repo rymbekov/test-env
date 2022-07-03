@@ -1,0 +1,75 @@
+@import 'cssVariables';
+
+$headerHeight: 50px;
+$bottomMenuHeight: 56px;
+
+.mobileAdditionalPanel {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  // top: env(safe-area-inset-top);
+  top: 0;
+  height: 100%;
+  padding-top: $headerHeight;
+  padding-bottom: $bottomMenuHeight;
+  background-color: var(--background-main-color);
+  overflow: hidden;
+
+  &-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: var(--title-color);
+    background-color: var(--background-contrast-color);
+    height: $headerHeight;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    z-index: 20;
+  }
+
+  &-body {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    color: var(--text-secondary-color);
+    position: relative;
+    z-index: 10;
+
+    // .dropdownIsActive & {
+    //   z-index: 99;
+    // }
+  }
+
+  &.mobileAdditionalPanelActiveSettings {
+    .mobileAdditionalPanel-header {
+      z-index: 0;
+    }
+
+    .mobileAdditionalPanel-body {
+      position: static;
+      .toolbarDropdownItem {
+        .toolbarDropdownItemIcon {
+          height: 50px;
+        }
+      }
+    }
+
+  }
+
+  // style components
+  .notifications {
+    height: 100%;
+    @include media('>=tablet') {
+      padding: 10px 0;
+    }
+  }
+
+
+  // second level of Settings menu
+  .toolbarDropdownWrapper {
+    height: calc(100% - 56px);
+  }
+}

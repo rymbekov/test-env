@@ -1,0 +1,1034 @@
+$bgColorDefault: rgba(36,36,36,1);
+$bgColorDefaultTransparent: rgba(36,36,36,0);
+
+$bgColorActItem: rgba(55,55,55,1);
+$bgColorActItemTransparent: rgba(55,55,55,0);
+
+$bgColorHoverItem: rgba(55,55,55,1);
+$bgColorHoverItemTransparent: rgba(55,55,55,0);
+
+.tree {
+	float: left;
+	height: 100%;
+	//overflow: hidden; // fix Dropdown in Safari
+	position: relative;
+	z-index: 1;
+	box-sizing: border-box;
+	border-right: 2px solid #000;
+
+	&:empty {
+		border-right: 0;
+	}
+}
+
+.treeResizer {
+	position: absolute;
+	right: 0;
+	top: 0;
+	height: 100%;
+	width: 7px;
+	cursor: ew-resize;
+}
+
+.folderTreeView{
+	overflow: auto;
+	background: $bgColorDefault;
+	color: #999;
+	font-size: 14px;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+
+	height: 100%;
+	padding-top: 40px;
+
+	.proofing & {
+		padding-top: 0;
+	}
+
+	&.isLoading {
+		height: 100%;
+		margin-top: 0;
+	}
+
+	.proofing & {
+		padding-top: 0;
+	}
+}
+
+.btnCollectionUpload {
+	position: absolute;
+	left: -200%;
+	top: 0;
+	width: 300%;
+	height: 100%;
+	opacity: 0.01;
+	border: none;
+	// z-index: -1;
+	cursor: pointer;
+}
+
+
+.listFolderTree {
+	padding: 6px;
+	box-sizing: border-box;
+	flex: 1;
+	overflow: auto;
+	overflow-x: hidden;
+
+  .PicsioCollapse__content {
+    margin-top: 0;
+  }
+
+	ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		position: relative;
+
+		li {
+			// added collection by Teammate in real-time
+			&.addedByTeammate,
+			&.deletedByTeammate,
+			&.highlightBlinkColor {
+				position: relative;
+				animation: highlightBlinkColor 3s .5s 5;
+
+				> .nameFolder {
+					color: inherit;
+
+					.collectionTextValue {
+						color: inherit;
+					}
+					&::after {
+						content: none;
+					}
+				}
+			}
+
+			// animation will be work only for first upper item
+			&.addedByTeammate,
+			&.deletedByTeammate {
+				li {
+					animation: none !important;
+				}
+			}
+
+			&.deletedByTeammate {
+				cursor: not-allowed;
+
+				.nameFolder {
+					text-decoration: line-through;
+					opacity: 0.3;
+					cursor: not-allowed;
+				}
+
+				.btnsManageCollection {
+					display: none;
+				}
+
+				&::after {
+					background: $brandColor;
+				}
+			}
+
+			&:empty {
+				display: none;
+			}
+			.nameFolder {
+				display: flex;
+				align-items: center;
+				height: 24px;
+				cursor: pointer;
+				padding-left: 38px;
+				position: relative;
+				padding-top: 2px;
+				padding-bottom: 2px;
+
+				> .iconHolder {
+					margin-right: 14px;
+					// font-size: 16px;
+
+          .PicsioIcon {
+            font-size:18px;
+          }
+				}
+				&.renaming {
+					opacity: .2;
+					pointer-events: none;
+				}
+				.shared {
+					color: $brandColor;
+				}
+
+				.collectionTextValue {
+					font-family: $base-font;
+					color: $gray;
+					font-size: 14px;
+					font-style: normal;
+					height: 24px;
+					line-height: 24px;
+					display: block;
+					overflow: hidden;
+					position: relative;
+					z-index: 2;
+					border: none;
+					resize: none;
+					white-space: nowrap;
+				}
+				textarea.collectionTextValue{
+					padding: 0;
+					width: calc(100% - 80px);
+					left: -5px;
+					&.error {
+						box-shadow: 0 0 0 2px $error;
+					}
+				}
+				.itemCount {
+					position: absolute;
+					right: 0;
+					top: 0;
+					z-index: 2;
+					padding: 0 5px 0 0;
+					height: 28px;
+					line-height: 30px;
+					font-family: $base-font-mono;
+					font-size: 11px;
+					color: #666;
+					background: $bgColorDefault;
+					&.leftShadow::after {
+						background: linear-gradient(to right, $bgColorDefaultTransparent, $bgColorDefault);
+					}
+
+					@include media('<desktop') {
+						background: inherit;
+						height: 42px;
+						line-height: 42px;
+						// &.leftShadow::after {
+						// 	background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1));
+						// }
+					}
+				}
+				.arrowFolder {
+					position: absolute;
+					z-index: 2;
+					left: 22px;
+					top: 10px;
+					padding: 5px;
+					margin: -5px 0 0 -8px;
+					cursor: pointer;
+					-webkit-user-select: none;
+					-moz-user-select: none;
+					user-select: none;
+					display: block;
+					&::after {
+						content: ' ';
+						width: 0;
+						height: 0;
+						display: block;
+						border-color: transparent transparent transparent currentColor;
+						border-style: solid;
+						border-width: 3px 0 3px 6px;
+					}
+					&:hover {
+						@include media('>=desktop') {
+							&::after {
+								border-color: transparent transparent transparent currentColor;
+							}
+						}
+					}
+					&.hide{
+						display: none;
+					}
+				}
+
+				&+ul {
+					display: none;
+				}
+				&.openFolderList {
+					.arrowFolder {
+						transform: rotate(90deg);
+					}
+					&+ul {
+						display: block;
+					}
+				}
+
+				// icon it Tree
+				&::before {
+					display: block;
+					font-size: 16px;
+					position: relative;
+					margin: 3px 14px 0 0;
+					z-index: 2;
+					float: left;
+					width: 15px;
+				}
+				&.hover,
+				&.act:hover,
+				&.menuActive {
+					@include media('>=desktop') {
+						color: #fff;
+						.itemCount {
+							display: none;
+						}
+
+						.collectionTextValue {
+							color: inherit;
+						}
+					}
+				}
+				&:not(.act).hover,
+				&:not(.act).menuActive {
+					@include media('>=desktop') {
+						.btnsManageCollection {
+							display: block;
+							background: #242424;
+						}
+					}
+				}
+				&.act {
+					color: #fff;
+					background: $dark-darkgray;
+					> .iconHolder { //folder icon color
+						color: $brandColor;
+					}
+					&>.collectionTextValue {
+						color: #fff;
+					}
+					&>.itemCount {
+						color: #fff;
+						background: $dark-darkgray;
+						&.leftShadow::after {
+							background: linear-gradient(to right, $bgColorActItemTransparent, $bgColorActItem);
+						}
+					}
+					&>.arrowFolder::after {
+						border-color: transparent transparent transparent #fff;
+					}
+				}
+
+				&.editModeFolder {
+					color: #bbb;
+					background: rgba(102, 102, 102, 0.3);
+					.btnsEditCollection {
+						display: block;
+					}
+					.collectionTextValue {
+						padding: 0 5px;
+						cursor: text;
+						z-index: 10000;
+					}
+					.itemCount {
+						display: none;
+					}
+				}
+
+				&.act,
+				&.editModeFolder {
+					.leftShadow::after {
+						background-image: linear-gradient(to right, $bgColorHoverItemTransparent, $bg-panel-dark);
+					}
+				}
+			}
+			.rightShadow,
+			.leftShadow {
+				&::after {
+					content: '';
+					width: 5px;
+					height: 100%;
+					display: block;
+					position: absolute;
+					top: 0;
+					z-index: 2;
+				}
+				&.leftShadow::after {
+					right: 100%;
+					background-image: linear-gradient(to right, rgba(36,36,36,0), #242424);
+				}
+				&.rightShadow::after {
+					right: 0;
+					background-image: linear-gradient(to right, $bgColorDefaultTransparent, $bgColorDefault);
+				}
+			}
+			.nameFolder.act.rightShadow::after {
+				background-image: linear-gradient(to right, $bgColorActItemTransparent, $bgColorActItem);
+			}
+			&.hoverDrop > .nameFolder {
+				box-shadow: inset 0 0 0 1px #565656;
+				background: #212121;
+			}
+		}
+	}
+	&>ul {
+		&>li {
+			padding-top: 9px;
+			&>.nameFolder {
+				> .iconHolder,
+				&::before {
+					display: none;
+				}
+				&>.collectionTextValue {
+					@include mediumTitle;
+					max-width: none;
+				}
+			}
+		}
+	}
+
+	.btnsManageCollection,
+	.btnsEditCollection {
+		display: none;
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: 3;
+		background: inherit;
+		.btnCollection,
+		.moreMainBtn {
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 28px;
+			line-height: 28px;
+			width: 26px;
+			text-align: center;
+			position: relative;
+			float: right;
+			z-index: 2;
+			color: rgba(255,255,255,0.9);
+			font-size: 14px;
+			overflow: hidden;
+			&:hover,
+			&.act {
+				background: $treeButtonHoverBg;
+			}
+			&.yellow {
+				color: $brandColor;
+			}
+			&.disabled {
+				cursor: default;
+				opacity: .1;
+				pointer-events: none;
+			}
+			&.readOnly {
+				cursor: default;
+				opacity: .1;
+			}
+
+			.icon-close {
+				font-size: 12px;
+			}
+		}
+
+		.moreBtns .btnCollection {
+			overflow: visible; // fix Dropdown in Safari
+		}
+
+		.moreBtns {
+			display: block;
+			height: 28px;
+			line-height: 28px;
+			width: 26px;
+			float: right;
+			position: relative;
+			z-index: 3;
+			&>.btnCollection {
+				font-size: 14px;
+				line-height: inherit;
+
+				@include media('<desktop') {
+					height: 42px;
+					width: 32px;
+					line-height: 42px;
+				}
+			}
+			.innerMoreBtns {
+				display: none;
+				position: absolute;
+				right: 0;
+				bottom: 100%;
+				background: #000;
+				border-radius: 4px;
+				margin-bottom: 5px;
+				span {
+					height: 30px;
+					width: 30px;
+					line-height: 30px;
+					color: #999;
+					cursor: pointer;
+					text-align: center;
+					&:hover {
+						color: $brandColor;
+					}
+
+					&:first-child {border-radius: 5px 0 0 5px;}
+					&:last-child {border-radius: 0 5px 5px 0;}
+				}
+				&::after {
+					content: '';
+					position: absolute;
+					right: 4px;
+					top: 100%;
+					width: 0;
+					height: 0;
+					border-width: 8px 9px 0 9px;
+					border-style: solid;
+					border-color: currentColor transparent transparent transparent;
+				}
+				&::before {
+					content: '';
+					position: absolute;
+					left: 0;
+					top: 100%;
+					height: 10px;
+					width: 100%;
+				}
+			}
+			&:hover {
+				.innerMoreBtns {
+					display: flex;
+				}
+			}
+		}
+	}
+
+	.act {
+		.btnsManageCollection,
+		.btnsEditCollection {
+			display: block;
+		}
+	}
+
+	.menuActive {
+		.btnsManageCollection {
+			display: block;
+		}
+	}
+
+	@media screen and (max-width: $mediaDevice) {
+		ul {
+			li {
+				.rightShadow {
+					&::after {
+						content: none;
+					}
+				}
+
+				.nameFolder {
+					height: 28px;
+				}
+			}
+		}
+	}
+}
+
+
+.folderTreeCheckbox {
+	padding: 10px 17px;
+	margin-top: auto;
+	font-weight: 300;
+	box-shadow: 0 0 15px rgba(0,0,0, 0.3);
+	margin-top: auto;
+
+	.slideCheckboxLabel {
+		color: #ccc;
+		margin: 0;
+		order: 2;
+	}
+
+	.slideCheckbox {
+		order: 1;
+		margin: 0 15px 0 0;
+	}
+}
+
+.btnCollectionOpener {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+// theming
+.picsioThemeLight {
+	$lightBaseColor: #666;
+
+	.folderTreeCheckbox {
+		box-shadow: 0 0 15px rgba(0,0,0, 0.15);
+
+		.slideCheckboxLabel {
+			color: $lightBaseColor;
+		}
+	}
+
+	.tree {
+		border-right-color: $light-lightgray;
+	}
+
+	.folderTreeView {
+		background: #fff;
+		color: $lightBaseColor;
+
+		@include media('<desktop') {
+			background: #fff;
+		}
+	}
+
+	.listFolderTree {
+		&> ul > li > .nameFolder > .collectionTextValue {
+			color: $lightBaseColor;
+		}
+		ul {
+			li {
+				// added collection by Teammate in real-time
+				&.addedByTeammate,
+				&.deletedByTeammate,
+				&.highlightBlinkColor {
+					animation: highlightBlinkColorLightTheme 3s .5s 5;
+				}
+
+				.nameFolder {
+					.shared {
+						color: $brandColorLightTheme;
+					}
+					.itemCount {
+						background: #fff;
+						color: $lightBaseColor;
+						&.leftShadow::after {
+							background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1));
+						}
+					}
+					.arrowFolder {
+						&::after {
+							border-left-color: $lightBaseColor;
+						}
+					}
+					.collectionTextValue {
+						color: $lightBaseColor;
+					}
+
+					&.hover,
+					&.act,
+					&.act:hover,
+					&.menuActive,
+					&.editModeFolder {
+
+						color: #000;
+						.itemCount {
+							background: #f1f1f1;
+							color: currentColor;
+							&.leftShadow::after {
+								background: linear-gradient(to right, rgba(241,241,241,0), rgba(241,241,241,1));
+							}
+						}
+						.arrowFolder {
+							&::after {
+								border-left-color: currentColor;
+							}
+						}
+						.collectionTextValue {
+							color: currentColor;
+						}
+					}
+
+					&:not(.act).hover,
+					&:not(.act).menuActive {
+						@include media('>=desktop') {
+							.btnsManageCollection {
+								background: #fff;
+							}
+						}
+					}
+
+					&.act,
+					&.act:hover,
+					&.editModeFolder {
+						background: #f1f1f1;
+
+						> .iconHolder {
+							color: $brandColorLightTheme;
+						}
+						&.rightShadow::after {
+							background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1));
+						}
+					}
+					.btnsManageCollection {
+						.innerMoreBtns {
+							background: #f1f1f1;
+
+							&::after {
+								border-color: currentColor transparent transparent transparent;
+							}
+						}
+					}
+
+					&.act,
+					&.editModeFolder {
+						.leftShadow::after {
+							background: linear-gradient(to right, rgba(241,241,241,0), #f1f1f1);
+						}
+					}
+				}
+				.leftShadow::after {
+					background: linear-gradient(to right, rgba(255,255,255,0), rgba(255, 255, 255, 1));
+				}
+				.rightShadow::after {
+					background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1));
+				}
+			}
+		}
+
+		.btnsManageCollection,
+		.btnsEditCollection {
+			.btnCollection,
+			.moreMainBtn {
+				color: currentColor;
+				&:hover {
+					@include media('>=desktop') {
+						background: $treeButtonHoverBgLightTheme;
+					}
+				}
+
+				&.act {
+					background: $treeButtonHoverBgLightTheme;
+				}
+
+				&.yellow {
+					color: $brandColorLightTheme;
+				}
+			}
+
+			.moreBtns {
+				.innerMoreBtns {
+					span {
+						color: currentColor;
+						&.yellow {
+							color: $brandColorLightTheme
+						}
+						&:hover {
+							color: $brandColorLightTheme;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+.treeMenu {
+	z-index: 99;
+	font-family: $base-font;
+	font-size: 14px;
+	font-weight: 400;
+	padding: 12px 0 8px;
+	background-color: #2b2b2b;
+	color: #ccc;
+	width: 250px;
+	display: block;
+	text-align: left;
+	-webkit-font-smoothing: auto;
+	-moz-osx-font-smoothing: auto;
+
+	@include media('>=desktop') {
+		left: 8px !important;
+		top: -10px !important;
+
+		.arrow {
+			display: block;
+			width: 10px;
+			height: 10px;
+			position: absolute;
+			left: -5px;
+			transform: rotate(45deg);
+			background-color: inherit;
+			margin-top: 17px;
+			z-index: -1;
+		}
+	}
+
+	&Item {
+		display: flex;
+		align-items: center;
+		padding: 2px 15px 2px 25px;
+		margin: 0 0 -1px;
+		min-height: 30px;
+		line-height: 32px;
+		cursor: pointer;
+		position: relative;
+		z-index: 1;
+		background-color: inherit;
+
+		.btnCollection.iconHolder {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.btnsManageCollection > & {
+			float: right;
+			width: 28px;
+			height: 28px;
+			line-height: 26px;
+			min-height: 28px;
+			padding: 0;
+			overflow: hidden;
+
+			@include media('<desktop') {
+				height: 42px;
+				width: 32px;
+				line-height: 42px;
+			}
+
+			&:hover {
+				background: rgba(255, 255, 255, 0.1);
+				color: rgba(255, 255, 255, 0.9);
+
+				.picsioThemeLight & {
+					background: rgba(0, 0, 0, 0.1);
+					color: #000;
+				}
+			}
+
+			.btnCollection {
+				width: inherit !important;
+				height: inherit !important;
+				line-height: inherit !important;
+				flex: auto;
+				margin: 0;
+			}
+
+			.treeMenuItemName {
+				display: none;
+			}
+		}
+
+		.iconHolder:not(.yellow) {
+			color: inherit;
+		}
+
+		&:hover {
+			background-color: $brandColor;
+			color: #333;
+
+			.yellow {
+				color: inherit !important;
+			}
+		}
+
+		.btnCollection {
+			float: none;
+			margin-top: 0;
+			height: 30px !important;
+			line-height: 28px;
+			background: none;
+			color: currentColor;
+			flex: 0 0 32px;
+			//font-size: 18px !important;
+
+			&.yellow {
+				color: $brandColor;
+			}
+
+			.icon-move {
+				font-size: 14px !important;
+			}
+		}
+
+		&Name {
+			font-size: 14px;
+			line-height: 20px;
+			padding: 4px 0 4px 4px;
+		}
+
+		&:hover {
+			background-color: $brandColor;
+			color: $bgColor;
+		}
+
+		// &:not(:last-child)::after {
+		// 	content: '';
+		// 	position: absolute;
+		// 	height: 1px;
+		// 	bottom: 0;
+		// 	left: 30px;
+		// 	right: 30px;
+		// 	z-index: -1;
+		// 	background-color: rgba(0,0,0, 0.25);
+		// }
+	}
+
+	&Header {
+		display: none;
+		justify-content: space-between;
+		align-items: center;
+		height: 50px;
+		color: #666;
+		font-weight: 300;
+		padding: 0 15px 0 23px;
+		margin-bottom: -5px;
+	}
+
+	@include media('>=tablet', '<desktop') {
+		padding-bottom: 10px;
+
+		&Item {
+			padding: 5px 15px 5px 14px;
+		}
+	}
+}
+
+// Popper
+@include media('>=desktop') {
+	.popperWrapper {
+		// .PicsioPopper__content {
+		//   z-index: 1;
+		// }
+
+		.PicsioPopper__arrow {
+			background-color: #2b2b2b;
+			width: 10px;
+			height: 10px;
+			margin-top: -3px;
+		}
+	}
+}
+
+@include media('<desktop') {
+	.popperWrapper {
+		position: fixed;
+		top: 100%;
+		left: 0;
+		display: block;
+		z-index: 99;
+		width: 100% !important;
+		//transform: none !important;
+
+		&::before {
+			content: '';
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+			visibility: hidden;
+			transition: opacity 0.3s ease;
+		}
+
+		&.active {
+			&::before {
+				opacity: 1;
+				visibility: visible;
+				background-color: rgba(black, 0.1);
+			}
+		}
+
+		.treeMenu {
+			width: 100%;
+			padding: 0 0 15px;
+			position: relative;
+
+			&Item {
+				padding: 5px 15px 5px 23px;
+			}
+
+			&Header {
+				display: flex;
+			}
+		}
+	}
+}
+// @include media('>=tablet') {
+// 	.popperWrapper {
+// 		top: 0;
+// 		left: 0;
+// 		width: 100%;
+// 		height: 100%;
+// 		justify-content: center;
+// 		align-items: center;
+// 		position: fixed;
+// 		display: none;
+
+// 		&.active {
+// 			display: flex;
+// 			z-index: 99;
+// 			background-color: rgba(0,0,0,0.6);
+
+// 			.treeMenu {
+// 				transform: none !important;
+// 				position: relative !important;
+// 			}
+
+// 			.picsioThemeLight & {
+// 				background-color: rgba(0,0,0,0.1);
+// 			}
+// 		}
+// 	}
+
+// 	.treeMenu {
+// 		padding: 0 0 15px;
+
+// 		&Item {
+// 			padding: 5px 15px 5px 23px;
+// 		}
+
+// 		&Header {
+// 			display: flex;
+// 		}
+// 	}
+// }
+
+.nameFolder.onDragenterHighlight {
+	box-shadow: 0 0 0 1px #565656;
+	background: #212121;
+	z-index: 10;
+
+	&::after {
+		opacity: 0;
+	}
+}
+
+.picsioThemeLight {
+	.treeMenu {
+		background-color: #fff;
+		color: #666;
+		box-shadow: 0 0 15px rgba(0,0,0,0.3);
+
+		&Item {
+			.btnCollection {
+				&.yellow {
+					color: $brandColorLightTheme;
+				}
+			}
+			&:hover {
+				background-color: $brandColorLightTheme;
+				color: $bgColorLightTheme;
+
+				.btnCollection {
+					background: none !important;
+				}
+			}
+		}
+	}
+
+	.nameFolder.onDragenterHighlight {
+		box-shadow: 0 0 0 1px $brandColor;
+		background: #f4f4f4;
+	}
+
+	@include media('>=desktop') {
+		.popperWrapper {
+			.PicsioPopper__arrow {
+				background-color: #fff;
+			}
+		}
+	}
+}

@@ -1,0 +1,821 @@
+@import './billingOverview';
+
+.wrapperPageBilling {
+
+	.pageBilling {
+
+		.pageContainer {
+			height: 100%;
+		}
+
+		// .pageInnerContent {
+		// 	margin-bottom: 0 !important;
+		// }
+
+		.billingInfo {
+			margin-bottom: 25px;
+			font-size: 14px;
+			line-height: normal;
+			padding-right: 15px;
+			max-width: 560px;
+
+			&__highlight {
+				color: #fff;
+			}
+		}
+
+// invoice tab
+		.pageTabsContentInvoices {
+			color: #ccc;
+			font-size: 14px;
+			box-sizing: border-box;
+			height: 100%;
+			// max-width: 1000px;
+			//margin: 0 auto;
+			display: flex;
+			flex-direction: column;
+
+			.billingInfo,
+			&__head {
+				flex: none;
+			}
+
+			&__table {
+				width: 100%;
+				max-width: 600px;
+			}
+
+			&__items {
+				margin-bottom: 15px;
+				overflow: auto;
+				flex: auto;
+			}
+
+			&__head,
+			&__item {
+				display: flex;
+				justify-content: space-between;
+				margin-bottom: 40px;
+			}
+
+			&__date,
+			&__amount,
+			&__desc,
+			&__status {
+				padding: 0 5px;
+				box-sizing: border-box;
+			}
+
+			&__date {
+				flex: 1 1 17%;
+				min-width: 60px;
+				padding-left: 0;
+			}
+
+			&__amount {
+				flex: 1 1 13%;
+				min-width: 50px;
+			}
+
+			&__desc {
+				flex: 1 1 48%;
+			}
+
+			&__status {
+				flex: 1 1 22%;
+				display: flex;
+				justify-content: space-between;
+				min-width: 90px;
+
+				> span {
+					display: block;
+					width: 100%;
+				}
+
+				&--paid {
+					color: $green;
+				}
+
+				.downloadInvoiceBtn {
+					margin-right: 15px;
+					color: #ccc;
+					cursor: pointer;
+				}
+			}
+
+			@include media('<desktop') {
+				height: 100%;
+				max-width: 400px;
+				margin: 0;
+
+				&__head {
+					display: none;
+				}
+
+				&__item {
+					display: block;
+					position: relative;
+				}
+
+				&__date,
+				&__amount,
+				&__desc,
+				&__status {
+					width: 100%;
+					text-align: left;
+					line-height: 21px;
+				}
+
+				&__date {
+					font-size: 24px;
+					font-weight: 300;
+				}
+
+				&__status {
+					.downloadInvoiceBtn {
+						position: absolute;
+						top: 2px;
+						right: 0;
+					}
+				}
+			}
+		}
+
+// overview tab
+		.pageTabsContentOverview {
+			color: #ccc;
+			height: 100%;
+			box-sizing: border-box;
+			display: flex;
+			flex-direction: column;
+
+			@include media('<desktop') {
+				max-width: 400px;
+				margin: 0;
+			}
+
+			&__item {
+				margin-bottom: 60px;
+			}
+
+			&__title {
+				font-size: 24px;
+				font-weight: 300;
+				margin-bottom: 5px;
+				color: #fff;
+				line-height: 1.5;
+			}
+
+			&__plans {
+				display: flex;
+				justify-content: space-between;
+				margin-bottom: 25px;
+				max-width: 950px;
+				flex-wrap: wrap;
+				margin: 0 -5px;
+			}
+
+			&__plan {
+				flex: 0 0 calc(100% - 10px);
+				height: 270px;
+				background-color: #333;
+				text-align: center;
+				color: #fff;
+				padding: 0 0 5px;
+				box-sizing: border-box;
+				display: flex;
+				flex-direction: column;
+				margin: 0 5px 10px;
+				align-items: center;
+
+				@media screen and (min-width: 560px) {
+					flex: 0 0 calc(50% - 10px);
+				}
+
+				@include media('>=desktop') {
+					flex: 0 0 calc(25% - 10px);
+				}
+
+				&__title {
+					font-size: 22px;
+					font-weight: 300;
+					padding: 15px 10px;
+					border-bottom: 1px solid #676767;
+					margin-bottom: 20px;
+					width: 100%;
+					box-sizing: border-box;
+				}
+
+				&__text {
+					font-size: 16px;
+					width: 100%;
+					max-width: 130px;
+					margin: 0 auto;
+					line-height: 1.3;
+				}
+
+				&__selector {
+					width: 100%;
+					width: 160px;
+					margin: auto;
+					margin-bottom: 0;
+
+					.UIRadio {
+						margin-bottom: 0;
+						padding: 10px;
+
+						&:first-child {
+							border-bottom: 1px solid #676767;
+						}
+
+						&__input {
+							margin-right: 12px;
+						}
+					}
+				}
+
+				&__incrementor {
+					display: flex;
+					justify-content: center;
+					margin: auto;
+
+					.UIInputIncremental {
+						flex-direction: column;
+						flex: 0 0 40%;
+
+						&:first-child {
+							margin-right: 10px;
+						}
+
+						&__input {
+							margin-bottom: 10px;
+						}
+
+						[type='text'] {
+							height: 30px;
+							padding: 5px 10px;
+							text-align: center;
+						}
+
+						@include media('<tablet') {
+							flex: 0 0 70px;
+						}
+					}
+				}
+
+				&__payAsYouGo {
+
+					.pageTabsContentOverview__plan__text {
+						margin-bottom: 10px;
+					}
+
+					.pageTabsContentOverview__plan__selector {
+
+						.UIRadio {
+
+							&:first-child {
+								border-bottom: none;
+							}
+						}
+					}
+				}
+
+				&.actPlan{
+					background-color: $brandColor;
+					color: #000;
+
+					.UIRadio {
+						&__input {
+							border-color: #000;
+							display: inline-flex;
+
+							span {
+								vertical-align: top;
+							}
+						}
+						&--checked {
+							.UIRadio__input {
+								&::before {
+									background: #000;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.planInfoAndCredits {
+				max-width: 750px;
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-start;
+			}
+
+			&__subscribe {
+				display: flex;
+				justify-content: space-between;
+				max-width: 750px;
+				align-items: center;
+				flex-wrap: wrap;
+
+				&__text {
+					margin-right: 10px;
+				}
+
+				&__btns {
+					margin-bottom: 20px;
+					width: 100%;
+
+					.button {
+						min-width: 140px;
+					}
+
+					.picsioLink {
+						margin-left: 10px;
+					}
+
+					@include media('<tablet') {
+						margin-bottom: 0;
+						flex: 1 0 250px;
+						max-width: 290px;
+						display: flex;
+						justify-content: space-between;
+
+						.picsioLink {
+							padding: 14px 0;
+						}
+					}
+				}
+
+				&__credits {
+					display: flex;
+					font-size: 14px;
+					justify-content: space-between;
+					align-items: center;
+					@include media('<tablet') {
+						align-self: flex-end;
+						margin-bottom: 25px;
+					}
+				}
+
+				&__btnBlock {
+					display: flex;
+					align-items: center;
+					height: 24px;
+					border-radius: 20px 20px 20px 20px;
+					background-color: #333;
+
+					span {
+						padding: 4px 5px;
+						cursor: pointer;
+
+						&:first-child {
+							background-color: $brandColor;
+							border-radius: 20px 20px 20px 20px;
+							color: #000;
+							cursor: default;
+						}
+					}
+				}
+			}
+
+			&__cards {
+				margin-bottom: 30px;
+				padding-right: 10px;
+				max-width: 750px;
+
+				.pageTabsContentOverview__title {
+					margin-bottom: 20px;
+				}
+
+				&__container {
+					margin-bottom: 30px;
+					display: flex;
+					justify-content: space-between;
+					flex-wrap: wrap;
+					max-width: 840px;
+				}
+			}
+
+			&__card {
+				font-size: 14px;
+				line-height: 1.5;
+				margin-bottom: 25px;
+				flex: 1 0 250px;
+				max-width: 290px;
+				display: flex;
+				justify-content: flex-start;
+
+				&__info {
+					display: flex;
+					align-items: flex-start;
+					margin-right: 15px;
+				}
+
+				&__logo {
+					margin-right: 15px;
+					width: 65px;
+					height: 42px;
+					background: url(https://assets.pics.io/img/cards.png) no-repeat left top / auto 100%;
+					&.iconVisa {
+						background-position: 0 top;
+					}
+					&.iconMastercard {
+						background-position: -66px top;
+					}
+					&.iconDiscover {
+						background-position: -132px top;
+					}
+					&.iconAmericanexpress {
+						background-position: -198px top;
+					}
+					&.iconDinersclub {
+						background-position: -264px top;
+					}
+					&.iconJcb {
+						background-position: -330px top;
+					}
+					&.iconUnknown {
+						width: 100%;
+
+						@media screen and (min-width: 700px) {
+							width: 434px;
+						}
+					}
+				}
+
+				.button {
+					width: auto;
+					align-items: flex-end;
+					margin-left: 10px;
+				}
+
+				@include media('<tablet') {
+					justify-content: space-between;
+				}
+			}
+
+			.card__unknown {
+				flex: 1 0 100%;
+				max-width: 750px;
+				align-items: center;
+				justify-content: space-between;
+				flex-wrap: wrap;
+
+				.pageTabsContentOverview__card__info {
+					align-items: center;
+					flex-wrap: wrap;
+					white-space: nowrap;
+				}
+
+				.button {
+					margin-left: 0;
+				}
+
+				@include media('<desktop') {
+					.pageTabsContentOverview__card__info {
+						width: 100%;
+						margin: 0;
+					}
+
+					.iconUnknown {
+						width: 100%;
+						background-size: 100% auto;
+						margin-bottom: 15px;
+						margin-right: 0;
+						height: auto;
+						padding-top: 11%;
+					}
+				}
+			}
+
+			&__coupon {
+				flex: 0 0 350px;
+
+				@include media('<tablet') {
+					flex: 1 1 100%;
+				}
+
+				&__text {
+					font-size: 14px;
+					line-height: 1.5;
+					margin-bottom: 18px;
+
+					span {
+						color: #fff;
+					}
+				}
+
+				&__inputs {
+					display: flex;
+					justify-content: space-between;
+
+					.UIInput {
+						margin: 0;
+						margin-right: 10px;
+						flex: 0 0 48%;
+					}
+
+					.button {
+						flex: 0 0 48%;
+					}
+				}
+			}
+		}
+
+// info tab
+		.pageTabsContentInfo {
+			height: 100%;
+			box-sizing: border-box;
+			max-width: 1000px;
+			//margin: 0 auto;
+			display: flex;
+			flex-direction: column;
+
+			@include media('<desktop') {
+				max-width: 400px;
+				margin: 0;
+			}
+
+			&__text {
+				font-size: 14px;
+				line-height: 1.5;
+				margin-bottom: 25px;
+				color: #ccc;
+
+				span {
+					color: $brandColor;
+				}
+			}
+
+			&__items {
+				max-width: 410px;
+				margin: 0 -5px;
+
+				> div {
+					flex: 1;
+					display: flex;
+
+					.UIInput {
+						flex: 1;
+						margin: 0 5px 15px;
+
+						&:only-child {
+							flex: 0 0 calc(100% - 10px);
+						}
+					}
+
+					select {
+						margin-bottom: 0;
+					}
+
+					.customSelect,
+					.UITextarea {
+						flex: 1;
+						margin: 0 5px 15px;
+					}
+
+					.customSelect__label {
+						color: inherit;
+					}
+
+					@include media('<desktop') {
+						flex-wrap: wrap;
+
+						.UIInput,
+						.UIInput:only-child {
+							flex: 1 0 calc(100% - 20px);
+						}
+					}
+				}
+			}
+
+      &__item {
+        display: flex;
+        flex-flow: column;
+
+        &--group {
+          flex-flow: row nowrap;
+
+          > div {
+            flex: 0 50%;
+          }
+
+					@include media('<desktop') {
+						> div {
+							flex-basis: 100%;
+						}
+					}
+        }
+
+        &__row {
+          flex: 1 auto;
+          display: inline-flex;
+          margin: 0 5px 15px;
+          box-sizing: border-box;
+
+          &--value {
+            padding-top: 21px;
+          }
+
+          .#{$picsioTextFieldClassName} {
+            width: 100%;
+            position: relative;
+          }
+
+          .#{$picsioInputHelperTextClassName} {
+            max-width: 100%;
+          }
+
+          @include media('<desktop') {
+						&--value {
+              padding-top: 0;
+						}
+					}
+        }
+
+        &--tax {
+          .#{$picsioSelectClassName} {
+            &__display {
+              display: inline-flex;
+              align-items: center;
+
+              .flagImage {
+                width: 18px;
+                height: 18px;
+                font-size: 18px;
+                margin-right: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              }
+            }
+          }
+        }
+      }
+		}
+	}
+}
+
+.taxOption {
+  .#{$picsioMenuItemClassName} {
+    &__text {
+      padding: 0 6px !important;
+
+      &--secondary {
+        line-height: 12px;
+      }
+    }
+  }
+
+  .flagImage {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    padding: 0 6px;
+  }
+}
+
+.picsioThemeLight {
+	.wrapperPageBilling {
+
+		.pageBilling {
+
+			.pageTabsContentInvoices {
+				color: #666;
+
+				&__item {
+					color: #999;
+				}
+
+				&__head {
+					color: #666;
+				}
+
+				&__status {
+					&--paid {
+						color: $darkgreen;
+					}
+					.downloadInvoiceBtn {
+						color: rgba(0,0,0, 0.3);
+					}
+				}
+			}
+
+			.pageTabsContentOverview {
+				color: #666;
+
+				&__text {
+
+					span {
+						color: #000;
+					}
+				}
+
+				&__title {
+					color: #666;
+				}
+
+				&__plan {
+					background-color: #f4f4f4;
+					color: #666;
+
+					&__title {
+						color: #000;
+						border-color: #fff;
+					}
+
+					.UIRadio {
+
+						&:first-child {
+							border-color: #fff;
+						}
+					}
+
+					&.actPlan {
+						background-color: $brandColorLightTheme;
+						color: #fff;
+
+						.pageTabsContentOverview__plan__title {
+							color: #fff;
+							border-color: #fff;
+						}
+
+						.UIRadio {
+
+							&__input {
+								border-color: #fff;
+							}
+							&--checked {
+								.UIRadio__input::before {
+									background: #fff;
+								}
+							}
+						}
+					}
+				}
+
+				&__coupon {
+
+					&__text {
+
+						span {
+							color: #000;
+						}
+					}
+				}
+
+				&__subscribe {
+
+					&__btnBlock {
+						background-color: #d5d5d5;
+						color: #000;
+					}
+				}
+			}
+
+			.pageTabsContentInfo {
+				&__text {
+					color: #666;
+
+					span {
+						color: $brandColorLightTheme;
+					}
+				}
+			}
+
+			.billingInfo__highlight {
+				color: #000;
+			}
+		}
+	}
+}
+
+
+
+.billingPlans {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin-bottom: 25px;
+	max-width: 760px;
+	margin: 0 -5px;
+
+	@include media('>=desktop') {
+		max-width: 570px;
+		justify-content: flex-start;
+	}
+
+	@include media('>=widescreen') {
+		max-width: 950px;
+	}
+}
+
+@include media('<=tablet') {
+	.deleteTeammatesAlert {
+		margin-top: 30px;
+	}
+}

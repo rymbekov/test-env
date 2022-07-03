@@ -1,0 +1,313 @@
+:root,
+html.picsioThemeDark {
+  --text-background-color: #161616;
+}
+
+html.picsioThemeLight {
+  --text-background-color: #fff;
+}
+
+.switchAccountDialog {
+	box-sizing: border-box;
+
+	@include media('<desktop') {
+		.simpleDialogContentInner {
+			padding: 25px 20px 40px 10px;
+		}
+		
+		.simpleDialogBox {
+			max-width: 290px;
+		}
+
+		.simpleDialogContent {
+			padding: 0 0 0 10px;
+		}
+
+		.simpleDialogHeader {
+			.simpleDialogTitle {
+				padding-left: 20px;
+			}
+		}
+
+		.myTeamUser {
+			padding: 0;
+		}
+	}
+
+	.accountDescription {
+		display: flex;
+		flex-direction: column;
+		padding: 0 0 0 15px;
+	}
+
+	.accountName {
+		font-size: 20px;
+		font-weight: 300;
+	}
+
+	.accountRole {
+		font-size: 14px;
+	}
+
+	.disabled {
+		opacity: 0.5;
+		pointer-events: none;
+	}
+
+	.error {
+		margin: 0 0 10px;
+		color: firebrick;
+		font-size: 0.8em;
+	}
+	.socialLoginTxtOr {
+		.separator {
+			width: 27px;
+			display: block;
+			margin: 0 auto;
+			background-color: var(--text-background-color);
+			position: relative;
+			z-index: 2;
+			top: -2px;
+			line-height: 22px;
+		}
+	}
+	.UIInput {
+		&.formInputAddAccount {
+			input {
+				height: 50px;
+			}
+			.UIInput__input__button {
+				bottom: 10px;
+			}
+		}
+	}
+	.simpleDialogHeader {
+		display: flex;
+		flex-direction: column-reverse;
+		.simpleDialogBtnCross {
+			display: flex;
+			width: 100%;
+			flex-direction: row-reverse;
+			height: 25px;
+			svg {
+				padding-top: 10px;
+				padding-right: 10px;
+			}
+		}
+		.simpleDialogTitle {
+			text-align: center;
+			padding-left: 20px;
+		}
+	}
+}
+
+.accountList {
+	padding: 0;
+	margin: 0 0 5px;
+	list-style: none;
+
+	.myTeamUser {
+		flex-wrap: nowrap;
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+	}
+
+	.myTeamLogo {
+		width: 16px;
+		height: 16px;
+		object-fit: cover;
+		border-radius: 100%;
+		margin-right: 7px;
+	}
+
+	.myTeamUserRole {
+		font-size: 13px;
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+
+		svg {
+			margin-right: 7px;
+		}
+
+		.myTeam {
+			margin-right: 5px;
+		}
+	}
+
+	li {
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		position: relative;
+		border-radius: 25px;
+		margin-bottom: 12px !important;
+		color: #ccc;
+	}
+
+	.removeAccount {
+		position: absolute;
+		top: 50%;
+		right: 0;
+		transform: translateY(-50%);
+		font-size: 12px;
+
+		&:hover {
+			cursor: pointer;
+			color: #f60;
+		}
+	}
+
+	@include media('<desktop') {
+		.myTeamUserName {
+			font-size: 18px;
+		}
+	}
+}
+
+
+.simpleDialogContentInner.loginForm {
+	padding: 25px 50px 1px 5px;
+
+	@include media('<desktop') {
+		padding: 25px 10px 1px 0;
+	}
+}
+
+.loginButtons {
+	text-align: center;
+	font-size: 14px;
+	margin: 30px 0 15px;
+
+	@include media('<desktop') {
+		> * {
+			width: 100%;
+		}
+	}
+
+	.signInWithNetworkButtons {
+		display: flex;
+		justify-content: space-around;
+		flex-direction: column;
+    width: 100%;
+
+		@include media('<phone') {
+			flex-direction: column;
+			height: 100%;
+			justify-content: space-between;
+		}
+		.microsoftBtn {
+			display: flex;
+			align-items: center; 
+			border-radius: 5px;
+			margin-top: 16px;
+			width: 100%;
+			&:hover {
+				background-color: unset;
+			}
+			i {
+				display: flex;
+				width: 48px;
+    		height: 48px;
+				justify-content: center;
+				align-items: center;
+			}
+		}
+		.googleBtn {
+			display: flex;
+			align-items: center; 
+			border-radius: 5px;
+			width: 100%;
+			i {
+				display: flex;
+				background-color: #fff;
+				width: 48px;
+    		height: 48px;
+				justify-content: center;
+				align-items: center;
+			}
+		}
+	}
+
+	@include media('>=desktop') {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-direction: column;
+
+		.socialLoginTxtOr {
+			.separator {
+				flex: 1;
+				background-color: var(--text-background-color);
+			}
+		}
+
+		.buttonAction {
+			width: 100%;
+			min-width: 120px;
+			height: 50px;
+			border-radius: 4px;
+		}
+	}
+}
+
+.loginForgotPassword {
+	margin-top: 15px;
+	font-size: 14px;
+}
+
+
+.picsioThemeLight {
+	.accountList {
+		li {
+			color: #666;
+		}
+	}
+	.signInWithNetworkButtons {
+		display: flex;
+		justify-content: space-around;
+		flex-direction: column;
+    width: 100%;
+
+		.microsoftBtn {
+			display: flex;
+			align-items: center; 
+			border-radius: 5px;
+			margin-top: 16px;
+			width: 100%;
+			border: 1px solid #8C8C8C;
+			&:hover {
+				background-color: unset;
+			}
+			i {
+				display: flex;
+				width: 48px;
+    		height: 48px;
+				justify-content: center;
+				align-items: center;
+				border-right: 1px solid;
+			}
+		}
+		.googleBtn {
+			display: flex;
+			align-items: center; 
+			border-radius: 5px;
+			width: 100%;
+			border: 1px solid #4285f4;
+			background-color: #4285f4;
+			color: #fff;
+			i {
+				display: flex;
+				background-color: #fff;
+				width: 48px;
+    		height: 48px;
+				justify-content: center;
+				align-items: center;
+			}
+		}
+	}
+}

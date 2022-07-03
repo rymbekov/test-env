@@ -1,0 +1,36 @@
+@import 'cssVariables';
+
+.wrapperPageInboxSettings {
+	.pageContainer {
+		width: 100%;
+	}
+
+	.urlEditorInputs .customSelect {
+		min-width: 166px;
+	}
+
+	@include media('<tablet') {
+		.slideCheckboxWrapper {
+			display: none;
+		}
+	}
+
+	@include media('>=tablet') {
+		.pageInnerContent .pageMenuItemBtns {
+			display: none;
+		}
+	}
+}
+
+
+.websiteDateFields {
+	display: flex;
+	margin: 0 -5px;
+	
+	.UIInput {
+		margin: 0 5px;
+		@include media('<phone') {
+			width: 100%;
+		}
+	}
+}

@@ -1,0 +1,27 @@
+$defaultBaseColorDark: rgba(255, 255, 255, 0.1);
+$defaultHighlightColorDark: rgba(255, 255, 255, 0.05);
+$defaultBaseColorLight: rgba(0, 0, 0, 0.1);
+$defaultHighlightColorLight: rgba(0, 0, 0, 0.05);
+
+@keyframes skeletonAnimation {
+	0% {
+		opacity: 0.8;
+	}
+	50% {
+		opacity: 0.4;
+	}
+	100% {
+		opacity: 0.8;
+	}
+}
+
+.skeletonPending {
+	background-image: linear-gradient(90deg, $defaultBaseColorDark, $defaultHighlightColorDark, $defaultBaseColorDark);
+	animation: skeletonAnimation 1.5s ease-in-out infinite;
+}
+
+.picsioThemeLight {
+  .skeletonPending {
+		background-image: linear-gradient(90deg, $defaultBaseColorLight, $defaultBaseColorLight, $defaultBaseColorLight);
+  }
+}

@@ -1,0 +1,71 @@
+.twoFactorAuth {
+  margin-top: 30px;
+  width: 100%;
+
+  img {
+    vertical-align: top;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+
+    p {
+      margin: 0 0 1em;
+    }
+  }
+
+  &__image {
+    margin-right: 30px;
+    width: 200px;
+  }
+
+  &__description {
+    flex: 1
+  }
+
+  &__recoveryCode {
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--secondary-contrast-color);
+  }
+
+  &__code {
+    width: 100%;
+
+    // .UIInput {
+    //   width: 200px;
+    // }
+
+    &-label {
+      margin-bottom: 4px;
+    }
+
+    &-error {
+      margin-top: 4px;
+      color: red;
+    }
+  }
+}
+
+.react-code-input {
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+  }
+  input[type="number"] {
+      -moz-appearance: textfield;
+  }
+
+  input {
+    display: inline-block;
+    -moz-appearance: textfield;
+    width: 40px;
+    height: 60px;
+    text-align: center;
+  }
+}
+

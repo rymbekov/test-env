@@ -1,0 +1,149 @@
+.linkedAssets {
+	color: #aeaeae;
+	font-size: 13px;
+	line-height: 15px;
+	font-weight: 300;
+	position: relative;
+
+	.picsioSpinner {
+		min-height: 40px;
+
+		.titleSpinner {
+			padding: 0 14px;
+		}
+	}
+}
+
+.linkedAssetsButtons {
+	display: flex;
+	margin-top: 10px;
+
+	.PicsioButton {
+		flex: 1;
+		margin-top: 10px;
+
+		&:not(:only-child) {
+			margin-right: 0;
+		}
+	}
+}
+
+.linkedAssetsList {
+	padding: 0 0 0 16px;
+	margin-bottom: -2px;
+	max-height: 400px;
+	overflow: auto;
+	position: relative;
+
+	.linkedAssets.isLoading & {
+		pointer-events: none;
+	}
+}
+
+.linkedAssetsGroup {
+	margin-bottom: 2px;
+
+	&:not(:last-child) {
+		margin-bottom: 10px;
+	}
+}
+
+.linkedAsset {
+	display: flex;
+	align-items: center;
+	max-width: 100%;
+	margin-bottom: 4px;
+	position: relative;
+
+	&:first-child {
+		color: #fff;
+	}
+
+	& + .linkedAsset {
+		&::before {
+			content: '';
+			position: absolute;
+			top: -10px;
+			bottom: 50%;
+			left: 2px;
+			width: 1px;
+			background-color: #7d7d7d;
+		}
+	}
+
+	&-status {
+		width: 5px;
+		height: 5px;
+		min-width: 5px;
+		border-radius: 50%;
+		background-color: #7d7d7d;
+		margin-right: 5px;
+		position: relative;
+		z-index: 1;
+	}
+
+	&-name {
+		margin-right: 5px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	&:not(.is-selected) {
+		.linkedAsset-name {
+			cursor: pointer;
+		}
+	}
+
+	.svg-icon {
+		cursor: pointer;
+		font-size: 8px;
+		padding: 4px;
+		margin: -4px 0 -4px -4px;
+
+		&:hover {
+			color: #fff;
+		}
+	}
+}
+
+.linkedAsset.is-selected {
+	.linkedAsset-status {
+		background-color: $brandColor;
+	}
+}
+
+.linkedAsset-placeholder {
+	padding-left: 10px;
+	color: $gray;
+}
+
+.picsioThemeLight {
+	.linkedAsset {
+		&:first-child {
+			color: #333;
+		}
+
+		& + .linkedAsset {
+			&::before {
+				background-color: #aeaeae;
+			}
+		}
+
+		&-status {
+			background-color: #aeaeae;
+		}
+
+		.svg-icon {
+			&:hover {
+				color: #333;
+			}
+		}
+	}
+
+	.linkedAsset.is-selected {
+		.linkedAsset-status {
+			background-color: $brandColorLightTheme;
+		}
+	}
+}

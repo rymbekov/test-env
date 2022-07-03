@@ -1,0 +1,67 @@
+.MenuOnHover {
+  position: relative;
+  z-index: 2;
+
+  &Opener {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 0 10px;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  &List {
+    position: absolute;
+    bottom: 100%;
+    background-color: var(--menu-background-color);
+    box-shadow: var(--menu-shadow-color);
+    text-align: left;
+
+    &:empty {
+      display: none;
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 10px 0;
+
+      &::before {
+        content: '';
+        border-style: solid;
+        border-width: 10px 10px 0 10px;
+        border-color: var(--menu-background-color) transparent transparent transparent;
+        position: absolute;
+        top: 100%;
+      }
+    }
+
+    &-Center {
+      left: 50%;
+      margin-left: -50%;
+
+      ul::before {
+        left: 50%;
+        margin-left: -10px;
+      }
+    }
+
+    &-Left {
+      left: 0;
+
+      ul::before {
+        left: 15px;
+      }
+    }
+
+    &-Right {
+      right: 0;
+
+      ul::before {
+        right: 15px;
+      }
+    }
+  }
+}

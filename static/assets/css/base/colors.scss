@@ -1,0 +1,73 @@
+// Colors
+$yellow: #FFC000;
+$green: #9BFC02;
+$darkgreen: #00BE4C;
+$red: #c00;
+$blue: #3B94FB;
+$orange: #FF6B00;
+
+// Contrast Colors
+$white: #fff;
+$black: #000;
+
+// Shades of gray
+$light-lightgray: #f4f4f4;
+$silver: #ebebeb;
+$lightgray: #ccc;
+$gray: #999;
+$darkgray: #666;
+$dark-darkgray: #333;
+$light-lightblack: #242424;
+$lightblack: #161616;
+
+// State
+$negative: #f36;
+$positive: $green;
+$warning: $orange;
+$positiveColorLightTheme: $darkgreen;
+$success: $green;
+$error: $red;
+
+// Brand
+$brand-color: $yellow;
+$brandColor: $yellow;
+$brandColorHover: #FECB2E;
+$brandColorLightTheme: $blue;
+$brandColorLightThemeHover: #3B94FB;
+
+// Background
+$bgColor: $light-lightblack;
+$bgColorLightTheme: #fff;
+$bgColorLight: $light-lightgray;
+$screenBgDark: #262525;
+
+// Button
+$buttonColorLight: $white;
+$buttonColorDark: $black;
+
+// Text
+$textColorLight: $darkgray;
+$textColorDark: $lightgray;
+
+// Border
+$borderDark: $black;
+$borderLight: $light-lightgray;
+
+// Tree
+$treeButtonHoverBg: rgba(255,255,255,0.1);
+$treeButtonHoverBgLightTheme: rgba(0,0,0,0.1);
+
+// Panel
+$bg-panel-dark: $dark-darkgray;
+
+// Chart
+$chartAxisLineColor: #e0e0e0;
+$chartAxisLineDarkColor: #2b2b2b;
+
+html.picsioThemeDark {
+  --separate-border-color: rgba(255, 255, 255, 0.05);
+}
+
+html.picsioThemeLight {
+  --separate-border-color: rgba(0, 0, 0, 0.05);
+}

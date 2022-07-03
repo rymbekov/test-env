@@ -1,0 +1,73 @@
+// @TODO: replace all this buttonSmall on PicsioIconButton
+.buttonSmall {
+	cursor: pointer;
+	box-sizing: border-box;
+	padding: 5px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	min-width: 25px;
+	height: 25px;
+	padding: 4px;
+	line-height: 17px;
+	transition: all .3s ease;
+	border: 0;
+	background-color: transparent;
+	color: #999;
+
+	[class^='icon'] {
+		font-size: 9px;
+
+		&:only-child {
+			margin: auto;
+		}
+	}
+
+	&:hover {
+		color: #fff;
+		background-color: rgba(255, 255, 255, 0.05);
+	}
+}
+
+.picsioThemeLight {
+	.buttonSmall {
+		&:hover {
+			color: $lightblack;
+			background-color: rgba(0, 0, 0, 0.05);
+		}
+	}
+}
+
+.PicsioIconButton {
+  &.PicsioButton--size--default {
+    cursor: pointer;
+    display: inline-flex;
+    padding: 3px;
+    min-height: 26px;
+    width: 26px;
+    text-align: center;
+    box-sizing: border-box;
+    transition: all .3s ease;
+    // color: var(--secondary-main-color);
+
+    .detailsPanel &:not(.picsioLink) {
+      margin-top: -7px;
+    }
+
+    .detailsPanel &,
+    &.dropdownTreeOpener {
+      &.isActive,
+      &:hover {
+        color: var(--secondary-contrast-color);
+        background-color: var(--secondary-button-bg-hover-color);
+      }
+    }
+  }
+
+  &.inProgress {
+    .icon-sync {
+      animation: spin 3s linear infinite;
+    }
+  }
+}

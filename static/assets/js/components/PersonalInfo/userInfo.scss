@@ -1,0 +1,147 @@
+.userInfo {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.userInfo li {
+  border-top: 1px solid #000;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: left;
+  padding: 10px 0 5px;
+  position: relative;
+}
+
+.userInfo li .paramName {
+  flex: 2 0 200px;
+  margin: 0 15px 5px 0;
+}
+
+.userInfo li .param {
+  flex: 3 0 300px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+a {
+  color: #ffcc00;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+pre {
+  font-size: 12px;
+}
+
+.comment div {
+  font-weight: bold;
+}
+
+.comment p {
+  font-weight: normal;
+  font-size: 14px;
+  margin: 0 0 15px;
+}
+
+.opener {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.opener::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background-color: transparent;
+}
+
+.opener:hover::before {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.opener::after {
+  top: 50%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(136, 183, 213, 0);
+  border-top-color: #ccc;
+  border-width: 4px;
+  margin-left: -2px;
+  margin-top: -4px;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+.opener.active::after {
+  transform: rotate(0);
+  transform-origin: 0% 0%;
+  margin-left: -4px;
+  margin-top: -2px;
+}
+
+.slide {
+  display: none;
+}
+
+.slide.active {
+  display: block;
+}
+
+.userName {
+  color: #eee;
+}
+
+.picsioThemeLight .pageWrapper {
+  background: #fff;
+}
+
+.picsioThemeLight .pageWrapper .page .pageHeader {
+  background: #f4f4f4;
+}
+
+.picsioThemeLight .pageWrapper .page .pageHeader__title,
+.picsioThemeLight .pageWrapper .page .pageHeader__btn span,
+.picsioThemeLight .pageInnerContentBody {
+  color: #666;
+}
+
+.picsioThemeLight .pageWrapper .page .pageHeader__btn:hover span {
+  color: #000;
+}
+
+.picsioThemeLight .userInfo li {
+  border-top-color: #d9d9d9;
+}
+
+.picsioThemeLight .opener {
+  color: #000;
+}
+
+.picsioThemeLight .opener:hover::before {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.picsioThemeLight .opener::after {
+  border-top-color: #666;
+}

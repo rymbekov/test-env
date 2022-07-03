@@ -1,0 +1,549 @@
+{
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true,
+    "jest/globals": true
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "jsx": true,
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "requireConfigFile": false
+  },
+  "parser": "@babel/eslint-parser",
+  "plugins": [
+    "jsdoc",
+    "promise",
+    "jsx-control-statements",
+    "jest"
+  ],
+  "extends": [
+    "airbnb",
+    "airbnb/hooks",
+    "plugin:jsx-control-statements/recommended"
+  ],
+  "rules": {
+    "no-tabs": ["warn", { "allowIndentationTabs": true }],
+    "indent": ["warn", 2],
+    "spaced-comment": ["warn"],
+    "space-before-function-paren": ["warn"],
+    "object-shorthand": ["warn"],
+    "no-param-reassign": ["warn"],
+    "arrow-parens": ["warn"],
+    "object-curly-newline": ["warn"],
+    "no-else-return": ["warn"],
+    "max-len": ["warn"],
+    "prefer-const": ["warn"],
+    "comma-dangle": ["warn"],
+    "implicit-arrow-linebreak": ["warn"],
+    "function-paren-newline": ["warn"],
+    "no-self-assign": ["warn"],
+    "no-bitwise": ["warn"],
+    "prefer-destructuring": ["warn"],
+    "consistent-return": ["warn"],
+    "import/prefer-default-export": ["warn"],
+    "import/extensions": ["warn"],
+    "arrow-body-style": ["warn"],
+    "no-use-before-define": ["warn"],
+    "block-scoped-var": ["warn"],
+    "comma-spacing": ["warn"],
+    "dot-notation": ["warn"],
+    "new-cap": ["warn"],
+    "no-confusing-arrow": ["warn"],
+    "no-nested-ternary": ["warn"],
+    "no-new": ["warn"],
+    "no-prototype-builtins": ["warn"],
+    "no-redeclare": ["warn"],
+    "no-return-assign": ["warn"],
+    "no-shadow": ["warn"],
+    "operator-linebreak": ["warn"],
+    "padded-blocks": ["warn"],
+    "react/no-array-index-key": ["warn"],
+    "vars-on-top": ["warn"],
+    "block-spacing": [
+      "warn"
+    ],
+    "brace-style": [
+      "warn"
+    ],
+    "keyword-spacing": [
+      "warn"
+    ],
+    "no-multi-assign": [
+      "warn"
+    ],
+    "no-sequences": [
+      "warn"
+    ],
+    "no-unused-expressions": [
+      "warn"
+    ],
+    "no-var": [
+      "warn"
+    ],
+    "one-var": [
+      "warn"
+    ],
+    "one-var-declaration-per-line": [
+      "warn"
+    ],
+    "prefer-arrow-callback": [
+      "warn"
+    ],
+    "prefer-template": [
+      "warn"
+    ],
+    "quotes": [
+      "warn"
+    ],
+    "semi": [
+      "warn"
+    ],
+    "semi-spacing": [
+      "warn"
+    ],
+    "space-before-blocks": [
+      "warn"
+    ],
+    "space-infix-ops": [
+      "warn"
+    ],
+    "yoda": [
+      "warn"
+    ],
+    "array-bracket-spacing": [
+      "warn"
+    ],
+    "camelcase": [
+      "warn"
+    ],
+    "class-methods-use-this": [
+      "warn"
+    ],
+    "computed-property-spacing": [
+      "warn"
+    ],
+    "eol-last": [
+      "warn"
+    ],
+    "eqeqeq": [
+      "warn"
+    ],
+    "import/no-mutable-exports": [
+      "warn"
+    ],
+    "import/no-useless-path-segments": [
+      "warn"
+    ],
+    "key-spacing": [
+      "warn"
+    ],
+    "no-await-in-loop": [
+      "warn"
+    ],
+    "no-cond-assign": [
+      "warn"
+    ],
+    "no-global-assign": [
+      "warn"
+    ],
+    "no-mixed-operators": [
+      "warn"
+    ],
+    "no-mixed-spaces-and-tabs": [
+      "warn"
+    ],
+    "no-multi-spaces": [
+      "warn"
+    ],
+    "no-multiple-empty-lines": [
+      "warn"
+    ],
+    "no-plusplus": [
+      "warn"
+    ],
+    "no-trailing-spaces": [
+      "warn"
+    ],
+    "no-void": [
+      "warn"
+    ],
+    "object-curly-spacing": [
+      "warn"
+    ],
+    "react/jsx-indent": [
+      "warn"
+    ],
+    "space-in-parens": [
+      "warn"
+    ],
+    "switch-colon-spacing": [
+      "warn"
+    ],
+    "template-curly-spacing": [
+      "warn"
+    ],
+    "jsx-a11y/click-events-have-key-events": [
+      "warn"
+    ],
+    "jsx-a11y/no-static-element-interactions": [
+      "warn"
+    ],
+    "no-control-regex": [
+      "warn"
+    ],
+    "no-continue": [
+      "warn"
+    ],
+    "no-extra-semi": [
+      "warn"
+    ],
+    "array-callback-return": [
+      "warn"
+    ],
+    "curly": [
+      "warn"
+    ],
+    "default-case": [
+      "warn"
+    ],
+    "guard-for-in": [
+      "warn"
+    ],
+    "import/first": [
+      "warn"
+    ],
+    "import/newline-after-import": [
+      "warn"
+    ],
+    "import/no-extraneous-dependencies": [
+      "warn"
+    ],
+    "import/no-named-as-default": [
+      "warn"
+    ],
+    "jsx-a11y/alt-text": [
+      "warn"
+    ],
+    "jsx-a11y/anchor-is-valid": [
+      "warn"
+    ],
+    "jsx-a11y/control-has-associated-label": [
+      "warn"
+    ],
+    "jsx-a11y/iframe-has-title": [
+      "warn"
+    ],
+    "jsx-a11y/interactive-supports-focus": [
+      "warn"
+    ],
+    "jsx-a11y/label-has-associated-control": [
+      "warn"
+    ],
+    "jsx-a11y/media-has-caption": [
+      "warn"
+    ],
+    "jsx-a11y/mouse-events-have-key-events": [
+      "warn"
+    ],
+    "jsx-a11y/no-autofocus": [
+      "warn"
+    ],
+    "jsx-a11y/no-noninteractive-element-interactions": [
+      "warn"
+    ],
+    "jsx-a11y/no-noninteractive-tabindex": [
+      "warn"
+    ],
+    "jsx-a11y/no-redundant-roles": [
+      "warn"
+    ],
+    "jsx-quotes": [
+      "warn"
+    ],
+    "lines-between-class-members": [
+      "warn"
+    ],
+    "new-parens": [
+      "warn"
+    ],
+    "newline-per-chained-call": [
+      "warn"
+    ],
+    "no-empty": [
+      "warn"
+    ],
+    "no-eval": [
+      "warn"
+    ],
+    "no-extend-native": [
+      "warn"
+    ],
+    "no-floating-decimal": [
+      "warn"
+    ],
+    "no-lonely-if": [
+      "warn"
+    ],
+    "no-loop-func": [
+      "warn"
+    ],
+    "no-restricted-globals": [
+      "warn"
+    ],
+    "no-restricted-syntax": [
+      "warn"
+    ],
+    "no-return-await": [
+      "warn"
+    ],
+    "no-self-compare": [
+      "warn"
+    ],
+    "no-shadow-restricted-names": [
+      "warn"
+    ],
+    "no-template-curly-in-string": [
+      "warn"
+    ],
+    "no-unneeded-ternary": [
+      "warn"
+    ],
+    "no-throw-literal": [
+      "warn"
+    ],
+    "no-unreachable": [
+      "warn"
+    ],
+    "no-useless-catch": [
+      "warn"
+    ],
+    "no-useless-computed-key": [
+      "warn"
+    ],
+    "no-useless-constructor": [
+      "warn"
+    ],
+    "no-useless-escape": [
+      "warn"
+    ],
+    "no-useless-return": [
+      "warn"
+    ],
+    "nonblock-statement-body-position": [
+      "warn"
+    ],
+    "operator-assignment": [
+      "warn"
+    ],
+    "prefer-object-spread": [
+      "warn"
+    ],
+    "prefer-promise-reject-errors": [
+      "warn"
+    ],
+    "prefer-rest-params": [
+      "warn"
+    ],
+    "prefer-spread": [
+      "warn"
+    ],
+    "quote-props": [
+      "warn"
+    ],
+    "radix": [
+      "warn"
+    ],
+    "react/require-default-props": [
+      "warn"
+    ],
+    // "": ["warn"],
+    // "": ["warn"],
+
+    "react-hooks/exhaustive-deps": [
+      "warn"
+    ],
+    "react/button-has-type": [
+      "warn"
+    ],
+    "react/default-props-match-prop-types": [
+      "warn"
+    ],
+    "react/jsx-boolean-value": [
+      "warn"
+    ],
+    "react/jsx-closing-bracket-location": [
+      "warn"
+    ],
+    "react/jsx-closing-tag-location": [
+      "warn"
+    ],
+    "react/jsx-curly-brace-presence": [
+      "warn"
+    ],
+    "react/jsx-curly-newline": [
+      "warn"
+    ],
+    "react/jsx-curly-spacing": [
+      "warn"
+    ],
+    "react/jsx-first-prop-new-line": [
+      "warn"
+    ],
+    "react/jsx-fragments": [
+      "warn"
+    ],
+    "react/jsx-indent-props": [
+      "warn"
+    ],
+    "react/jsx-max-props-per-line": [
+      "warn"
+    ],
+    "react/jsx-no-bind": [
+      "warn"
+    ],
+    "react/jsx-no-duplicate-props": [
+      "warn"
+    ],
+    "react/jsx-no-target-blank": [
+      "warn"
+    ],
+    "react/jsx-tag-spacing": [
+      "warn"
+    ],
+    "react/jsx-wrap-multilines": [
+      "warn"
+    ],
+    "react/no-access-state-in-setstate": [
+      "warn"
+    ],
+    "react/no-did-update-set-state": [
+      "warn"
+    ],
+    "react/no-find-dom-node": [
+      "warn"
+    ],
+    "react/no-this-in-sfc": [
+      "warn"
+    ],
+    "react/no-unused-prop-types": [
+      "warn"
+    ],
+    "react/no-unused-state": [
+      "warn"
+    ],
+    "react/prefer-stateless-function": [
+      "warn"
+    ],
+    "react/self-closing-comp": [
+      "warn"
+    ],
+    "react/sort-comp": [
+      "warn"
+    ],
+    "strict": [
+      "warn"
+    ],
+    "valid-typeof": [
+      "warn"
+    ],
+    "wrap-iife": ["warn"],
+    "jsdoc/require-hyphen-before-param-description": "warn",
+    "no-unused-vars": [
+      "warn",
+      {
+        "args": "after-used"
+      }
+    ],
+    "object-property-newline": [
+      "warn",
+      {
+        "allowAllPropertiesOnSameLine": true
+      }
+    ],
+    "import/no-unresolved": [
+      0
+    ],
+    "import/no-cycle": [
+      1,
+      {
+        "ignoreExternal": true
+      }
+    ],
+    "import/order": [
+      1
+    ],
+    "no-underscore-dangle": [
+      1,
+      {
+        "allow": [
+          "_id",
+          "_ids"
+        ]
+      }
+    ],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
+    "react/jsx-props-no-spreading": [
+      0
+    ],
+    "react/forbid-prop-types": [
+      1,
+      {
+        "forbid": [
+          "array",
+          "object"
+        ]
+      }
+    ],
+    "react/jsx-no-undef": [
+      2,
+      {
+        "allowGlobals": true
+      }
+    ],
+    "react/state-in-constructor": [
+      0
+    ],
+    "react/static-property-placement": [
+      1
+    ],
+    "react/destructuring-assignment": [
+      1,
+      "always",
+      {
+        "ignoreClassFields": true
+      }
+    ],
+    "react/prop-types": [
+      1
+    ],
+    "react/jsx-one-expression-per-line": [
+      0
+    ],
+    "react/no-unescaped-entities": [
+      0
+    ],
+    "import/no-named-as-default-member": [
+      0
+    ]
+  },
+  "globals": {
+    "amplitude": true,
+    "amplitudeKey": true,
+    "api": true,
+    "gapi": true,
+    "ExtendableBuiltin": true,
+    "StripeCheckout": true
+  }
+}

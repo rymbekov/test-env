@@ -1,0 +1,31 @@
+.storyIcons {
+	display: flex;
+	flex-wrap: wrap;
+	overflow: auto;
+	height: 100vh;
+	box-sizing: border-box;
+
+	.icon {
+		font-size: 24px;
+		margin: 5px;
+	}
+
+	.storyIcon {
+		flex: 0 0 20%;
+		text-align: center;
+		color: #fff;
+		margin-bottom: 15px;
+		font-weight: 200;
+		font-size: 13px;
+
+		.picsioThemeLight & {
+			color: #222;
+		}
+	}
+
+	.simpleView & {
+		.storyIconName {
+			display: none;
+		}
+	}
+}

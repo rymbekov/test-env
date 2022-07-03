@@ -1,0 +1,661 @@
+.dropdown {
+	color: #ccc;
+	font-size: 14px;
+	position: relative;
+	border-top: 1px solid #181818;
+	border-bottom: 1px solid #353535;
+
+	[role="grid"]::-webkit-scrollbar-thumb {
+		min-height: 40px;
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+
+	&.isError {
+		.dropdown-tags {
+			box-shadow: 0 0 0 2px $error;
+		}
+	}
+
+	[type='text'] {
+		background: none !important;
+
+		&:focus {
+			background: none;
+			box-shadow: none;
+		}
+	}
+
+	&-body-wrapper {
+		position: absolute;
+		z-index: 7;
+		top: calc(100% + 10px);
+		left: 0;
+		right: 0;
+		background-color: var(--background-main-color);
+		transition: opacity 0.3s ease, visibility 0.3s ease, display 0.3s linear 0.3s;
+		box-shadow: 0 0 20px rgba(0,0,0, 0.8);
+	}
+
+	&.disabled {
+		pointer-events: none;
+		opacity: .4;
+	}
+
+	&.inProgress {
+		.dropdown-tags-icon {
+			> .svg-icon {
+				animation: spin 3s linear infinite;
+			}
+		}
+	}
+
+	// &-hidden {
+	// 	visibility: hidden;
+	// 	opacity: 0;
+	// }
+
+	// &-visible {
+	// 	visibility: visible;
+	// 	opacity: 1;
+	// 	display: block !important;
+	// }
+
+	&-tags {
+		text-align: left;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		padding: 4px 20px 0 4px;
+		background-color: #303030;
+		box-shadow: 0 0 5px transparent;
+		// transition: all 0.3s ease;
+		min-height: 28px;
+
+		&-placeholder {
+			color: #666;
+			padding-top: 3px;
+			padding-left: 5px;
+
+			@include media('<desktop') {
+				padding-top: 13px;
+			}
+		}
+
+		.dropdown-focused & {
+			box-shadow: 0 0 0 2px $brandColorLightTheme;
+			background-color: #000;
+		}
+
+		&::after {
+			content: '';
+			top: 12px;
+			left: calc(100% - 15px);
+			border: solid transparent;
+			height: 0;
+			width: 0;
+			position: absolute;
+			pointer-events: none;
+			border-color: rgba(80, 80, 80, 0);
+			border-top-color: rgba(var(--secondary-contrast-color-rgb), 0.2);
+			border-width: 5px;
+			margin-left: -5px;
+		}
+	}
+
+	&-tags-icon {
+		padding-left: 30px;
+
+		> .svg-icon {
+			position: absolute;
+			top: 6px;
+			left: 6px;
+			color: #6e6e6e;
+			font-size: 16px;
+			z-index: 1;
+
+			@include media('<desktop') {
+				top: 16px;
+			}
+		}
+
+		.dropdown-filter {
+			[type="text"] {
+				padding-left: 0;
+			};
+		}
+
+		.tag + .dropdown-filter {
+			[type="text"] {
+				padding-left: 4px;
+			};
+		}
+	}
+
+	&-opener {
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: 100%;
+		width: 100%;
+		cursor: text;
+
+		.dropdown-focused & {
+			pointer-events: none;
+		}
+	}
+
+	&.readOnly {
+		border-top-color: transparent;
+		border-bottom-color: transparent;
+		.dropdown-tags {
+			background-color: rgba(48,48,48,0.2);
+
+			&::after {
+				content: none;
+			}
+		}
+	}
+
+	&-modifiedFeild {
+		&.dropdown-tags {
+			padding-right: 45px;
+		}
+	}
+
+	@include media('<desktop') {
+		.wrapperDetailsPanel & {
+			&-item {
+				&-descr,
+				&-title {
+					max-width: 205px;
+				}
+			}
+		}
+	}
+
+	@include media('<tablet') {
+		.wrapperDetailsPanel & {
+
+			&-item {
+				&-text {
+					min-width: 0;
+				}
+
+				&-descr,
+				&-title {
+					max-width: 100%;
+				}
+			}
+		}
+	}
+
+	&-close {
+		padding: 0;
+		margin: 0;
+		height: 30px;
+		width: 30px;
+		background: transparent;
+		border: none;
+		font-size: 11px;
+		cursor: pointer;
+		color: #999;
+		outline: none;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		&:hover {
+			background: #333;
+			color: #fff;
+		}
+	}
+
+	&-noresults {
+		text-align: center;
+		padding: 15px 20px 30px;
+
+		&:only-child {
+			padding-top: 30px;
+		}
+	}
+
+	&-title {
+		font-weight: normal;
+		text-align: left;
+		font-size: 14px;
+		padding: 0 15px;
+		margin-bottom: 15px;
+	}
+
+	&-header {
+		display: none;
+	}
+
+	&-body {
+		height: 100%;
+		position: relative;
+		z-index: 1;
+
+		.searchBody & {
+			max-height: 190px;
+		}
+	}
+
+	&-item {
+		cursor: pointer;
+		display: flex;
+		padding: 10px 15px 10px 20px;
+		position: relative;
+		line-height: 1.2;
+		align-items: flex-start;
+		font-weight: 300;
+
+
+		.icon-ok {
+			color: inherit;
+			display: none;
+			position: absolute;
+			font-size: 14px;
+			right: 15px;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		&.highlighted {
+			background-color: #161616;
+			color: #fff;
+		}
+
+		&.active {
+			color: #fff;
+
+			.icon-ok {
+				display: block;
+			}
+		}
+
+		&:hover {
+			background-color: $brandColor;
+			color: $bgColor;
+		}
+
+		&-id {
+			flex: 1;
+			text-align: left;
+		}
+
+		&-text {
+			flex: 6;
+			text-align: left;
+		}
+
+		&-descr,
+		&-title {
+			max-width: 230px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+
+		&-title {
+			font-size: 16px;
+		}
+
+		&-descr {
+			font-size: 11px;
+			margin-top: 2px;
+		}
+
+		.avatar {
+			flex: 0 0 30px;
+			margin: -1px 10px -3px 0;
+			min-height: 30px;
+			height: 30px;
+		}
+
+		.avatar + &-text {
+			margin-top: -3px;
+			margin-bottom: -3px;
+		}
+	}
+
+	&-filter {
+		padding: 0;
+		width: auto;
+		flex: 1 0 auto;
+
+		[type="text"] {
+			caret-color: $brand-color;
+			border: none;
+			background: transparent;
+			margin: 0 0 4px;
+			padding: 0 0 0 5px;
+			line-height: 20px;
+			height: 20px;
+			box-sizing: border-box;
+			-webkit-appearance: initial;
+			border-radius: 0;
+			font-size: 14px;
+			color: #999;
+			max-width: calc(100% - 4px);
+			width: 100%;
+			min-width: 0;
+			display: block;
+
+			&:focus {
+				background-color: transparent;
+				color: #ccc;
+			}
+		}
+	}
+
+	&-create {
+		color: #fff;
+		display: inline-block;
+		padding: 8px 10px;
+		cursor: pointer;
+
+		&:empty {
+			display: none;
+		}
+
+		&:hover {
+			color: $brandColor;
+		}
+	}
+
+	&-create-link {
+		border-top: 1px solid #1a1a1a;
+		box-shadow: 0 -1px 0 #242424;
+		color: #fff;
+		font-weight: 300;
+
+		[class*='svg-icon'] {
+			vertical-align: middle;
+			margin: -2px 2px 0 0;
+		}
+	}
+}
+
+.placeholder {
+	text-align: center;
+	margin: 15px 0 20px;
+
+	&-icon {
+		font-size: 60px;
+		color: #666;
+		margin-bottom: 25px;
+	}
+
+	&-text {
+		color: #666;
+		font-size: 12px;
+		text-align: center;
+		margin-bottom: 10px;
+	}
+
+	&-button {
+		width: 100%;
+		background-color: $brandColor;
+		color: #000;
+		display: inline-block;
+		padding: 10px;
+		cursor: pointer;
+
+		&:hover {
+			background-color: lighten($brandColor, 7%);
+		}
+	}
+}
+
+.dropdownWrapper {
+	position: relative;
+	max-width: 300px;
+	margin: 0 auto;
+}
+
+.dropdown {
+	.tag {
+		cursor: pointer;
+		color: #4a4a4a;
+		margin-right: 4px;
+		margin-left: 0;
+		margin-bottom: 4px;
+		z-index: 0;
+		margin-top: 0; // fix dropdown's tag position in dialog
+	}
+  .noCursor {
+    cursor: default;
+  }
+}
+
+.picsioThemeLight {
+	.dropdown {
+		color: $darkgray;
+		border-top-color: #dfdede;
+		border-bottom-color: $light-lightgray;
+
+		&.readOnly {
+			border-top-color: transparent;
+			border-bottom-color: transparent;
+			.dropdown-tags {
+				background-color: rgba(244, 244, 244, 0.3);
+			}
+		}
+
+		&-body-wrapper {
+			box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+		}
+
+		&-tags {
+			background: $bgColorLight;
+
+			&-placeholder {
+				color: #999;
+			}
+		}
+
+		&-tags-icon {
+			> .svg-icon {
+				color: #aaa;
+			}
+		}
+
+		&-create-link {
+			border-top: 1px solid #e2e2e2;
+			box-shadow: none;
+		}
+
+		.tag {
+			color: #e2e2e2;
+		}
+
+		&-item {
+			&::before {
+				background-color: $light-lightgray;
+			}
+
+			&.highlighted {
+				color: #303030;
+				background-color: #e8e8e8;
+			}
+
+			&.active {
+				color: #000;
+			}
+
+			&:hover {
+				background-color: $brandColorLightTheme;
+				color: #fff;
+			}
+		}
+
+		&-create {
+			color: $brandColorLightTheme;
+
+			&:hover {
+				color: #333;
+			}
+		}
+
+		&-close {
+			&:hover {
+				background-color: rgba(0,0,0,0.1);
+				color: #333;
+			}
+		}
+	}
+
+	.dropdown-focused {
+		.dropdown-tags {
+			background-color: #fff;
+		}
+	}
+}
+
+@include media('<desktop') {
+	.dropdown {
+		&-tags {
+			min-height: 49px;
+
+			&::after {
+				top: 23px;
+			}
+		}
+
+		&Tag {
+			height: 40px;
+
+			.tagRemove {
+				height: 100%;
+				line-height: 40px;
+			}
+		}
+
+		&-filter {
+			[type="text"] {
+				height: 40px;
+			}
+		}
+	}
+}
+
+.dropdownMainWrapper {
+	width: 100%;
+}
+
+.dropdownElementPopper {
+	&.PicsioPopper--openned {
+		z-index: 1300;
+	}
+}
+
+@include media('<tablet') {
+	.dropdownMainWrapper {
+		&.dropdown-focused {
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			z-index: 99;
+			background-color: rgba(0,0,0, 0.3);
+
+			.dropdown {
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				height: 100%;
+				max-height: 100%;
+
+				&-tags {
+					flex: 0 0 auto;
+					max-height: 30vh;
+					overflow: auto;
+				}
+
+				&-header {
+					flex: 0 0 auto;
+					display: flex;
+					justify-content: space-between;
+					margin: -15px -15px 0;
+					height: 50px;
+				}
+
+				&-close {
+					font-size: 16px;
+				}
+
+				&-body-wrapper {
+					position: static;
+					margin-top: 10px;
+					box-shadow: none;
+					background: inherit;
+					height: 100%;
+					flex: auto;
+					overflow: hidden;
+
+					> div {
+						height: 100%;
+					}
+				}
+
+				&-body {
+					height: 100%;
+					max-height: 100%;
+					padding-bottom: 20px;
+				}
+			}
+
+			.dropdownMainWrapperHolder {
+				width: 100%;
+				height: 100%;
+
+				max-width: 400px;
+				padding: 15px;
+				background-color: #242424;
+				box-shadow: 0 0 15px rgba(0,0,0,.5);
+
+				.picsioThemeLight & {
+					background-color: #fff;
+				}
+			}
+		}
+	}
+
+	.dropdownIsActive {
+		// try to fix input caret on iOS: start
+		// https://www.igorkromin.net/index.php/2016/05/20/mobile-safari-scrolling-problem-with-an-input-field-inside-a-fixed-div/
+		// https://stackoverflow.com/questions/46339063/ios-11-safari-bootstrap-modal-text-area-outside-of-cursor
+		position: fixed;
+		-webkit-overflow-scrolling : touch !important;
+		overflow: auto !important;
+		height: 100% !important;
+		// try to fix input caret on iOS: end
+
+		#import.showImportPanel {
+			z-index: 12;
+			transition: none;
+
+			width: 100%;
+			transform: translate3d(0,0,0);
+		}
+
+		.preview .previewTopBox {
+			z-index: 4;
+		}
+
+		#intercom-container {
+			display: none;
+		}
+
+		.importFieldItem .dropdown-tags {
+			padding-left: 4px;
+		}
+	}
+}

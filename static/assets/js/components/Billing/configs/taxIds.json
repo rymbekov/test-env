@@ -1,0 +1,533 @@
+[
+  {
+    "id": "ae",
+    "country": "United Arab Emirates",
+    "abbreviation": "AE",
+    "type": "ae_trn",
+    "description": "United Arab Emirates TRN",
+    "example": "123456789012345",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/AE.svg"
+  },
+  {
+    "id": "au",
+    "country": "Australia",
+    "abbreviation": "AU",
+    "type": "au_abn",
+    "description": "Australian Business Number (AU ABN)",
+    "example": "12345678912",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/AU.svg"
+  },
+  {
+    "id": "br_cnpj",
+    "country": "Brazil",
+    "abbreviation": "BR",
+    "type": "br_cnpj",
+    "description": "Brazilian CNPJ number",
+    "example": "01.234.456/5432-10",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/BR.svg"
+  },
+  {
+    "id": "br_cpf",
+    "country": "Brazil",
+    "abbreviation": "BR",
+    "type": "br_cpf",
+    "description": "Brazilian CPF number",
+    "example": "123.456.789-87",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/BR.svg"
+  },
+  {
+    "id": "ca_bn",
+    "country": "Canada",
+    "abbreviation": "CA",
+    "type": "ca_bn",
+    "description": "Canadian BN",
+    "example": "123456789",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/CA.svg"
+  },
+  {
+    "id": "ca_qst",
+    "country": "Canada",
+    "abbreviation": "CA",
+    "type": "ca_qst",
+    "description": "Canadian QST number",
+    "example": "1234567890TQ1234",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/CA.svg"
+  },
+  {
+    "id": "ch_vat",
+    "country": "Switzerland",
+    "abbreviation": "CH",
+    "type": "ch_vat",
+    "description": "Switzerland VAT number",
+    "example": "CHE-123.456.789 MWST",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/CH.svg"
+  },
+  {
+    "id": "cl_tin",
+    "country": "CL",
+    "abbreviation": "CL",
+    "type": "cl_tin",
+    "description": "Chilean TIN",
+    "example": "12.345.678-K",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/CL.svg"
+  },
+  {
+    "id": "es_cif",
+    "country": "Spain",
+    "abbreviation": "ES",
+    "type": "es_cif",
+    "description": "Spanish CIF number",
+    "example": "A12345678",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/ES.svg"
+  },
+  {
+    "id": "at_eu_vat",
+    "country": "Austria",
+    "abbreviation": "AT",
+    "type": "eu_vat",
+    "description": "European VAT number",
+    "example": "ATU12345678",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/AT.svg"
+  },
+  {
+    "id": "be_eu_vat",
+    "country": "Belgium",
+    "abbreviation": "BE",
+    "type": "eu_vat",
+    "description": "European VAT number",
+    "example": "BE0123456789",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/BE.svg"
+  },
+  {
+    "id": "bg_eu_vat",
+    "country": "Bulgaria",
+    "abbreviation": "BG",
+    "type": "eu_vat",
+    "description": "European VAT number",
+    "example": "BG0123456789",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/BG.svg"
+  },
+  {
+    "id": "cy_eu_vat",
+    "country": "Cyprus",
+    "abbreviation": "CY",
+    "type": "eu_vat",
+    "description": "European VAT number",
+    "example": "CY12345678Z",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/CY.svg"
+  },
+  {
+    "id": "cz_eu_vat",
+    "country": "Czech Republic",
+    "abbreviation": "CZ",
+    "type": "eu_vat",
+    "description": "European VAT number",
+    "example": "CZ1234567890",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/CZ.svg"
+  },
+  {
+    "id": "de_eu_vat",
+    "country": "Germany",
+    "abbreviation": "DE",
+    "type": "eu_vat",
+    "description": "European VAT number",
+    "example": "DE123456789",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/DE.svg"
+  },
+  {
+    "id": "dk_eu_vat",
+    "country": "Denmark",
+    "abbreviation": "DK",
+    "type": "eu_vat",
+    "description": "European VAT number",
+    "example": "DK12345678",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/DK.svg"
+  },
+  {
+    "id": "ee_eu_vat",
+    "country": "Estonia",
+    "abbreviation": "EE",
+    "type": "eu_vat",
+    "description": "European VAT number",
+    "example": "EE123456789",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/EE.svg"
+  },
+  {
+    "id": "es_eu_vat",
+    "country": "Spain",
+    "abbreviation": "ES",
+    "type": "eu_vat",
+    "description": "European VAT number",
+    "example": "ESA1234567Z",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/ES.svg"
+  },
+  {
+    "id": "fi_eu_vat",
+    "country": "Finland",
+    "abbreviation": "FI",
+    "type": "eu_vat",
+    "description": "European VAT number",
+    "example": "FI12345678",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/FI.svg"
+  },
+  {
+    "id": "fr_eu_vat",
+    "country": "France",
+    "abbreviation": "FR",
+    "type": "eu_vat",
+    "description": "European VAT number",
+    "example": "FRAB123456789",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/FR.svg"
+  },
+  {
+    "id": "gb_eu_vat",
+    "country": "United Kingdom",
+    "abbreviation": "GB",
+    "type": "eu_vat",
+    "description": "European VAT number",
+    "example": "GB123456789",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/GB.svg"
+  },
+  {
+    "id": "gr_eu_vat",
+    "country": "Greece",
+    "abbreviation": "GR",
+    "type": "eu_vat",
+    "description": "European VAT number",
+    "example": "EL123456789",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/GR.svg"
+  },
+  {
+    "id": "hr_eu_vat",
+    "country": "Croatia",
+    "abbreviation": "HR",
+    "type": "eu_vat",
+    "description": "European VAT number",
+    "example": "HR12345678912",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/HR.svg"
+  },
+  {
+    "id": "hu_eu_vat",
+    "country": "Hungary",
+    "abbreviation": "HU",
+    "type": "eu_vat",
+    "description": "European VAT number",
+    "example": "HU12345678912",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/HU.svg"
+  },
+  {
+    "id": "ie_eu_vat",
+    "country": "Ireland",
+    "abbreviation": "IE",
+    "type": "eu_vat",
+    "description": "European VAT number",
+    "example": "IE1234567AB",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/IE.svg"
+  },
+  {
+    "id": "it_eu_vat",
+    "country": "Italy",
+    "abbreviation": "IT",
+    "type": "eu_vat",
+    "description": "European VAT number",
+    "example": "IT12345678912",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/IT.svg"
+  },
+  {
+    "id": "lt_eu_vat",
+    "country": "Lithuania",
+    "abbreviation": "LT",
+    "type": "eu_vat",
+    "description": "European VAT number",
+    "example": "LT123456789123",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/LT.svg"
+  },
+  {
+    "id": "lu_eu_vat",
+    "country": "Luxembourg",
+    "abbreviation": "LU",
+    "type": "eu_vat",
+    "description": "European VAT number",
+    "example": "LU12345678",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/LU.svg"
+  },
+  {
+    "id": "lv_eu_vat",
+    "country": "Latvia",
+    "abbreviation": "LV",
+    "type": "eu_vat",
+    "description": "European VAT number",
+    "example": "LV12345678912",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/LV.svg"
+  },
+  {
+    "id": "mt_eu_vat",
+    "country": "Malta",
+    "abbreviation": "MT",
+    "type": "eu_vat",
+    "description": "European VAT number",
+    "example": "MT12345678",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/MT.svg"
+  },
+  {
+    "id": "nl_eu_vat",
+    "country": "Netherlands",
+    "abbreviation": "NL",
+    "type": "eu_vat",
+    "description": "European VAT number",
+    "example": "NL123456789B12",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/NL.svg"
+  },
+  {
+    "id": "pl_eu_vat",
+    "country": "Poland",
+    "abbreviation": "PL",
+    "type": "eu_vat",
+    "description": "European VAT number",
+    "example": "PL1234567890",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/PL.svg"
+  },
+  {
+    "id": "pt_eu_vat",
+    "country": "Portugal",
+    "abbreviation": "PT",
+    "type": "eu_vat",
+    "description": "European VAT number",
+    "example": "PT123456789",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/PT.svg"
+  },
+  {
+    "id": "ro_eu_vat",
+    "country": "Romania",
+    "abbreviation": "RO",
+    "type": "eu_vat",
+    "description": "European VAT number",
+    "example": "RO1234567891",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/RO.svg"
+  },
+  {
+    "id": "sw_eu_vat",
+    "country": "Sweden",
+    "abbreviation": "SE",
+    "type": "eu_vat",
+    "description": "European VAT number",
+    "example": "SE123456789123",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/SE.svg"
+  },
+  {
+    "id": "si_eu_vat",
+    "country": "Slovenia",
+    "abbreviation": "SI",
+    "type": "eu_vat",
+    "description": "European VAT number",
+    "example": "SI12345678",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/SI.svg"
+  },
+  {
+    "id": "sk_eu_vat",
+    "country": "Slovakia",
+    "abbreviation": "SK",
+    "type": "eu_vat",
+    "description": "European VAT number",
+    "example": "SK1234567891",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/SK.svg"
+  },
+  {
+    "id": "hk_br",
+    "country": "Hong Kong",
+    "abbreviation": "HK",
+    "type": "hk_br",
+    "description": "Hong Kong BR number",
+    "example": "12345678",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/HK.svg"
+  },
+  {
+    "id": "id_npwp",
+    "country": "Indonesia",
+    "abbreviation": "ID",
+    "type": "d_npwp",
+    "description": "Indonesian NPWP number",
+    "example": "12.345.678.9-012.345",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/ID.svg"
+  },
+  {
+    "id": "in_gst",
+    "country": "India",
+    "abbreviation": "IN",
+    "type": "in_gst",
+    "description": "Indian GST number",
+    "example": "12ABCDE3456FGZH",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/IN.svg"
+  },
+  {
+    "id": "jp_cn",
+    "country": "Japan",
+    "abbreviation": "JP",
+    "type": "jp_cn",
+    "description": "Japanese Corporate Number (Hōjin Bangō)",
+    "example": "1234567891234",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/JP.svg"
+  },
+  {
+    "id": "jp_rn",
+    "country": "Japan",
+    "abbreviation": "JP",
+    "type": "jp_rn",
+    "description": "Japanese Registered Foreign Businesses’ Registration Number (Tōroku Kokugai Jigyōsha no Tōroku Bangō)",
+    "example": "12345",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/JP.svg"
+  },
+  {
+    "id": "kr_brn",
+    "country": "Korea, Republic of",
+    "abbreviation": "KR",
+    "type": "kr_brn",
+    "description": "Korean BRN",
+    "example": "123-45-67890",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/KP.svg"
+  },
+  {
+    "id": "li_uid",
+    "country": "Liechtenstein",
+    "abbreviation": "LI",
+    "type": "li_uid",
+    "description": "Liechtensteinian UID number",
+    "example": "CHE123456789",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/LI.svg"
+  },
+  {
+    "id": "mx_rfc",
+    "country": "Mexico",
+    "abbreviation": "MX",
+    "type": "mx_rfc",
+    "description": "Mexican RFC number",
+    "example": "ABC010203AB9",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/MX.svg"
+  },
+  {
+    "id": "my_frp",
+    "country": "Malaysia",
+    "abbreviation": "MY",
+    "type": "my_frp",
+    "description": "Malaysian FRP number",
+    "example": "12345678",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/MY.svg"
+  },
+  {
+    "id": "my_itn",
+    "country": "Malaysia",
+    "abbreviation": "MY",
+    "type": "my_itn",
+    "description": "Malaysian ITN C",
+    "example": "1234567890",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/MY.svg"
+  },
+  {
+    "id": "my_sst",
+    "country": "Malaysia",
+    "abbreviation": "MY",
+    "type": "my_sst",
+    "description": "Malaysian SST number",
+    "example": "A12-3456-78912345",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/MY.svg"
+  },
+  {
+    "id": "no_vat",
+    "country": "Norway",
+    "abbreviation": "NO",
+    "type": "no_vat",
+    "description": "Norwegian VAT number",
+    "example": "123456789MVA",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/NO.svg"
+  },
+  {
+    "id": "nz_gst",
+    "country": "New Zealand",
+    "abbreviation": "NZ",
+    "type": "nz_gst",
+    "description": "New Zealand GST number",
+    "example": "123456789",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/NO.svg"
+  },
+  {
+    "id": "ru_inn",
+    "country": "Russian Federation",
+    "abbreviation": "RU",
+    "type": "ru_inn",
+    "description": "Russian INN",
+    "example": "1234567891",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/RU.svg"
+  },
+  {
+    "id": "ru_kpp",
+    "country": "Russian Federation",
+    "abbreviation": "RU",
+    "type": "ru_kpp",
+    "description": "Russian KPP",
+    "example": "123456789",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/RU.svg"
+  },
+  {
+    "id": "sa_vat",
+    "country": "Saudi Arabia",
+    "abbreviation": "SA",
+    "type": "sa_vat",
+    "description": "Saudi Arabia VAT",
+    "example": "123456789012345",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/SA.svg"
+  },
+  {
+    "id": "sg_gst",
+    "country": "Singapore",
+    "abbreviation": "SG",
+    "type": "sg_gst",
+    "description": "Singaporean GST",
+    "example": "M12345678X",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/SG.svg"
+  },
+  {
+    "id": "sg_uen",
+    "country": "Singapore",
+    "abbreviation": "SG",
+    "type": "sg_uen",
+    "description": "Singaporean UEN",
+    "example": "123456789F",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/SG.svg"
+  },
+  {
+    "id": "th_vat",
+    "country": "Thailand",
+    "abbreviation": "TH",
+    "type": "th_vat",
+    "description": "Thai VAT",
+    "example": "1234567891234",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/TH.svg"
+  },
+  {
+    "id": "tw_vat",
+    "country": "Taiwan",
+    "abbreviation": "TW",
+    "type": "tw_vat",
+    "description": "Taiwanese VAT",
+    "example": "12345678",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/TW.svg"
+  },
+  {
+    "id": "us_ein",
+    "country": "United States",
+    "abbreviation": "US",
+    "type": "us_ein",
+    "description": "United States EIN",
+    "example": "12-3456789",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg"
+  },
+  {
+    "id": "za_vat",
+    "country": "South Africa",
+    "abbreviation": "ZA",
+    "type": "za_vat",
+    "description": "South African VAT number",
+    "example": "4123456789",
+    "image": "http://purecatamphetamine.github.io/country-flag-icons/3x2/ZA.svg"
+  }
+]

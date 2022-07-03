@@ -1,0 +1,55 @@
+.page {
+  .pageContent.pageVertical {
+    @include media('>=tablet') {
+      flex-direction: row;
+    }
+
+    .pageInnerContent {
+      @include media('>=tablet') {
+        padding: 40px 20px;
+      }
+
+      @include media('>=desktop') {
+        padding: 60px 30px 0;
+      }
+
+      @include media('>=widescreen') {
+        padding: 60px 48px 0;
+      }
+    }
+  }
+}
+
+
+.pageSidebar {
+  box-sizing: border-box;
+
+  @include media('>=tablet') {
+    background-color: #1f1f1f;
+    flex: 0 0 220px;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @include media('>=widescreen') {
+    flex: 0 0 250px;
+    padding: 50px 0 0 0;
+
+    .pageMenuWrapper {
+      padding-left: 36px;
+    }
+  }
+}
+
+.picsioThemeLight {
+  @include media('>=tablet') {
+    .pageSidebar {
+      background-color: rgba(#f9f9f9, 1);
+
+      .pageMenu {
+        background-color: transparent;
+      }
+    }
+  }
+}

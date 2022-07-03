@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" class="<%- theme %>">
+<head>
+	<meta charset="utf-8">
+	<title>Pics.io</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+	<link rel="manifest" href="/manifest.webmanifest">
+	<meta name="theme-color" content="#ffcc00">
+
+	<link rel="stylesheet" href="https://assets.pics.io/css/picsioSpinner.css">
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Mono&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+	<!-- start METADATA -->
+	<meta name="keywords" content="picsio, online photo editor, photo editing, raw, cloud, photo workflow" />
+	<meta name="description" content="Pics.io is an online photo editor of next generation. Manage & edit your images in the cloud. Supports RAW files." />
+	<meta name="title" content="Pics.io | Online Photo Editor With RAW Support" />
+
+	<link rel="image_src" href="https://assets.pics.io/img/picsio-color-logo.png" />
+
+	<meta itemprop="image" content="https://assets.pics.io/img/picsio-color-logo.png">
+	<meta property="og:title" content="Pics.io | Online Photo Editor With RAW Support">
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="https://pics.io">
+	<meta property="og:image" content="https://assets.pics.io/img/picsio-color-logo.png">
+	<meta property="og:description" content="Pics.io is an online photo editor of next generation. Manage and edit your images in the cloud. Supports RAW files.">
+	<meta property="og:author" content="TopTechPhoto" />
+	<meta name="author" content="TopTechPhoto" />
+
+	<meta name="google-signin-client_id" content="223710944687-4lpera7iua1heutc7qjhqfjm1sl9he55.apps.googleusercontent.com">
+
+	<link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+	<link rel="dns-prefetch" href="//apis.google.com">
+	<!-- end METADATA -->
+	<!-- start favicon -->
+	
+	<% if(locals.faviconUrl) { %>
+	   <link rel="shortcut icon" href="<%- locals.faviconUrl %>">
+	<% } else {%>
+	   <link rel="mask-icon" href="https://assets.pics.io/img/favicon/faviconPicsio/picsio-icon.svg" color="black">
+	   <link rel="shortcut icon" href="https://assets.pics.io/img/favicon/faviconPicsio/favicon.ico">
+	   <link rel="apple-touch-icon" sizes="57x57" href="https://assets.pics.io/img/favicon/faviconPicsio/apple-touch-icon-57x57.png">
+	   <link rel="apple-touch-icon" sizes="60x60" href="https://assets.pics.io/img/favicon/faviconPicsio/apple-touch-icon-60x60.png">
+	   <link rel="apple-touch-icon" sizes="72x72" href="https://assets.pics.io/img/favicon/faviconPicsio/apple-touch-icon-72x72.png">
+	   <link rel="apple-touch-icon" sizes="76x76" href="https://assets.pics.io/img/favicon/faviconPicsio/apple-touch-icon-76x76.png">
+	   <link rel="apple-touch-icon" sizes="114x114" href="https://assets.pics.io/img/favicon/faviconPicsio/apple-touch-icon-114x114.png">
+	   <link rel="apple-touch-icon" sizes="120x120" href="https://assets.pics.io/img/favicon/faviconPicsio/apple-touch-icon-120x120.png">
+	   <link rel="apple-touch-icon" sizes="144x144" href="https://assets.pics.io/img/favicon/faviconPicsio/apple-touch-icon-144x144.png">
+	   <link rel="apple-touch-icon" sizes="152x152" href="https://assets.pics.io/img/favicon/faviconPicsio/apple-touch-icon-152x152.png">
+	   <link rel="apple-touch-icon" sizes="180x180" href="https://assets.pics.io/img/favicon/faviconPicsio/apple-touch-icon-180x180.png">
+	   <link rel="icon" type="image/png" href="https://assets.pics.io/img/favicon/faviconPicsio/android-icon-192x192.png" sizes="192x192">
+	   <link rel="icon" type="image/png" href="https://assets.pics.io/img/favicon/faviconPicsio/favicon-196x196.png" sizes="196x196">
+	   <link rel="icon" type="image/png" href="https://assets.pics.io/img/favicon/faviconPicsio/favicon-160x160.png" sizes="160x160">
+	   <link rel="icon" type="image/png" href="https://assets.pics.io/img/favicon/faviconPicsio/favicon-96x96.png" sizes="96x96">
+	   <link rel="icon" type="image/png" href="https://assets.pics.io/img/favicon/faviconPicsio/favicon-48x48.png" sizes="48x48">
+	   <link rel="icon" type="image/png" href="https://assets.pics.io/img/favicon/faviconPicsio/favicon-32x32.png" sizes="32x32">
+	   <link rel="icon" type="image/png" href="https://assets.pics.io/img/favicon/faviconPicsio/favicon-16x16.png" sizes="16x16">
+	   <link rel="manifest" href="https://assets.pics.io/img/favicon/faviconPicsio/manifest.json">
+	   <meta name="msapplication-TileColor" content="#ffcc00">
+	   <meta name="msapplication-TileImage" content="https://assets.pics.io/img/favicon/faviconPicsio/mstile-144x144.png">
+	   <meta name="msapplication-config" content="https://assets.pics.io/img/favicon/faviconPicsio/browserconfig.xml">
+	<% } %>
+	<!-- end favicon -->
+	<!-- iOS PWA splash screens -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="#ffcc00">
+	<meta name="apple-mobile-web-app-title" content="Pics.io">
+	<link rel="apple-touch-startup-image" href="https://assets.pics.io/img/splash/launch-640x1136.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+	<link rel="apple-touch-startup-image" href="https://assets.pics.io/img/splash/launch-750x1294.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+	<link rel="apple-touch-startup-image" href="https://assets.pics.io/img/splash/launch-1242x2148.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+	<link rel="apple-touch-startup-image" href="https://assets.pics.io/img/splash/launch-1125x2436.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+	<link rel="apple-touch-startup-image" href="https://assets.pics.io/img/splash/launch-1536x2048.png" media="(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)">
+	<link rel="apple-touch-startup-image" href="https://assets.pics.io/img/splash/launch-1668x2224.png" media="(min-device-width: 834px) and (max-device-width: 834px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)">
+	<link rel="apple-touch-startup-image" href="https://assets.pics.io/img/splash/launch-2048x2732.png" media="(min-device-width: 1024px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)">
+	
+	<!-- iOS PWA splash screens -->
+	<script type="text/javascript">
+		// Init Pics.io main namespace with default user config.
+		window.Picsio = {
+			// URL to send requests to, every Pics.io API call will send to this url
+			apiBaseUrl: "<%- locals.apiBaseUrl %>",
+			// URL to send requests to, every Events API call and WebSocket connections  will send to this url
+			eventsBaseUrl: "<%- locals.eventsBaseUrl %>",
+			// URL to send requests to, every Websites API call will send to this url
+			websitesBaseUrl: "<%- locals.websitesBaseUrl %>",
+			// URL to send requests to, every Inboxes API call will send to this url
+			inboxesBaseUrl: "<%- locals.inboxesBaseUrl %>",
+			// URL to send requests to, every Proxy API call will send to this url
+			proxyBaseUrl: "<%- locals.proxyBaseUrl %>",
+			// URL to fetch custoom thumbnails from
+			customThumbnailsBaseUrl: "<%- locals.customThumbnailsBaseUrl %>",
+			// URL to send requests to, every Thumbnaile API call will send to this url
+			thumbnailerBaseUrl: "<%- locals.thumbnailerBaseUrl %>",
+			// Should be keyworder base url but direct function url
+			// TODO: please refactor me to keyworderBaseUrl use
+			keyworderAnalyzeUrl: "<%- locals.keyworderAnalyzeUrl %>",
+			// Pack of zipper URLs
+			// TODO: please refactor me to zipperBaseUrl
+			zipperZipUrl: "<%- locals.zipperZipUrl %>",
+			zipperZipUrlGD: "<%- locals.zipperZipUrlGD %>",
+			zipperZipUrlS3: "<%- locals.zipperZipUrlS3 %>",
+			zipperDownloadPageUrl: "<%- locals.zipperDownloadPageUrl %>",
+			zipperDownloadByGSUrl: "<%- locals.zipperDownloadByGSUrl %>",
+			// Pics.io UI color theme name — "picsioThemeDark" or "picsioThemeLight". Also set as CSS class name to the root <HTML> element
+			theme: "<%- locals.theme %>",
+			// Static files base url. Will be https://bundles.pics.io/picsio/ for Pics.io app, https://bundles.pics.io/proofing/ for Proofing app, etc.
+			// It used to dynamically download JS chunks
+			remoteHtmlUrl: "<%- locals.remoteHtmlUrl %>",
+		};
+	</script>
+</head>
+
+<body>
+	<!-- Start up spinner -->
+	<div class="picsioSpinner blockUI" id="start-up-spinner">
+		<div class="innerPicsioSpinner">
+			<div class="spinner">
+				<div></div>
+				<span></span>
+			</div>
+			<span class="titleSpinner show">Starting Pics.io...</span>
+			<span class="textSpinner"></span>
+		</div>
+	</div>
+
+	<div class="wrapperPicsioApp"></div>
+
+	<div id="dialogRoot">
+		<div id="develop" class="develop"></div>
+		<div class="wrapperDialog"></div>
+		<div class="wrapperDuplicatesDialog"></div>
+		<div class="wrapperDownloadDialog"></div>
+		<div class="wrapperRadiosDialog"></div>
+		<div class="wrapperWebhooksDialog"></div>
+		<div class="popperWrapper"></div>
+	</div>
+
+	<div id="webRoot"><%- locals.remoteHtmlUrl %>/</div>
+
+	<!-- Google Code for Remarketing Tag -->
+	<script type="text/javascript">
+	/* <![CDATA[ */
+	var google_conversion_id = 1039671188;
+	var google_custom_params = window.google_tag_params;
+	var google_remarketing_only = true;
+	/* ]]> */
+	</script>
+	<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-25877411-2"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'UA-25877411-2', {
+			'page_title' : 'webApp',
+			'anonymize_ip': true
+		});
+	</script>
+	<script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/flt8xv4y';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
+
+	<script defer src="https://checkout.stripe.com/checkout.js" type="text/javascript"></script>
+</body>
+</html>

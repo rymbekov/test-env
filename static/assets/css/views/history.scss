@@ -1,0 +1,973 @@
+.historyView {
+  height: 100%;
+  width: 272px;
+  display: flex;
+  flex-direction: column;
+
+  .placeholder {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -5px;
+    padding-bottom: 20px;
+
+    .txt {
+      color: #656565;
+      font-weight: normal;
+      font-size: 14px;
+      text-align: center;
+      line-height: 19px;
+      margin-bottom: 15px;
+      min-height: 38px;
+    }
+
+    [class*='svg-icon'] {
+      color: #666;
+      font-size: 60px;
+      margin-top: 35px;
+      margin-bottom: 35px;
+    }
+  }
+
+  .picsioSpinner.partial {
+    left: 2px;
+  }
+
+  &__bottom {
+    padding: getSpacing('m');
+    padding-top: getSpacing('s');
+    box-shadow: 0 -5px 10px -5px rgba(0, 0, 0, .13);
+  }
+
+  &__bottombar {
+    min-height: 26px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: getSpacing('s');
+
+    .isNotAllowed {
+      filter: blur(5px);
+      pointer-events: none;
+    }
+
+    .btnAddMarker {
+      margin-bottom: 0;
+    }
+  }
+
+  @media screen and (max-width: $mediaDevice) {
+    width: auto;
+  }
+}
+
+.historyView__list {
+  flex: 1 auto;
+  font-weight: 300;
+  padding: getSpacing('s') 0;
+  overflow: auto;
+  overflow-x: hidden;
+
+  .approved {
+    color: $positive;
+  }
+
+  .disapproved {
+    color: $negative;
+  }
+
+  .itemHistoryList {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    padding: getSpacing('m') 0 getSpacing('s') 0;
+    margin: 0 getSpacing('m');
+    cursor: default;
+    z-index: 0;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      background: #1B1B1B;
+    }
+
+    &.act {
+      &::after {
+        content: '';
+        position: absolute;
+        left: -#{getSpacing('m')};
+        top: 0;
+        width: 3px;
+        height: 100%;
+        background: #ff3366;
+        z-index: 20;
+      }
+    }
+
+    &.highlight {
+      &::before {
+        left: -23px;
+        right: -23px;
+        top: 0;
+        height: auto;
+        background: $brandColor;
+        opacity: 0;
+        z-index: -1;
+        animation: highlightAnimation 2s .5s 2;
+      }
+    }
+
+    &__root {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, .5);
+      opacity: 0;
+      z-index: -1;
+    }
+
+    &--original {
+      margin: 6px 0 20px 0;
+      padding: 0;
+      padding-left: 18px;
+      border-left: 1px solid #666;
+      cursor: pointer;
+
+      &:before {
+        display: none;
+      }
+
+      .itemHistoryList {
+        &__displayName {
+          font-size: 14px;
+          line-height: 1.43;
+          color: #ccc;
+          margin-bottom: 5px;
+        }
+
+        &__main__text {
+          display: -webkit-box;
+          margin-bottom: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+        }
+      }
+    }
+
+    &__main {
+      width: 100%;
+
+      &__text {
+        display: block;
+        width: 100%;
+        font-size: 14px;
+        color: $lightgray;
+        line-height: 18px;
+        white-space: pre-wrap;
+        word-break: break-word;
+        margin-bottom: getSpacing('m');
+
+        &:empty {
+          display: none;
+        }
+
+        a {
+          color: $brandColor;
+          text-decoration: none;
+        }
+
+        &__mentionedUser {
+          background: $dark-darkgray;
+          color: #fff;
+        }
+
+        &__time {
+          color: #fc0;
+          cursor: pointer;
+        }
+      }
+    }
+
+    &__footer {
+      min-width: 0;
+      width: 100%;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: flex-end;
+      color: #fff;
+      font-size: 16px;
+
+      > div {
+        align-items: flex-start;
+      }
+
+      &__reactions {
+        flex: 0 0 100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-start;
+
+        .commentReaction {
+          padding: 4px 8px;
+          margin: 0;
+          margin-right: 4px;
+          margin-bottom: 4px;
+          border: 0;
+          color: var(--secondary-contrast-color);
+          background-color: rgba(var(--primary-main-color-rgb), .5);
+          border-radius: 16px;
+          cursor: pointer;
+          outline: none;
+
+          span.count {
+            font-size: 13px;
+            padding-left: 2px;
+          }
+        }
+      }
+
+      &__buttons {
+        flex: 0 0 100%;
+        display: flex;
+        flex-flow: row;
+        justify-content: flex-end;
+        opacity: 0;
+        color: var(--secondary-button-color);
+
+        > button {
+          margin: 0 0 0 10px;
+
+          &:hover {
+            color: var(--secondary-contrast-color);
+          }
+
+          &.btnRevisionDiff {
+            &.act {
+              color: $brandColor;
+            }
+          }
+
+          &.download {
+            font-size: 16px;
+          }
+
+          &.disabled {
+            opacity: 0.15;
+          }
+        }
+      }
+    }
+
+    .file {
+      font-size: 0;
+      padding-bottom: 10px;
+
+      &::after {
+        content: '';
+        height: 0;
+        overflow: hidden;
+        display: block;
+      }
+    }
+
+    &.typeFile {
+      cursor: pointer;
+
+      &.act,
+      &.technical {
+        cursor: default;
+      }
+
+      &.act {
+        &::after {
+          background: $brandColor;
+        }
+
+        .itemHistoryList__footer {
+          &__buttons {
+            > button {
+              &.btnShowMarkers {
+                &.icon-eyeOpen {
+                  margin-top: 1px;
+                }
+
+                &.icon-eyeClosed {
+                  margin-top: -3px;
+                }
+              }
+
+              &.btnRevisionDiff {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &:hover {
+      .itemHistoryList__footer {
+        &__buttons {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: $mediaDevice) {
+    .itemHistoryList {
+      .itemHistoryList__footer {
+        right: 0;
+        bottom: 0;
+
+        &__buttons {
+          > button,
+          > span > button {
+            width: 40px;
+            height: 40px;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.historyView__bottombar {
+  > div {
+    display: inline-flex;
+    align-items: center;
+    line-height: 24px;
+  }
+
+  .historyPlaceholder {
+    text-align: center;
+
+    &::before {
+      font-size: 60px;
+      color: #666;
+      padding: 17px 0 18px 0;
+      display: block;
+    }
+
+    .txt {
+      font-weight: 400;
+      font-size: 12px;
+      color: #666;
+      line-height: 15px;
+      display: block;
+      padding: 0 0 20px 0;
+    }
+  }
+
+  .thisNumberRevision,
+  .actNumberRevision {
+    position: absolute;
+    z-index: 2;
+    font-weight: 400;
+    font-size: 18px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    height: 30px;
+    line-height: 30px;
+    width: 30px;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .leftTools {
+    display: flex;
+    flex-flow: column;
+    margin-right: 15px;
+    // padding-left: 5px;
+
+    > div {
+      width: 100%;
+      display: flex;
+    }
+
+    &__top {
+      margin-bottom: -5px;
+      align-items: flex-start;
+    }
+
+    &__bottom {
+      .checkboxVideoCurrentTime {
+        margin-top: getSpacing('s');
+      }
+      .historyTimeRangeMargin {
+        display: flex;
+        flex-direction: row;
+        margin-right: 5px;
+      }
+    }
+
+    .checkboxVideoCurrentTime {
+      display: flex;
+      align-items: center;
+
+      .#{$picsioEmojiPickerTogglerClassName} {
+        margin-right: getSpacing('s');
+      }
+
+      .UICheckbox {
+        &__checkbox {
+          width: 16px;
+          height: 16px;
+          margin-top: 0;
+        }
+
+        &__label {
+          font-family: $base-font;
+          font-size: 12px;
+          line-height: 15px;
+          font-weight: 300;
+          color: $darkgray;
+        }
+      }
+    }
+
+    .toolMarkers {
+      .wrapperSettedMarkers {
+        display: inline-block;
+        vertical-align: top;
+      }
+
+      .itemTmpMarker,
+      .btnAddMarkerCircle {
+        display: inline-block;
+        vertical-align: top;
+        width: 24px;
+        height: 24px;
+        margin: 0 5px 5px 0;
+        font-size: 24px;
+        line-height: 24px;
+        color: #fff;
+        background: #444;
+        background: #ff3366;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        text-align: center;
+
+        &.btnAddMarker {
+          cursor: pointer;
+          position: relative;
+          box-shadow: 0 0 0 1px #000;
+        }
+
+        &.disabled {
+          cursor: default;
+          opacity: .3;
+        }
+      }
+
+      .itemTmpMarker {
+        font-size: 16px;
+      }
+
+      .btnAddMarker {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 5px 5px 0;
+        cursor: pointer;
+        white-space: nowrap;
+
+        &Circle {
+          margin: 0;
+        }
+
+        &Label {
+          font-size: 12px;
+          line-height: 24px;
+          font-weight: 300;
+          color: #666;
+          display: inline-block;
+          white-space: nowrap;
+          vertical-align: top;
+          margin-left: 8px;
+        }
+      }
+    }
+
+    @media screen and (max-width: $mediaDevice) {
+      flex-flow: row;
+
+      .toolMarkers {
+        display: none;
+      }
+
+      &__top {
+        margin-bottom: 0;
+        margin-right: getSpacing('s');
+      }
+
+      &__bottom {
+        .checkboxVideoCurrentTime {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
+  .PicsioEmojiPickerToggler {
+    margin-top: -3px;
+
+    &.PicsioButton--size--default {
+      &:hover {
+        background: transparent;
+      }
+    }
+  }
+}
+
+.historyMarker {
+  display: block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border: 1px solid #fff;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 2;
+  font-weight: 400;
+  font-size: 18px;
+  color: #fff;
+  background: #ff3366;
+  margin: -15px 0 0 -15px;
+  cursor: default;
+}
+
+.historyView__commentForm {
+  position: relative;
+
+  &__reply {
+    width: 100%;
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 6px 12px 12px 11px;
+    box-sizing: border-box;
+
+    .left {
+      flex: 0;
+      padding-right: 12px;
+
+      button {
+        width: 9px;
+        height: 9px;
+        margin: 0;
+        padding: 0;
+        border: none;
+        background: none;
+        position: relative;
+        cursor: pointer;
+
+        span {
+          display: inline-block;
+          width: 100%;
+          height: 2px;
+          position: absolute;
+          top: 3px;
+          background-color: #999;
+
+          &:first-child {
+            left: 0;
+            transform: rotate(45deg);
+          }
+
+          &:last-child {
+            left: 0;
+            transform: rotate(-45deg);
+          }
+        }
+      }
+    }
+
+    .right {
+      flex: 1 auto;
+      min-width: 0;
+    }
+  }
+
+  &__replyInfo {
+    display: flex;
+    flex-flow: column;
+
+    div {
+      display: inline-block;
+      width: 100%;
+      max-width: 100%;
+      font-size: 14px;
+      line-height: 20px;
+      color: #999;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+
+  &__textareaWrapper {
+    position: relative;
+
+    &.isNotAllowed {
+      filter: blur(5px);
+      pointer-events: none;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-flow: column;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 0 8px 0 0;
+    z-index: 5;
+
+    button {
+      color: #444444;
+      padding: 0;
+      margin: 0;
+      border: 0;
+      background: none;
+      cursor: pointer;
+    }
+
+    .btnAddComment {
+      font-size: 21px;
+    }
+
+    .btnRunSpeech {
+      font-size: 21px;
+
+      &.act {
+        color: $brandColor;
+        -webkit-animation: flickerAnimation 1s infinite;
+        -moz-animation: flickerAnimation 1s infinite;
+        -o-animation: flickerAnimation 1s infinite;
+        animation: flickerAnimation 1s infinite;
+      }
+    }
+  }
+
+  &__guestName {
+    position: relative;
+    margin-bottom: getSpacing('s');
+
+    &.isNotAllowed {
+      filter: blur(5px);
+      pointer-events: none;
+    }
+
+    input {
+      height: 28px;
+      line-height: 28px;
+      padding: 0 40px 0 13px;
+      margin: 0;
+      font-weight: 400;
+      font-size: 12px;
+      color: #fff;
+      display: block;
+      border: none;
+      border-top: 1px solid #191919;
+      border-bottom: 1px solid #292929;
+      background: #1e1e1e;
+      width: 100%;
+
+      @include placeholder {
+  			font-weight: 400;
+  			font-size: 12px;
+  			color: rgba(255, 255, 255, 0.24);
+  		};
+
+      &:focus {
+        border-color: #000;
+        background: #000;
+        color: #fff;
+      }
+    }
+  }
+
+  .commentTextarea {
+    height: auto;
+    min-height: 66px;
+    max-height: calc((100vh - 50px - 34px) / 2);
+    padding: 12px 35px 12px 12px;
+    white-space: normal;
+
+    .mentionedUserTextarea {
+      background: #d6d6d6;
+      color: #000;
+    }
+  }
+
+  &--withReply {
+    .commentTextarea {
+      padding-top: 58px;
+    }
+  }
+
+  .commentArea {
+    max-height: 100px;
+  }
+
+  [contenteditable="true"] {
+    user-select: text;
+
+    &:empty:after {
+      content: attr(placeholder);
+      color: #999;
+      opacity: 0.7;
+      display: inline-block;
+      pointer-events: none;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    &:focus:empty:after {
+      opacity: 0.4;
+    }
+  }
+
+  &.focused {
+    border-color: #000;
+    background: #000;
+
+    .btnAddComment {
+      color: #009900;
+    }
+  }
+
+  @media screen and (max-width: $mediaDevice) {
+    .itemHistoryList__footer {
+      float: right;
+      width: 50px;
+      font-size: 0;
+
+      > button {
+        width: 50px;
+        height: 60px;
+        line-height: 60px;
+        font-size: 22px;
+
+        &.btnAddMarker {
+          display: none;
+        }
+      }
+    }
+
+    .commentTextarea {
+      width: 100%; // was calc(100% - 100px);
+    }
+
+    .commentArea {
+      padding: 14px 20px 14px 10px;
+    }
+  }
+}
+
+.markersComment {
+  display: block;
+  color: #666;
+
+  &:not(:only-child) {
+    margin-bottom: 3px;
+  }
+
+  span {
+    color: #ff3366;
+  }
+
+  mark {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    text-align: center;
+    border-radius: 50%;
+    font-weight: 400;
+    font-size: 12px;
+    color: #fff;
+    background: #ff3366;
+    margin: 0 0 4px 4px;
+  }
+}
+
+.approveStatus {
+  color: #666;
+}
+
+.revisionText {
+  color: #666;
+
+  .revision {
+    color: $brandColor;
+  }
+}
+
+.revisionNumber {
+  display: inline-block;
+  text-align: center;
+  box-sizing: border-box;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  line-height: 16px;
+  border-radius: 8px;
+  font-weight: 400;
+  font-size: 14px;
+  color: #000;
+  background: $brandColor;
+}
+
+.revisionCopyText {
+  color: #666;
+  font-size: 13px;
+
+  .revisionNumber {
+    background: #666;
+  }
+}
+
+.picsioThemeLight {
+  .historyView {
+    &__list {
+      .approved {
+        color: $positiveColorLightTheme;
+      }
+
+      .itemHistoryList {
+        &::before {
+          background: $light-lightgray;
+        }
+
+        &__main {
+          &__text {
+            color: $darkgray;
+
+            &__mentionedUser {
+              background: $gray;
+            }
+          }
+        }
+
+        &.typeFile {
+          .itemHistoryList__footer {
+            color: #666;
+
+            > span.btnRevisionDiff {
+              &.act {
+                color: $brandColorLightTheme;
+              }
+            }
+          }
+        }
+
+        &.highlight {
+          &::before {
+            opacity: .1;
+            background: $brandColorLightTheme;
+          }
+        }
+
+        .btnToggleMarkers {
+          color: #666;
+        }
+
+        .textComment {
+          a {
+            color: $brandColorLightTheme;
+
+            &:hover {
+              color: #0099ff;
+            }
+
+            &:active {
+              color: $brandColorLightTheme;
+            }
+          }
+        }
+      }
+    }
+
+    &__bottom {
+      .toolMarkers {
+        .btnAddMarker {
+          box-shadow: none;
+
+          &Label,
+          &::before {
+            color: #666;
+          }
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    .btnRunSpeech,
+    .btnAddComment {
+      color: #666;
+    }
+
+    &.focused {
+      border-color: #fff;
+      background: #fff;
+
+      .btnAddComment {
+        color: $brandColorLightTheme;
+      }
+    }
+  }
+
+  .historyPlaceholder {
+    &::before,
+    .txt {
+      color: #ccc;
+    }
+  }
+
+  .markersComment,
+  .approveStatus {
+    color: #999;
+  }
+
+  .revisionText {
+    color: #999;
+
+    .revision {
+      color: $brandColor;
+    }
+  }
+
+  .revisionCopyText {
+    color: #999;
+
+    .revisionNumber {
+      background: #999;
+      color: #fff;
+    }
+  }
+}
+
+.commentReactionTooltip {
+  max-width: 300px;
+  text-align: center;
+}

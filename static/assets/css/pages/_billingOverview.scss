@@ -1,0 +1,726 @@
+@mixin billingColor {
+  .picsioThemeLight & {
+    color: #666;
+  }
+  .picsioThemeDark & {
+    color: #fff;
+  }
+}
+
+@mixin billingBackgroundColor {
+  .picsioThemeLight & {
+    background-color: #f4f4f4;
+  }
+  .picsioThemeDark & {
+    background-color: #333333;
+  }
+}
+
+// ****************************************************************************
+// Layout
+// ****************************************************************************
+
+.billingOverview {
+  max-width: 944px;
+  margin: 0 auto;
+  padding-bottom: 30px;
+
+  .pageItemTitle {
+    display: inline-block;
+    margin: 0;
+  }
+
+  .billingOverview {
+    &__plan {
+      position: relative;
+
+      &__wrapper {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 25px;
+      }
+
+      &__info {
+        max-width: 550px;
+
+        p {
+          margin: 0;
+
+          b {
+            color: var(--secondary-contrast-color);
+          }
+        }
+      }
+
+      &__toolbar {
+        @include media('<phone') {
+          flex-flow: row wrap;
+
+          > * {
+            margin-bottom: 10px;
+          }
+
+          h3 {
+            flex: 1 100%;
+          }
+
+          .billingFrequency {
+            flex: 0 1 50%;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            margin-left: 0;
+
+            @media screen and (max-width: 340px) {
+              flex: 1 100%;
+              justify-content: center;
+              margin-bottom: 10px;
+            }
+          }
+
+          .billingFrequency {
+            flex: 1 1 100%;
+          }
+        }
+      }
+
+      &__alert {
+        margin-top: 25px;
+
+        @include media('<desktop') {
+          position: static;
+        }
+      }
+
+      &__list {
+        margin-top: 25px;
+      }
+
+      &__buttons {
+        margin-top: 15px;
+
+        .billingCard__button {
+          border-radius: 10px;
+          padding: 10px;
+          height: auto;
+        }
+      }
+    }
+
+    &__storage {
+      margin-top: 26px;
+
+      .billingPlan {
+        flex-basis: 120px;
+        height: auto;
+      }
+    }
+
+    &__total {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+      margin-top: 26px;
+
+      @include media('<=tablet') {
+        margin: 52px 0;
+      }
+
+      @include media('<=phone') {
+        flex-flow: column;
+
+        > div {
+          width: 100%;
+        }
+
+        .billingAccount {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.billingOverview__plan__features {
+  margin-top: 30px;
+
+  &-row {
+    position: relative;
+    border-bottom: 1px solid var(--separate-border-color);
+    padding: 40px 0 20px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: rgba(var(--primary-contrast-color-rgb), .2);
+    }
+
+    &::before {
+      content: attr(data-name);
+      position: absolute;
+      top: 10px;
+      left: 0;
+      width: 100%;
+      display: block;
+      text-align: center;
+    }
+  }
+
+  &-column {
+    text-align: center;
+
+    div {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    svg {
+      fill: currentColor !important;
+    }
+  }
+
+  .planFeatureOk {
+    fill: $darkgreen;
+    color: $darkgreen;
+  }
+
+  .planFeatureFalse {
+    fill: $red;
+    color: $red;
+  }
+
+  &-opener {
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+
+    &:not(:only-child) {
+      margin-top: 30px;
+    }
+
+    span {
+      position: relative;
+      display: inline-block;
+      border-radius: 20px;
+      height: 28px;
+      line-height: 28px;
+      padding: 0 10px;
+      background-color: var(--separate-border-color);
+      cursor: pointer;
+
+      &:hover {
+        color: var(--primary-button-color);
+        background: var(--primary-button-bg-color);
+      }
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 500px;
+        height: 1px;
+        background-color: var(--separate-border-color);
+        z-index: -1;
+      }
+
+      &::before {
+        left: calc(100% + 6px);
+      }
+
+      &::after {
+        right: calc(100% + 6px);
+      }
+    }
+  }
+}
+
+// ****************************************************************************
+// Components
+// ****************************************************************************
+
+.billingOverviewToolbar {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.billingOverviewList {
+  display: grid;
+  grid-template-rows: auto;
+  grid-gap: 16px;
+
+  &--plan {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    min-width: 737px; // for horizontall scroll
+
+    @include media('<desktop') {
+      margin-bottom: 20px;
+    }
+  }
+
+  &--storage {
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  }
+}
+
+.billingFrequency {
+  display: flex;
+  align-items: center;
+
+  .billingFrequency {
+    &__label {
+      width: auto;
+    }
+  }
+
+  .PicsioInputLabel-checked {
+    color: var(--secondary-contrast-color);
+  }
+
+  &__info {
+    border-radius: 20px;
+    padding: 7px 21px;
+    margin-left: 15px;
+    background-color: var(--separate-border-color);
+    border: 1px solid var(--border-input-t-color);
+
+    @include media('<tablet') {
+      display: none;
+    }
+  }
+
+  .#{$picsioSwitch} {
+    margin: 0 10px;
+  }
+}
+
+.billingPlan {
+  $root: &;
+
+  @include billingColor;
+  @include billingBackgroundColor;
+  // flex: 1 176px;
+  min-height: 254px;
+  display: flex;
+  flex-flow: column;
+  position: relative;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 18px 0 21px 0;
+  text-align: center;
+  box-sizing: border-box;
+  border-radius: 10px;
+
+  &__name {
+    color: var(--secondary-contrast-color);
+    margin-bottom: 35px;
+
+    h3 {
+      margin: 0;
+      padding: 0;
+      font-size: 24px;
+      line-height: em(28px, 24px);
+      font-weight: 300;
+      letter-spacing: -0.5px;
+    }
+  }
+
+  &__content {
+    flex: 1 auto;
+    margin-bottom: 20px;
+
+    p {
+      padding: 0 5px;
+      max-width: 150px;
+      margin: 0 auto;
+      font-size: 15px;
+    }
+
+    &-additional {
+      font-size: 13px;
+      padding: 0 10px;
+      margin-top: -5px;
+
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__footer {
+    margin-top: auto;
+    min-height: 73px;
+  }
+
+  &__amount {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    position: relative;
+
+    .discount {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      font-size: 14px;
+      color: #B3E814;
+      transform: translate(-50%, -100%);
+    }
+  }
+
+  &__helperText {
+    @include billingColor;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  &__tooltip {
+    // max-width: 176px;
+    line-height: 20px;
+    text-align: center;
+
+    p {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  &__externalStorage {
+    border-radius: 10px;
+    padding: 6px 15px;
+    text-align: left;
+    background-color: rgba(black, 0.1);
+    background-blend-mode: color-burn;
+    font-size: 15px;
+    max-width: 132px;
+    margin: 10px auto 0;
+
+    &-storage {
+      display: flex;
+      align-items: center;
+
+      &-icon {
+        flex: 0 0 24px;
+        display: flex;
+
+        img {
+          vertical-align: top;
+          margin: auto 0;
+        }
+      }
+
+      &-text {
+        flex: 1;
+      }
+    }
+
+    &-storage + &-storage {
+      margin-top: 5px;
+    }
+  }
+
+  &#{$root}--activated {
+    color: var(--primary-contrast-color);
+    background-color: var(--primary-main-color);
+
+    #{$root}__name {
+      color: inherit;
+    }
+
+    #{$root}__amount {
+      .discount {
+        color: inherit;
+      }
+    }
+
+
+    .#{$picsioControlClassName} {
+      color: inherit !important;
+      border-color: currentColor;
+    }
+  }
+
+  &__caption {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--primary-contrast-color);
+    background-color: var(--primary-main-color);
+    border-radius: 10px 10px 0 0;
+    position: absolute;
+    bottom: 100%;
+    left: -2px;
+    right: -2px;
+    padding: 3px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  &#{$root}--best {
+    box-shadow: 0 0 0 2px var(--primary-main-color);
+    border-radius: 0 0 10px 10px;
+  }
+
+  &--disabled {
+    opacity: .3;
+    pointer-events: none; // it was commented by Kiril (why?), but AM uncommented.
+  }
+
+  &--skeleton {
+    > div {
+      flex: 1 auto;
+      display: flex;
+      flex-flow: column;
+    }
+  }
+
+  &--discount {
+    .#{$picsioInputControlLabelClassName}__label {
+      text-decoration: line-through;
+      opacity: 0.5;
+    }
+  }
+
+  .#{$picsioInputControlLabelClassName} {
+    font-size: inherit;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .paygCounts {
+    min-width: 0;
+    display: inline-flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    padding: 0 20px;
+    margin-top: 14px;
+
+    &__input {
+      flex: 1 0 50%;
+
+      &:first-child {
+        margin-right: 4px;
+      }
+      &:last-child {
+        margin-left: 4px;
+      }
+
+      &__wrapper {
+        position: relative;
+      }
+
+      &__action {
+        @include button-reset;
+        width: 16px;
+        height: 20px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 50%;
+        padding: 0;
+        color: var(--text-color);
+        transform: translateY(-50%);
+        z-index: 1;
+
+        &.decrement {
+          left: 0;
+        }
+
+        &.increment {
+          right: 0;
+        }
+
+        &:hover {
+          background-color: rgba(var(--secondary-contrast-color-rgb), .1);
+        }
+      }
+
+      .#{$picsioInputClassName} {
+        input {
+          padding-left: 16px;
+          padding-right: 16px;
+          text-align: center;
+        }
+      }
+
+      .#{$picsioInputLabelClassName} {
+        color: inherit;
+        justify-content: center;
+        font-size: 12px;
+        line-height: 20px;
+        margin-top: 5px;
+      }
+    }
+  }
+
+  @include media('<desktop') {
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+}
+
+.billingCard {
+  display: inline-flex;
+  flex-flow: row wrap;
+
+  .billingCard {
+    &__title {
+      flex: 0 0 100%;
+      margin-bottom: 26px;
+
+      > h3 {
+        margin: 0;
+      }
+    }
+
+    &__info {
+      flex: 0 0 50%;
+      display: inline-flex;
+
+      &__logo {
+        width: 65px;
+        height: 42px;
+        margin-right: 15px;
+        background: url('https://assets.pics.io/img/cards.png') no-repeat left top / auto 100%;
+
+        &.iconVisa {
+          background-position: 0 top;
+        }
+        &.iconMastercard {
+          background-position: -66px top;
+        }
+        &.iconDiscover {
+          background-position: -132px top;
+        }
+        &.iconAmericanexpress {
+          background-position: -198px top;
+        }
+        &.iconDinersclub {
+          background-position: -264px top;
+        }
+        &.iconJcb {
+          background-position: -330px top;
+        }
+        &.iconUnknown {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.billingAccount {
+  $root: &;
+  $rowHeight: 50px;
+
+  width: 256px;
+
+  &__row,
+  &__total {
+    @include billingColor;
+    height: $rowHeight;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  &__row {
+    &:not(.coupon) {
+      border-bottom: 1px solid transparent;
+    }
+
+    &__name {
+      flex: 1 auto;
+    }
+
+    &__amount,
+    &__discount {
+      margin-left: 5px;
+    }
+
+    &__discount {
+      color: #B3E814;
+    }
+
+    &.coupon {
+      height: $rowHeight / 2;
+      flex-flow: row wrap;
+
+      .#{$picsioInputClassName} {
+        width: 100%;
+      }
+    }
+
+    .picsioThemeLight & {
+      border-color: #ebebeb;
+    }
+    .picsioThemeDark & {
+      border-color: var(--separate-border-color);
+    }
+
+    &--discount {
+      #{$root}__row__amount {
+        text-decoration: line-through;
+      }
+    }
+  }
+
+  &__total {
+    height: $rowHeight;
+    justify-content: flex-end;
+    font-size: 24px;
+    font-weight: 300;
+    line-height: em(28px, 24px);
+    color: var(--secondary-contrast-color);
+    letter-spacing: -0.5px;
+    text-align: right;
+  }
+
+  &__actions {
+    height: $rowHeight;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .subscribeAction {
+      margin-left: auto;
+    }
+
+    @include media('<desktop') {
+      align-items: center;
+    }
+  }
+
+  &--skeleton {
+    > div {
+      &:not(.coupon) {
+        border-bottom: 1px solid transparent;
+      }
+    }
+
+    #{$root}__row {
+      > span {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        > span {
+          width: 100% !important;
+        }
+      }
+    }
+    #{$root}__actions {
+      > span {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+@import 'cssVariables';
+
+.archiveView {
+  .archiveTree {
+    max-width: 100%;
+  }
+}
+
+.PicsioTreeItem__name {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@include media('<desktop') {
+  .tree {
+    .PicsioTreeItem,
+    .PicsioTreeItem__content {
+      background-color: inherit;
+    }
+  }
+}

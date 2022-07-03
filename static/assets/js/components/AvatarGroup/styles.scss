@@ -1,0 +1,54 @@
+:root,
+html.picsioThemeDark {
+  --avatar-border: #424242;
+  --avatar-color: #424242;
+  --avatar-bg: #ccc;
+}
+
+html.picsioThemeLight {
+  --avatar-border: #e2e2e2;
+  --avatar-color: #666;
+  --avatar-bg: #e2e2e2;
+}
+
+.AvatarGroup {
+  display: flex;
+
+  &__other {
+    display: flex;
+    align-items: center;
+    color: #999;
+    text-shadow: 1px 1px 1px rgba(black, 0.5);
+    font-weight: 300;
+    margin-right: 30px;
+  }
+
+  &__more {
+    margin-left: -25px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--avatar-bg);
+    border: 1px solid var(--avatar-border);
+    color: var(--avatar-color);
+    font-size: 20px;
+    font-weight: 400;
+    position: relative;
+    z-index: 1;
+  }
+
+  .avatarWrapper {
+    margin-left: -25px;
+  }
+
+  .avatar {
+    position: relative;
+    z-index: 1;
+
+    &:hover {
+      z-index: 2;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+$picsioYellowColor: $brandColor;
+$picsioBlueColor: $brandColorLightTheme;
+
+$brandDark: $picsioYellowColor;
+$brandLight: $picsioBlueColor;
+
+body {
+	margin: 0;
+	padding: 0;
+	line-height: 1;
+	font-family: $base-font;
+	// Disables pull-to-refresh in iOS and Chrome
+	// overscroll-behavior: none;
+	overflow: hidden;
+
+	// Prevent overscroll/bounce in iOS
+	// https://www.bram.us/2016/05/02/prevent-overscroll-bounce-in-ios-mobilesafari-pure-css/
+	// position: fixed;
+}
+
+html,body {
+	height: 100%;
+	width: 100%;
+}

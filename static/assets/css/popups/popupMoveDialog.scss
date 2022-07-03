@@ -1,0 +1,36 @@
+.wrapperMoveDialog {
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 1001;
+
+	&:empty {
+		display: none;
+	}
+
+	.dropdownTreeWrapper {
+		position: static;
+		background: none;
+		box-shadow: none;
+		margin: 0;
+	}
+
+	.dropdownTreeList {
+		padding: 0 25px 0 0;
+	}
+
+	.moveCollectionDialog {
+		.simpleDialogContentInner {
+			padding-right: 20px !important;
+		}
+	}
+}
+
+.picsioThemeLight {
+	.wrapperMoveDialog {
+		.dropdownTreeWrapper {
+			background: none;
+			box-shadow: none;
+		}
+	}
+}

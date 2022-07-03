@@ -1,0 +1,153 @@
+@import 'cssVariables';
+
+:root,
+html.picsioThemeDark {
+  --autosuggest-bg: #242424;
+  --autosuggest-highlighted-bg: #000;
+}
+
+html.picsioThemeLight {
+  --autosuggest-bg: #fff;
+  --autosuggest-highlighted-bg: #eee;
+}
+
+// .react-autosuggest__container {}
+
+.react-autosuggest {
+  * {
+    box-sizing: border-box;
+  }
+
+  &__suggestions-container {
+    color: var(--text-color);
+    font-size: 14px;
+    position: absolute;
+    left: 0;
+    width: calc(100% + 4px);
+    max-height: 70vh;
+    z-index: 2;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    margin: 2px -2px 0;
+
+    @include media('<desktop') {
+      max-height: calc(100vh - 245px);
+    }
+
+    &--open {
+      background-color: var(--autosuggest-bg);
+      padding: 5px 0;
+      overflow-y: auto;
+      display: block;
+      position: absolute;
+      
+      .react-autosuggest__footer {
+        display: flex;
+      }
+    }
+  }
+
+  &__loading {
+    background-color: var(--autosuggest-bg);
+    padding: 5px 0;
+  }
+
+  &__placeholder {
+    background-color: var(--autosuggest-bg);
+    padding: 30px 0;
+    text-align: center;
+  }
+
+  &__list {
+    width: 100%;
+    flex: 1;
+    overflow: auto;
+    padding-bottom: 15px;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  &__footer {
+    display: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 8px 25px;
+    color: var(--secondary-dark-color);
+    font-size: 12px;
+
+    &-item {
+      display: flex;
+      align-items: center;
+
+      .icon {
+        font-size: 10px;
+      }
+
+      span {
+        margin-left: 4px;
+      }
+
+      &:not(:first-child) {
+        margin-left: 24px;
+      }
+    }
+  }
+
+  &__suggestions-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__suggestion {
+    padding: 8px 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    &-text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0;
+    }
+
+    .icon {
+      margin: -2px 8px 0 0;
+      vertical-align: middle;
+    }
+
+    // &--first {}
+
+    &-result {
+      margin-left: auto;
+      font-size: 12px;
+      padding-left: 15px;
+    }
+
+    &--highlighted {
+      background: var(--autosuggest-highlighted-bg);
+      color: var(--secondary-contrast-color);
+    }
+  }
+
+  &__section {
+    // &-container {
+    //   &--first {}
+    // }
+
+    &-title {
+      color: var(--secondary-dark-color);
+      font-size: 12px;
+      line-height: 20px;
+      padding: 0 25px;
+      margin-top: 15px;
+    }
+  }
+
+  &__suggestion-match {
+    color: $brandColor;
+  }
+}

@@ -1,0 +1,32 @@
+@import 'cssVariables';
+
+#import.importInbox {
+	width: 100%;
+	left: 0;
+	transform: none;
+	opacity: 1;
+
+	&.showImportPanel {
+		width: 100%;
+		left: 0;
+	}
+
+	.importInner,
+	.importMain {
+		width: 100%;
+	}
+}
+
+@include media('<desktop') {
+	#import.importInbox {
+		top: 0;
+	}
+}
+
+@include media('<tablet') {
+	#import.importInbox {
+		.importMainLeft {
+			flex: 1 0 auto;
+		}
+	}
+}

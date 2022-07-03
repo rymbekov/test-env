@@ -1,0 +1,140 @@
+default_platform(:ios)
+
+platform :ios do
+
+  xcworkspace = "./ios/App/App.xcworkspace"
+  xcodeproj = "./ios/App/App.xcodeproj"
+  slack_url = ENV["SLACK_URL"]
+
+  before_all do
+    setup_circle_ci
+  end
+
+  desc "Get ios certificates from git repo"
+  lane :match_certs do
+    match(type: "development")
+    match(type: "appstore")
+  end
+
+  lane :match_certs_force do
+    match(type: "development")
+    match(type: "appstore")
+  end
+
+  lane :register_new_device do |options|
+    register_device(
+      name: options[:name],
+      udid: options[:udid]
+    )
+  end
+
+  lane :test do
+    puts "Say hi"
+  end
+
+  desc "Build Pics.io IOS app & upload to TestFlight"
+  lane :run_testflight do
+    begin
+      match(type: "development")
+      match(type: "appstore")
+      increment_version_number(
+        version_number: ENV["VERSION_NUMBER"],
+        xcodeproj: xcodeproj
+      )
+      increment_build_number(
+        build_number: ENV["BUILD_NUMBER"],
+        xcodeproj: xcodeproj,
+      )
+      build(export_method: "app-store")
+      upload_to_testflight(
+        skip_waiting_for_build_processing: true,
+        apple_id: ENV["APP_APPLE_ID"]
+      )
+      send_message(message: "🍏🤝😌 Pics.io #{ENV["CIRCLE_TAG"]}, build_number: #{ENV["BUILD_NUMBER"]} IOS App Successfully uploaded to TestFlight", success: true)
+    rescue => exception
+      send_message(message: "⛔️😔 Something went wrong during uploading to TestFlight \n Lane failed with exception: #{exception}", success: false)
+    end
+  end
+
+  private_lane :build do |options|
+    gym(workspace: xcworkspace,
+        clean: true,
+        export_method: options[:export_method],
+        scheme: ENV['SCHEME'])
+  end
+
+  private_lane :send_message do |options|
+    slack(
+      message: options[:message],
+      success: options[:success],
+      slack_url: slack_url
+    )
+  end
+
+end
+
+platform :android do
+
+  desc "Build Pics.io Android signed APK"
+  lane :build_apk do
+    begin
+      build(task: 'assemble')
+      aws_s3(
+        access_key: ENV['AWS_ACCESS_KEY_ID'],
+        secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+        bucket: 'docs.pics.io',
+        region: 'us-east-1',
+        apk: 'android/app/build/outputs/apk/release/app-release.apk',
+        app_directory: 'android',
+        html_in_folder: true,
+        upload_metadata: true
+      )
+      send_message(message: ":android:🤝😌 Pics.io #{ENV["GIT_TAG"]} Android apk Successfully uploaded to AWS S3 \n Download an apk using <https://get.pics.io/android/v#{ENV['VERSION_NUMBER']}_b#{ENV['BUILD_NUMBER']}/index.html|this link>", success: true)
+    rescue => exception
+      send_message(message: "⛔️😔 Something went wrong during building & uploading Android APK to AWS S3 \n Lane failed with exception: #{exception}", success: false)
+    end
+  end
+
+  desc "Build Pics.io Android signed Bundle (.aab)"
+  lane :build_aab do
+    begin
+      build(task: 'bundle')
+      supply(
+        package_name: 'io.pics.app',
+        json_key: './android/api-play-store-key.json',
+        track: 'beta',
+        aab: 'android/app/build/outputs/bundle/release/app-release.aab'
+      )
+      send_message(message: ":android:🤝😌 Pics.io #{ENV["GIT_TAG"]} Android Bundle (.aab) Successfully uploaded to GooglePlayStore (beta/open testing) \n", success: true)
+    rescue => exception
+      send_message(message: "⛔️😔 Something went wrong during building & uploading Android Bundle (.aab) to GooglePlayStore (beta/open testing) \n Lane failed with exception: #{exception}", success: false)
+    end
+  end
+
+  private_lane :build do |options|
+    gradle(task: 'clean', project_dir: './android')
+    gradle(
+      task: options[:task],
+      build_type: 'Release',
+      project_dir: './android',
+      properties: {
+        "android.injected.version.name" => ENV["VERSION_NUMBER"], #similar version_number IOS
+        "android.injected.version.code" => ENV["BUILD_NUMBER"], #similar build_number IOS
+        "android.injected.signing.store.file" => 'android-keystore.jks',
+        "android.injected.signing.store.password" => ENV['KEYSTORE_PASS'],
+        "android.injected.signing.key.alias" => 'Pics.io',
+        "android.injected.signing.key.password" => ENV['KEYSTORE_PASS'],
+      }
+    )
+  end
+
+  private_lane :send_message do |options|
+    slack(
+      message: options[:message],
+      success: options[:success],
+      slack_url: ENV["SLACK_URL"],
+      default_payloads: ["lane", "test_result"],
+      channel: "#es-test" #TODO: remove
+    )
+  end
+end

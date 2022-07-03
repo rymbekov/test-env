@@ -1,0 +1,90 @@
+.mentionTeamMember {
+	max-height: 50vh;
+	overflow-y: auto;
+	overflow-x: hidden;
+	position: absolute;
+	left: 0;
+	bottom: calc(100% + 5px);
+	width: 100%;
+	background: #242424;
+	box-sizing: border-box;
+	box-shadow: 0 0 15px 0 rgba(0,0,0,.25);
+	z-index: 2;
+	padding: 10px 0;
+	&__item {
+		position: relative;
+		padding: 5px 15px;
+		margin: 0 0 -1px;
+		font-size: 14px;
+		color: #fff;
+		display: flex;
+		align-items: center;
+		cursor: pointer;
+		&:not(:first-child)::before {
+			content: "";
+			position: absolute;
+			height: 1px;
+			top: 0;
+			left: 15px;
+			right: 15px;
+			z-index: -1;
+			background-color: rgba(0,0,0, 0.25);
+		}
+		&.act {
+			background: $brandColor;
+			color: #000;
+			.mentionTeamMember__item__text__email {
+				color: #000;
+			}
+		}
+		.avatar {
+			width: 30px;
+			margin-right: 10px;
+			flex: 0 0 30px;
+		}
+		&__text {
+			&__name {
+				display: block;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+			&__email {
+				display: block;
+				font-size: 10px;
+				color: #ccc;
+				padding-top: 2px;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+		}
+	}
+	&:empty {
+		display: none;
+	}
+}
+
+.picsioThemeLight {
+	.mentionTeamMember {
+		background: #fff;
+		box-shadow: 0 0 15px 0 rgba(0,0,0,.1);
+		&__item {
+			color: #000;
+			&:not(:first-child)::before {
+				background-color: $light-lightgray;
+			}
+
+			&.act {
+				background: $brandColorLightTheme;
+				color: #fff;
+				.mentionTeamMember__item__text__email {
+					color: #fff;
+				}
+			}
+			&__text {
+				&__email {
+					color: #000;
+				}
+			}
+		}
+	}
+}

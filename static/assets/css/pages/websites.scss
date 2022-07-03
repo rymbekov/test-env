@@ -1,0 +1,295 @@
+.wrapperPageWebsites {
+	.pageWebsites {
+
+		.pageTabsContent {
+
+			&__customization {
+
+				&__proofing {
+					margin: 0 auto 30px;
+
+					.pageWebsites__block__checkbox {
+
+						.UICheckbox {
+							margin: 0 12px 0 24px;
+						}
+					}
+				}
+			}
+		}
+
+		&__inputsBlock {
+			margin: 0 auto 50px;
+			box-sizing: border-box;
+
+			@media screen and (min-width: 768px) {
+				padding: 0;
+			}
+
+			.UIInput,
+			.UISelect {
+
+				&__select__list {
+					right: 0;
+					z-index: 1;
+				}
+			}
+
+			// &__title {
+			// 	font-size: 24px;
+			// 	font-weight: 300;
+			// 	margin-bottom: 28px;
+			// }
+
+			&__password {
+				margin-bottom: 25px;
+
+				.UIInput {
+					flex: 1 1 auto;
+				}
+			}
+		}
+
+		&__block {
+			margin: 0 auto 30px;
+
+			&__checkboxTitleHolder {
+				display: flex;
+				align-items: center;
+			}
+
+			&__checkboxShow,
+			&__checkboxChange {
+				font-weight: 400;
+				font-size: 13px;
+				flex: 0 0 50px;
+				text-align: center;
+				color: #7f7f7f;
+			}
+
+			&__checkboxTitle {
+				flex: 1 1 0px;
+			}
+
+			&__checkboxLabel {
+				flex: 1 1 0px;
+			}
+
+			&__checkboxTitle,
+			&__socialBtnsTitle {
+				color: #ccc;
+				font-size: 18px;
+				font-weight: 300;
+				line-height: 1.5;
+				margin-bottom: 5px;
+			}
+
+			&__socialBtnsTitle {
+				flex: 1 0 100%;
+			}
+
+			&__socialBtns {
+				margin-bottom: 30px;
+				display: flex;
+				justify-content: space-between;
+				flex-wrap: wrap;
+
+				.picsioDefBtn {
+					min-width: 0;
+					flex: 1;
+				}
+			}
+
+			&__checkboxes {
+				display: flex;
+				flex-direction: column;
+				margin-bottom: 40px;
+			}
+
+			&__checkbox {
+				margin-bottom: 5px;
+				padding: 6px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				color: #7f7f7f;
+				font-size: 12px;
+
+				@media screen and (min-width: 768px) {
+					font-size: 14px;
+				}
+
+				&:nth-child(even) {
+					background-color: #222;
+				}
+			}
+		}
+
+		.pageInnerContent {
+			display: flex;
+			flex-flow: column;
+
+			.pageMenuItemBtns {
+				display: none;
+			}
+		}
+
+		@include media('<tablet') {
+			.pageMenu {
+				.pageMenuItemBtns {
+					display: none;
+				}
+			}
+
+			.pageInnerContent {
+				.picsioLinkForShare {
+					width: 50px;
+				}
+
+				.pageMenuItemBtns {
+					display: flex;
+					text-align: right;
+					margin-bottom: 15px;
+
+					&__inner {
+						width: 100%;
+					}
+				}
+			}
+		}
+
+		@include media('<=phone') {
+			.pageInnerContent {
+				.pageMenuItemBtns {
+					display: flex;
+					justify-content: space-between;
+				}
+			}
+		}
+	}
+}
+
+.websitePublish {
+	width: 140px;
+	text-align: center;
+
+	.publishDate {
+		font-size: rem(10px);
+		line-height: em(12px, 10px);
+		margin-top: getSpacing('s');
+
+		span {
+			color: var(--success-main-color);
+		}
+	}
+
+	@include media('<tablet') {
+		width: 100%;
+	}
+}
+
+.wrapperChoosedColorGamma {
+	position: relative;
+	z-index: 3; // over expiresAt field
+	height: 30px;
+	margin-bottom: 22px;
+}
+
+.website-customization {
+	@include media('>=tablet') {
+		display: flex;
+	}
+}
+
+.website-customization-fields {
+	@include media('>=tablet') {
+		flex: 1;
+		max-width: 500px;
+	}
+}
+
+.website-customization-photo {
+	text-align: center;
+	margin-bottom: 30px;
+
+	.UIImagePicker {
+		margin: 0 auto 30px;
+	}
+
+	@include media('<tablet') {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	@include media('>=tablet') {
+		order: 2;
+		text-align: right;
+		flex: 0 0 200px;
+		margin-bottom: 0;
+	}
+}
+
+
+.expiresField,
+.sortField {
+	margin-bottom: 40px;
+}
+
+.sortField {
+	width: 48%;
+}
+
+.sortFields {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+@include media('<=desktop') {
+	.sortFields {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.sortField {
+		width: 100%;
+	}
+}
+
+.expiresFieldTitle,
+.sortFieldTitle {
+  color: #ccc;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.5;
+  margin-bottom: 5px;
+}
+
+.picsioThemeLight {
+	.wrapperPageWebsites {
+		.pageWebsites {
+
+			&__block__checkbox {
+
+				&:nth-child(even) {
+					background-color: #f4f4f4;
+				}
+			}
+
+			&__block__socialBtnsTitle,
+			&__block__checkboxTitle,
+			&__block__checkboxShow,
+			&__block__checkboxChange {
+				color: #666;
+			}
+		}
+	}
+
+	.expiresFieldTitle,
+	.sortFieldTitle {
+		color: #666;
+	}
+}

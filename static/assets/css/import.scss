@@ -1,0 +1,17 @@
+@import '~@picsio/ui/dist/scss/index.scss';
+@import '~@picsio/ui/dist/index.scss';
+
+.#{$picsioPopover} {
+  a {
+    text-decoration: none;
+  }
+}
+
+// TODO: need to fix in the next picsio/ui release
+.#{$picsioToolbarMenu} {
+  .#{$picsioMenuItemClassName} {
+    &__text {
+      padding: 0 8px;
+    }
+  }
+}

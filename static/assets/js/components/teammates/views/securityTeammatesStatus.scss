@@ -1,0 +1,53 @@
+@import 'cssVariables';
+
+.securityTeammatesStatus {
+  display: table;
+  margin-top: 30px;
+}
+
+.securityTeammateStatus {
+  display: table-row;
+
+  > div {
+    display: table-cell;
+    align-items: center;
+    vertical-align: middle;
+    padding: 7px 0;
+  }
+
+  .tagUser {
+    margin: 0;
+    vertical-align: middle;
+  }
+
+  .securityTeammateStatusIcon {
+    padding-left: 10px;
+    padding-right: 10px;
+
+    @include media('>=tablet') {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+  }
+
+  // .securityTeammateStatusAction {
+  //   padding-left: 30px;
+  // }
+
+  .PicsioIcon {
+    vertical-align: middle;
+  }
+
+  .icon {
+    font-size: 16px;
+    vertical-align: middle;
+  }
+
+  .ok_svg__icon {
+    color: #B3E814;
+  }
+
+  // .icon-dots {
+  //   color:
+  // }
+}

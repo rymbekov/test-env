@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "io.pics.app",
+      "sha256_cert_fingerprints": [
+        "06:16:6F:85:B5:2D:44:9C:D1:23:67:7E:72:D4:D7:94:66:43:E7:F3:30:38:74:A5:B9:EA:81:62:88:C8:5F:2E"
+      ]
+    }
+  }
+]

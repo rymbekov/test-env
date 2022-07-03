@@ -1,0 +1,76 @@
+
+@import 'cssVariables';
+
+.collectionsList {
+	position: relative;
+	margin-bottom: 30px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+
+	.dropdownTreeWrapper {
+		margin-top: 20px;
+	}
+
+	.tag {
+		margin: 0 5px 5px 0;
+	}
+
+	[class^="css-"] {
+		display: inline;
+	}
+		
+	.react-loading-skeleton {
+		margin: 0 5px 5px 0;
+		vertical-align: top;
+		display: inline-block;
+	}
+
+	.span + .dropdownTreeOpener,
+	.tag + .dropdownTreeOpener {
+		vertical-align: top;
+	}
+
+	.collectionsListDescription {
+		vertical-align: top;
+		display: inline-block;
+		margin-left: 4px;
+	}
+}
+
+.addCollection {
+	position: relative;
+	margin-bottom: 25px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	width: 100%;
+	.dropdownTreeWrapper {
+		margin-top: 10px;
+		top: 14px;
+		left: 40%;
+		width: 350px;
+		box-sizing: border-box;
+	}
+}
+
+.sellectedAllCollection.sellectedAllCollection  {
+	margin-left: 26px;
+}
+
+.collectionsListWithCollection {
+	z-index: 0;
+
+	.collectionsListDescription {
+		display: block;
+		margin: 10px 0 0;
+	}
+}
+
+.picsioThemeLight {
+	.collectionsList {
+		.dropdownTreeOpener {
+			color: $brandColorLightTheme;
+		}
+	}
+}

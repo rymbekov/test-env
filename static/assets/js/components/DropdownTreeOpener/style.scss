@@ -1,0 +1,31 @@
+@import 'cssVariables';
+
+.dropdownTreeOpener {
+    margin-top: -3px;
+    vertical-align: middle;
+    color: $brandColor;
+
+    @include media('<desktop') {
+        height: 43px;
+        width: 40px;
+    }
+}
+
+.addButtonCollection {
+    border-radius: 16px;
+    position: relative;
+    background-color: #ffcc00;
+    color: #161616;
+    cursor: pointer;
+    padding: 3px 0;
+    width: 124px;
+    font-size: 15px;
+    border: none;
+}
+
+.picsioThemeLight {
+  .addButtonCollection {
+    background-color: #3B94FB;
+    color: #fff;
+  }
+}

@@ -1,0 +1,335 @@
+.defaultFlagList {
+	display: inline-block;
+	vertical-align: top;
+	background: #343433;
+
+	&.disabled {
+		pointer-events: none;
+		opacity: 0.8;
+
+		ul {
+			li.act {
+				outline-color: $gray;
+			}
+		}
+	}
+
+	&.isError {
+		box-shadow: 0 0 0 2px $error;
+	}
+
+	ul {
+		display: flex;
+		align-items: center;
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		font-size: 0;
+
+		li {
+			width: 29px;
+			height: 30px;
+			font-size: 14px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			color: #fff;
+
+			&.act {
+				outline: 1px solid $picsioYellowColor;
+			}
+
+			@include media('<desktop') {
+				width: 48px;
+				height: 49px;
+				font-size: 24px;
+			}
+
+			.iconHolder {
+				color: $lightgray;
+			}
+		}
+	}
+}
+
+.defaultColorList {
+	display: inline-block;
+	vertical-align: top;
+	background: #343433;
+
+	&.isError {
+		box-shadow: 0 0 0 2px $error;
+	}
+
+	&.disabled {
+		pointer-events: none;
+		opacity: 0.8;
+
+		ul {
+			li.act {
+				outline-color: $gray;
+			}
+		}
+	}
+
+	&.isError {
+		box-shadow: 0 0 0 2px $error;
+	}
+
+	ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		font-size: 0;
+
+		li {
+			cursor: pointer;
+			display: inline-block;
+			padding: 10px;
+			vertical-align: top;
+
+			&.act {
+				position: relative;
+				z-index: 1;
+				outline: 1px solid $picsioYellowColor;
+			}
+
+			.filterLabelColor {
+				display: block;
+				width: 10px;
+				height: 10px;
+				box-sizing: border-box;
+
+				&.filterUnlabeledColor {
+					border: 1px solid #999;
+					position: relative;
+					overflow: hidden;
+
+					&::after {
+						content: "";
+						position: absolute;
+						left: -2px;
+						top: -2px;
+						width: 20px;
+						height: 1px;
+						display: block;
+						background: #999;
+						transform: rotate(45deg);
+						transform-origin: 0px 2px;
+					}
+				}
+			}
+
+			@include media('<desktop') {
+				padding: 16px;
+
+				.filterLabelColor {
+					width: 16px;
+					height: 17px;
+				}
+			}
+		}
+	}
+}
+
+.defaultRatingList {
+	display: inline-block;
+	vertical-align: top;
+	color: #fff;
+	padding: 6px 7px;
+	background: #343433;
+
+	&.isError {
+		box-shadow: 0 0 0 2px $error;
+	}
+
+	&.disabled {
+		pointer-events: none;
+		opacity: 0.8;
+	}
+
+	&.isError {
+		box-shadow: 0 0 0 2px $error;
+	}
+
+	.innerDefaultRatingList {
+		overflow: hidden;
+		white-space: nowrap;
+		display: block;
+
+		ul {
+			overflow: hidden;
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+
+			li {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				float: right;
+				cursor: pointer;
+				width: 20px;
+				text-align: center;
+
+				.icon-svg {
+					display: inline-flex;
+					height: 18px;
+					font-size: 18px;
+					line-height: 18px;
+					color: #131515;
+					vertical-align: middle;
+
+					.svg-icon {
+						margin: auto;
+					}
+
+				}
+
+				&.act {
+
+					.icon-svg,
+					&~li .icon-svg {
+						color: #fff;
+					}
+				}
+			}
+		}
+
+		&:hover {
+			ul {
+				li {
+
+					& .icon-svg,
+					&~li .icon-svg {
+						color: #131515;
+					}
+
+					&:hover {
+
+						& .icon-svg,
+						&~li .icon-svg {
+							color: #fff;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	@include media('<desktop') {
+		padding: 0;
+
+		.innerDefaultRatingList {
+			ul {
+				li {
+					width: 50px;
+					line-height: 50px;
+
+					.icon-svg {
+						height: 50px;
+						font-size: 24px;
+						line-height: 24px;
+					}
+				}
+			}
+		}
+	}
+}
+
+.picsioThemeLight {
+	.defaultFlagList {
+		background: #e5e5e5;
+
+		&.disabled {
+			ul {
+
+				li.act {
+					outline-color: $gray;
+				}
+			}
+		}
+
+		ul {
+			li {
+				color: $gray;
+				&.act {
+					outline-color: $brandColorLightTheme;
+				}
+			}
+		}
+	}
+
+	.defaultColorList {
+		background: #e5e5e5;
+
+		&.disabled {
+			ul {
+				li.act {
+					outline-color: $gray;
+				}
+			}
+		}
+
+		ul {
+			li {
+				&.act {
+					outline-color: $brandColorLightTheme;
+				}
+
+				.filterLabelColor {
+					&.filterUnlabeledColor {
+						border-color: #999;
+
+						&::after {
+							background: #999;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.defaultRatingList {
+		background: #e5e5e5;
+
+		.innerDefaultRatingList {
+			ul {
+				li {
+					.icon-svg {
+						color: #fff;
+					}
+
+					&.act {
+
+						& .icon-svg,
+						&~li .icon-svg {
+							color: #ff9900;
+						}
+					}
+				}
+			}
+
+			&:hover {
+				ul {
+					li {
+
+						& .icon-svg,
+						&~li .icon-svg {
+							color: #fff;
+						}
+
+						&:hover {
+
+							& .icon-svg,
+							&~li .icon-svg {
+								color: #ff9900;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

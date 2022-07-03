@@ -1,0 +1,210 @@
+.dropdownTreeWrapper {
+    position: absolute;
+    left: 35px;
+    top: 100%;
+    box-shadow: 0 0 15px #000;
+    margin-top: -29px;
+    background: $screenBgDark;
+    z-index: 10;
+    &:empty {
+        display: none;
+    }
+}
+
+.dropdownTree {
+    &__input {
+        margin: 15px;
+    }
+    &List {
+        position: relative;
+        min-height: 200px;
+        max-height: 450px;
+        min-width: 300px;
+        max-width: 450px;
+        padding: 15px 25px 15px 10px;
+        overflow: auto;
+    }
+    .childList {
+        width: 100%;
+    }
+
+    &Item {
+        width: 100%;
+        color: #999;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 28px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        .row {
+            box-sizing: border-box;
+            position: relative;
+            display: flex;
+            width: 100%;
+            align-items: center;
+            cursor: pointer;
+            &:hover {
+                .iconSubject,
+                .dropdownTreeItemName {
+                    color: $lightgray;
+                }
+            }
+        }
+        &.act {
+            color: #fff;
+            > .row {
+                .iconSubject {
+                    color: $brandColor;
+                }
+                &:hover {
+                    .iconSubject,
+                    .dropdownTreeItemName {
+                        color: $lightgray;
+                    }
+                }
+            }
+        }
+        &.disabled {
+            > .row {
+                pointer-events: none;
+                opacity: 0.3;
+                cursor: default;
+            }
+        }
+        .arrowItem {
+            position: absolute;
+            top: 10px;
+            padding: 5px;
+            margin: -4px 0 0 -15px;
+            cursor: pointer;
+            user-select: none;
+            display: block;
+            &::after {
+                content: '';
+                width: 0;
+                height: 0;
+                display: block;
+                border-color: transparent transparent transparent $darkgray;
+                border-style: solid;
+                border-width: 3px 0 3px 6px;
+                position: relative;
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: -6px;
+                right: -10px;
+                width: 300px;
+                height: 28px;
+            }
+
+            &:hover {
+                &::after {
+                    border-color: transparent transparent transparent $brandColor;
+                }
+            }
+        }
+        .iconSubject {
+            font-size: 16px;
+            display: inline-flex;
+            margin-left: 10px;
+            margin-top: -3px;
+        }
+        &Name {
+            width: 100%;
+            display: inline-block;
+            padding-right: 15px;
+            margin-left: 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .icon-ok {
+            position: absolute;
+            right: -10px;
+            top: 8px;
+            font-size: 12px;
+        }
+        &.openedItem {
+            > .row {
+                .arrowItem {
+
+                    &::after {
+                        transform: rotate(90deg);
+                    }
+                }
+            }
+        }
+        &Loading {
+            margin-left: 9px;
+        }
+    }
+}
+
+.dropdownTree {
+	.dropdownTreeItemName {
+		[class^='css-'],
+		.react-loading-skeleton {
+			height: 18px;
+			display: inline-block;
+			vertical-align: middle;
+		}
+	}
+  .PicsioIcon {
+    font-size: 18px;
+  }
+}
+
+.picsioThemeLight {
+    .dropdownTreeWrapper {
+        background: #fff;
+        box-shadow: $shadowModalLightTheme;
+    }
+    .dropdownTree {
+        &Item{
+            color: $gray;
+            .row {
+                &:hover {
+                    .iconSubject,
+                    .dropdownTreeItemName {
+                        color: #000;
+                    }
+                }
+            }
+            &.act {
+                color: $darkgray;
+                > .row {
+                    .iconSubject {
+                        color: $brandColorLightTheme;
+                    }
+                    .icon-ok {
+                        color: #000;
+                    }
+                    &:hover {
+                        .iconSubject,
+                        .dropdownTreeItemName {
+                            color: #000;
+                        }
+                    }
+                }
+            }
+            .arrowItem {
+                &:hover {
+                    &::after {
+                        border-color: transparent transparent transparent $brandColorLightTheme;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media('<tablet') {
+    .mobile {
+        .dropdownTreeWrapper {
+            left: 0;
+        }
+    }
+}

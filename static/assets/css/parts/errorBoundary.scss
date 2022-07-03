@@ -1,0 +1,74 @@
+.errorBoundary {
+	margin: auto;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	.iconErrorBoundary {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 55px;
+		color: #666;
+	}
+
+	.textErrorBoundary {
+		font-size: 13px;
+		font-weight: 300;
+		color: #656565;
+		padding-top: 8px;
+	}
+	.btnErrorBoundary {
+		font-size: 13px;
+		font-weight: 300;
+		color: #ffcc00;
+		padding-top: 8px;
+		cursor: pointer;
+	}
+
+	&.errorBoundaryPage {
+		min-height: 100vh;
+		align-items: center;
+	}
+
+	&.errorBoundaryOverlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: rgba(0,0,0,0.85);
+		color: #999;
+		z-index: 101;
+
+		> div {
+			color: inherit;
+		}
+	}
+
+	&.errorBoundaryComponent {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+
+		// centring
+		.pageInnerContent & {
+			padding-top: 15px;
+			padding-bottom: 50px;
+		}
+	}
+}
+
+.picsioLightTheme {
+	.errorBoundary {
+		.textErrorBoundary {
+			color: #ccc;
+		}
+		.btnErrorBoundary {
+			color: $brandColorLightTheme;
+		}
+	}
+}

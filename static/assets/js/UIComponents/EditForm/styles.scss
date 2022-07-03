@@ -1,0 +1,7 @@
+@import '../../../css/import';
+
+.editForm {
+  &__field {
+    margin-bottom: getSpacing('m');
+  }
+}

@@ -1,0 +1,78 @@
+
+.mainBurger {
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	text-indent: -9999px;
+	overflow: hidden;
+	transition: all 0.3s ease;
+	z-index: 99;
+	position: absolute;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+	background-color: var(--background-contrast-color);
+
+	&:before,
+	&:after,
+	span {
+		background: $gray !important;
+		border-radius: 0;
+		position: absolute;
+		top: 24px;
+		left: 17px;
+		right: 17px;
+		height: 2px;
+		transition: transform 0.2s ease, opacity 0.2s ease;
+		display: block !important;
+		will-change: transform;
+	}
+
+	&:before,
+	&:after {
+		content: '';
+		top: 19px;
+	}
+
+	&:after {
+		top: 29px;
+	}
+
+	.isLeftMenuActive &,
+	&.active {
+		span {
+			opacity: 0;
+		}
+
+		&:before,
+		&:after {
+			top: 24px;
+			background: #fff !important;
+		}
+
+		&:before {
+			transform: rotate(45deg);
+		}
+
+		&:after {
+			transform: rotate(-45deg);
+		}
+	}
+}
+
+.picsioThemeLight {
+	.mainBurger {
+		// background: #f4f4f4;
+
+		&:before,
+		&:after,
+		span {
+			background: $gray !important;
+		}
+	}
+
+	// .isLeftMenuActive .mainBurger,
+	// .mainBurger.active {
+	// 	background-color: #fff;
+	// }
+}

@@ -1,0 +1,521 @@
+/* @font-face {
+	font-family: 'bebas_neuebold';
+	src: url('bebasneue_bold.woff2') format('woff2'),
+		 url('bebasneue_bold.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+} */
+
+@font-face {
+	font-family: 'Fira Sans';
+	font-display: fallback;
+	src: url('firasans-thin.woff2') format('woff2'),
+		 url('firasans-thin.woff') format('woff');
+	font-weight: 100;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	font-display: fallback;
+	src: url('firasans-thinitalic.woff2') format('woff2'),
+		 url('firasans-thinitalic.woff') format('woff');
+	font-weight: 100;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	font-display: fallback;
+	src: url('firasans-extralight.woff2') format('woff2'),
+		 url('firasans-extralight.woff') format('woff');
+	font-weight: 200;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	font-display: fallback;
+	src: url('firasans-extralightitalic.woff2') format('woff2'),
+		 url('firasans-extralightitalic.woff') format('woff');
+	font-weight: 200;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	font-display: fallback;
+	src: url('firasans-light.woff2') format('woff2'),
+		 url('firasans-light.woff') format('woff');
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	font-display: fallback;
+	src: url('firasans-lightitalic.woff2') format('woff2'),
+		 url('firasans-lightitalic.woff') format('woff');
+	font-weight: 300;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	font-display: fallback;
+	src: url('firasans-regular.woff2') format('woff2'),
+		 url('firasans-regular.woff') format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	font-display: fallback;
+	src: url('firasans-italic.woff2') format('woff2'),
+		 url('firasans-italic.woff') format('woff');
+	font-weight: 400;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	font-display: fallback;
+	src: url('firasans-thin.woff2') format('woff2'),
+		 url('firasans-thin.woff') format('woff');
+	font-weight: 100;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	font-display: fallback;
+	src: url('firasans-thinitalic.woff2') format('woff2'),
+		 url('firasans-thinitalic.woff') format('woff');
+	font-weight: 100;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	font-display: fallback;
+	src: url('firasans-extralight.woff2') format('woff2'),
+		 url('firasans-extralight.woff') format('woff');
+	font-weight: 200;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	font-display: fallback;
+	src: url('firasans-extralightitalic.woff2') format('woff2'),
+		 url('firasans-extralightitalic.woff') format('woff');
+	font-weight: 200;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	font-display: fallback;
+	src: url('firasans-light.woff2') format('woff2'),
+		 url('firasans-light.woff') format('woff');
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	font-display: fallback;
+	src: url('firasans-lightitalic.woff2') format('woff2'),
+		 url('firasans-lightitalic.woff') format('woff');
+	font-weight: 300;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	font-display: fallback;
+	src: url('firasans-regular.woff2') format('woff2'),
+		 url('firasans-regular.woff') format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	font-display: fallback;
+	src: url('firasans-italic.woff2') format('woff2'),
+		 url('firasans-italic.woff') format('woff');
+	font-weight: 400;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	font-display: fallback;
+	src: url('firasans-medium.woff2') format('woff2'),
+		 url('firasans-medium.woff') format('woff');
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	font-display: fallback;
+	src: url('firasans-mediumitalic.woff2') format('woff2'),
+		 url('firasans-mediumitalic.woff') format('woff');
+	font-weight: 500;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	font-display: fallback;
+	src: url('firasans-semibold.woff2') format('woff2'),
+		 url('firasans-semibold.woff') format('woff');
+	font-weight: 600;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	font-display: fallback;
+	src: url('firasans-semibolditalic.woff2') format('woff2'),
+		 url('firasans-semibolditalic.woff') format('woff');
+	font-weight: 600;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	font-display: fallback;
+	src: url('firasans-bold.woff2') format('woff2'),
+		 url('firasans-bold.woff') format('woff');
+	font-weight: 700;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	font-display: fallback;
+	src: url('firasans-bolditalic.woff2') format('woff2'),
+		 url('firasans-bolditalic.woff') format('woff');
+	font-weight: 700;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	font-display: fallback;
+	src: url('firasans-extrabold.woff2') format('woff2'),
+		 url('firasans-extrabold.woff') format('woff');
+	font-weight: 800;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	font-display: fallback;
+	src: url('firasans-extrabolditalic.woff2') format('woff2'),
+		 url('firasans-extrabolditalic.woff') format('woff');
+	font-weight: 800;
+	font-style: italic;
+}
+
+
+
+@font-face {
+	font-family: 'fira_sanslight';
+	src: url('firasans-light.woff2') format('woff2'),
+		 url('firasans-light.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sanslight_italic';
+	src: url('firasans-lightitalic.woff2') format('woff2'),
+		 url('firasans-lightitalic.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sansmedium';
+	src: url('firasans-medium.woff2') format('woff2'),
+		 url('firasans-medium.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sansmedium_italic';
+	src: url('firasans-mediumitalic.woff2') format('woff2'),
+		 url('firasans-mediumitalic.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sansregular';
+	src: url('firasans-regular.woff2') format('woff2'),
+		 url('firasans-regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sanssemibold';
+	src: url('firasans-semibold.woff2') format('woff2'),
+		 url('firasans-semibold.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sanssemibold_italic';
+	src: url('firasans-semibolditalic.woff2') format('woff2'),
+		 url('firasans-semibolditalic.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sansthin';
+	src: url('firasans-thin.woff2') format('woff2'),
+		 url('firasans-thin.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sansthin_italic';
+	src: url('firasans-thinitalic.woff2') format('woff2'),
+		 url('firasans-thinitalic.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sanstwo';
+	src: url('firasans-two.woff2') format('woff2'),
+		 url('firasans-two.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sanstwo_italic';
+	src: url('firasans-twoitalic.woff2') format('woff2'),
+		 url('firasans-twoitalic.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sansultra';
+	src: url('firasans-ultra.woff2') format('woff2'),
+		 url('firasans-ultra.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sansultra_italic';
+	src: url('firasans-ultraitalic.woff2') format('woff2'),
+		 url('firasans-ultraitalic.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sansultralight';
+	src: url('firasans-ultralight.woff2') format('woff2'),
+		 url('firasans-ultralight.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sansultralight_italic';
+	src: url('firasans-ultralightitalic.woff2') format('woff2'),
+		 url('firasans-ultralightitalic.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sans_condensedregular';
+	src: url('firasanscondensed-regular.woff2') format('woff2'),
+		 url('firasanscondensed-regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sans_condensedlight';
+	src: url('firasanscondensed-light.woff2') format('woff2'),
+		 url('firasanscondensed-light.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sansextrabold_italic';
+	src: url('firasans-extrabolditalic.woff2') format('woff2'),
+		 url('firasans-extrabolditalic.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sansextralight';
+	src: url('firasans-extralight.woff2') format('woff2'),
+		 url('firasans-extralight.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sansextralight_italic';
+	src: url('firasans-extralightitalic.woff2') format('woff2'),
+		 url('firasans-extralightitalic.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sansfour';
+	src: url('firasans-four.woff2') format('woff2'),
+		 url('firasans-four.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sansfour_italic';
+	src: url('firasans-fouritalic.woff2') format('woff2'),
+		 url('firasans-fouritalic.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sanshair';
+	src: url('firasans-hair.woff2') format('woff2'),
+		 url('firasans-hair.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sanshair_italic';
+	src: url('firasans-hairitalic.woff2') format('woff2'),
+		 url('firasans-hairitalic.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sansheavy';
+	src: url('firasans-heavy.woff2') format('woff2'),
+		 url('firasans-heavy.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sansheavy_italic';
+	src: url('firasans-heavyitalic.woff2') format('woff2'),
+		 url('firasans-heavyitalic.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sansitalic';
+	src: url('firasans-italic.woff2') format('woff2'),
+		 url('firasans-italic.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_monobold';
+	src: url('firamono-bold.woff2') format('woff2'),
+		 url('firamono-bold.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_monomedium';
+	src: url('firamono-medium.woff2') format('woff2'),
+		 url('firamono-medium.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_monoregular';
+	src: url('firamono-regular.woff2') format('woff2'),
+		 url('firamono-regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sansbold';
+	src: url('firasans-bold.woff2') format('woff2'),
+		 url('firasans-bold.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sansbold_italic';
+	src: url('firasans-bolditalic.woff2') format('woff2'),
+		 url('firasans-bolditalic.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sansbook';
+	src: url('firasans-book.woff2') format('woff2'),
+		 url('firasans-book.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sansbook_italic';
+	src: url('firasans-bookitalic.woff2') format('woff2'),
+		 url('firasans-bookitalic.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sanseight';
+	src: url('firasans-eight.woff2') format('woff2'),
+		 url('firasans-eight.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sanseight_italic';
+	src: url('firasans-eightitalic.woff2') format('woff2'),
+		 url('firasans-eightitalic.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'fira_sansextrabold';
+	src: url('firasans-extrabold.woff2') format('woff2'),
+		 url('firasans-extrabold.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}

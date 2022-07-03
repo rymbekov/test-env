@@ -1,0 +1,169 @@
+.itemsCustomFieldedAs {
+	position: relative;
+	z-index: 2;
+
+	.picsioInputText {
+		display: flex;
+		margin-bottom: 0;
+
+		.labelInputText {
+			color: #999999;
+			width: 100px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			padding: 0;
+			align-self: center;
+		}
+
+		input {
+			flex: none;
+			width: 175px;
+		}
+	}
+
+	// .picsioCheckbox {
+	// 	display: flex;
+	// 	margin-bottom: 0;
+	// 	position: relative;
+	// 	min-height: 30px;
+	// 	width: 300px;
+
+	// 	&::before {
+	// 		position: absolute;
+	// 		left: 100px;
+	// 		top: 8px;
+	// 		box-shadow: inset 0 0 0 1px #666;
+	// 	}
+
+	// 	&::after {
+	// 		position: absolute;
+	// 		left: 100px;
+	// 		top: 8px;
+	// 	}
+
+	// 	.labelPicsioCheckbox {
+	// 		color: #999;
+	// 		width: 100px;
+	// 		overflow: hidden;
+	// 		text-overflow: ellipsis;
+	// 		padding: 0;
+	// 		align-self: center;
+	// 		font-size: 14px;
+	// 		display: block;
+	// 		line-height: 1.4;
+	// 	}
+	// }
+
+	.customFieldItemBlock {
+		.customFieldItemContainer {
+			.picsioInputDateRange{
+				.customTimeInputDateRange {
+					@media screen and (max-width: $mediaDevice) {
+						width: 100%;
+						margin: 0;
+						margin-top: 5px;
+						padding-left: 100px;
+						float: none;
+						display: block;
+						box-sizing: border-box;
+					}
+
+					.picsioInputText {
+						@media screen and (max-width: $mediaDevice) {
+							width: 175px;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	[type='date'],
+	.react-datepicker__input-container {
+		width: 175px;
+	}
+}
+
+.customFieldItemBlock {
+	display: flex;
+	margin-bottom: 10px;
+	position: relative;
+
+	.btnRemove {
+		align-self: center;
+		color: #999;
+		font-size: 7px;
+		margin-left: 10px;
+		padding: 5px;
+		cursor: pointer;
+		position: absolute;
+		top: 7px;
+		left: 270px;
+	}
+
+	.customFieldItemContainer {
+		width: 100%;
+
+		.picsioInputDateRange {
+
+			.labelInputDateRange {
+				font-size: 14px;
+				color: #999;
+				width: 100px;
+				padding-top: 9px;
+				display: inline-block;
+			}
+
+			.selectInputDateRange {
+				width: 175px;
+				display: inline-block;
+			}
+
+			.customTimeInputDateRange {
+				display: flex;
+				width: 334px;
+				justify-content: space-between;
+				float: right;
+				margin-right: 17px;
+				margin-top: 5px;
+				margin-bottom: 10px;
+
+				.picsioInputText {
+					width: 158px;
+
+					input {
+						width: 100%;
+						margin-bottom: 5px;
+					}
+				}
+			}
+		}
+	}
+}
+
+.picsioThemeLight {
+
+	.customFieldItemBlock {
+
+		.picsioInputDateRange {
+
+			.labelInputDateRange {
+				color: #666;
+			}
+		}
+	}
+
+	.itemsCustomFieldedAs {
+		.picsioInputText {
+			.labelInputText {
+				color: #666;
+			}
+		}
+		// .picsioCheckbox {
+
+		// 	.labelPicsioCheckbox {
+		// 		color: #666;
+		// 	}
+		// }
+	}
+}

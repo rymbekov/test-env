@@ -1,0 +1,29 @@
+.wrapperPageMyAccount {
+
+	.pageMyAccount {
+		.customSelect__select {
+			option[disabled] {
+				display: none;
+			}
+		}
+
+		.pageTabsContentSettings {
+			height: 100%;
+			overflow-y: auto;
+		}
+
+		.pageTabsContentAccount__label {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 5px;
+		}
+
+		.pageTabsContentNotifications {
+			height: 100%;
+
+			.UICheckbox + .tagList {
+				margin-top: 10px;
+			}
+		}
+	}
+}

@@ -1,0 +1,30 @@
+.urlEditor {
+  margin-bottom: 15px;
+
+  .UICheckbox + & {
+    margin-top: 10px;
+  }
+
+  .UIInput {
+    margin-left: 10px;
+  }
+}
+
+.urlEditorLabel {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.urlEditorInputs {
+  width: 100%;
+  display: flex;
+
+  .customSelect {
+    max-width: calc(50% - 5px);
+    min-width: 160px;
+  }
+
+  .fieldCopyTo {
+    flex: 1;
+  }
+}

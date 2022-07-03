@@ -94,8 +94,8 @@ jobs:
       steps:
         - name: Update Version Number & Build Number
           run: |
-            echo "BUILD_NUMBER=$(date +%y%m%d%H)" >> $GITHUB_ENV
             echo "VERSION_NUMBER=${GIT_TAG/-*}" >> $GITHUB_ENV
+            echo "BUILD_NUMBER=$(date +%y%m%d%H)" >> $GITHUB_ENV
         - uses: actions/checkout@v3
           with:
             fetch-depth: 0
@@ -107,23 +107,24 @@ jobs:
             bundler-cache: true
         - run: echo $GIT_TAG $VERSION_NUMBER $BUILD_NUMBER
         - run: bundle exec fastlane --version
-        # - name: Use node.js 14
-        #   uses: actions/setup-node@v3
-        #   with:
-        #     node-version: '14'
-        #     registry-url: 'https://registry.npmjs.org'
-        #   env:
-        #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        # - name: Cache Modules
-        #   uses: actions/cache@v2
-        #   with:
-        #     path: '**/node_modules'
-        #     key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
-        # - name: Install Dependencies
-        #   run: npm install --no-audit
-        # - name: Build Stage Mobile sources
-        #   run: npm run build:stage:mobile
-        # - name: Sync Android
-        #   run: npx cap sync android
-        # - name: Decode Keystore file
-        #   run: echo ${{ secrets.ANDROID_KEYSTORE }} | base64 -d | tee android-keystore.jks android/app/android-keystore.jks
+        - name: Use node.js 14
+          uses: actions/setup-node@v3
+          with:
+            node-version: '14'
+            registry-url: 'https://registry.npmjs.org'
+          env:
+            NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        - name: Cache Modules
+          uses: actions/cache@v2
+          with:
+            path: '**/node_modules'
+            key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
+        - name: Install Dependencies
+          run: npm install --no-audit
+        - name: Build Stage Mobile sources
+          run: npm run build:stage:mobile
+        - name: Sync Android
+          run: npx cap sync android
+        - name: Decode Keystore file
+          run: echo ${{ secrets.ANDROID_KEYSTORE }} | base64 -d | tee android-keystore.jks android/app/android-keystore.jks
+        - run: ls

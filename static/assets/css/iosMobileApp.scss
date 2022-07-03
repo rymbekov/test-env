@@ -1,0 +1,165 @@
+// html.picsioThemeLight {
+//   margin-top: env(safe-area-inset-top);
+//   position: relative;
+// }
+
+.iosMobileApp {
+  @include media('<widescreen') {
+    .toolbarCatalogTop,
+    .toolbarPreviewTop {
+      top: env(safe-area-inset-top)
+    }
+
+    .wrapperPicsioApp .appMain .content {
+      padding-top: env(safe-area-inset-top);
+      height: calc(100% - env(safe-area-inset-top));
+    }
+
+    .toolbarVertical {
+      padding-top: env(safe-area-inset-top);
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    .preview .toolbarVertical {
+      // padding-top: 0;
+      bottom: env(safe-area-inset-bottom);
+    }
+
+    .preview {
+      top: env(safe-area-inset-top);
+      height: calc(100% - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    }
+
+    .wrapperSearch #searchView {
+      top: calc(10px + env(safe-area-inset-top));
+    }
+
+    // import
+    // #import,
+    #import.showImportPanel-enter-active,
+    #import.showImportPanel-enter-done,
+    #import.showImportPanel-exit {
+      top: env(safe-area-inset-top);
+    }
+  }
+
+  @include media('>=desktop', '<widescreen') {
+    #import {
+      top: env(safe-area-inset-top);
+    }
+
+    .toolbarVertical {
+      height: calc(100% - env(safe-area-inset-top) - 50px);
+    }
+  }
+
+  @include media('<desktop') {
+    // .wrapperSearch #searchView {
+    //   top: calc(50px + env(safe-area-inset-top));
+    // }
+
+    // .wrapperSearch.show #searchView {
+    //   height: calc(100% - 50px);
+    //   padding-bottom: 50px;
+    // }
+
+    .preview .toolbarVertical {
+      padding-top: 0;
+    }
+
+    .toolbarPreviewRightMobile {
+      top: calc(50px + env(safe-area-inset-top));
+    }
+
+    .toolbarDropdownWrapper {
+      height: calc(100% - env(safe-area-inset-top));
+    }
+
+    .catalogDetailsPanel.wrapperDetailsPanel {
+      margin-top: env(safe-area-inset-top);
+    }
+
+    .toolbarDropdownWrapper,
+    .toolbarDropdownWrapper .toolbarDropdownHeader {
+      top: env(safe-area-inset-top)
+    }
+
+    .toolbarDropdown.drop-active-left {
+      &::after {
+        display: none;
+      }
+    }
+
+    // .page .pageContent {
+    //   padding: env(safe-area-inset-top) 0 50px;
+    // }
+
+    .wrapperPageStorage {
+      .page .pageContent {
+        padding: calc(env(safe-area-inset-top) + 30px) 0 50px;
+      }
+    }
+
+    .schemaHeader {
+      margin-top: env(safe-area-inset-top);
+    }
+
+    .schemaWrapper {
+      .wrapperItems {
+        margin-bottom: 0;
+      }
+    }
+
+    .itemCustomFieldsMain {
+      min-width: 0;
+    }
+    .itemCustomFields .fieldName {
+      overflow: hidden;
+      min-width: 0;
+    }
+
+    // audit
+    .wrapperPageAudit .page .pageContent .pageInnerContent,
+    .wrapperPageAudit .page .pageContent .pageInnerContent .pageContent {
+      padding-top: 0;
+    }
+
+    // referral
+    // .wrapperReferralPage .innerContent {
+    //   padding-top: env(safe-area-inset-top);
+    // }
+
+    // wrapperPageMyAccount {
+    .wrapperPageMyAccount .pageContent {
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    .notificationsButtons {
+      padding-bottom: 10px;
+
+      .button {
+        margin-bottom: 10px;
+      }
+    }
+
+    // .historyView__bottom,
+    .detailsPanel__list {
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    .assetAnalytics {
+      padding: env(safe-area-inset-top) 15px env(safe-area-inset-bottom);
+
+      &:first-child {
+        padding-top: 0;
+      }
+    }
+
+    .previewInfoboxHistory {
+      height: calc(100% - env(safe-area-inset-bottom));
+    }
+    .detailsPanel__content {
+      overflow: auto;
+    }
+  }
+}

@@ -1,0 +1,82 @@
+@font-face {
+  font-family: 'portfolioIcons';
+  src:  url('fonts/portfolioIcons.eot?1e9u53');
+  src:  url('fonts/portfolioIcons.eot?1e9u53#iefix') format('embedded-opentype'),
+    url('fonts/portfolioIcons.woff2?1e9u53') format('woff2'),
+    url('fonts/portfolioIcons.ttf?1e9u53') format('truetype'),
+    url('fonts/portfolioIcons.woff?1e9u53') format('woff'),
+    url('fonts/portfolioIcons.svg?1e9u53#portfolioIcons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon_"], [class*=" icon_"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'portfolioIcons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon_prewArrowPreview:before {
+  content: "\e701";
+}
+.icon_nextArrowPreview:before {
+  content: "\e702";
+}
+.icon_closePreview:before {
+  content: "\e703";
+}
+.icon_download:before {
+  content: "\e704";
+}
+.icon_sandwich:before {
+  content: "\e705";
+}
+.icon_closeHiddenMenu:before {
+  content: "\e706";
+}
+.icon_twitter:before {
+  content: "\e751";
+}
+.icon_fb:before {
+  content: "\e752";
+}
+.icon_cell:before {
+  content: "\e753";
+}
+.icon_email:before {
+  content: "\e754";
+}
+.icon_about:before {
+  content: "\e600";
+}
+.icon_blog:before {
+  content: "\e601";
+}
+.icon_contact:before {
+  content: "\e602";
+}
+.icon_mp3IsntExisted:before {
+  content: "\e801";
+}
+.icon_epsIsntExisted:before {
+  content: "\e802";
+}
+.icon_aiIsntExisted:before {
+  content: "\e803";
+}
+.icon_wavIsntExisted:before {
+  content: "\e804";
+}
+.icon_previewIsntExisted:before {
+  content: "\e805";
+}
+

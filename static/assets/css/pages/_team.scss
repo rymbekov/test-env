@@ -1,0 +1,1220 @@
+.wrapperPageTeam {
+  .pageTeam {
+    .customSelect__label {
+      color: inherit;
+    }
+
+    .UICheckbox__checkbox {
+      flex: 0 0 15px;
+    }
+
+    .UICheckbox__label {
+      white-space: normal;
+    }
+
+    .pageTabsContentTeammate,
+    .pageTabsContentRoles {
+      display: flex;
+      height: 100%;
+
+      @include media('>=desktop') {
+        margin-right: -30px;
+      }
+
+      @include media('>=widescreen') {
+        margin-right: -48px;
+      }
+
+      @include media('<desktop') {
+        margin: 0 auto;
+      }
+    }
+
+    &__leftSidebar {
+      flex: 0 0 300px;
+      padding-right: 5px;
+      border-right: 1px solid #1d1d1d;
+      height: 100%;
+      //margin-left: calc((100vw - 800px) / 2);
+
+      @include media('>=xwidescreen') {
+        margin-left: calc((100vw - 1366px) / 2);
+      }
+
+      @include media('<widescreen') {
+        flex: 0 0 250px;
+      }
+
+      @include media('<desktop') {
+        flex: 1 0 0%;
+        border-right: none;
+        margin-left: 0;
+      }
+
+      &__createLink {
+        margin-bottom: 15px;
+      }
+
+      &__createRole {
+        color: $brandColor;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        font-size: 18px;
+        font-weight: 300;
+        vertical-align: middle;
+        margin-right: 8px;
+
+        &.isNotAllowed {
+          opacity: 0.5;
+          pointer-events: none;
+        }
+
+        @include media('<desktop') {
+          margin-left: 10px;
+        }
+
+        .icon-roundPlus {
+          margin-right: 10px;
+        }
+      }
+
+      &__users {
+        overflow: auto;
+        margin: 0 -15px;
+
+        @include media('>=desktop') {
+          height: calc(100% - 120px);
+          margin: 0;
+          padding: 2px 1px 2px 2px;
+        }
+      }
+
+      &__user {
+        display: flex;
+        flex-wrap: wrap;
+        position: relative;
+        align-items: center;
+        cursor: pointer;
+        margin-bottom: 20px;
+        color: #ccc;
+        border-radius: 25px 0 0 25px;
+
+        @include media('<desktop') {
+          border-radius: 0;
+          padding: 10px;
+          margin: 0;
+          align-items: flex-start;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+
+        &__logo {
+          width: 50px;
+          height: 50px;
+          position: relative;
+          box-sizing: border-box;
+          font-size: 30px;
+          border-radius: 50%;
+
+          @include media('<desktop') {
+            width: 80px;
+            height: 80px;
+            font-size: 40px;
+          }
+        }
+
+        &__name {
+          padding-left: 15px;
+          margin-bottom: 5px;
+          font-weight: 300;
+          font-size: 18px;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          max-width: 220px;
+          overflow: hidden;
+        }
+
+        &__role,
+        &__email {
+          padding-left: 15px;
+          font-size: 12px;
+
+          @include media('<desktop') {
+            margin-bottom: 15px;
+          }
+        }
+
+        &__role {
+          @include media('<tablet') {
+            display: none;
+          }
+
+          .svg-icon {
+            margin: -3px 4px 0 0;
+            vertical-align: middle;
+          }
+        }
+
+        &__email {
+          display: none;
+
+          @include media('<desktop') {
+            display: block;
+          }
+        }
+
+        .pageTeam__leftSidebar__userRemoveBtn {
+          position: absolute;
+          width: 25px;
+          height: 25px;
+          text-align: center;
+          line-height: 25px;
+          top: 0;
+          right: 0;
+          font-size: 9px;
+          display: none;
+          transition: all .3s ease;
+          cursor: pointer;
+
+          &:hover {
+            background: rgba(0, 0, 0, 0.1);
+          }
+        }
+
+        &:hover {
+          background-color: #1b1b1b;
+          background-image: linear-gradient(to right, $dark-darkgray, #252424);
+          color: #fff;
+          transition: background-color .3s linear;
+          .pageTeam__leftSidebar__userRemoveBtn {
+            display: block;
+          }
+        }
+
+        &.activeUser {
+          background-color: #1b1b1b;
+          background-image: linear-gradient(to right, $dark-darkgray, #252424);
+          color: #fff;
+
+          .pageTeam__leftSidebar__userRemoveBtn {
+            display: block;
+          }
+          .pageTeam__leftSidebar__user__mobileblock {
+            display: block;
+          }
+        }
+
+        &__mobileblock {
+          display: none;
+          @include media('<desktop') {
+            width: 100%;
+            padding: 20px 10px 10px;
+          }
+
+          .pageTeam__user__inner {
+            display: none;
+
+            @include media('<desktop') {
+              display: block;
+              width: 100%;
+            }
+          }
+        }
+
+        .pageTeam__user__userName,
+        .pageTeam__user__userMail,
+        .pageTeam__user__userLogo {
+          display: none;
+        }
+      }
+
+      &__listRoles {
+        overflow: auto;
+        max-width: 300px;
+
+        @include media('<desktop') {
+          padding-left: 0;
+          padding-bottom: 15px;
+          max-width: none;
+        }
+
+        @include media('>=desktop') {
+          height: calc(100% - 45px);
+        }
+      }
+
+      &__role {
+        margin-bottom: 10px;
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 1.7;
+        color: #ccc;
+        padding-left: 10px;
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        white-space: nowrap;
+
+        @include media('<desktop') {
+          flex-wrap: wrap;
+          white-space: normal;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        &:hover {
+          background-color: #1b1b1b;
+          color: #fff;
+          transition: all .3s linear;
+
+          .pageTeam__leftSidebar__role__manageRole {
+            right: 0;
+            transition: right .3s ease-in-out;
+          }
+        }
+
+        &__manageRole {
+          position: absolute;
+          top: 0;
+          right: -100px;
+          background: inherit;
+          transition: right .3s ease-in-out;
+          &::after {
+            content: '';
+            width: 5px;
+            height: 100%;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: -5px;
+            z-index: 2;
+            background-image: linear-gradient(to right, rgba(27,27,27,0), #1b1b1b);
+          }
+        }
+
+        &__btn {
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          float: right;
+          width: 30px;
+          height: 30px;
+          padding: 8px;
+          box-sizing: border-box;
+          font-size: 13px;
+
+          &:hover {
+            color: #666;
+          }
+        }
+
+        &.act {
+          background-color: #1b1b1b;
+          color: #fff;
+
+          .pageTeam__leftSidebar__role__manageRole {
+            right: 0;
+            transition: right .3s ease-in-out;
+          }
+
+          .pageTeam__leftSidebar__role__mobileblock {
+            display: none;
+
+            @include media('<desktop') {
+              display: block;
+            }
+          }
+        }
+
+        &.isError {
+          color: $error !important;
+        }
+
+        &__mobileblock {
+          display: none;
+          @include media('<desktop') {
+            width: 100%;
+            padding: 20px 10px 10px;
+          }
+
+          .pageTeam__role__username {
+            padding-left: 0;
+            line-height: 1;
+            margin-bottom: 10px;
+          }
+          .pageTeam__role__collections {
+            padding-left: 0;
+            font-size: 16px;
+            line-height: 1;
+          }
+        }
+      }
+
+      .pageTeam__user__invite {
+        display: none;
+        width: calc(100% - 20px);
+        max-width: initial;
+        margin: 0 auto 20px;
+
+        @include media('<desktop') {
+          display: block;
+        }
+
+        .picsioDefBtn {
+
+          @media screen and (max-width: 500px) {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+// END styles for teammates leftsidebar (users)
+
+// END styles for roles leftsidebar (users)
+
+// styles for user (right part teammates)
+
+    &__user {
+      padding-left: 20px;
+      flex: 1 0 0;
+
+      @include media('<desktop') {
+        display: none;
+      }
+
+      &__invite {
+        max-width: 679px;
+
+        &__block {
+          font-size: 14px;
+          max-width: 450px;
+          margin: 2px 0 36px 0;
+        }
+
+      }
+
+      &__inner {
+        overflow: auto;
+        height: 100%;
+        max-width: 450px;
+        padding-right: calc((100vw - 800px) / 2);
+        padding-left: 4px;
+      }
+
+      &__userLogo {
+        position: relative;
+        float: right;
+      }
+
+      &__userName {
+        margin-bottom: 5px;
+      }
+
+      &__userMail {
+        font-size: 12px;
+        color: #ccc;
+        margin-bottom: 30px;
+        line-height: 1.5;
+      }
+
+      &__select {
+        width: 250px;
+      }
+
+      &__addInfo {
+        font-size: 14px;
+        color: #ccc;
+        margin-bottom: 18px;
+        line-height: 1.5;
+      }
+      &__status {
+        padding: 0 5px;
+        &--rejected {
+          color: #cc6600;
+        }
+        &--accepted {
+          color: #66cc00;
+        }
+      }
+
+      &__pass {
+        font-size: 14px;
+        color: #ccc;
+        margin: 0 0 18px 0;
+        line-height: 1.5;
+
+        @include media('<desktop') {
+          margin: 0 0 0 0;
+        }
+      }
+
+      &__roleTeamowner {
+        padding-bottom: 20px;
+        font-size: 14px;
+        display: block;
+
+        .svg-icon {
+          margin: -3px 2px 0 0;
+          vertical-align: middle;
+        }
+      }
+
+      &__delete {
+        .#{$picsioButtonClassName} {
+          min-width: 125px;
+        }
+      }
+    }
+
+//END styles for user (right part teammates)
+
+
+// styles for role (right part roles)
+
+    &__role {
+      position: relative;
+      flex: 1 0 0;
+      height: 100%;
+
+      @include media('<desktop') {
+        display: none;
+      }
+
+      &__inner {
+        height: 100%;
+        overflow: auto;
+      }
+
+      &__username {
+        margin-bottom: 15px;
+        padding-left: 35px;
+      }
+
+      &__collections {
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 1.5;
+        color: $lightgray;
+        .actAllowedCollection {
+          color: $light-lightgray;
+        }
+      }
+
+      .pageItem {
+        padding-left: 35px;
+        padding-right: 15px;
+        position: relative;
+        .watermarkUpload {
+          display: flex;
+          align-items: center;
+          width: $widthMedium;
+          .watermarkUploadButton {
+            margin-right: 10px;
+            position: relative;
+          }
+        }
+        .error {
+          box-shadow: inset 0 0 0 1px $error;
+          padding: 2px;
+        }
+      }
+
+      &__permissions {
+        &__note {
+          margin: -15px 0 25px;
+          padding-left: 24px;
+          font-size: 14px;
+
+          .helpLink .svg-icon {
+            margin: -4px 0 0 4px;
+          }
+        }
+      }
+
+      // &__checkbox {
+      // 	.UICheckbox__checkbox {
+      // 		flex: 0 0 15px;
+      // 	}
+
+      // 	.UICheckbox__label {
+      // 		white-space: normal;
+      // 	}
+      // }
+    }
+
+    .pageItemCustomFields {
+      max-width: 70%;
+
+      .customFieldsSelectorWrapper {
+        .labelItemSearchFilters {
+          width: auto;
+          padding-right: 8px;
+          padding-top: 7px;
+        }
+
+        .PicsioButton {
+          margin-left: 0;
+        }
+      }
+    }
+
+    .googleIcon {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background: url(https://assets.pics.io/img/icon-google.svg) no-repeat 50% 50%;
+      background-size: 100% 100%;
+      margin-right: 10px;
+    }
+
+    .pageTeam__divider {
+      border-top: 1px solid #1d1d1d;
+      margin: 30px 0 30px -20px;
+    }
+
+    .picsioSpinner {
+      background: $screenBgDark;
+    }
+
+//END styles for role (right part roles)
+
+// styles for settings
+    &__settings {
+      width: 100%;
+
+      .customSelect {
+        margin-bottom: 20px;
+      }
+
+      input[type=file] {
+        display: none;
+      }
+    }
+
+//END styles for settings
+  }
+
+  .creator {
+    margin: 0 0 18px 2px;
+  }
+}
+
+.teamUserApproveButtons {
+  margin-bottom: 15px;
+
+  .button {
+    margin-right: 6px;
+  }
+}
+
+.noAllowedCollections {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+
+  .icon-warning {
+    font-size: 48px;
+    color: #ff6b00;
+  }
+  .warningText {
+    padding-left: 15px;
+    line-height: 30px;
+    font-size: 24px;
+    color: #ff6b00;
+  }
+}
+
+.userInviteStatus {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 16px;
+  z-index: 1;
+
+  svg {
+    filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.8));
+  }
+}
+
+.userInviteStatusWaiting {
+  color: #ccc;
+  font-size: 14px;
+}
+
+.userInviteStatusRejected {
+  color: #710000;
+  font-size: 12px;
+}
+
+
+// ************
+// Integrations
+// ************
+.slackDescription {
+  margin-bottom: 24px;
+}
+
+.integrationsContent {
+  font-size: 14px;
+
+  .inputCopyWrapper {
+    display: flex;
+    width: 100%;
+
+    .picsioLinkForShare {
+      min-width: 30px;
+      padding: 0 15px;
+      // flex: 0 0 81px;
+
+      .svg-icon {
+        margin-right: 6px
+      }
+    }
+  }
+
+  .UIInput {
+    max-width: 400px;
+  }
+
+  .inputCopyHolder {
+    display: flex;
+    flex: 1;
+    // flex: 0 0 400px;
+    position: relative;
+
+    @include media('<=phone') {
+      flex: 1;
+    }
+
+    .UIInput {
+      width: 100%;
+      display: flex;
+      margin-bottom: 0;
+
+      [type='text'] {
+        padding-right: 40px;
+      }
+    }
+  }
+}
+
+.inputCopyHolder,
+.passwordField {
+  .showInputText {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40px;
+    height: 30px;
+    text-align: center;
+    color: #999;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      color: #fff;
+    }
+
+    @include media('<desktop') {
+      height: 50px;
+    }
+  }
+}
+
+.connectSlackButton {
+  margin-top: 12px;
+}
+
+.webhooksList {
+  margin: 28px 0 10px;
+}
+
+.webhookItem {
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+  align-items: center;
+  position: relative;
+  background-color: #282828;
+  font-size: 12px;
+
+  &:nth-child(even) {
+    background-color: #323232;
+  }
+
+  &:hover {
+    .webhookItemButtons {
+      visibility: visible;
+    }
+  }
+}
+
+.webhookItemPlaceholder {
+  justify-content: flex-start;
+
+  &::before {
+    content: '';
+    margin-left: 8px;
+    margin-right: 15px;
+    width: 15px;
+    height: 15px;
+    box-shadow: inset 0 0 0 1px #666;
+    height: 15px;
+    width: 15px;
+  }
+
+  &::after {
+    content: '';
+    height: 15px;
+    flex: 1;
+    background: rgba(153,153,153,0.2);
+    flex: 0 0 30%;
+  }
+}
+
+.webhookItemStatus {
+  box-sizing: border-box;
+  flex: 0 0 31px;
+  padding: 0 8px;
+  margin-right: 7px;
+}
+
+.webhookItemUrl {
+  flex: 1 0 auto;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.webhookItemButtons {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  background: inherit;
+  visibility: hidden;
+
+  .smallBtn {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    opacity: 0.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &::before {
+      line-height: 30px;
+      text-align: center;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.helpLink {
+  color: $brandColor;
+  cursor: pointer;
+
+  &:hover {
+    color: #ff0;
+  }
+
+  .svg-icon {
+    margin-right: 4px;
+    display: inline-block;
+    vertical-align: baseline;
+    position: relative;
+    top: 1px;
+  }
+}
+
+.webhookTypesIsEmpty {
+  color: $red;
+}
+
+.webhookFilter {
+  margin-top: 27px;
+}
+
+.webhookTypes {
+  margin-top: 23px;
+  padding: 13px;
+  background-color: rgba(48,48,48,0.25);
+  max-height: 300px;
+  overflow: auto;
+}
+
+.webhookType {
+  & + & {
+    margin-top: 14px;
+  }
+}
+
+.passwordField {
+  position: relative;
+  width: 250px;
+}
+
+
+.picsioThemeLight {
+  .wrapperPageTeam {
+    .pageTeam {
+      &__leftSidebar {
+        border-right-color: #ebebeb;
+
+
+        &__createRole {
+          color: $brandColorLightTheme;
+        }
+
+        &__role {
+          color: #666;
+
+          &__manageRole {
+            &::after {
+              background-image: linear-gradient(to right, rgba(244,244,244,0), $light-lightgray);
+            }
+          }
+
+          &:hover,
+          &.act {
+            background-color: $light-lightgray;
+            color: #000;
+          }
+        }
+      }
+
+      &__user {
+
+        &__userMail,
+        &__addInfo,
+        &__pass {
+          color: #666;
+        }
+
+      }
+
+      &__role {
+
+        &__collections,
+        &__permission {
+          color: $darkgray;
+        }
+
+        &__collections {
+          .actAllowedCollection {
+            color: $dark-darkgray;
+          }
+        }
+      }
+    }
+
+    .pageTeam__divider  {
+      border-color: #ebebeb;
+    }
+  }
+
+  .userAnalyticsTabWrapper {
+    .tabTitle,
+    .userInfoEdit {
+      color: $darkgray;
+    }
+  }
+
+  .userInviteStatus {
+    svg {
+      filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.25));
+    }
+  }
+
+  .helpLink {
+    color: $brandColorLightTheme;
+  }
+
+  .webhookItem {
+    background-color: $light-lightgray;
+
+    &:nth-child(even) {
+      background-color: #fff;
+    }
+  }
+
+  .webhookTypes {
+    background-color: #fff;
+  }
+
+  .inputCopyHolder,
+  .passwordField {
+    .showInputText {
+      color: #666;
+
+      &:hover {
+        color: #000;
+      }
+    }
+  }
+}
+
+
+
+
+
+.pageTeam__leftSidebar {
+  .searchBar {
+    position: relative;
+    padding: 0;
+    margin-bottom: 17px;
+
+    &-reset {
+      top: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @include media('>=desktop') {
+      max-width: 275px;
+    }
+
+    @include media('<desktop') {
+      &-reset {
+        top: 10px;
+      }
+    }
+  }
+}
+
+.pageTeam__user__invite {
+  .tagList {
+    margin-bottom: 7px;
+  }
+
+  .inviteFromGSuite,
+  .inviteUsersSetName {
+    margin-bottom: 25px;
+    line-height: 1.2;
+  }
+
+  .inviteUsersButton {
+    text-align: right;
+    margin-top: 30px;
+
+    .picsioDefBtn {
+      min-width: 110px;
+    }
+  }
+}
+
+.myTeamUserMobileDetails {
+  flex: 1 0 100%;
+  padding: 15px 0 5px;
+
+  .pageTeam__user__inner {
+    max-width: 270px;
+  }
+
+  .pageTeam__user__userLogo,
+  .pageTeam__user__userName,
+  .pageTeam__user__userMail {
+    display: none;
+  }
+
+  @include media('>=desktop') {
+    display: none;
+  }
+}
+
+
+.mobileHidden {
+  @include media('<desktop') {
+    display: none;
+  }
+}
+
+.mobileVisible {
+  @include media('>=desktop') {
+    display: none;
+  }
+}
+
+// invitingResult
+.invitingResult {
+  &Title {
+    font-size: 22px;
+    font-weight: 300;
+    margin-bottom: 24px;
+  }
+
+  &List {
+    margin-bottom: 30px;
+  }
+}
+
+.myTeamSelectedUsersTitle {
+  font-size: 24px;
+  margin-bottom: 17px;
+  font-weight: 300;
+
+  .picsioLink {
+    font-size: 14px;
+  }
+}
+
+.invitingResultListLabel {
+  margin-bottom: 10px;
+}
+
+.invitingResultList {
+  &Item {
+    display: flex;
+    align-items: center;
+  }
+
+  .tag {
+    margin: 0 4px 4px 0;
+    vertical-align: top;
+  }
+}
+
+
+.invitingResultListItem {
+  margin-bottom: 10px;
+
+  .tag {
+    margin: 0 4px 0 0;
+  }
+}
+
+.myTeamSelectedUsersParams {
+  max-width: 400px;
+}
+
+.myTeamSelectedUsersSelectRole {
+  max-width: 300px;
+}
+
+.pageTabsContentPolicy {
+  padding-bottom: 40px;
+}
+
+.myTeamDialog {
+  line-height: 22px;
+}
+
+.removeRoleDialog {
+  line-height: 20px;
+
+  .tag {
+    margin-left: 4px;
+    margin-right: 0;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+.userAnalyticsTabWrapper {
+  .tabTitle {
+    margin-bottom: 10px;
+    @include h2;
+  }
+
+  .userAnalyticsTab {
+    width: auto;
+    height: auto;
+    max-width: 450px;
+
+    .tabs {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .tab {
+      font-size: 18px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      width: 50%;
+      text-align: center;
+      border-bottom: .5px solid $silver;
+      cursor: pointer;
+    }
+
+    .tabAct {
+      border-bottom: 1px solid $brandColor;
+    }
+  }
+
+  .tabsContentActivity {
+    display: flex;
+    flex-direction: column;
+
+    .tabTitle {
+      margin-right: 10px;
+    }
+
+    .tabList {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+
+      li {
+        margin-bottom: 15px;
+      }
+    }
+
+    .flexColumn {
+      display: flex;
+      flex-direction: column;
+
+      span {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 15px;
+      }
+    }
+  }
+}
+
+.userAIKeywordsTab {
+  .keywordBuy {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 25px;
+  }
+  .purchase {
+    border: none;
+  }
+}
+
+.userInfoEdit {
+  max-width: 450px;
+  font-size: 14px;
+  display: block;
+  color: $lightgray;
+  margin-top: 50px;
+}
+
+.pageTeam__user__addInfo {
+  margin-top: 30px;
+}

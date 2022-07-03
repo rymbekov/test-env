@@ -1,0 +1,29 @@
+.picsioLinkForShare {
+	position: relative;
+
+	&__tooltip {
+		position: absolute;
+		padding: 5px;
+		background: #000;
+		color: #fff;
+		top: 33px;
+		font-size: 14px;
+		font-family: $base-font;
+		border-radius: 3px;
+		white-space: nowrap;
+		font-weight: bold;
+
+		&::before {
+			display: block;
+			width: 8px;
+			height: 8px;
+			transform: rotate(45deg);
+			content: '';
+			background: #000;
+			position: absolute;
+			top: -3px;
+			right: 50%;
+			margin-right: -5px;
+		}
+	}
+}

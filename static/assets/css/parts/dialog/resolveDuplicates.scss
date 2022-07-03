@@ -1,0 +1,157 @@
+.wrapperDuplicatesDialog {
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 1001; // was 4
+
+	&:empty {
+		display: none;
+	}
+
+	.duplicatesDialog {
+
+		.simpleDialogBox  {
+			max-width: 660px;
+		}
+
+		&__fileInfo {
+			float: left;
+			width: 50%;
+			max-width: 190px;
+			color: #fff;
+		}
+
+		&__name {
+			word-break: break-word;
+			padding: 1px 0 0 0;
+			font-weight: 300;
+			font-size: 18px;
+			line-height: 18px;
+		}
+
+		&__preview {
+			max-height: 150px;
+			overflow: hidden;
+			font-size: 0;
+			line-height: 1;
+			margin: 17px 0;
+
+			@include iconSelector {
+				font-style: normal;
+				display: block;
+				font-size: 90px;
+				color: $brandColor;
+				line-height: 1;
+
+				&::before {
+					display: block,
+				}
+			};
+
+			img {
+				max-width: 100%;
+			}
+		}
+
+		&__data {
+			word-break: break-word;
+			font-size: 14px;
+			line-height: 16px;
+		}
+
+		&__dataItem {
+			padding: 0 0 10px 26px;
+			position: relative;
+
+			@include iconSelector {
+				position: absolute;
+				left: 0;
+				top: 0;
+				font-size: 15px;
+				color: #939598;
+			};
+		}
+
+		&__text {
+			font-weight: 300;
+			font-size: 18px;
+			line-height: 1.166666;
+			padding: 0 0 0 20px;
+			display: table;
+			margin-bottom: 25px;
+
+			p:first-child {
+				margin-top: 0 !important;
+			}
+		}
+
+		@media (max-width: 414px) {
+			&__fileInfo {
+				float: none;
+				max-width: 100%;
+				width: 100%;
+				display: flex;
+				flex-wrap: wrap;
+			}
+
+			&__name {
+				flex-basis: 100%;
+				margin-bottom: 15px;
+			}
+
+			&__preview {
+				margin: 0 20px 20px 0;
+				max-width: 190px;
+			}
+
+			&__data {
+				margin-bottom: 20px;
+			}
+
+			&__text {
+				font-size: 16px;
+				padding: 0;
+			}
+		}
+
+		&__radioList {
+			margin: 0 0 25px;
+			padding: 0;
+			list-style: none;
+
+      .UIRadio {
+        display: inline-flex;
+        margin-bottom: 0;
+        vertical-align: middle;
+      }
+
+			li {
+				margin-bottom: 20px;
+			}
+		}
+
+		.UIRadio__label,
+		.UICheckbox__label {
+			font-weight: 300;
+			font-size: 18px;
+			line-height: 17px;
+
+			@media (max-width: 414px) {
+				font-size: 16px;
+				line-height: 1.16666;
+			}
+		}
+	}
+}
+
+.picsioThemeLight {
+	.wrapperDuplicatesDialog {
+
+		.duplicatesDialog {
+
+			&__fileInfo {
+				color: #444;
+			}
+		}
+	}
+}

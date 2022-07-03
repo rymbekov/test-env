@@ -1,0 +1,1999 @@
+@import "variables";
+@import "reset";
+@import "ui/picsioSpinner";
+@import "ui/baseForms";
+@import "base/icons";
+@import "base/animations";
+@import "base/typography";
+@import "import";
+@import "vendors/toastify";
+
+[role="grid"] {
+  &:focus {
+    outline: none;
+  }
+}
+
+.Swipeable {
+  height: inherit;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.SwipeableAsset {
+  height: 100%;
+}
+
+// html {
+//   &.picsioThemeLight {
+//     @include useTheme('light');
+//   }
+//   &.picsioThemeDark {
+//     @include useTheme('dark');
+//   }
+// }
+
+// ::-webkit-scrollbar-track {
+//   background-color: transparent;
+// }
+//
+// ::-webkit-scrollbar {
+//   width: 9px;
+//   background-color: transparent;
+// }
+//
+// ::-webkit-scrollbar-thumb {
+//   border-radius: 4px;
+//   background-color: rgba(0, 0, 0, 0.5);
+//   -webkit-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+//   border: 1px solid transparent;
+// }
+
+body {
+  &.dragging {
+    * {
+      cursor: grabbing !important;
+    }
+  }
+}
+
+@mixin iconSelector {
+
+  [class^="icon-"],
+  [class*=" icon-"] {
+    @content
+  }
+}
+
+.highlight {
+  color: #fff;
+}
+
+.picsioThemeLight {
+  .highlight {
+    color: #000;
+  }
+}
+
+@mixin circle($size, $background) {
+  min-width: $size;
+  height: $size;
+  line-height: $size;
+  background: $background;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  text-align: center;
+  display: inline-block;
+  border-radius: $size/2;
+}
+
+.noselect,
+.noselect-mobile {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+body.noselect {
+  pointer-events: none;
+}
+
+.cursorReorderImages {
+  width: 4px;
+  height: 200px;
+  background: $brandColor;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1000000;
+  display: none;
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 50%;
+    margin-top: -6px;
+    border-style: solid;
+  }
+
+  &::before {
+    left: -15px;
+    border-width: 6px 0 6px 12px;
+    border-color: transparent transparent transparent rgba(255, 204, 0, 1);
+  }
+
+  &::after {
+    right: -15px;
+    border-width: 6px 12px 6px 0;
+    border-color: transparent rgba(255, 204, 0, 1) transparent transparent;
+  }
+
+  &.cursorForCatalogViewMode {
+    height: 4px !important;
+    width: 100%;
+    left: 0 !important;
+    margin-top: -2px;
+
+    &::before,
+    &::after {
+      left: 50%;
+      margin-left: -6px;
+      right: auto;
+      margin-top: 0;
+      top: 0;
+    }
+
+    &::before {
+      top: -11px;
+      border-width: 12px 6px 0 6px;
+      border-color: rgba(255, 204, 0, 1) transparent transparent transparent;
+    }
+
+    &::after {
+      top: auto;
+      bottom: -11px;
+      border-width: 0 6px 12px 6px;
+      border-color: transparent transparent rgba(255, 204, 0, 1) transparent;
+    }
+  }
+}
+
+
+.fullscreen {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+
+.hidden {
+  visibility: hidden;
+}
+
+// styles for editor (photopea)
+#develop {
+  position: fixed;
+  z-index: 102;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+  display: none;
+
+  >iframe {
+    border: none;
+    z-index: 2;
+  }
+
+  .toolbarButton {
+    position: absolute;
+    height: 32px;
+    width: 32px;
+    min-width: 32px;
+    z-index: 3;
+    right: 0;
+    top: 0;
+    background: #000;
+    color: #939393;
+
+    &::before {
+      content: none;
+    }
+
+    .svg-icon {
+      font-size: 12px;
+    }
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  .picsioProgressBar {
+    z-index: 4;
+  }
+}
+
+img#develop {
+  width: 100%;
+}
+
+
+
+.popup {
+
+  input[type=text],
+  input[type=password] {
+    width: 225px;
+    height: 16px;
+    line-height: 16px;
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    border-radius: 0px;
+    margin: 0;
+
+    &:focus {
+      border-color: rgba(82, 168, 236, 0.8);
+      outline: 0;
+      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+    }
+  }
+}
+
+.colorYellow {
+  color: $brandColor;
+}
+
+.colorWhite {
+  color: #fff;
+}
+
+.bgColorRed {
+  background: #ff0000;
+}
+
+.bgColorYellow {
+  background: $brandColor;
+}
+
+.bgColorGreen {
+  background: #66cc00;
+}
+
+.bgColorBlue {
+  background: #3300ff;
+}
+
+.bgColorPurple {
+  background: #9900ff;
+}
+
+$baseTransitionDuration: 0.2s;
+$baseTransitionTimingFunction: linear;
+
+body {
+  background: #0d0d0d;
+}
+
+.wrapperPicsioApp {
+  height: 100%;
+  background: #0d0d0d;
+  position: relative;
+  z-index: 2;
+  overflow-x: hidden; // added by Alex for fix horizontal scroll of Tooltips in Details Panel
+
+  :focus {
+    outline: none;
+  }
+
+  input[type="submit"]::-moz-focus-inner {
+    border: none;
+  }
+
+  img {
+    border: none;
+  }
+
+  .appMain {
+    padding-top: 50px;
+    height: calc(100% - 50px);
+    position: relative;
+
+    .content {
+      height: 100%;
+      margin: 0 0 0 50px;
+    }
+  }
+}
+
+/**************************justifiedGallery******************************/
+.appCatalog {
+  height: 100%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  position: relative;
+  overflow: hidden;
+
+  .innerCatalog {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    // transform: translateZ(0);
+
+    .wrapperTiles {
+      position: relative;
+    }
+
+    // .mobileScroll {
+    //   position: relative;
+    // }
+  }
+
+  .searchWrapper.show+.innerCatalog {
+    height: calc(100% - 62px);
+  }
+}
+
+.tilesIframe {
+  position: absolute;
+  opacity: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 0;
+}
+
+.wrapperTiles {
+  min-height: calc(100% - 150px);
+
+  &.pointerEventsDisabled {
+    .tile {
+      * {
+        pointer-events: none;
+      }
+
+      img,
+      .placeholderMediaFile,
+      .innerContainerMediaFile {
+        pointer-events: visible;
+      }
+    }
+  }
+
+  #tiles {
+    min-height: 100%;
+
+    >.picsioSpinner {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 50px 0;
+      background: linear-gradient(rgba(0, 0, 0, 0), #000);
+    }
+  }
+
+  .tileError {
+    background: #1c1c1c;
+    border: 2px solid #000;
+    box-sizing: border-box;
+    flex: auto;
+    display: flex;
+    min-width: 200px;
+    min-height: 200px;
+    margin: initial;
+  }
+
+  .tile {
+    position: absolute;
+    background: #1c1c1c;
+    border: 2px solid #000;
+    box-sizing: border-box;
+    display: flex;
+
+    &:not(.isAssetBusy):hover {
+      z-index: 2;
+
+      @include media('>=desktop') {
+
+        .tileHint,
+        .tileFlag {
+          opacity: 1;
+        }
+
+        .botCatalogItemToolbar {
+
+          .moreTagsCatalogItem,
+          .listTagsCatalogItem {
+            opacity: 1;
+          }
+        }
+
+        .tileStars {
+          opacity: 1;
+        }
+      }
+    }
+
+    &.showStars {
+      .tileStars {
+        opacity: 1;
+      }
+    }
+
+    &.like {
+      .tileFlag {
+        opacity: 1;
+      }
+    }
+
+    &.dislike {
+      .tileFlag {
+        opacity: 1;
+      }
+    }
+
+    &.selectedTile {
+      border: 2px solid $brandColor;
+      z-index: 1;
+
+      .catalogItemCheckbox {
+        span {
+          &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            display: block;
+          }
+        }
+      }
+    }
+
+    .tileImagePlaceholder {
+      position: absolute;
+      width: 100%;
+      left: 0%;
+      top: 50%;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 12px;
+      line-height: 18px;
+      margin-top: -9px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .tileSmallPreview {
+      position: relative;
+      z-index: 2;
+      margin: auto;
+
+      .smallThumb {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        transition: all .5s ease;
+      }
+    }
+
+    .tileNumber {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      color: $light-lightblack;
+      font-size: 63px;
+      font-weight: 900;
+      font-style: normal;
+      transform: translate3d(-50%, -50%, 0);
+    }
+
+    .containerMediaFile {
+      flex: auto;
+      display: flex;
+      position: relative;
+      font-size: 0;
+      text-align: center;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      align-items: center;
+      justify-content: center;
+
+      &.thumbnailLoaded {
+        .tileSmallPreview .smallThumb {
+          opacity: 0;
+          z-index: -1;
+        }
+
+        img {
+          opacity: 1;
+        }
+      }
+
+      /* Fix for Pinterest browser extension
+       * This pseudo element prevents mouse over on the image inside
+       */
+      .tileSmallPreview:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0);
+      }
+
+      .innerContainerMediaFile {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+
+      canvas,
+      img {
+        margin: auto;
+        opacity: 0;
+        padding: 0;
+        border: none;
+        max-width: 100%;
+        transition: all .5s ease;
+      }
+    }
+
+    .dateCatalogItem,
+    .titleCatalogItem,
+    .descriptionCatalogItem {
+      display: none;
+    }
+
+    .caption {
+      display: none;
+      position: absolute;
+      bottom: 0;
+      padding: 5px;
+      background-color: #000;
+      left: 0;
+      right: 0;
+      margin: 0;
+      color: white;
+      font-size: 12px;
+      font-weight: 300;
+      font-family: sans-serif;
+    }
+
+    .tileFlag+.tileHint {
+      padding-top: 26px;
+      height: calc(100% - 26px);
+
+      ul li.storage .tileName {
+        top: 26px;
+      }
+
+      ul li.iconColor .tileColorList {
+        top: 75px;
+        height: calc(100% - 75px);
+      }
+    }
+
+    .tileHint {
+      background-color: rgba(0, 0, 0, 0.7);
+      display: block;
+      height: 100%;
+      width: 48px;
+      position: absolute;
+      color: #fff;
+      font-size: 10px;
+      top: 0;
+      right: 0;
+      opacity: 0;
+      transition: opacity $baseTransitionDuration $baseTransitionTimingFunction;
+      z-index: 4;
+
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+        &+ul {
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+        }
+
+        li {
+          padding: 7px 0;
+          position: relative;
+          text-align: center;
+
+          &:hover {
+            background-color: #000;
+
+            &::after {
+              opacity: 1;
+            }
+          }
+
+          .svg-icon {
+            margin: 0 auto;
+            display: block;
+            opacity: 0.7;
+            font-size: 11px;
+            text-align: center;
+            cursor: pointer;
+          }
+
+          &.iconfileextension {
+            text-align: center;
+          }
+
+          &.storage,
+          &.fake {
+            text-align: center;
+            line-height: 1.2;
+            position: static;
+
+            .tileName {
+              position: absolute;
+              right: 100%;
+              top: 0;
+              background: #000;
+              height: 25px;
+              padding: 0 12px;
+              display: none;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              overflow: hidden;
+
+              a,
+              b {
+                vertical-align: middle;
+                font-weight: normal;
+                text-decoration: none;
+                color: #fff;
+              }
+
+              a {
+                cursor: pointer;
+
+                &:hover {
+                  text-decoration: underline;
+                }
+              }
+
+              &::after {
+                content: '';
+                vertical-align: middle;
+                height: 100%;
+                display: inline-block;
+                width: 0;
+              }
+            }
+
+            .catalogItemFileExtension {
+              display: inline-block;
+
+              @include iconSelector {
+                float: right;
+                margin: 0 0 0 3px;
+                font-size: 11px;
+              }
+
+              ;
+            }
+
+            &:hover {
+              .tileName {
+                display: block;
+              }
+            }
+          }
+
+          &.iconColor {
+            padding: 0;
+            text-align: center;
+            cursor: pointer;
+            position: static;
+
+            .titleTileColor {
+              padding: 7px 0;
+              height: 11px;
+              display: block;
+              color: #fff;
+            }
+
+            .tileColorList {
+              display: none;
+              position: absolute;
+              left: 0;
+              z-index: 2;
+              width: 100%;
+              top: 50px;
+              height: calc(100% - 50px);
+
+              .tileColor {
+                height: calc(100% / 6);
+
+                &.act,
+                &:hover {
+                  box-shadow: inset 0 0 0 1px #fff;
+                }
+
+                &[data-color="nocolor"] {
+                  background: #000;
+
+                  &::after {
+                    content: 'none';
+                    display: inline-block;
+                  }
+
+                  &::before {
+                    content: '';
+                    display: inline-block;
+                    vertical-align: middle;
+                    width: 0;
+                    height: 100%;
+                  }
+                }
+              }
+            }
+
+            &.showTileColorList {
+              .titleTileColor {
+                background: #000;
+              }
+
+              .tileColorList {
+                display: block;
+              }
+            }
+          }
+
+          &.btnShareAsset {
+            cursor: pointer;
+
+            .svg-icon {
+              font-size: 13px;
+            }
+          }
+
+          &.btnRemoveLightboard {
+            cursor: pointer;
+
+            .svg-icon {
+              font-size: 14px;
+            }
+          }
+
+          &.isShared {
+            color: $brandColor;
+          }
+
+          &.btnAddRevision {
+            position: relative;
+            overflow: hidden;
+
+            input {
+              position: absolute;
+              right: 0;
+              top: 0;
+              width: 350%;
+              height: 100%;
+              opacity: 0.01;
+              cursor: pointer;
+            }
+          }
+
+          &.disabled {
+            opacity: 0.3;
+            cursor: default;
+
+            svg {
+              cursor: default;
+            }
+
+            &:hover {
+              background-color: transparent;
+            }
+          }
+        }
+      }
+    }
+
+    .tileFlag {
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 5;
+      cursor: pointer;
+      padding: 7px 0;
+      width: 48px;
+      opacity: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 12px;
+      text-shadow: 0 0 2px #000;
+
+      svg {
+        -webkit-filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, .8));
+        filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, .8));
+      }
+
+      &::after {
+        content: none !important;
+      }
+
+      @include media('>=desktop') {
+        &:hover {
+          background-color: #000;
+        }
+      }
+    }
+
+    .catalogItemCheckbox {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      z-index: 4;
+      width: 28px;
+      height: 19px;
+      padding-top: 9px;
+
+      span {
+        border: 1px solid rgba(0, 0, 0, 0.4);
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.4);
+        width: 6px;
+        height: 6px;
+        display: block;
+        margin: 0 auto;
+        position: relative;
+      }
+    }
+
+    .tileStars {
+      position: absolute;
+      left: 25px;
+      top: 7px;
+      opacity: 0;
+      transition: opacity $baseTransitionDuration $baseTransitionTimingFunction;
+      z-index: 4;
+      font-size: 12px;
+      color: #fff;
+      text-shadow: 0 0 2px #000;
+      white-space: nowrap;
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+          display: block;
+          float: right;
+          cursor: default;
+          width: 16px;
+          text-align: center;
+
+          &::after {
+            content: '\2022';
+          }
+
+          &.act {
+            &::after {
+              content: '★'
+            }
+
+            &~li::after {
+              content: '★'
+            }
+          }
+        }
+      }
+
+      &.temporaryRemoveStars {
+        ul {
+          li {
+            &::after {
+              content: '\2022' !important;
+            }
+          }
+        }
+      }
+
+      &:not(.disableHover) {
+        &:hover {
+          @include media('>=desktop') {
+            ul {
+              li {
+                cursor: pointer;
+
+                &::after {
+                  content: '\2022';
+                }
+
+                &~li::after {
+                  content: '\2022';
+                }
+
+                &:hover {
+                  &::after {
+                    content: '★'
+                  }
+
+                  &~li::after {
+                    content: '★'
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .dateCatalogItem,
+      .titleCatalogItem,
+      .descriptionCatalogItem {
+        display: none;
+      }
+
+      .caption {
+        display: none;
+        position: absolute;
+        bottom: 0;
+        padding: 5px;
+        background-color: #000;
+        left: 0;
+        right: 0;
+        margin: 0;
+
+        li {
+          display: block;
+          float: right;
+          cursor: pointer;
+          width: 16px;
+          text-align: center;
+
+          &::after {
+            content: '\2022';
+          }
+
+          &.act {
+            &::after {
+              content: '★';
+            }
+
+            &~li::after {
+              content: '★';
+            }
+          }
+        }
+      }
+
+      &.temporaryRemoveStars {
+        ul {
+          li {
+            &::after {
+              content: '\2022' !important;
+            }
+          }
+        }
+      }
+
+      &:not(.disableHover) {
+        &:hover {
+          ul {
+            li {
+              cursor: pointer;
+
+              &::after {
+                content: '\2022';
+              }
+
+              &~li::after {
+                content: '\2022';
+              }
+
+              &:hover {
+                &::after {
+                  content: '★';
+                }
+
+                &~li::after {
+                  content: '★';
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .botCatalogItemToolbar {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      z-index: 6;
+      font-size: 0;
+      width: calc(100% - 48px);
+
+      .colorCatalogItem {
+        width: 6px;
+        height: 24px;
+        display: none;
+        vertical-align: bottom;
+
+        &.showColorCatalogItem {
+          display: inline-block;
+        }
+      }
+
+      .listTagsCatalogItem {
+        background-color: rgba(0, 0, 0, 0.7);
+        display: inline-block;
+        vertical-align: bottom;
+        max-width: calc(100% - 32px);
+        white-space: nowrap;
+        overflow: hidden;
+        opacity: 0;
+        transition: opacity $baseTransitionDuration $baseTransitionTimingFunction;
+
+        &.showListTagsCatalogItem {
+          opacity: 1;
+        }
+
+        .tagCatalogItem,
+        .moreTagsCatalogItem {
+          padding: 0 8px;
+          height: 24px;
+          line-height: 28px;
+          border-left: 1px solid #151512;
+          display: inline-block;
+          cursor: pointer;
+
+          &:first-child {
+            border-left: none;
+          }
+
+          span {
+            font-size: 12px;
+            color: #fff;
+            text-decoration: none;
+            display: block;
+          }
+        }
+      }
+
+      .moreTagsCatalogItem {
+        font-size: 12px;
+        color: #fff;
+        height: 24px;
+        line-height: 26px;
+        border-left: 1px solid #151512;
+        display: inline-block;
+        vertical-align: bottom;
+        background-color: rgba(0, 0, 0, 0.7);
+        position: relative;
+        opacity: 0;
+        transition: opacity $baseTransitionDuration $baseTransitionTimingFunction;
+
+        &.showDropTagsCatalogItem {
+          opacity: 1;
+
+          .titleMoreTagsCatalogItem {
+            background: #000;
+          }
+
+          .dropTagsCatalogItem {
+            display: block;
+          }
+        }
+
+        &.flipYDroptagsCatalogItem {
+          .dropTagsCatalogItem {
+            bottom: 100%;
+            top: auto;
+          }
+        }
+
+        &.flipXDroptagsCatalogItem {
+          .dropTagsCatalogItem {
+            left: auto;
+            right: 0;
+          }
+        }
+
+        .titleMoreTagsCatalogItem {
+          width: 25px;
+          text-align: center;
+          height: 24px;
+          display: block;
+          cursor: pointer;
+        }
+
+        .dropTagsCatalogItem {
+          display: none;
+          position: absolute;
+          left: 0;
+          top: 100%;
+          background: #272526;
+          color: #fff;
+
+          .tag {
+            margin: 0;
+            max-width: 100%;
+          }
+
+          ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 2px 0 0;
+
+            li {
+              border-top: 1px solid #232123;
+              padding: 5px;
+              min-width: 35px;
+              display: flex;
+
+              &:first-child {
+                border-top: none;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.trashed {
+      .placeholderTrashed {
+        display: block;
+      }
+    }
+
+    .placeholderTrashed {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 6;
+      background: rgba(0, 0, 0, 0.7);
+      text-align: center;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+
+      .inner {
+        display: inline-block;
+        vertical-align: middle;
+        max-width: 100%;
+        color: #ccc;
+
+        .icon {
+          font-size: 40px;
+          margin-bottom: 15px;
+          color: rgba(255, 255, 255, 0.35);
+        }
+
+        .text {
+          font-size: 14px;
+          line-height: 18px;
+          padding-bottom: 8px;
+          display: block;
+        }
+
+        .btns {
+          margin-top: 12px;
+        }
+      }
+
+      &::after {
+        content: ' ';
+        display: inline-block;
+        height: 100%;
+        width: 0;
+        vertical-align: middle;
+      }
+    }
+  }
+
+
+  .catalogView_list {
+    .tile {
+      width: 100% !important;
+      min-height: auto !important;
+      height: 104px !important;
+      display: block;
+      background: #0c0c0c;
+      margin-bottom: -2px;
+
+      &.selectedTile {
+        z-index: 2;
+
+        &:hover {
+          z-index: 3;
+        }
+      }
+
+      &:hover {
+        z-index: 1;
+      }
+
+      &.odd {
+        background: $lightblack;
+      }
+
+      .tileNumber {
+        font-size: 39px !important;
+      }
+
+      .tileStars {
+        display: block;
+        opacity: 1;
+        right: 100px;
+        top: 12px;
+        left: initial;
+      }
+
+      .tileFlag {
+        display: block;
+        opacity: 1;
+        right: 195px;
+        top: 6px;
+        width: 30px;
+        text-align: center;
+
+        svg {
+          -webkit-filter: none;
+          filter: none;
+        }
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+        }
+      }
+
+      .catalogItemCheckbox {
+        width: 31px;
+        height: 21px;
+        padding-top: 10px;
+
+        span {
+          width: 9px;
+          height: 9px;
+        }
+      }
+
+      .botCatalogItemToolbar {
+        left: 108px;
+        bottom: 5px;
+        width: calc(100% - 350px);
+
+        .listTagsCatalogItem {
+          opacity: 1;
+          display: inline-block;
+          max-width: calc(100% - 60px);
+        }
+
+        .moreTagsCatalogItem {
+          opacity: 1;
+          display: inline-block;
+        }
+      }
+
+      .tileImagePlaceholder {
+        display: none;
+      }
+
+      .tileHint {
+        opacity: 1;
+        display: block;
+        height: auto;
+        padding: 0;
+        position: static;
+        float: right;
+
+        .iconColor {
+          display: none;
+        }
+
+        ul {
+          li {
+            padding: 0;
+
+            &:hover {
+              background: rgba(255, 255, 255, 0.1);
+            }
+
+            .tileName {
+              max-width: 100% !important;
+              display: block;
+              right: auto;
+              top: 10px !important;
+              opacity: 1;
+              left: 108px;
+              height: auto;
+              padding: 0;
+              background: none;
+              font-size: 13px;
+              color: #666;
+              text-align: left;
+
+              // add ... to tile
+              @include media('>=desktop') {
+                width: calc(100% - 325px);
+              }
+            }
+
+            .catalogItemFileExtension {
+              display: none;
+            }
+          }
+        }
+
+        ul+ul {
+          position: absolute;
+          left: initial;
+          right: 0px;
+          bottom: 8px;
+          width: auto;
+
+          li {
+            float: left;
+            width: 34px;
+            text-align: center;
+            cursor: pointer;
+
+            .svg-icon,
+            &::before {
+              font-size: 14px;
+              opacity: 1;
+              height: 30px;
+              line-height: 30px;
+            }
+
+            &.isShared {
+
+              .svg-icon,
+              &::before {
+                color: $brandColor;
+              }
+            }
+          }
+        }
+      }
+
+      .containerMediaFile {
+        overflow: hidden;
+        height: 100px !important;
+        width: 100px !important;
+        min-height: initial !important;
+        min-width: initial !important;
+        margin: 0;
+
+        .innerContainerMediaFile {
+          display: block;
+          position: absolute;
+          left: -30%;
+          top: -30%;
+          width: 160%;
+          height: 160% !important;
+          text-align: center;
+          max-width: none;
+
+          &::after {
+            content: ' ';
+            display: inline-block;
+            height: 100%;
+            width: 0;
+            vertical-align: middle;
+          }
+
+          img {
+            margin: 0 !important;
+            width: auto !important;
+            height: auto !important;
+            max-width: 100%;
+            max-height: 100%;
+            display: inline;
+            vertical-align: middle;
+          }
+        }
+      }
+
+      .titleCatalogItem {
+        display: inline-block;
+        color: #fff;
+        padding-left: 10px;
+        margin-left: 10px;
+        border-left: 1px solid #999;
+        vertical-align: middle;
+        font-weight: bold;
+      }
+
+      .dateCatalogItem,
+      .descriptionCatalogItem {
+        display: block;
+        position: absolute;
+        right: 10px;
+        top: 13px;
+        font-size: 13px;
+        color: #999;
+
+        &.descriptionCatalogItem {
+          right: auto;
+          left: 105px;
+          top: 34px;
+          max-width: calc(100% - 190px);
+          height: 27px;
+          word-break: break-word;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}
+
+/******************************** DRAG_ELEMENT ************************************/
+.dragElement {
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  z-index: 1000;
+  width: 175px;
+  height: 175px;
+  z-index: 1;
+  background: url('https://assets.pics.io/img/dragElement.png') no-repeat left top;
+
+  .countDragElements {
+    position: absolute;
+    right: 19px;
+    bottom: 19px;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 12px;
+    height: 20px;
+    line-height: 20px;
+    min-width: 12px;
+    padding: 0 4px;
+    text-align: center;
+  }
+
+  .innerDragElement {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    width: 151px;
+    height: 151px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+}
+
+/******************************** EMPTY_COLLECTION ***********************************/
+
+.emptyCollection {
+  color: #fff;
+  line-height: 50px;
+  padding: 70px 20px 0 20px;
+  text-align: center;
+  flex: 1 1 100%;
+
+  .textEmptyCollection {
+    font-size: 18px;
+    line-height: 1.2;
+
+    div {
+      font-weight: 100;
+      font-size: 48px;
+      line-height: 0.9;
+    }
+
+    span {
+      padding-top: 20px;
+      display: block;
+    }
+
+    a {
+      font-family: inherit;
+      font-size: inherit;
+      color: $brandColor;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.emptyCollectionPlaceholder {
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-top: 46px;
+}
+
+.placeholderMediaFile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: #ccc;
+  text-align: center;
+
+  &.placeholderMediaFileFullWidth {
+    position: absolute;
+    z-index: 6;
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 2px 2px inset rgba(255, 255, 255, 0.1);
+    width: 100% !important;
+    height: 100% !important;
+    top: 0;
+    left: 0;
+  }
+
+  .innerPlaceholderMediaFile {
+    max-width: 95%;
+
+    .icon {
+      font-size: 42px;
+      margin-bottom: 15px;
+      color: rgba(255, 255, 255, 0.35);
+
+      &:before {
+        color: inherit;
+      }
+    }
+
+    .text {
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 18px;
+      padding-bottom: 8px;
+    }
+
+    .fileName {
+      word-break: break-all;
+      font-weight: 300;
+      font-size: 12px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin: 0 15px 12px;
+      line-height: 1.2;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .btns {
+      margin-top: 12px;
+    }
+
+    .picsioDefBtn {
+      height: auto;
+      line-height: 18px;
+      padding: 5px 10px;
+    }
+  }
+}
+
+.simpleList {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    margin-top: 0.5em;
+  }
+}
+
+.catalogView_list {
+  .placeholderMediaFile {
+    height: 100px;
+    width: 100px;
+    min-height: 100px !important;
+    min-width: 100px !important;
+    margin: 0 0 5px 0;
+
+    &.placeholderMediaFileFullWidth {
+      .innerPlaceholderMediaFile {
+        flex-direction: row;
+      }
+    }
+
+    .innerPlaceholderMediaFile {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .icon {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    .text {
+      line-height: 1.2;
+      font-size: 12px;
+      margin-top: 5px;
+      padding: 0;
+    }
+
+    .fileName,
+    .btns {
+      display: none;
+    }
+  }
+
+  @include media('<tablet') {
+    .placeholderMediaFile {
+      height: 72px !important;
+      min-height: 72px !important;
+      min-width: 72px !important;
+      width: 72px;
+      margin: 0;
+
+      .text {
+        display: block;
+      }
+
+      &:not(.placeholderMediaFileFullWidth) {
+        .text {
+          display: none;
+        }
+      }
+    }
+
+    .placeholderTrashed,
+    .placeholderMediaFileFullWidth {
+      .picsioDefBtn:not(.picsioLink).btnCallToAction {
+        min-width: 90px;
+      }
+    }
+
+    .wrapperTiles & {
+      .tile {
+        .botCatalogItemToolbar {
+          .moreTagsCatalogItem {
+            line-height: 31px;
+            background-color: transparent;
+          }
+        }
+      }
+    }
+  }
+}
+
+.picsioThemeAsh {
+  filter: invert(1);
+}
+
+.picsioThemeAsh img {
+  filter: invert(1);
+}
+
+.picsioThemeLight {
+  background: #f4f4f4;
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .wrapperPicsioApp {
+    background: #f4f4f4;
+  }
+
+  #develop .toolbarButton {
+    color: #666;
+    background: #f4f4f4;
+
+    &:hover {
+      color: #000;
+    }
+  }
+
+  .wrapperTiles {
+    #tiles>.picsioSpinner {
+      background: linear-gradient(rgba(0, 0, 0, 0), #fff);
+    }
+
+    .tile {
+      background: #f4f4f4;
+      border-color: #fff;
+
+      &.selectedTile {
+        border-color: $brandColorLightTheme;
+        background: #376bfb;
+
+        .innerContainerMediaFile {
+          img {
+            opacity: .3;
+          }
+        }
+      }
+
+      .tileImagePlaceholder {
+        color: #999;
+      }
+
+      .tileNumber {
+        color: #fff;
+      }
+
+      .placeholderTrashed {
+        .inner {
+          .btn {
+            color: #0099ff;
+            border-color: #0099ff;
+
+            &:hover {
+              color: #fff;
+              background: #0099ff;
+            }
+          }
+        }
+      }
+
+      .tileHint {
+        .isShared {
+          &::before {
+            color: $brandColorLightTheme;
+          }
+        }
+      }
+
+      .placeholderTrashed {
+        background: rgba(255, 255, 255, 0.8);
+      }
+    }
+
+    .catalogView_list {
+      .tile {
+        background: #f4f4f4;
+
+        &.selectedTile {
+          .innerContainerMediaFile {
+            img {
+              opacity: 1;
+            }
+          }
+        }
+
+        &:not(.selectedTile) {
+          border-color: #f4f4f4;
+        }
+
+        &.odd {
+          background: #fff;
+
+          &:not(.selectedTile) {
+            border-color: #fff;
+          }
+        }
+
+        .tileHint {
+          ul {
+            li {
+              color: #999;
+
+              &:hover {
+                color: #000;
+                background-color: rgba(0, 0, 0, 0.1);
+              }
+
+              &::before {
+                color: inherit;
+              }
+
+              &.isShared {
+                &::before {
+                  color: $brandColorLightTheme;
+                }
+              }
+
+              .tileName {
+
+                a,
+                .titleCatalogItem {
+                  color: #999;
+                }
+              }
+            }
+          }
+        }
+
+        .tileStars {
+          color: rgba(0, 0, 0, 0.3);
+          text-shadow: none;
+        }
+
+        .tileFlag {
+          color: #999;
+
+          &:hover {
+            color: #000;
+            background-color: rgba(0, 0, 0, 0.1);
+          }
+        }
+
+        .botCatalogItemToolbar {
+
+          .listTagsCatalogItem,
+          .moreTagsCatalogItem {
+            background: #999;
+          }
+
+          .moreTagsCatalogItem {
+            border-left-color: #666;
+          }
+        }
+      }
+    }
+  }
+
+  #wrapperLoadmore>span {
+    color: #666;
+  }
+
+  .placeholderMediaFile {
+    .innerPlaceholderMediaFile {
+      color: #999;
+
+      .icon,
+      .fileName {
+        color: inherit !important;
+      }
+    }
+  }
+
+  .catalogView_list {
+    .placeholderMediaFile {
+      background: rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  .emptyCollection {
+    color: #999;
+  }
+}
+
+@import "picsioDevices.scss";
+
+@import "ui/liveSupportButton.scss";
+
+@import "views/flagColorRating.scss";
+@import "views/breadCrumbs.scss";
+@import "views/leftSidebar.scss";
+@import "views/searchView.scss";
+@import "views/previewView.scss";
+@import "views/importView.scss";
+@import "views/history.scss";
+//@import "views/keywordsTreeOld.scss";
+@import "views/customFieldDropdownComponent.scss";
+@import "views/detailsPanel.scss";
+@import "views/compare.scss";
+
+@import "popups/popupWebhooksDialog.scss";
+@import "popups/popupMoveDialog.scss";
+@import "popups/sentryDialog.scss";
+@import "popups/revisionFieldsDialog.scss";
+
+@import "parts/copyToTooltip.scss";
+@import "parts/mentions.scss";
+@import "parts/dialog/index.scss";
+@import "parts/errorBoundary.scss";
+
+@import "UIComponents.scss";
+@import "ui/avatar.scss";
+@import "ui/creator.scss";
+@import "ui/tag.scss";
+@import "ui/checkbox.scss";
+@import "ui/buttonSmall.scss";
+@import "ui/warning.scss";
+@import "ui/openclose.scss";
+@import "pages/base.scss";
+@import "pages/_team";
+@import "pages/watermarks.scss";
+// @import "pages/team.scss";
+@import "pages/billing.scss";
+@import "pages/websites.scss";
+@import "pages/account.scss";
+@import "pages/storage.scss";
+@import "pages/sync.scss";
+@import "pages/audit.scss";
+@import "pages/customFields.scss";
+@import "pages/downloadList.scss";
+@import "base/notice.scss";
+@import "pages/shortcuts.scss";
+
+@import "parts/dropdown.scss";
+@import "parts/dropdownTree.scss";
+// @import "parts/simpleDropdown.scss";
+@import "parts/lock.scss";
+@import "parts/indicators.scss";
+@import "parts/searchBar.scss";
+@import "parts/tree.scss";
+@import "parts/reactDatepicker.scss";
+@import "parts/linkedAssets.scss";
+@import "parts/legal.scss";
+@import "parts/confirmComponent.scss";
+@import "parts/tagList.scss";
+@import "parts/mainBurger.scss";
+@import "parts/_screenTab";
+@import "parts/toolbar.scss";
+@import "ui/pProgress.scss";
+@import "parts/notifications.scss";
+@import "parts/notificationSettings.scss";
+@import "views/multipage.scss";
+
+// !!!NEED TO RESTORE OLD STYLES!!!
+@import "ui/inputText.scss";
+
+// @import "ui/alerts.scss";
+@import "ui/picsioSelect.scss";
+@import "ui/reactSelect.scss";
+@import "ui/revisionsDropdown.scss";
+@import "ui/progressBar.scss";
+@import "ui/skeleton.scss";
+@import "pages/singleSharing.scss";
+@import "parts/recursiveSearchPanel.scss";
+@import "parts/notificationPanel.scss";
+@import "parts/profile.scss";
+@import "ui/radioList.scss";
+@import "ui/sort.scss";
+@import "ui/errorMessage.scss";
+@import "leaflet.scss";
+@import "views/geoView.scss";
+@import "parts/usersList.scss";
+@import "parts/myTeamUser.scss";
+
+// fix for drag in Safari
+.Safari {
+  .tile {
+    .containerMediaFile {
+      img {
+        pointer-events: none;
+      }
+
+      .is-onContextMenu {
+        img {
+          pointer-events: auto; // Safari has bug when draw draggable preview
+        }
+      }
+    }
+  }
+}
+
+@import "iosMobileApp";
+@import "./mobile";

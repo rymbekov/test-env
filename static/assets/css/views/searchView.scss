@@ -1,0 +1,670 @@
+.wrapperSearch {
+	float: right;
+	margin: 10px 10px 10px 0;
+	@include media('>=desktop') {
+		#itemsearch {
+			display: none;
+		}
+	}
+	#itemsearch {
+		.btnSearch {
+			margin: auto;
+		}
+	}
+	#searchView {
+		position: fixed;
+		left: 50%;
+		top: 10px;
+		margin-left: -250px;
+	}
+	.searchHeader {
+		width: 500px;
+		position: relative;
+		.btnSearch,
+		.btnReset {
+			position: absolute;
+			z-index: 2;
+			left: 0;
+			top: 0;
+			color: $darkgray;
+			font-size: 14px;
+			padding: 3px 6px;
+		}
+		.btnReset {
+			cursor: pointer;
+			&:hover {
+				color: $picsioYellowColor;
+			}
+		}
+
+		input {
+			padding-left: 38px;
+			padding-right: 100px; // width of "assets" word
+		}
+		.btnExtendedSearch {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: absolute;
+			top: 0;
+			right: 0;
+			height: 30px;
+			width: 30px;
+			line-height: 32px;
+			font-size: 18px;
+			text-align: center;
+			color: #939393;
+			cursor: pointer;
+
+			&:hover, &.active {
+				color: $picsioYellowColor;
+			}
+		}
+	}
+
+	@media only screen and (max-width: 1200px) {
+		#searchView {
+			margin-left: -235px;
+		}
+		.searchHeader,
+		.searchContent {
+			width: 470px;
+		}
+	}
+
+	@media only screen and (max-width: 1120px) {
+		.searchHeader {
+			width: 410px;
+		}
+	}
+
+	.show {
+		.searchContent {
+			// overflow: visible;
+			// max-height: none;
+			border-color: rgba(0,0,0,.1);
+		}
+	}
+	.searchContent {
+		background: #242424;
+		border-top: none;
+		// max-height: 0;
+		// overflow: hidden;
+		background-clip: padding-box;
+		box-sizing: border-box;
+		max-width: 500px;
+		&::before {
+			content: '';
+			clear: both;
+			height: 0;
+			overflow: hidden;
+			display: block;
+		}
+		@include media('<desktop') {
+			max-width: 100%;
+			overflow: visible;
+			padding: 0 7px;
+		}
+		.searchFilters {
+			padding: 15px 15px 0 15px;
+			margin: 0 5px;
+			max-height: calc(100vh - 126px);
+			overflow-y: auto;
+			overflow-x: hidden;
+
+			@include media('<desktop') {
+				max-height: 100%;
+				overflow: visible;
+				padding: 0;
+			}
+		}
+		.searchBtns {
+			border-top: 1px solid #2d2d2d;
+			display: flex;
+			align-items: center;
+			padding: 12px 0;
+			margin: 0 20px;
+			.picsioDefBtn {
+				min-width: 100px;
+				margin-right: 10px;
+				&.picsioLink {
+					min-width: initial;
+					margin-right: 0;
+				}
+			}
+			.btnHowItWorks  {
+				margin-left: auto;
+			}
+		}
+	}
+	// .mobileBtnClose {
+	// 	display: none;
+	// }
+
+	.searchBody.disabled {
+		opacity: 0.5;
+		pointer-events: none;
+	}
+
+	.inputSearch {margin: 0;}
+}
+
+.itemSearchFilters {
+	display: flex;
+	align-items: flex-start;
+	position: relative;
+	margin: 0 0 10px 0;
+
+	.labelItemSearchFilters {
+		font-size: 14px;
+		color: #999999;
+		width: 100px;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		flex: none;
+		padding-top: 9px;
+		line-height: 1.2;
+		&--alt {
+			padding-top: 5px;
+		}
+	}
+
+	.defaultUploadDatepicker,
+	.defaultChangedDatepicker {
+		display: flex;
+		width: 334px;
+		justify-content: space-between;
+		margin-bottom: 15px;
+
+		.picsioInputText {
+			width: 158px;
+			margin-bottom: 0;
+			position: relative;
+		}
+	}
+
+	.contentItemSearchFilters {
+		min-width: 0;
+		flex: 1 1 auto;
+		display: flex;
+		align-items: center;
+		position: relative;
+
+		.defaultCheckboxList {
+			margin: 0;
+			padding: 5px 0 0 0;
+			display: flex;
+			flex-wrap: wrap;
+			list-style-type: none;
+			max-width: 360px;
+			.UICheckbox {
+				margin: 0 0 12px;
+				flex: 1 0 33%;
+
+				&__label {
+					font-size: 13px;
+					color: #5d5d5d;
+				}
+
+				&:first-child {
+					flex: 1 0 100%;
+				}
+
+				&:nth-child(n+3) {
+					margin-bottom: 15px;
+				}
+			}
+		}
+		.defaultLocation {
+			display: flex;
+			&__item {
+				padding: 10px;
+				color: #fff;
+				font-size: 14px;
+				border-radius: 3px;
+				cursor: pointer;
+				&.active {
+					background: rgba(216, 216, 216, .25);
+					cursor: not-allowed;
+				}
+			}
+		}
+		.defaultType,
+		.defaultUpload,
+		.defaultChanged {
+			width: 175px;
+		}
+
+		.UIInput,
+		.UITextarea {
+			width: 175px;
+			display: inline-block;
+			vertical-align: top;
+			margin: 0;
+		}
+
+		textarea {
+			width: 175px;
+			height: 30px;
+			min-height: 30px;
+			resize: vertical;
+
+			@include media('<desktop') {
+				height: 50px;
+				min-height: 50px;
+			}
+		}
+
+		.UICheckbox {
+			display: inline-flex;
+			align-items: center;
+			margin: 8px 0 7px;
+		}
+
+		.customSelect {
+			display: inline-block;
+			vertical-align: top;
+			width: 175px;
+
+			select {
+				margin: 0;
+			}
+		}
+
+		.defaultKeywords,
+		.defaultCustomFields {
+			position: relative;
+			display: inline-block;
+			margin: 4px 0 6px;
+
+			&.act {
+
+				.defaultKeywords__btn,
+				.defaultCustomFields__btn {
+					color: $brandColor;
+				}
+			}
+
+			&__btn {
+				color: #5d5d5d;
+				font-size: 14px;
+				cursor: pointer;
+
+				&-text {
+					margin-left: 10px;
+				}
+			}
+		}
+
+		.itemAttachedKeyword {
+			margin-left: 0;
+			margin-right: 3px;
+			margin-bottom: 10px;
+		}
+	}
+
+	&--searchIn {
+		@include media('<desktop') {
+			flex-wrap: wrap;
+		}
+		.labelItemSearchFilters--alt {
+			@include media('<desktop') {
+				width: 100%;
+				margin-bottom: 10px;
+			}
+		}
+		// .contentItemSearchFilters {
+		// 	.defaultCheckboxList {
+		// 		.picsioCheckbox {
+		// 			line-height: 15px;
+
+		// 			@include media('<desktop') {
+		// 				flex: 1 0 33%;
+		// 			}
+
+		// 			@media screen and (max-width: $mediaPhone) {
+		// 				flex: 1 0 50%;
+		// 			}
+
+		// 			&::before {
+		// 				@include media('<desktop') {
+		// 					margin-right: 5px;
+		// 					width: 15px;
+		// 					height: 15px;
+		// 				}
+		// 			}
+		// 		}
+		// 	}
+		// }
+	}
+
+	.removeCustomField {
+		position: absolute;
+		left: 175px;
+		top: 0;
+		color: #999;
+		font-size: 6px;
+		margin: 7px 5px 5px;
+		padding: 5px;
+		cursor: pointer;
+
+		&.inline {
+			position: static;
+			display: inline-block;
+			vertical-align: top;
+		}
+
+		&.required {
+			height: 100%;
+			display: inline-flex;
+			align-items: center;
+			color: #FF6B00;
+			margin: 0;
+			margin-left: 4px;
+			padding: 0 5px;
+
+			> span {
+				width: 8px;
+				height: 8px;
+				display: inline-block;
+				font-size: 18px;
+				font-weight: 300;
+				font-style: normal;
+				vertical-align: middle;
+			}
+		}
+	}
+}
+
+.searchHeader-counter {
+	position: absolute;
+	font-size: 14px;
+	top: 8px;
+	right: 27px;
+	color: #999;
+	font-weight: 300;
+}
+
+@include media('<desktop') {
+	.wrapperSearch {
+		margin: 0;
+		display: block !important;
+
+		#searchView {
+			width: 100%;
+			position: fixed;
+			left: 0;
+			top: 50px;
+			margin-left: 0;
+			height: 0;
+			overflow: auto;
+			background: #242424;
+			transition: height 0.3s ease,
+				left 0.3s ease,
+				width 0.3s ease;
+
+			.searchHeader {
+				width: auto;
+				margin: 15px 15px 10px;
+				flex: 0 0 50px;
+
+				.btnExtendedSearch {
+					display: none;
+				}
+
+				input {
+					margin-bottom: 1px;
+				}
+
+				.btnSearch,
+				.btnReset {
+					padding: 14px 6px 10px;
+				}
+
+				.searchHeader-counter {
+					top: 18px;
+				}
+			}
+
+			.searchFilters {
+				border-top: 0;
+			}
+
+			.searchContent {
+				max-height: none;
+				border: none;
+				flex: 1;
+				display: flex;
+				flex-direction: column;
+				overflow: auto;
+				padding: 0;
+				background: transparent;
+				margin:0 auto;
+
+				&::before {
+					content: none;
+				}
+
+				.searchFilters {
+					flex: 1;
+					overflow: auto;
+					margin: 0;
+				}
+
+				.searchBody {
+					padding: 0 15px;
+				}
+
+				.searchBtns {
+					flex-wrap: wrap;
+					margin: 0;
+					justify-content: space-between;
+					padding: 15px;
+
+					.picsioDefBtn,
+					.btnHowItWorks {
+						margin: 0 5px 10px;
+						min-width: 125px;
+					}
+
+					.picsioDefBtn {
+						text-align: center;
+						margin: 0 2px 4px;
+					}
+
+					a {
+						order: 1;
+						flex: 1;
+						min-width: 0;
+					}
+
+					.btnSaveThisSearch {
+						order: 2;
+						flex: 1;
+						min-width: 0;
+					}
+
+					.btnReset {
+						order: 3;
+						flex: 1;
+						min-width: 0;
+					}
+
+					.btnCallToAction {
+						order: 4;
+						flex: 3 0 calc(100% - 4px);
+					}
+				}
+			}
+		}
+
+		.mobileAdditionalPanel & {
+			float: none;
+			height: 100%;
+
+			#searchView {
+				position: static;
+				height: 100%;
+				box-shadow: none;
+				display: flex;
+				flex-direction: column;
+				background: transparent;
+
+				.searchContent {
+					height: calc(100% - 50px);
+				}
+			}
+		}
+
+		&.isProofingSearch {
+			#itemsearch {
+				position: relative;
+				z-index: 2;
+				font-size: 17px;
+			}
+			&.show {
+				#itemsearch {
+					color: #fff !important;
+					background: #232323 !important;
+				}
+				#searchView {
+					height: calc(100% - 50px);
+					box-shadow: none;
+
+					.searchContent {
+						height: calc(100% - 75px);
+					}
+				}
+			}
+		}
+	}
+
+	.autocomplete-suggestions {
+		&.searchAutocomplite {
+			.autocomplete-suggestion {
+				font-size: 16px;
+				padding: 0 0 0 15px;
+				height: 30px;
+				line-height: 32px;
+			}
+		}
+	}
+}
+
+@include media('<tablet') {
+	.itemSearchFilters {
+		flex-wrap: wrap;
+
+		.labelItemSearchFilters {
+			width: 100%;
+			margin-bottom: 10px;
+		}
+
+		&.itemSearchFiltersRight .labelItemSearchFilters {
+			width: 100px;
+			padding-top: 19px;
+		}
+
+		.contentItemSearchFilters {
+			display: flex;
+			align-items: center;
+
+			.defaultType,
+			.customSelect,
+			.dropdownMainWrapper,
+			.picsioInputDateRange {
+				width: 100%;
+			}
+
+			.removeCustomField {
+				position: static;
+				display: inline-flex;
+				align-items: center;
+				font-size: 12px;
+
+				&.required {
+					span {
+						width: 12px;
+						height: 12px;
+						font-size: 24px;
+					}
+				}
+			}
+		}
+	}
+
+	.itemSearchFilters .contentItemSearchFilters .defaultCheckboxList .UICheckbox {
+		flex: 1 0 50%;
+	}
+}
+
+.picsioThemeLight {
+	.wrapperSearch {
+		.searchHeader {
+			.btnExtendedSearch:hover,
+			.btnExtendedSearch.active {
+				color: #0099ff;
+			}
+			.iconHolder {
+				color: #afafaf;
+			}
+			.btnReset:hover {
+				color: #0099ff;
+			}
+			input {
+				background: #fff;
+			}
+		}
+		.show {
+			box-shadow: $shadowModalLightTheme;
+		}
+		.searchContent {
+			background-color: #fff;
+			margin-top: -1px;
+			.searchBtns {
+				border-top-color: $light-lightgray;
+			}
+			.searchFilters {
+				border-top: 1px solid $light-lightgray;
+			}
+		}
+	}
+
+	.itemSearchFilters {
+
+		.labelItemSearchFilters {
+			color: #666;
+		}
+		.defaultLocation__item {
+			color: #5d5d5d;
+			&.active {
+				background: #e5e5e5;
+			}
+		}
+		.defaultKeywords.act {
+			.defaultKeywords__btn {
+				color: $brandColorLightTheme;
+			}
+		}
+		.defaultCustomFields.act {
+			.defaultCustomFields__btn {
+				color: $brandColorLightTheme;
+			}
+		}
+	}
+
+	@include media('<desktop') {
+		.wrapperSearch {
+			&.show {
+				#itemsearch {
+					background: #fff !important;
+					color: #000 !important;
+				}
+			}
+			#searchView {
+				background: #fff;
+			}
+		}
+	}
+}

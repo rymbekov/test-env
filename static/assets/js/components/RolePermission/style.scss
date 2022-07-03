@@ -1,0 +1,61 @@
+.permissionBlock {
+  margin-bottom: 30px;
+  &:last-child {
+    margin-bottom: 40px;
+  }
+}
+
+.pageTeam__role__permission {
+    display: flex;
+    font-size: 14px;
+    color: #ccc;
+    align-items: flex-start;
+
+    p {
+        margin-top: 0;
+        line-height: 1.5;
+    }
+}
+
+.permission__arrow {
+    position: relative;
+    cursor: pointer;
+    &::before {
+        content: ' ';
+        width: 0;
+        height: 0;
+        display: block;
+        border-color: transparent transparent transparent currentColor;
+        border-style: solid;
+        border-width: 3px 0 3px 6px;
+        position: absolute;
+        left: -15px;
+        top: 8px;
+        transform: translateY(-50%);
+        transition: transform .2s ease;
+    }
+}
+
+.permission__arrow.active {
+    transform: translateY(-50%) rotate(90deg);
+    &::before {
+        left: 6px;
+        top: 12px
+    }
+}
+
+.permissionDescription {
+  color: #666666;
+  margin-left: 25px;
+  font-weight: 300;
+  display: block;
+  margin-top: 11px;
+}
+
+.rolePermissionChildren {
+  margin-left: 25px;
+}
+
+.childChildrenPermission {
+  margin-left: 50px;
+}

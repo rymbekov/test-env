@@ -1,0 +1,73 @@
+.placeholderEmpty {
+  height: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 100px 30px;
+
+  &Container {
+    max-width: 500px;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 400;
+    margin: 0 auto;
+    
+    p {
+      margin: 0;
+    }
+
+    p:first-child {
+       margin-bottom: 48px;
+    }
+  }
+
+  &Button {
+    margin-top: 32px;
+  }
+
+  &Title {
+    font-size: 18px;
+    line-height: 22px;
+    max-width: 720px;
+    margin: 0 auto 24px;
+  }
+
+  &Text {
+    font-size: 14px;
+    line-height: 17px;
+    max-width: 720px;
+    margin: 0 auto 24px;
+  }
+
+  &Icon {
+    font-size: 66px;
+  }
+
+  &Video {
+    position: relative;
+    padding-top: 100% / 16 * 9;
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .PicsioButton--text {
+    display: inline-flex;
+  }
+
+  .act {
+    color: var(--primary-main-color);;
+  }
+}
+
+
+.placeholderKeywords {
+  text-align: left;
+  max-width: 515px;
+  margin: 0 auto;
+}
+

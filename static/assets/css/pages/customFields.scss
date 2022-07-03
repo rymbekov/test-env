@@ -1,0 +1,864 @@
+.pageWrapper.wrapperPageCustomFields .page .pageContent .pageInnerContent {
+  margin-bottom: 0;
+}
+
+.pageCustomFields {
+  .pageContent {
+    overflow: auto;
+
+    .pageInnerContent {
+      display: flex;
+      flex-direction: column;
+      flex: 1 0 auto;
+      padding-top: 0;
+    }
+  }
+}
+
+.wrapperPageCustomFieldsEdit {
+  .pageContent {
+    .pageInnerContent {
+      padding-top: 50px;
+    }
+  }
+}
+
+.schemaWrapper {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+
+  .searchBar {
+    position: relative;
+    width: 100%;
+    padding: 0;
+    margin-top: 35px;
+  }
+
+  .searchBar-reset {
+    font-size: 12px;
+    top: 0;
+    right: 0;
+  }
+
+  .titleWrapperItems {
+    width: 100%;
+    font-size: 11px;
+    color: #666;
+    flex: none;
+  }
+
+  .wrapperItems {
+    position: relative;
+    margin-bottom: 80px;
+    margin-top: 125px;
+
+    &:empty {
+      display: none;
+    }
+  }
+}
+
+.itemCustomFields {
+  height: 50px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding: 5px 25px 5px 25px;
+  position: relative;
+  background-color: #242424;
+  color: #999;
+  font-weight: 300;
+  border-bottom: 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &:only-child {
+    margin-bottom: 5px;
+  }
+
+  &:hover {
+    background-color: #2a2929;
+    color: #fff;
+
+    .fieldControls {
+      opacity: 1;
+    }
+  }
+
+  &::before {
+    content: "";
+    width: 5px;
+    background-image: linear-gradient(to bottom, #666 50%, transparent 0);
+    position: absolute;
+    left: 5px;
+    top: 10px;
+    bottom: 10px;
+    background-size: auto 2px;
+  }
+
+  &.tmp {
+    background-color: rgba(255, 255, 255, 0.05);
+    height: 50px;
+    animation: blink 1.3s linear infinite;
+
+    &:not(:last-child) {
+      margin-bottom: 5px;
+    }
+
+    &::before {
+      display: none;
+    }
+  }
+
+  &.updating {
+    opacity: 0.2;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+
+  &.removingState {
+    background-color: #191919;
+    position: relative;
+    min-height: 50px;
+
+    .fieldRemove,
+    .fieldVisibility,
+    .fieldDescription {
+      display: none;
+    }
+
+    .removeLine {
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      background-color: inherit;
+
+      .btnApproveDeleting {
+        color: #f00;
+        margin: 0 30px 0 0;
+        cursor: pointer;
+      }
+
+      .btnCancelDeleting {
+        color: #fff;
+        margin: 0 20px 0 0;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .fieldName {
+    font-size: 18px;
+    box-sizing: border-box;
+    flex: 1 0 calc(100% - 468px);
+    text-overflow: ellipsis;
+    overflow: visible;
+    white-space: nowrap;
+    padding-right: 10px;
+
+    &.separatorName {
+      font-size: 24px;
+      line-height: 1.2;
+      cursor: pointer;
+    }
+
+    @include media('<phone') {
+      overflow: hidden;
+      flex: 1 !important;
+    }
+  }
+
+  .fieldVisibility {
+    box-sizing: border-box;
+    flex: 0 0 30px;
+    text-align: center;
+    margin-left: auto;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      color: $brandColor;
+    }
+  }
+
+  .fieldDescription {
+    box-sizing: border-box;
+    flex: 1 0 190px;
+    padding: 3px 15px;
+    overflow: hidden;
+    max-height: 46px;
+  }
+
+  .fieldRemove,
+  .btnAddField {
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    width: 30px;
+    text-align: center;
+  }
+
+  .fieldRemove {
+    top: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    text-align: right;
+    cursor: pointer;
+
+    &:hover {
+      color: #fff;
+
+      .picsioThemeLight & {
+        color: #000;
+      }
+    }
+  }
+
+  .btnCollapseGroup {
+    cursor: pointer;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    bottom: 10px;
+    padding: 0 10px;
+    display: inline-flex;
+    align-items: center;
+
+    &::before {
+      content: "";
+      border-style: solid;
+      border-width: 4px 0 4px 8px;
+      border-color: transparent transparent transparent #505050;
+      width: 0;
+      height: 0;
+      display: block;
+      transform: rotate(90deg);
+    }
+
+    &.act {
+      &::before {
+        transform: rotate(0deg);
+      }
+    }
+  }
+
+  .itemCustomFieldsMain {
+    flex: 0 0 55%;
+    align-items: center;
+    // overflow: hidden;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .fieldControls {
+    opacity: 0;
+    margin-left: auto;
+    background-color: inherit;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .fieldControl {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    opacity: 0.6;
+    cursor: pointer;
+
+    .svg-icon {
+      height: 100%;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .removeLine {
+    display: none;
+  }
+
+  .itemCustomFieldsIcon {
+    margin: 0 15px 0 40px;
+
+    .svg-icon {
+      vertical-align: middle;
+    }
+  }
+}
+
+.itemCustomFieldsIcon {
+  position: relative;
+
+  &.icon-folderFull {
+    cursor: pointer;
+  }
+
+  // .icon-plus {
+  //   position: absolute;
+  //   top: 50%;
+  //   transform: translateY(-60%);
+  //   left: 0;
+  //   width: 100%;
+  //   text-align: center;
+  //   color: #111;
+  //   font-size: 10px;
+  //   line-height: 26px;
+  // }
+  .icon-plus {
+    position: absolute;
+    top: 7px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #111;
+    font-size: 12px;
+  }
+}
+
+.itemCustomFieldsIcon.plus {
+  width: 14px;
+  height: 14px;
+  min-width: 14px;
+
+  .icon-plus {
+    font-size: 14px;
+    color: #999;
+    top: 0;
+  }
+}
+
+.itemCustomFields.itemCustomFieldsCreator {
+  .itemCustomFieldsIcon.plus {
+    .icon-plus {
+      color: $brandColor;
+    }
+  }
+}
+
+.picsioThemeLight .itemCustomFields.itemCustomFieldsCreator {
+  .itemCustomFieldsIcon.plus {
+    .icon-plus {
+      color: $brandColorLightTheme;
+    }
+  }
+}
+
+.temporaryCustomFieldItem {
+  width: 100%;
+  height: 51px;
+  box-sizing: border-box;
+  margin-bottom: 5px;
+  background-color: rgba(255, 204, 0, 0.5);
+}
+
+.schemaHeader {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: $screenBgDark;
+  padding: 10px 0;
+  z-index: 1;
+
+  .isDragged & {
+    pointer-events: none;
+  }
+
+  .schemaWrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @include media('<desktop') {
+    padding: 15px;
+  }
+}
+
+.importWrapper {
+  position: relative;
+}
+
+.schemaUploadForm {
+  background-color: #000;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-top: 10px;
+  width: 250px;
+  margin-left: -125px;
+  box-shadow: $shadowModalLightTheme;
+  padding: 16px;
+  opacity: 0;
+  pointer-events: none;
+  box-sizing: border-box;
+
+  &.active {
+    pointer-events: all;
+    opacity: 1;
+  }
+
+  &::before {
+    content: " ";
+    bottom: 100%;
+    left: 50%;
+    border: solid transparent;
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(0, 0, 0, 0);
+    border-bottom-color: #000;
+    border-width: 10px;
+    margin-left: -10px;
+  }
+
+  p {
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+  &Button {
+    margin-top: 15px;
+
+    .btnCallToAction {
+      width: 100%;
+    }
+  }
+}
+
+.customFieldsSchemaForm {
+  color: #999;
+}
+
+// NEW
+.customFieldsGroup {
+  background-color: #1f1f1f;
+  padding: 5px 5px 1px;
+  margin-bottom: 0;
+  font-size: 14px;
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+.itemCustomFieldsTitle {
+  background-color: transparent;
+  margin-bottom: 5px;
+
+  .itemCustomFieldsIcon {
+    font-size: 24px;
+    margin: 0 20px 0 15px;
+    display: flex;
+    align-items: center;
+  }
+
+  .fieldName {
+    font-size: 24px;
+  }
+}
+
+.itemCustomField {
+  margin-bottom: 5px;
+  position: relative;
+}
+
+.pageCustomFields .isDragged {
+  .fieldControls,
+  .removeLine,
+  .itemCustomField .customFieldsItemCreator {
+    display: none;
+  }
+}
+
+.customFieldsItemCreator {
+  width: 100%;
+  height: 5px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  cursor: pointer;
+  position: absolute;
+  bottom: -5px;
+
+  [data-type="group"] + & {
+    position: relative;
+    bottom: auto;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0);
+  }
+
+  &:hover {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+  }
+}
+
+.customFieldsItemCreatorHolder {
+  display: inline-block;
+  position: relative;
+  top: -8px;
+
+  &.customFieldsItemCreatorHolderGroup {
+    top: -10px;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    width: 150px;
+    height: 1px;
+    opacity: 0.24;
+    background-image: linear-gradient(-90deg, #1f1f1f 0%, #ffcc00 100%);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    width: 150px;
+    height: 1px;
+    opacity: 0.24;
+    background-image: linear-gradient(-269deg, #1f1f1f 0%, #ffcc00 100%);
+  }
+
+  .itemCustomFieldsIcon {
+    font-size: 24px;
+    color: $brandColor;
+  }
+}
+
+.customFieldsItemCreatorPlus {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  font-weight: 400;
+  background-color: $brandColor;
+  display: inline-block;
+  vertical-align: top;
+  border-radius: 50%;
+  color: #000;
+
+  .icon-plus {
+    font-size: 10px;
+  }
+}
+
+.itemCustomFieldsCreator {
+  margin-bottom: 5px;
+  height: 50px;
+  cursor: pointer;
+
+  &:last-child {
+    margin-bottom: 5px;
+  }
+
+  &.itemCustomFieldsTitle {
+    background-color: #1f1f1f;
+    padding: 10px 10px 10px 30px;
+
+    &::before {
+      left: 10px;
+    }
+  }
+
+  .itemCustomFieldsIcon {
+    color: $brandColor;
+  }
+
+  &.disabled {
+    cursor: default;
+
+    .fieldName {
+      flex: none;
+      cursor: default;
+    }
+
+    .itemCustomFieldsIcon {
+      color: #999;
+    }
+  }
+
+  .upgradePlan {
+    margin-right: auto;
+  }
+}
+
+.customFieldsSchemaRow {
+  margin-bottom: 30px;
+
+  .picsioDefBtn {
+    min-width: 83px;
+  }
+}
+
+.customFieldsSchemaError {
+  font-size: 14px;
+  color: $error;
+}
+
+.customFieldsSchemaForm {
+  margin: 0 auto;
+  max-width: 600px;
+  width: 100%;
+}
+
+.customFieldsOptions {
+  max-width: 326px;
+
+  &.checkboxOption {
+    margin-bottom: 15px;
+  }
+
+  .customFieldsOptionsCheckbox {
+    .#{$picsioInputControlLabelClassName} {
+      color: inherit;
+    }
+  }
+}
+
+.customFieldMultipleSelect {
+  .modifiedField {
+    height: 28px;
+    position: static;
+    font-size: 16px;
+  }
+
+  .#{$picsioInputClassName} {
+    .#{$picsioInputAdornmentClassName} {
+      align-self: center;
+      box-sizing: content-box;
+    }
+  }
+}
+
+.customFieldsOption {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #292929;
+  padding: 0 0 0 17px;
+  margin-bottom: 10px;
+  height: 32px;
+
+  &::before {
+    content: "";
+    width: 5px;
+    background-image: linear-gradient(to bottom, #666 50%, transparent 0);
+    position: absolute;
+    left: 5px;
+    top: 7px;
+    bottom: 7px;
+    background-size: auto 2px;
+  }
+
+  &--dragging {
+    z-index: 9999;
+    color: var(--secondary-contrast-color);
+  }
+
+
+  .btnRemove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 10px;
+    width: 32px;
+    height: 32px;
+    line-height: 30px;
+    text-align: center;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
+@include media('<tablet') {
+  .schemaWrapper {
+    .wrapperItems {
+      margin-top: 120px;
+    }
+
+    .searchBar-reset {
+      top: 10px;
+      font-size: 14px;
+    }
+  }
+
+  .itemCustomFields {
+    min-height: 50px;
+    padding-right: 13px;
+    overflow: hidden;
+
+    .itemCustomFieldsIcon {
+      margin-left: 30px;
+    }
+
+    .itemCustomFieldsMain {
+      flex: 0 0 100%;
+    }
+
+    .fieldVisibility {
+      flex: none;
+    }
+
+    .fieldDescription {
+      display: none;
+    }
+
+    .fieldControls {
+      position: absolute;
+      right: 0;
+    }
+  }
+}
+
+.picsioThemeLight {
+  .schemaUploadForm {
+    background-color: #fff;
+
+    &::before {
+      border-bottom-color: #fff;
+    }
+  }
+
+  .fieldVisibility {
+    &:hover {
+      color: $brandColorLightTheme;
+    }
+  }
+
+  .schemaHeader {
+    background-color: #fff;
+  }
+
+  .customFieldsGroup {
+    background-color: #ebebeb;
+  }
+
+  .itemCustomFields {
+    background-color: #f4f4f4;
+    color: #666;
+
+    &:hover {
+      background-color: #fff;
+      color: #000;
+    }
+
+    &.removingState {
+      background-color: #f4f4f4;
+
+      .fieldName {
+        color: #ccc;
+      }
+
+      .btnCancelDeleting {
+        color: #666;
+      }
+    }
+
+    &::before {
+      background-image: linear-gradient(to bottom, #ebebeb 50%, transparent 0);
+    }
+  }
+
+  .wrapperItems > .itemCustomFieldsTitle {
+    &:hover {
+      background-color: #ebebeb;
+    }
+  }
+
+  .customFieldsSchemaForm {
+    color: #666;
+  }
+
+  .customFieldsOption {
+    background-color: #f4f4f4;
+
+    .btnRemove {
+      &:hover {
+        color: #000;
+      }
+    }
+  }
+
+  .itemCustomFieldsCreator,
+  .customFieldsItemCreatorHolder {
+    .itemCustomFieldsIcon {
+      color: $brandColorLightTheme;
+
+      .icon-plus {
+        color: #fff;
+      }
+    }
+  }
+
+  .customFieldsItemCreatorPlus {
+    background-color: $brandColorLightTheme;
+    color: #fff;
+  }
+
+  .customFieldsItemCreatorHolder {
+    &::before {
+      background-image: linear-gradient(
+        -90deg,
+        #fff 0%,
+        $brandColorLightTheme 100%
+      );
+    }
+
+    &::after {
+      background-image: linear-gradient(
+        -269deg,
+        #fff 0%,
+        $brandColorLightTheme 100%
+      );
+    }
+  }
+
+  .itemCustomFieldsIcon.plus {
+    .icon-plus {
+      color: $brandColorLightTheme;
+    }
+  }
+
+  .itemCustomFields.itemCustomFieldsCreator:hover {
+    .itemCustomFieldsIcon.plus {
+      .icon-plus {
+        color: $brandColorLightTheme;
+      }
+    }
+  }
+}

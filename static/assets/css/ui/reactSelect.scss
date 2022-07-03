@@ -1,0 +1,204 @@
+
+.react-select {
+  margin-bottom: 15px;
+
+  &__label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+  }
+
+  &__revisions {
+    margin: unset;
+    margin-left: 7px;
+    min-width: 60px;
+
+    .addNewRevision {
+      visibility: hidden; 
+      position: absolute;
+    }
+  }
+}
+
+.react-select-container .react-select {
+  &__control {
+    border-radius: 0;
+    font-size: 14px;
+    min-height: 30px;
+    height: 30px;
+    color: #999;
+    background: #303030;
+    border: 0;
+    border-radius: 0;
+    border-top: 1px solid #181818;
+    border-bottom: 1px solid #353535;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
+    &:hover {
+      border-top: 1px solid #181818;
+      border-bottom: 1px solid #353535;
+    }
+
+    &--is-focused {
+      box-shadow: 0 0 0 2px #3b94fb;
+      background: #000;
+    }
+
+    &--is-disabled {
+      opacity: 0.9;
+    }
+  }
+
+  &__single-value {
+    color: currentColor;
+  }
+
+  &__value-container {
+    padding: 0 8px;
+  }
+
+  &__indicator {
+    width: 30px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    &::before {
+      content: '';
+      border: solid transparent;
+      height: 0;
+      width: 0;
+      display: block;
+      border-color: rgba(0, 0, 0, 0);
+      border-top-color: currentColor;
+      border-width: 5px;
+      margin-top: 3px;
+    }
+  }
+
+  &__input {
+    color: #999;
+
+    input {
+      color: currentColor;
+      caret-color: $brandColor;
+      box-shadow: none;
+      height: 20px;
+    }
+  }
+
+  &__menu {
+    border-radius: 0;
+    background-color: var(--background-main-color);
+    transition: opacity 0.3s ease, visibility 0.3s ease, display 0.3s linear 0.3s;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  }
+
+  &__menu-list {
+    padding: 0;
+    .addRevisionButton {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      height: 30px;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      &.disabled {
+        opacity: 0.2;
+        &:hover {
+          color: unset;
+        }
+        cursor: default;
+      }
+      &:hover {
+        color: var(--secondary-contrast-color);
+      }
+      .revisionIcon {
+        margin-right: 8px;
+      }
+
+      &.buttonFileUpload {
+        overflow: hidden;
+    
+        [type='file'] {
+          height: inherit;
+          cursor: pointer;
+          display: block;
+          min-height: 100%;
+          min-width: 100%;
+          opacity: 0;
+          text-align: right;
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+      }
+    }
+  }
+
+  &__option {
+    cursor: pointer;
+    display: flex;
+    padding: 10px 15px 10px 20px;
+    position: relative;
+    line-height: 1.2;
+    align-items: flex-start;
+    font-weight: 300;
+
+    &--is-selected {
+      background-color: #161616;
+      color: var(--secondary-contrast-color);
+    }
+
+    &--is-focused {
+      background-color: var(--primary-main-color);
+      color: var(--primary-contrast-color);
+    }
+  }
+}
+
+.picsioThemeLight {
+  .react-select-container .react-select {
+    &__control {
+      color: #333;
+      background: #f4f4f4;
+      border-top-color: #dfdede;
+      border-bottom-color: #f4f4f4;
+
+      &:hover {
+        border-top-color: #dfdede;
+        border-bottom-color: #f4f4f4;
+      }
+
+      &--is-focused {
+        box-shadow: 0 0 0 2px $brandColorLightTheme;
+        background-color: #fff;
+        color: #000;
+        border-color: #fff;
+      }
+    }
+
+    &__input {
+      color: #333;
+    }
+
+    &__menu {
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    }
+
+    &__option {
+      &--is-selected {
+        background-color: #e8e8e8;
+        color: var(--secondary-contrast-color);
+      }
+
+      &--is-focused {
+        background-color: var(--primary-main-color);
+        color: var(--primary-contrast-color);
+      }
+    }
+  }
+}

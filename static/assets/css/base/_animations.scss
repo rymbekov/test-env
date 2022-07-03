@@ -1,0 +1,167 @@
+/**-------------------------------
+* keyframes
+*-----------------------------*/
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/**-------------------------------
+* react-animations
+*-----------------------------*/
+.fade-in-scale {
+  &-enter {
+    opacity: 0.01;
+    transform: scaleY(0);
+
+    &-active {
+      opacity: 1;
+      transform: scaleY(1);
+      transition: all 300ms;
+    }
+  }
+
+  &-exit {
+    opacity: 1;
+    transform: scaleY(1);
+
+    &-active {
+      opacity: 0.01;
+      transform: scaleY(0);
+      transition: all 300ms;
+    }
+  }
+}
+
+.fade {
+  &-enter {
+    opacity: 0;
+
+    &-active {
+      opacity: 1;
+      transition: all 400ms ease;
+    }
+  }
+
+  &-exit {
+    opacity: 1;
+
+    &-active {
+      opacity: 0;
+      transition: all 400ms ease;
+    }
+  }
+}
+
+.fade-down {
+  &-enter {
+    opacity: 0;
+    transform: translateY(-15px);
+
+    &-active {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 350ms ease;
+    }
+  }
+
+  &-exit {
+    opacity: 1;
+    transform: translateY(0);
+
+    &-active {
+      opacity: 0;
+      transform: translateY(-15px);
+      transition: all 350ms ease;
+    }
+  }
+}
+
+@keyframes flickerAnimation {
+	0%   { opacity:1; }
+	50%  { opacity:0; }
+	100% { opacity:1; }
+}
+
+@keyframes highlightBlinkColor {
+	0%   { color: #fff; opacity:1;}
+	50%  { color: #fff; opacity:0.1;}
+	100% { color: #fff; opacity:1;}
+}
+
+@keyframes highlightBlinkColorLightTheme {
+	0%   { color: #000; opacity:1;}
+	50%  { color: #000; opacity:0.1;}
+	100% { color: #000; opacity:1;}
+}
+
+@keyframes highlightBlink {
+	0%   { opacity:1;}
+	50%  { opacity:0.1;}
+	100% { opacity:1;}
+}
+
+@keyframes highlightFadeUp {
+	0%   { opacity:0;}
+	100% { opacity:1;}
+}
+
+@keyframes highlightAnimation {
+	0%   {
+    opacity: .07;
+    z-index: 1;
+  }
+	50%  {
+    opacity: .3;
+    z-index: 1;
+  }
+	100% {
+    opacity: .07;
+    z-index: 1;
+  }
+}
+
+@keyframes highlightScale {
+	0%   { color: #fff; opacity:1; transform: scale(1);}
+	50%  { color: #fff; opacity:0.1; transform: scale(1.5);}
+	100% { color: #fff; opacity:1; transform: scale(1);}
+}
+
+@keyframes timelineAnimation {
+	0%   { opacity: .8; }
+	50%  { opacity: 1; }
+	100% { opacity: .8 }
+}
+
+@keyframes blink {
+	50% {
+		opacity: 0;
+	}
+}
+
+
+.highlightScale {
+	position: relative;
+	animation: highlightScale 2s .5s 5;
+	opacity: 1 !important;
+}
+
+.highlightBlink {
+	position: relative;
+	animation: highlightBlink 2s .5s 5;
+}
+
+.highlightBlink__half {
+	position: relative;
+	animation: highlightBlink 1s .5s 2;
+}
+
+.highlightFadeUp {
+	position: relative;
+	animation: highlightFadeUp 1.5s;
+}

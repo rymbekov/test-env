@@ -1,0 +1,64 @@
+.wrapperRadiosDialog {
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 1001; // was 4
+
+	&:empty {
+		display: none;
+	}
+
+	.radiosDialog__list {
+		padding: 0;
+		margin: 0 0 46px;
+		list-style: none;
+
+		li {
+			display: flex;
+			flex-flow: row nowrap;
+			margin: 0 0 33px;
+		}
+		.UIRadio__input {
+			margin-top: 3px;
+			margin-right: 9px;
+		}
+		.UIRadio__label {
+			font-family: $base-font;
+			font-weight: 400;
+			font-size: 13px;
+		}
+		.svg-icon {
+			display: block;
+			margin-top: -8px;
+			color: #333;
+		}
+		b {
+			font-weight: 400;
+			display: inline-block;
+			margin-bottom: 5px;
+			font-size: 16px;
+		}
+		&.hasDescription {
+			margin: 0 0 15px;
+			li {
+				margin: 0 0 0px
+			}
+		}
+	}
+
+	.radiosDialog__icon {
+		width: 50px;
+		text-align: right;
+		font-size: 60px;
+		margin: 0 45px 0 -5px;
+		flex-shrink: 0;
+
+		&:empty {
+			display: none;
+		}
+
+		@media screen and (max-width: $mediaDevice) {
+			margin-right: 25px;
+		}
+	}
+}

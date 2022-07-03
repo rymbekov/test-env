@@ -1,0 +1,272 @@
+.geoIframeResizer {
+	width: 100%;
+	position: absolute;
+	left: 0;
+	right: 0;
+	z-index: -1;
+	opacity: 0;
+	border: 0;
+	height: 0;
+}
+
+.mapInfoPopup .leaflet-popup-content-wrapper {
+	padding: 20px 40px 20px 20px;
+	width: 220px;
+	box-sizing: border-box;
+	-webkit-user-select: text;
+	-moz-user-select: text;
+	user-select: text;
+	color: #fff;
+}
+
+.markerAsset {
+	width: 200px;
+	height: 200px;
+	position: relative;
+}
+
+.markerAssetImage {
+	text-align: center;
+	width: 200px;
+	height: 200px;
+	border-radius: 4px;
+	overflow: hidden;
+
+	img {
+		vertical-align: top;
+		object-fit: contain;
+		width: 100%;
+		height: 100%;
+		opacity: 1;
+		cursor: pointer;
+
+		&.loading {
+			opacity: 0.3;
+		}
+	}
+
+	.sliderSpinner {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+	}
+	.placeholderMediaFile {
+		height: 100%;
+	}
+}
+
+.markerAssetName {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	padding: 7px 25px 8px 8px;
+	width: 100%;
+	margin: 0;
+	font-size: 12px;
+	box-sizing: border-box;
+	color: #fff;
+
+	b {
+		font-weight: normal;
+	}
+}
+
+.sliderSpinner {
+	height: 100%;
+
+	.innerPicsioSpinner {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+	}
+
+	.show {
+		display: block;
+	}
+}
+
+.appCatalog {
+	> .sliderSpinner {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		background-color: rgba(0, 0, 0, 0.1);
+	}
+}
+
+.geoPlaceholder {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 20px;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	color: #666;
+	box-sizing: border-box;
+	// background-color: #252525;
+
+	&Icon {
+		display: inline-block;
+		font-size: 90px;
+		margin-bottom: 36px;
+	}
+
+	&Title {
+		font-size: 48px;
+		font-weight: 200;
+		line-height: 1.2;
+		margin-bottom: 50px;
+	}
+
+	&Text {
+		font-size: 24px;
+		font-weight: 200;
+		line-height: 1.2;
+		margin-bottom: 30px;
+		max-width: 390px;
+	}
+}
+
+#mapid,
+#map,
+#map > .leaflet-container {
+	height: 100%;
+	width: 100%;
+}
+
+.appCatalog {
+	.leaflet-pane,
+	.leaflet-top,
+	.leaflet-left {
+		z-index: 1;
+	}
+
+	.leaflet-popup {
+		margin-bottom: 45px;
+	}
+
+	.mapThumbnail {
+		object-fit: cover;
+		border-radius: 50%;
+		border: 2px solid rgba(50, 50, 50, 0.3);
+		box-sizing: border-box;
+		margin-top: -43px !important;
+		background-color: rgba(50, 50, 50, 0.3);
+	}
+}
+
+// Popup
+.leaflet-popup {
+	.leaflet-popup-content-wrapper {
+		border-radius: 5px;
+		background-color: #242424;
+	}
+
+	.leaflet-popup-tip {
+		background-color: #242424;
+	}
+
+	.leaflet-popup-content {
+		width: 200px !important;
+		padding: 0;
+		margin: 0;
+	}
+
+	a.leaflet-popup-close-button {
+		top: 0;
+		right: 0;
+		z-index: 3;
+		padding: 9px;
+		width: 14px;
+		cursor: pointer;
+
+		&:hover {
+			background-color: rgba(0, 0, 0, 0.1);
+		}
+	}
+	.prev,
+	.next {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		left: 0;
+		top: 50%;
+		padding: 5px;
+		border-radius: 50%;
+		background: #242424;
+		transform: translate(-115%, -50%);
+		box-shadow: 0 0 3px #fff;
+		color: #fff;
+		cursor: pointer;
+		& .svg-icon {
+			color: #fff;
+		}
+		&.disabled {
+			opacity: 0.4;
+			cursor: default;
+		}
+	}
+	.next {
+		left: 100%;
+		transform: translate(15%, -50%);
+	}
+	.pagination {
+		position: absolute;
+		left: 50%;
+		top: 100%;
+		background: #242424;
+		white-space: nowrap;
+		min-width: 40px;
+		height: 40px;
+		line-height: 40px;
+		text-align: center;
+		border-radius: 20px;
+		padding: 0 3px;
+		box-shadow: 0 0 3px #fff;
+		color: #fff;
+		transform: translate(-50%, 17px);
+		box-sizing: border-box;
+	}
+}
+
+.picsioThemeLight {
+	.leaflet-popup {
+		.leaflet-popup-content-wrapper {
+			background-color: #fff;
+			color: #111;
+		}
+
+		.leaflet-popup-tip {
+			background-color: #fff;
+		}
+		.prev,
+		.next {
+			background: #fff;
+			color: #242424;
+			& .svg-icon {
+				color: #242424;
+			}
+		}
+		.pagination { color: #242424; background: #fff;}
+	}
+
+	.markerAssetName {
+		background-color: rgba(255, 255, 255, 0.5);
+		color: #111;
+	}
+
+	.geoPlaceholder {
+		color: #999;
+	}
+}

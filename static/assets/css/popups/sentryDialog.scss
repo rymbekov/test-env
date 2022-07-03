@@ -1,0 +1,108 @@
+body .sentry-error-embed-wrapper {
+	background: rgba(51, 51, 51, 0.8);
+	.sentry-error-embed {
+		background: $lightblack;
+		box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+		border: none;
+
+		* {
+			color: #fff;
+		}
+		header {
+			border-bottom: 1px solid #000;
+		}
+		h2 {
+			font: 200 30px/50px 'Fira Sans', Helvetica, Arial, sans-serif;
+		}
+		input,
+		textarea {
+			color: #999;
+			background: #303030;
+			border-color: rgba(0, 0, 0, 0);
+			font: 14px 'Fira Sans', Helvetica, Arial, sans-serif;
+			max-width: 100%;
+
+			&:focus {
+				outline: none;
+				box-shadow: 0 0 5px #3b94fb;
+				background: #000;
+				color: #fff;
+				border-color: #000;
+			}
+		}
+		.message-success {
+			background: rgba(255, 255, 255, 0.1);
+			color: #fff;
+			border: none;
+		}
+		.form-submit {
+			.btn {
+				background: $brand-color;
+				color: $lightblack;
+				border-color: rgba(0, 0, 0, 0);
+			}
+			.close {
+				padding: 15px 5px;
+			}
+			.powered-by {
+				line-height: 18px;
+				a {
+					top: auto;
+					background-color: #fff;
+					background-position: center;
+					border-radius: 3px;
+					padding: 3px 5px;
+				}
+			}
+		}
+	}
+}
+
+.picsioThemeLight {
+	.sentry-error-embed-wrapper {
+		.sentry-error-embed {
+			box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+			background: #eaeaea;
+
+			* {
+				color: #000;
+			}
+			header {
+				border-bottom: 1px solid #cfcfcf;
+			}
+			h2 {
+				font: 200 30px/50px 'Fira Sans', Helvetica, Arial, sans-serif;
+			}
+			input,
+			textarea {
+				color: #666;
+				background: #f4f4f4;
+				border-color: rgba(0, 0, 0, 0);
+
+				&:focus {
+					box-shadow: 0 0 5px #3b94fb;
+					background: #fff;
+					color: #000;
+					border-color: #fff;
+				}
+			}
+			.message-success {
+				background: rgba(0, 0, 0, 0.1);
+				color: #000;
+				border: none;
+			}
+			.form-submit {
+				.btn {
+					background: $brandColorLightTheme;
+					color: #fff;
+					border-color: rgba(0, 0, 0, 0);
+				}
+				.powered-by {
+					a {
+						background-color: rgba(0, 0, 0, 0);
+					}
+				}
+			}
+		}
+	}
+}

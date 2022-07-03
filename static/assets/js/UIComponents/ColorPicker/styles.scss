@@ -1,0 +1,58 @@
+@import 'cssVariables';
+$colorPickerWidth: 166px;
+$colorPickerOpenerWidth: 83px;
+
+.colorPicker {
+  display: inline-flex;
+  width: $colorPickerWidth;
+  position: relative;
+
+  &.isColorPickerOpen {
+    z-index: 10;
+  }
+
+  &.isDisabled {
+    pointer-events: none;
+    opacity: 0.15;
+  }
+
+  .UIInput {
+    flex: 1;
+    margin: 0;
+  }
+
+  .colorPickerValue {
+    width: $colorPickerOpenerWidth;
+    margin-left: 5px;
+  }
+
+  .openerLink {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 0;
+    line-height: 0;
+    width: $colorPickerOpenerWidth;
+    display: inline-block;
+    box-shadow: 0 0 2px rgba( #000000, 0.3);
+  }
+
+  .chrome-picker  {
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 0;
+    margin-top: 5px;
+    font-family: $base-font-mono !important;
+
+    body.picsioThemeDark & {
+      background: #242424 !important;
+      color: #666 !important;
+
+      svg {
+        fill: #666 !important;
+      }
+    }
+  }
+}

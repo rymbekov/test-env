@@ -1,0 +1,43 @@
+@import 'cssVariables';
+
+.LoginScreen {
+  margin: 0 auto;
+
+  .PicsioTextField {
+    margin-bottom: 15px;
+  }
+}
+
+.mobileLogin {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 30px 25px;
+
+  h1 {
+    font-size: 72px;
+    font-weight: 200;
+    color: #fff;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .buttonAction {
+    width: 100%;
+  }
+
+  .error {
+    color: $error;
+    text-align: center;
+    margin-bottom: 1em;
+  }
+
+  .loginForgotPassword {
+    text-align: center;
+  }
+
+  a {
+    color: #fc0;
+    cursor: pointer;
+    text-decoration: none;
+  }
+}

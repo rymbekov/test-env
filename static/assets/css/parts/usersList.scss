@@ -1,0 +1,19 @@
+
+.usersListOpenClose {
+	margin-bottom: 55px;
+	max-width: 620px;
+
+	&:last-child {
+		margin-bottom: 30px;
+	}
+}
+
+.usersList {
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 620px;
+
+	.tag {
+		margin: 0 4px 4px 0;
+	}
+}

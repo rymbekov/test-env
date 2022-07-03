@@ -1,0 +1,134 @@
+.sharingSettings {
+	max-width: 570px;
+	box-sizing: border-box;
+	transition: all .5s ease;
+
+	&.disabled {
+		opacity: .2;
+		pointer-events: none;
+	}
+
+	.singleSharingRowPassword {
+		display: flex;
+
+		.rowInput,
+		.rowInner {
+			flex: 1;
+		}
+
+		& > * {
+			margin-left: 15px;
+			&:first-child {
+				margin-left: 0;
+			}
+		}
+
+		.UIInput {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.sharingSettingsHeader {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid #000;
+	padding-bottom: 15px;
+	margin-bottom: 25px;
+}
+
+.sharingSettingsAssetName {
+	font-size: 18px;
+	line-height: 1.2222;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	padding-right: 15px;
+}
+
+.sharingSettingsBlock {
+	margin: 25px 0 30px;
+	.sharingLink {
+		font-size: 14px;
+		margin: 10px 0;
+		word-break: break-word;
+	}
+}
+
+.sharingSettingsHeading {
+	color: #ccc;
+	font-size: 18px;
+	font-weight: 300;
+	line-height: 1.5;
+	margin-bottom: 5px;
+
+	.picsioLink {
+		font-size: 13px;
+		display: inline-block;
+		margin-left: 4px;
+		position: relative;
+	}
+	.picsioLinkForShare__tooltip {
+		left: -12px;
+		top: 22px;
+	}
+}
+
+// Setting checkboxes. Can use global
+.settingsCheckboxes {
+	font-size: 14px;
+}
+
+.settingsCheckboxesRow {
+	display: flex;
+	align-items: center;
+	padding: 6px;
+	min-height: 27px;
+	box-sizing: border-box;
+	color: #7f7f7f;
+
+	&:nth-child(even) {
+		background-color: #222;
+	}
+}
+
+.settingsCheckboxesChange,
+.settingsCheckboxesShow {
+	flex: 0 0 50px;
+	text-align: center;
+	font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+	.settingsCheckboxesHead &:first-child {
+		margin-left: auto;
+	}
+}
+
+.settingsCheckboxesHead {
+	margin-top: -27px;
+}
+
+.settingsCheckboxesTitle {
+	margin-right: auto;
+	flex: 1 1 auto;
+}
+
+
+.picsioThemeLight {
+	.sharingSettingsHeader {
+		border-bottom-color: #d9d9d9;
+	}
+
+	.sharingSettingsHeading {
+		color: #666;
+	}
+
+	.settingsCheckboxesRow {
+		&:nth-child(even) {
+			background-color: #f4f4f4;
+		}
+	}
+}

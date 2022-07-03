@@ -1,0 +1,202 @@
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-family: "Fira Sans", Helvetica, Arial, sans-serif;
+  overscroll-behavior: none;
+  overflow: hidden;
+  position: fixed;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+.picsioSpinner {
+  min-height: 50px;
+  font-weight: 100;
+  color: #fff;
+}
+
+@-webkit-keyframes rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes bounce {
+
+  0%,
+  100% {
+    -webkit-transform: scale(0);
+  }
+
+  50% {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: scale(0);
+    -webkit-transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
+
+.picsioSpinner .innerPicsioSpinner {
+  text-align: center;
+}
+
+.picsioSpinner .innerPicsioSpinner .spinner {
+  display: inline-block;
+  vertical-align: middle;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto;
+  -webkit-animation: rotate 2.0s infinite linear;
+  animation: rotate 2.0s infinite linear;
+}
+
+.picsioSpinner .innerPicsioSpinner .spinner div,
+.picsioSpinner .innerPicsioSpinner .spinner span {
+  width: 60%;
+  height: 60%;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  background: #fff;
+  border-radius: 100%;
+  -webkit-animation: bounce 2.0s infinite ease-in-out;
+  animation: bounce 2.0s infinite ease-in-out;
+}
+
+.picsioSpinner .innerPicsioSpinner .spinner span {
+  top: auto;
+  bottom: 0px;
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+.picsioSpinner .innerPicsioSpinner .titleSpinner {
+  display: none;
+  font-size: 16px;
+  padding: 20px 14px 5px 14px;
+  vertical-align: middle;
+  font-weight: 300;
+}
+
+.picsioSpinner .innerPicsioSpinner .titleSpinner.show {
+  display: inline-block;
+}
+
+.picsioSpinner .innerPicsioSpinner .spinnerProgress {
+  display: block;
+  margin-top: 10px;
+}
+
+.picsioSpinner .innerPicsioSpinner .textSpinner {
+  display: none;
+  max-width: 500px;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 20px;
+  padding-top: 20px;
+  text-align: left;
+}
+
+.picsioSpinner .innerPicsioSpinner .textSpinner.show {
+  display: block;
+}
+
+.picsioSpinner.blockUI {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1002;
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.picsioSpinner.blockUI .innerPicsioSpinner {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.picsioSpinner.blockUI .innerPicsioSpinner .spinner {
+  display: block;
+}
+
+.picsioSpinner.blockUI .innerPicsioSpinner .titleSpinner {
+  padding-left: 0;
+  font-size: 24px;
+}
+
+.picsioSpinner.blockUI .innerPicsioSpinner .titleSpinner.show {
+  display: block;
+}
+
+.picsioSpinner.blockUI .innerPicsioSpinner .textSpinner {
+  font-size: 20px;
+  line-height: 25px;
+}
+
+.picsioSpinner.partial {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.picsioSpinner.partial .innerPicsioSpinner {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -20px;
+  width: 100%;
+}
+
+.picsioSpinner.center .innerPicsioSpinner .textSpinner {
+  text-align: center;
+}
+
+.picsioThemeLight .picsioSpinner {
+  color: #999;
+}
+
+.picsioThemeLight .picsioSpinner .innerPicsioSpinner .spinner div,
+.picsioThemeLight .picsioSpinner .innerPicsioSpinner .spinner span {
+  background: #3B94FB;
+}
+
+.picsioThemeLight .picsioSpinner.blockUI {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.picsioThemeLight .picsioSpinner.partial {
+  background: rgba(255, 255, 255, 0.6);
+}

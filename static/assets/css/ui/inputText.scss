@@ -1,0 +1,36 @@
+.picsioInputText {
+	display: block;
+	line-height: 1;
+	margin: 0 0 15px 0;
+	.labelInputText {
+		font-family: $base-font;
+		font-size: 14px;
+		color: #ccc;
+		display: block;
+		line-height: 1.4;
+		padding: 0 0 5px 0;
+		&.error {
+			font-size: 12px;
+			color: #ff0000;
+			display: none;
+			margin-top: -5px;
+			&.show {
+				display: block;
+			}
+		}
+	}
+	&.errorWarn {
+		input[type="text"],
+		input[type="password"] {
+			border: 1px solid #ff0000;
+		}
+	}
+}
+
+.picsioThemeLight {
+	.picsioInputText {
+		.labelInputText {
+			color: #666;
+		}
+	}
+}

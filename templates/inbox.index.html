@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" class="picsioThemeDark">
+<head>
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<!-- start STYLES -->
+		<link rel="stylesheet" href="https://assets.pics.io/css/picsioSpinner.css">
+		<link href="https://fonts.googleapis.com/css?family=Fira+Mono|Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,900,900i&display=swap&subset=cyrillic" rel="stylesheet">
+	<!-- end STYLES -->
+
+	<meta name="title" content="<%= meta.head.title %>" />
+	<title><%= meta.head.title %></title>
+	<meta name="description" content="<%= meta.head.description %>" />
+	<meta name="author" content="<%= meta.head.author %>" />
+
+	<link rel="image_src" href="https://assets.pics.io/img/picsio-color-logo.png" />
+
+	<meta itemprop="image" content="https://assets.pics.io/img/picsio-color-logo.png">
+	<meta property="og:title" content="<%= meta.head.og.title %>">
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="<%= baseUrl %>">
+	<meta property="og:image" content="https://assets.pics.io/img/picsio-color-logo.png">
+	<meta property="og:description" content="<%= meta.head.og.description %>">
+	<meta property="og:author" content="<%= meta.head.og.author %>" />
+
+
+	<link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+	<link rel="dns-prefetch" href="//apis.google.com">
+
+	<!-- start favicon -->
+	<% if(brandingSettings.faviconUrl) { %>
+	    <link rel="shortcut icon" href="<%- brandingSettings.faviconUrl %>">
+	<% } else {%>
+	    <link rel="shortcut icon" href="https://assets.pics.io/img/favicon/faviconPicsio/favicon.ico">
+	    <link rel="apple-touch-icon" sizes="57x57" href="https://assets.pics.io/img/favicon/faviconPicsio/apple-touch-icon-57x57.png">
+	    <link rel="apple-touch-icon" sizes="60x60" href="https://assets.pics.io/img/favicon/faviconPicsio/apple-touch-icon-60x60.png">
+	    <link rel="apple-touch-icon" sizes="72x72" href="https://assets.pics.io/img/favicon/faviconPicsio/apple-touch-icon-72x72.png">
+	    <link rel="apple-touch-icon" sizes="76x76" href="https://assets.pics.io/img/favicon/faviconPicsio/apple-touch-icon-76x76.png">
+	    <link rel="apple-touch-icon" sizes="114x114" href="https://assets.pics.io/img/favicon/faviconPicsio/apple-touch-icon-114x114.png">
+	    <link rel="apple-touch-icon" sizes="120x120" href="https://assets.pics.io/img/favicon/faviconPicsio/apple-touch-icon-120x120.png">
+	    <link rel="apple-touch-icon" sizes="144x144" href="https://assets.pics.io/img/favicon/faviconPicsio/apple-touch-icon-144x144.png">
+	    <link rel="apple-touch-icon" sizes="152x152" href="https://assets.pics.io/img/favicon/faviconPicsio/apple-touch-icon-152x152.png">
+	    <link rel="apple-touch-icon" sizes="180x180" href="https://assets.pics.io/img/favicon/faviconPicsio/apple-touch-icon-180x180.png">
+	    <link rel="icon" type="image/png" href="https://assets.pics.io/img/favicon/faviconPicsio/android-icon-192x192.png" sizes="192x192">
+	    <link rel="icon" type="image/png" href="https://assets.pics.io/img/favicon/faviconPicsio/favicon-196x196.png" sizes="196x196">
+	    <link rel="icon" type="image/png" href="https://assets.pics.io/img/favicon/faviconPicsio/favicon-160x160.png" sizes="160x160">
+	    <link rel="icon" type="image/png" href="https://assets.pics.io/img/favicon/faviconPicsio/favicon-96x96.png" sizes="96x96">
+	    <link rel="icon" type="image/png" href="https://assets.pics.io/img/favicon/faviconPicsio/favicon-48x48.png" sizes="48x48">
+	    <link rel="icon" type="image/png" href="https://assets.pics.io/img/favicon/faviconPicsio/favicon-32x32.png" sizes="32x32">
+	    <link rel="icon" type="image/png" href="https://assets.pics.io/img/favicon/faviconPicsio/favicon-16x16.png" sizes="16x16">
+	    <link rel="manifest" href="https://assets.pics.io/img/favicon/faviconPicsio/manifest.json">
+	    <meta name="msapplication-TileColor" content="#ffcc00">
+	    <meta name="msapplication-TileImage" content="https://assets.pics.io/img/favicon/faviconPicsio/mstile-144x144.png">
+	    <meta name="msapplication-config" content="https://assets.pics.io/img/favicon/faviconPicsio/browserconfig.xml">
+	<% } %>
+	<!-- end favicon -->
+	<!-- Google Analytics code -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=<%= inbox.googleAnalyticsIdentifier || 'UA-25877411-2' %>"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', '<%= inbox.googleAnalyticsIdentifier || "UA-25877411-2" %>');
+	</script>
+	<script>
+		var getLocation = function(href) {
+			var l = document.createElement('a');
+			l.href = href;
+			return l;
+		};
+		window.pathname = getLocation("<%- baseUrl %>").pathname;
+		window.inbox = <%- JSON.stringify(inbox) %>;
+	</script>
+</head>
+
+<body>
+	<!-- Start up spinner -->
+	<div class="picsioSpinner blockUI" id="start-up-spinner">
+		<div class="innerPicsioSpinner">
+			<div class="spinner">
+				<div></div>
+				<span></span>
+			</div>
+			<span class="titleSpinner"></span>
+			<span class="textSpinner"></span>
+		</div>
+	</div>
+
+	<div class="wrapperPicsioApp"></div>
+
+	<div>
+		<div class="wrapperDialog"></div>
+		<div class="wrapperDownloadDialog"></div>
+		<div class="popperWrapper"></div>
+	</div>
+
+	<div id="webRoot"><%- locals.remoteHtmlUrl %>/</div>
+
+	<!-- <script defer src="https://apis.google.com/js/client.js?onload=gapiIsLoaded" type="text/javascript"></script> -->
+</body>
+</html>

@@ -1,0 +1,30 @@
+git_url("git@github.com:TopTechPhoto/ios-certificates.git")
+
+storage_mode("git")
+
+type("development") # The default type, can be: appstore, adhoc, enterprise or development
+
+for_platform :ios do
+	app_identifier([ENV["APP_ID"]])
+	readonly(true)
+
+	for_lane :register_new_device do
+		readonly(false)
+		force_for_new_devices(true)
+	end
+
+	for_lane :match_certs do
+		readonly(true)
+		git_branch(ENV["CERTS_BRANCH"])
+                 username(ENV["APPLE_ID"])
+                 team_id(ENV["TEAM_ID"])
+	end
+
+	for_lane :match_certs_force do
+		readonly(false)
+		force(true)
+		git_branch(ENV["CERTS_BRANCH"])
+			 username(ENV["APPLE_ID"])
+			 team_id(ENV["TEAM_ID"])
+	end
+end

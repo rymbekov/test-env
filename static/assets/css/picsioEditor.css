@@ -1,0 +1,3184 @@
+#rgbValue, #hslaValue {
+    float: right;
+}
+
+.container {
+    overflow: auto;
+}
+
+#showPicker {
+    float: left;
+}
+
+.colorPicker {
+    background: #E8E6E0;
+    border: 1px solid #BBB;
+    -moz-border-radius: .3em;
+    border-radius: .3em;
+    margin: 1em;
+    display: inline-block;
+}
+
+.colorPicker .extras {
+    float: right;
+    margin: 0.5em;
+}
+
+.colorPicker .extras .currentColorContainer {
+    overflow: hidden;
+}
+
+.colorPicker .extras .currentColor {
+    float: right;
+    width: 65px;
+    height: 30px;
+    border: 1px solid #BBB;
+    -moz-border-radius: .3em;
+    border-radius: .3em;
+}
+
+.colorPicker .extras .colorFields {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.colorPicker .extras .color {
+    text-align: right;
+}
+
+.colorPicker .extras .colorFields input {
+    width: 40px;
+    margin-left: 0.5em;
+}
+
+.colorPicker .extras .hex {
+    float: right;
+}
+
+.colorPicker .extras .hex input {
+    width: 60px;
+}
+
+.colorPicker .twod {
+    float: left;
+    margin: 0.5em;
+}
+
+/* main dimensions */
+.colorPicker .twod, .colorPicker .twod .bg {
+    width: 240px;
+    height: 240px;
+}
+.colorPicker .oned, .colorPicker .oned .bg {
+    height: 240px;
+}
+.colorPicker .oned, .colorPicker .oned .bg, .colorPicker .oned .pointer .shape {
+    width: 20px;
+}
+
+.colorPicker .twod .bg {
+    position: absolute;
+
+    /* These seem to cause issues in some browsers, careful!
+    border: 1px solid #BBB;
+    -moz-border-radius: .3em;
+    border-radius: .3em;
+    */
+}
+.colorPicker .twod .pointer {
+    position: relative;
+    z-index: 2;
+    width: 8px;
+}
+.colorPicker .twod .pointer .shape {
+    position: absolute;
+}
+.colorPicker .twod .pointer .shape1 {
+    margin-left: -7px;
+    margin-top: -7px;
+    width: 10px;
+    height: 10px;
+    border: 2px solid black;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.colorPicker .twod .pointer .shape2 {
+    margin-left: -6px;
+    margin-top: -6px;
+    width: 8px;
+    height: 8px;
+    border: 2px solid white;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.colorPicker .oned {
+    float: left;
+    margin: 0.5em;
+}
+
+.colorPicker .oned .bg {
+    border: 1px solid #BBB;
+    /*
+    -moz-border-radius: .3em;
+    border-radius: .3em;
+    */
+}
+.colorPicker .oned .pointer {
+    position: relative;
+    z-index: 2;
+}
+.colorPicker .oned .pointer .shape {
+    position: absolute;
+    margin-left: -1px;
+    margin-top: -4px;
+    height: 5px;
+    border: 2px solid black;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+/* gradients, tweak as needed based on which browsers you want to support */
+.colorPicker .oned .bg {
+    background: -moz-linear-gradient(top,  #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 66%, #ff00ff 83%, #ff0000 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff0000), color-stop(17%,#ffff00), color-stop(33%,#00ff00), color-stop(50%,#00ffff), color-stop(66%,#0000ff), color-stop(83%,#ff00ff), color-stop(100%,#ff0000));
+    background: -webkit-linear-gradient(top,  #ff0000 0%,#ffff00 17%,#00ff00 33%,#00ffff 50%,#0000ff 66%,#ff00ff 83%,#ff0000 100%);
+    background: -o-linear-gradient(top,  #ff0000 0%,#ffff00 17%,#00ff00 33%,#00ffff 50%,#0000ff 66%,#ff00ff 83%,#ff0000 100%);
+    background: linear-gradient(top,  #ff0000 0%,#ffff00 17%,#00ff00 33%,#00ffff 50%,#0000ff 66%,#ff00ff 83%,#ff0000 100%);
+}
+
+.colorPicker .twod .bg1 {
+    z-index: 0;
+    background: -moz-linear-gradient(left,  rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,0)));
+    background: -webkit-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+    background: -o-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+    background: linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+}
+.colorPicker .twod .bg2 {
+    z-index: 1;
+    background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,1)));
+    background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);
+    background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);
+    background: linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);
+}
+
+#hslPicker .twod .bg1 {
+    background: -moz-linear-gradient(left,  #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 66%, #ff00ff 83%, #ff0000 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#ff0000), color-stop(17%,#ffff00), color-stop(33%,#00ff00), color-stop(50%,#00ffff), color-stop(66%,#0000ff), color-stop(83%,#ff00ff), color-stop(100%,#ff0000));
+    background: -webkit-linear-gradient(left, #ff0000 0%,#ffff00 17%,#00ff00 33%,#00ffff 50%,#0000ff 66%,#ff00ff 83%,#ff0000 100%);
+    background: -o-linear-gradient(left, #ff0000 0%,#ffff00 17%,#00ff00 33%,#00ffff 50%,#0000ff 66%,#ff00ff 83%,#ff0000 100%);
+    background: linear-gradient(left, #ff0000 0%,#ffff00 17%,#00ff00 33%,#00ffff 50%,#0000ff 66%,#ff00ff 83%,#ff0000 100%);
+}
+
+#hslPicker .twod .bg2 {
+    background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(127,127,127,1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(127,127,127,1)));
+    background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(127,127,127,1) 100%);
+    background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(127,127,127,1) 100%);
+    background: linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(127,127,127,1) 100%);
+}
+
+#hslPicker .oned .bg {
+    z-index: 1;
+    background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(50%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,1)));
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(0,0,0,0),rgba(0,0,0,1) 100%);
+    background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(0,0,0,0) 50%,rgba(0,0,0,1) 100%);
+    background: linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(0,0,0,0) 50%,rgba(0,0,0,1) 100%);
+}
+
+#hslPicker .extras {
+    width: 100px;
+}
+
+#hslPicker .oned.alpha {
+    margin: 0;
+}
+
+#hslPicker .oned.alpha .bg {
+    background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(0,0,0,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(0,0,0,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(0,0,0,1) 100%); /* Opera 11.10+ */
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(0,0,0,1) 100%); /* W3C */
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+  border: 1px solid transparent;
+}
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+input[type="text"]::-webkit-input-placeholder {
+  color: #999;
+}
+input[type="date"]::-webkit-input-placeholder {
+  color: #999;
+}
+input[type="password"]::-webkit-input-placeholder {
+  color: #999;
+}
+textarea::-webkit-input-placeholder {
+  color: #999;
+}
+input[type="text"]::-moz-placeholder {
+  color: #999;
+}
+input[type="date"]::-moz-placeholder {
+  color: #999;
+}
+input[type="date"]:-moz-placeholder {
+  color: #999;
+}
+input[type="password"]::-moz-placeholder {
+  color: #999;
+}
+textarea::-moz-placeholder {
+  color: #999;
+}
+.picsioEditor-spiner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: none;
+  background: rgba(0, 0, 0, 0.5);
+}
+.picsioEditor {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #fff;
+  font-family: 'fira_sansregular';
+  -webkit-font-smoothing: antialiased;
+  min-height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #252424;
+  -moz-user-select: -moz-none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.picsioEditor p {
+  font-family: 'fira_sansregular';
+  font-size: 14px;
+  color: #fff;
+  line-height: 1.4;
+  padding: 0;
+  margin: 0.5em 0 1em 0;
+}
+.picsioEditor a {
+  font-family: 'fira_sansregular';
+  color: #ffcc00;
+  text-decoration: underline;
+}
+.picsioEditor a:hover {
+  text-decoration: none;
+}
+.picsioEditor textarea,
+.picsioEditor input[type="text"],
+.picsioEditor input[type="number"],
+.picsioEditor input[type="password"],
+.picsioEditor input[type="date"],
+.picsioEditor [contenteditable] {
+  margin: 0;
+  padding: 7px 10px;
+  border-radius: 0;
+  border: none;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: #141414;
+  height: 30px;
+  line-height: 16px;
+  font-family: Arial;
+  font-size: 16px;
+  color: #999;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+}
+.picsioEditor textarea:focus,
+.picsioEditor input[type="text"]:focus,
+.picsioEditor input[type="number"]:focus,
+.picsioEditor input[type="password"]:focus,
+.picsioEditor input[type="date"]:focus,
+.picsioEditor [contenteditable]:focus {
+  outline: none;
+}
+.picsioEditor textarea[disabled],
+.picsioEditor input[type="text"][disabled],
+.picsioEditor input[type="number"][disabled],
+.picsioEditor input[type="password"][disabled],
+.picsioEditor input[type="date"][disabled],
+.picsioEditor [contenteditable][disabled] {
+  background: #151515;
+  border: none;
+}
+.picsioEditor textarea[contenteditable],
+.picsioEditor input[type="text"][contenteditable],
+.picsioEditor input[type="number"][contenteditable],
+.picsioEditor input[type="password"][contenteditable],
+.picsioEditor input[type="date"][contenteditable],
+.picsioEditor [contenteditable][contenteditable] {
+  height: 80px;
+  overflow: auto;
+  white-space: pre-line;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  user-select: text;
+}
+.picsioEditor .logoPicsioEditor {
+  height: 50px;
+  background: rgba(0, 0, 0, 0.95);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  display: none;
+}
+.picsioEditor .logoPicsioEditor:not(:empty) {
+  display: block;
+}
+.picsioEditor .logoPicsioEditor:not(:empty) ~ .picsioToolbar#thirdPicsioToolbar {
+  top: 50px;
+}
+.picsioEditor .logoPicsioEditor:not(:empty) ~ .picsioToolbar#firstPicsioToolbar {
+  left: 50px;
+}
+.picsioEditor #rightSidebarEditorAdjustments,
+.picsioEditor #rightSidebarEditorPresets {
+  position: absolute;
+  right: 0;
+  top: 50px;
+  width: 310px;
+  z-index: 100;
+  height: calc(100% - 50px);
+  display: none;
+  background: rgba(0, 0, 0, 0.5);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.picsioEditor #rightSidebarEditorAdjustments.show,
+.picsioEditor #rightSidebarEditorPresets.show {
+  display: block;
+}
+.picsioEditor #rightSidebarEditorAdjustments#rightSidebarEditorAdjustments .slideBtn.act,
+.picsioEditor #rightSidebarEditorPresets#rightSidebarEditorAdjustments .slideBtn.act {
+  background: rgba(0, 0, 0, 0.6);
+}
+.picsioEditor #rightSidebarEditorAdjustments#rightSidebarEditorAdjustments .slideBtn.act .slideBtnTitle.arrow:after,
+.picsioEditor #rightSidebarEditorPresets#rightSidebarEditorAdjustments .slideBtn.act .slideBtnTitle.arrow:after {
+  border-width: 7px 4px 0 4px;
+  border-color: #fff transparent transparent transparent;
+}
+.picsioEditor #rightSidebarEditorAdjustments#rightSidebarEditorAdjustments .slideBtn .slideBtnTitle,
+.picsioEditor #rightSidebarEditorPresets#rightSidebarEditorAdjustments .slideBtn .slideBtnTitle {
+  height: 50px;
+  line-height: 50px;
+  display: block;
+  font-family: 'fira_sanslight';
+  font-size: 18.76px;
+  color: #fff;
+  padding-left: 60px;
+  position: relative;
+  cursor: pointer;
+}
+.picsioEditor #rightSidebarEditorAdjustments#rightSidebarEditorAdjustments .slideBtn .slideBtnTitle:hover,
+.picsioEditor #rightSidebarEditorPresets#rightSidebarEditorAdjustments .slideBtn .slideBtnTitle:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+.picsioEditor #rightSidebarEditorAdjustments#rightSidebarEditorAdjustments .slideBtn .slideBtnTitle .slideBtnTitleIcon:before,
+.picsioEditor #rightSidebarEditorPresets#rightSidebarEditorAdjustments .slideBtn .slideBtnTitle .slideBtnTitleIcon:before {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 50px;
+  width: 50px;
+  height: 50px;
+}
+.picsioEditor #rightSidebarEditorAdjustments#rightSidebarEditorAdjustments .slideBtn .slideBtnTitle.arrow:after,
+.picsioEditor #rightSidebarEditorPresets#rightSidebarEditorAdjustments .slideBtn .slideBtnTitle.arrow:after {
+  content: '';
+  width: 0;
+  height: 0;
+  display: block;
+  position: absolute;
+  right: 22px;
+  top: 20px;
+  border-width: 4px 0 4px 7px;
+  border-style: solid;
+  border-color: transparent transparent transparent rgba(255, 255, 255, 0.3);
+}
+.picsioEditor #rightSidebarEditorAdjustments#rightSidebarEditorAdjustments .slideBtn .slideBtnContent,
+.picsioEditor #rightSidebarEditorPresets#rightSidebarEditorAdjustments .slideBtn .slideBtnContent {
+  margin: 0 15px;
+  border-top: 1px solid #141414;
+  position: relative;
+}
+.picsioEditor #rightSidebarEditorAdjustments#rightSidebarEditorAdjustments .slideBtn .slideBtnContent:empty,
+.picsioEditor #rightSidebarEditorPresets#rightSidebarEditorAdjustments .slideBtn .slideBtnContent:empty {
+  display: none;
+}
+.picsioEditor #rightSidebarEditorAdjustments#rightSidebarEditorAdjustments .slideBtn .slideBtnContent .simpleBtnRS,
+.picsioEditor #rightSidebarEditorPresets#rightSidebarEditorAdjustments .slideBtn .slideBtnContent .simpleBtnRS {
+  background: #212121;
+  border-bottom: 1px solid #000000;
+  cursor: pointer;
+  height: 30px;
+  line-height: 30px;
+  font-family: 'fira_sansregular';
+  font-size: 12px;
+  color: #fff;
+  padding: 0 10px;
+  display: inline-block;
+  margin: 0 5px 20px 0;
+}
+.picsioEditor #rightSidebarEditorAdjustments#rightSidebarEditorAdjustments .slideBtn .slideBtnContent .picsioInputRange,
+.picsioEditor #rightSidebarEditorPresets#rightSidebarEditorAdjustments .slideBtn .slideBtnContent .picsioInputRange {
+  margin: 16px 0;
+  display: inline-block;
+  width: 100%;
+}
+.picsioEditor #rightSidebarEditorAdjustments#rightSidebarEditorAdjustments .slideBtn .slideBtnContent .picsioInputRange .labelInputRange,
+.picsioEditor #rightSidebarEditorPresets#rightSidebarEditorAdjustments .slideBtn .slideBtnContent .picsioInputRange .labelInputRange {
+  padding-bottom: 10px;
+  font-family: 'fira_sansregular';
+  font-size: 16px;
+  color: #e6e6e6;
+  line-height: 1;
+}
+.picsioEditor #rightSidebarEditorAdjustments#rightSidebarEditorAdjustments .slideBtn .slideBtnContent .picsioInputRange input[type="text"].range,
+.picsioEditor #rightSidebarEditorPresets#rightSidebarEditorAdjustments .slideBtn .slideBtnContent .picsioInputRange input[type="text"].range {
+  width: 54px;
+  height: 30px;
+  border-top: 1px solid #050505;
+  border-bottom: 1px solid #131313;
+  background: rgba(0, 0, 0, 0.1);
+  font-family: 'fira_sanslight';
+  font-size: 18px;
+  color: #fff;
+  text-align: center;
+}
+.picsioEditor #rightSidebarEditorAdjustments#rightSidebarEditorAdjustments .slideBtn .slideBtnContent .picsioInputRange .rangeInput,
+.picsioEditor #rightSidebarEditorPresets#rightSidebarEditorAdjustments .slideBtn .slideBtnContent .picsioInputRange .rangeInput {
+  height: 3px;
+  border-radius: 0;
+  background: #fff;
+}
+.picsioEditor #rightSidebarEditorAdjustments#rightSidebarEditorAdjustments .slideBtn .slideBtnContent .picsioInputRange .rangeInput .rangeHandle,
+.picsioEditor #rightSidebarEditorPresets#rightSidebarEditorAdjustments .slideBtn .slideBtnContent .picsioInputRange .rangeInput .rangeHandle {
+  top: -8px;
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 50%;
+  background: #fff;
+}
+.picsioEditor #rightSidebarEditorAdjustments#rightSidebarEditorAdjustments .slideBtn .slideBtnContent .picsioInputRange .rangeInput .progress,
+.picsioEditor #rightSidebarEditorPresets#rightSidebarEditorAdjustments .slideBtn .slideBtnContent .picsioInputRange .rangeInput .progress,
+.picsioEditor #rightSidebarEditorAdjustments#rightSidebarEditorAdjustments .slideBtn .slideBtnContent .picsioInputRange .rangeInput .rangeProgress,
+.picsioEditor #rightSidebarEditorPresets#rightSidebarEditorAdjustments .slideBtn .slideBtnContent .picsioInputRange .rangeInput .rangeProgress {
+  height: 3px;
+  border-radius: 0;
+}
+.picsioEditor #rightSidebarEditorAdjustments#rightSidebarEditorAdjustments .curvesAxisY,
+.picsioEditor #rightSidebarEditorPresets#rightSidebarEditorAdjustments .curvesAxisY {
+  height: 260px;
+  width: 10px;
+  display: block;
+  float: left;
+  background: #ffffff;
+  background: -moz-linear-gradient(top, #ffffff 0%, #000000 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #000000));
+  background: -webkit-linear-gradient(top, #ffffff 0%, #000000 100%);
+  background: linear-gradient(to bottom, #ffffff 0%, #000000 100%);
+}
+.picsioEditor #rightSidebarEditorAdjustments#rightSidebarEditorAdjustments .curvesAxisX,
+.picsioEditor #rightSidebarEditorPresets#rightSidebarEditorAdjustments .curvesAxisX {
+  margin-bottom: 10px;
+  height: 10px;
+  width: 270px;
+  display: block;
+  background: #000000;
+  background: -moz-linear-gradient(left, #000000 0%, #ffffff 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #000000), color-stop(100%, #ffffff));
+  background: -webkit-linear-gradient(left, #000000 0%, #ffffff 100%);
+  background: linear-gradient(to right, #000000 0%, #ffffff 100%);
+}
+.picsioEditor #rightSidebarEditorAdjustments#rightSidebarEditorPresets .titleRightSidebar,
+.picsioEditor #rightSidebarEditorPresets#rightSidebarEditorPresets .titleRightSidebar {
+  height: 50px;
+  line-height: 50px;
+  padding-left: 22px;
+  font-family: 'fira_sanslight';
+  font-size: 18.76px;
+  color: #fff;
+  display: block;
+}
+.picsioEditor #rightSidebarEditorAdjustments#rightSidebarEditorPresets .contentRightSidebar,
+.picsioEditor #rightSidebarEditorPresets#rightSidebarEditorPresets .contentRightSidebar {
+  font-size: 0;
+}
+.picsioEditor #rightSidebarEditorAdjustments#rightSidebarEditorPresets .contentRightSidebar .itemPreset,
+.picsioEditor #rightSidebarEditorPresets#rightSidebarEditorPresets .contentRightSidebar .itemPreset {
+  display: inline-block;
+  vertical-align: top;
+  width: 135px;
+  height: 135px;
+  position: relative;
+  margin: 0 0 10px 10px;
+}
+.picsioEditor #rightSidebarEditorAdjustments#rightSidebarEditorPresets .contentRightSidebar .itemPreset .title,
+.picsioEditor #rightSidebarEditorPresets#rightSidebarEditorPresets .contentRightSidebar .itemPreset .title {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 8px 15px;
+  display: block;
+}
+.picsioEditor #rightSidebarEditorAdjustments#rightSidebarEditorPresets .contentRightSidebar .itemPreset .title .innerTitle,
+.picsioEditor #rightSidebarEditorPresets#rightSidebarEditorPresets .contentRightSidebar .itemPreset .title .innerTitle {
+  font-family: 'fira_sansregular';
+  font-size: 14.59px;
+  color: #fff;
+  line-height: 1;
+}
+.picsioEditor #rightSidebarEditorAdjustments#rightSidebarEditorPresets .contentRightSidebar .itemPreset .img img,
+.picsioEditor #rightSidebarEditorPresets#rightSidebarEditorPresets .contentRightSidebar .itemPreset .img img {
+  display: block;
+  width: 100%;
+}
+.picsioEditor .bgTopToolbars {
+  background: rgba(0, 0, 0, 0.35);
+  height: 50px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+.picsioEditor .picsioToolbar {
+  position: absolute;
+  z-index: 2;
+}
+.picsioEditor .picsioToolbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.picsioEditor .picsioToolbar ul li {
+  float: left;
+  position: relative;
+}
+.picsioEditor .picsioToolbar ul li .itemText,
+.picsioEditor .picsioToolbar ul li .itemIcon {
+  font-family: 'fira_sanslight';
+  font-size: 18.76px;
+  color: #fff;
+  min-width: 50px;
+  height: 50px;
+  line-height: 52px;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+}
+.picsioEditor .picsioToolbar ul li .itemText:before,
+.picsioEditor .picsioToolbar ul li .itemIcon:before {
+  font-size: 50px;
+  display: block;
+}
+.picsioEditor .picsioToolbar ul li .itemText .picsioZoom,
+.picsioEditor .picsioToolbar ul li .itemIcon .picsioZoom {
+  margin: -6px 0 0 0;
+  top: 50%;
+}
+.picsioEditor .picsioToolbar ul li .itemText .picsioZoom .range,
+.picsioEditor .picsioToolbar ul li .itemIcon .picsioZoom .range {
+  display: none;
+}
+.picsioEditor .picsioToolbar ul li .itemText.disabled,
+.picsioEditor .picsioToolbar ul li .itemIcon.disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+.picsioEditor .picsioToolbar ul li .itemText.disabled:hover,
+.picsioEditor .picsioToolbar ul li .itemIcon.disabled:hover {
+  background: none;
+}
+.picsioEditor .picsioToolbar ul li input[type="color"] {
+  width: 50px;
+  height: 50px;
+}
+.picsioEditor .picsioToolbar ul li .dropMenu {
+  position: absolute;
+  left: 50px;
+  top: 0;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  font-size: 20px;
+}
+.picsioEditor .picsioToolbar ul li .dropMenu .innerDropMenu {
+  background: rgba(0, 0, 0, 0.5);
+  -moz-transform: translate(-100%, 0);
+  -webkit-transform: translate(-100%, 0);
+  transform: translate(-100%, 0);
+  transition: -webkit-transform 300ms linear;
+  padding: 15px 0;
+}
+.picsioEditor .picsioToolbar ul li .dropMenu .innerDropMenu .titleDropMenu {
+  height: 50px;
+  line-height: 50px;
+  font-size: 14px;
+  color: #fff;
+  padding: 0 15px;
+  display: block;
+  font-family: 'fira_sansregular';
+  min-width: 215px;
+}
+.picsioEditor .picsioToolbar ul li .dropMenu .innerDropMenu ul li {
+  padding: 0 15px 0 60px;
+  font-family: 'fira_sanslight';
+  font-size: 18.76px;
+  color: #fff;
+  position: relative;
+  height: 50px;
+  line-height: 54px;
+  min-width: 185px;
+  cursor: pointer;
+  float: none;
+}
+.picsioEditor .picsioToolbar ul li .dropMenu .innerDropMenu ul li .itemDropDownIcon:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50px;
+  height: 50px;
+  font-size: 50px;
+}
+.picsioEditor .picsioToolbar ul li .dropMenu .innerDropMenu ul li .btnInputFile {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+.picsioEditor .picsioToolbar ul li .dropMenu .innerDropMenu ul li .btnInputFile input {
+  position: absolute;
+  left: 0;
+  top: -25px;
+  margin: 0;
+  padding: 0 0 25px 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.01;
+  cursor: pointer;
+}
+.picsioEditor .picsioToolbar ul li .dropMenu .innerDropMenu ul li:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+.picsioEditor .picsioToolbar ul li:hover .itemText,
+.picsioEditor .picsioToolbar ul li:hover .itemIcon {
+  background: rgba(0, 0, 0, 0.22);
+}
+.picsioEditor .picsioToolbar ul li:hover .dropMenu {
+  width: auto;
+  height: auto;
+}
+.picsioEditor .picsioToolbar ul li:hover .dropMenu .innerDropMenu {
+  -moz-transform: translate(0, 0);
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.picsioEditor .picsioToolbar ul li.act .itemText,
+.picsioEditor .picsioToolbar ul li.act .itemIcon {
+  background: rgba(0, 0, 0, 0.22);
+}
+.picsioEditor .picsioToolbar ul li.smallImgInfo {
+  padding: 8px 0 0 10px;
+  width: 150px;
+  overflow: hidden;
+}
+.picsioEditor .picsioToolbar ul li.smallImgInfo div {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-family: 'fira_monoregular';
+  font-size: 10.42px;
+  color: #fff;
+  line-height: 12.51px;
+}
+.picsioEditor .picsioToolbar#firstPicsioToolbar {
+  left: 50px;
+  top: 0;
+}
+.picsioEditor .picsioToolbar#firstPicsioToolbar ul {
+  float: left;
+}
+.picsioEditor .picsioToolbar#firstPicsioToolbar ul li .dropMenu {
+  bottom: auto;
+  right: auto;
+  left: 0;
+  top: 100%;
+}
+.picsioEditor .picsioToolbar#firstPicsioToolbar ul li .dropMenu .innerDropMenu {
+  -moz-transform: translate(0, -100%);
+  -webkit-transform: translate(0, -100%);
+  transform: translate(0, -100%);
+  transition: -webkit-transform 100ms linear;
+}
+.picsioEditor .picsioToolbar#firstPicsioToolbar ul li .dropMenu .innerDropMenu ul {
+  float: none;
+}
+.picsioEditor .picsioToolbar#firstPicsioToolbar ul li:hover .dropMenu .innerDropMenu {
+  -moz-transform: translate(0, 0);
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.picsioEditor .picsioToolbar#secondPicsioToolbar {
+  right: 0;
+  top: 0;
+}
+.picsioEditor .picsioToolbar#secondPicsioToolbar ul li .dropMenu {
+  left: auto;
+  bottom: auto;
+  right: 0;
+  top: 100%;
+}
+.picsioEditor .picsioToolbar#secondPicsioToolbar ul li .dropMenu .innerDropMenu {
+  -moz-transform: translate(0, -100%);
+  -webkit-transform: translate(0, -100%);
+  transform: translate(0, -100%);
+  transition: -webkit-transform 100ms linear;
+}
+.picsioEditor .picsioToolbar#secondPicsioToolbar ul li .dropMenu .innerDropMenu .titleDropMenu {
+  text-align: right;
+}
+.picsioEditor .picsioToolbar#secondPicsioToolbar ul li:hover .dropMenu .innerDropMenu {
+  -moz-transform: translate(0, 0);
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.picsioEditor .picsioToolbar#thirdPicsioToolbar {
+  left: 0;
+  top: 0;
+}
+.picsioEditor .picsioToolbar#thirdPicsioToolbar ul li {
+  float: none;
+}
+.picsioEditor .picsioToolbar#thirdPicsioToolbar ul li .dropMenu {
+  bottom: auto;
+  right: auto;
+  left: 100%;
+  top: 0;
+}
+.picsioEditor .picsioToolbar#thirdPicsioToolbar ul li .dropMenu .innerDropMenu {
+  -moz-transform: translate(-100%, 0);
+  -webkit-transform: translate(-100%, 0);
+  transform: translate(-100%, 0);
+  transition: -webkit-transform 200ms linear;
+}
+.picsioEditor .picsioToolbar#thirdPicsioToolbar ul li:hover .dropMenu .innerDropMenu {
+  -moz-transform: translate(0, 0);
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.picsioEditor .picsioToolbar#fourthPicsioToolbar {
+  right: 0;
+  top: 50px;
+}
+.picsioEditor .picsioToolbar#fourthPicsioToolbar ul li {
+  float: none;
+}
+.picsioEditor .picsioToolbar#fourthPicsioToolbar ul li .dropMenu {
+  bottom: auto;
+  left: auto;
+  right: 100%;
+  top: 0;
+}
+.picsioEditor .picsioToolbar#fourthPicsioToolbar ul li .dropMenu .innerDropMenu {
+  -moz-transform: translate(100%, 0);
+  -webkit-transform: translate(100%, 0);
+  transform: translate(100%, 0);
+  transition: -webkit-transform 200ms linear;
+}
+.picsioEditor .picsioToolbar#fourthPicsioToolbar ul li .dropMenu .innerDropMenu .titleDropMenu {
+  text-align: right;
+}
+.picsioEditor .picsioToolbar#fourthPicsioToolbar ul li:hover .dropMenu .innerDropMenu {
+  -moz-transform: translate(0, 0);
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.picsioEditor .picsioToolbar#fifthPicsioToolbar {
+  left: 0;
+  bottom: 0;
+}
+.picsioEditor .picsioToolbar#fifthPicsioToolbar ul li .dropMenu {
+  top: auto;
+  right: auto;
+  left: 0;
+  bottom: 100%;
+}
+.picsioEditor .picsioToolbar#fifthPicsioToolbar ul li .dropMenu .innerDropMenu {
+  -moz-transform: translate(0, 100%);
+  -webkit-transform: translate(0, 100%);
+  transform: translate(0, 100%);
+  transition: -webkit-transform 100ms linear;
+}
+.picsioEditor .picsioToolbar#fifthPicsioToolbar ul li:hover .dropMenu .innerDropMenu {
+  -moz-transform: translate(0, 0);
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.picsioEditor .picsioToolbar#sixthPicsioToolbar {
+  right: 0;
+  bottom: 0;
+}
+.picsioEditor .picsioToolbar#sixthPicsioToolbar ul li .dropMenu {
+  top: auto;
+  left: auto;
+  right: 0;
+  bottom: 100%;
+}
+.picsioEditor .picsioToolbar#sixthPicsioToolbar ul li .dropMenu .innerDropMenu {
+  -moz-transform: translate(0, 100%);
+  -webkit-transform: translate(0, 100%);
+  transform: translate(0, 100%);
+  transition: -webkit-transform 100ms linear;
+}
+.picsioEditor .picsioToolbar#sixthPicsioToolbar ul li .dropMenu .innerDropMenu .titleDropMenu {
+  text-align: right;
+}
+.picsioEditor .picsioToolbar#sixthPicsioToolbar ul li:hover .dropMenu .innerDropMenu {
+  -moz-transform: translate(0, 0);
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.picsioEditor .picsioToolbar.smallPicsioToolbar .itemText,
+.picsioEditor .picsioToolbar.smallPicsioToolbar .itemIcon {
+  height: 33px;
+  line-height: 33px;
+  font-size: 16px;
+}
+.picsioEditor #picsEdit-canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.picsioEditor #picsEdit-canvas canvas {
+  display: block;
+}
+.picsioEditor #picsEdit-canvas #picsEdit-canvasPicker {
+  display: none;
+}
+.picsioEditor #picsEdit-selector {
+  position: absolute;
+  float: left;
+  width: 0px;
+  height: 0px;
+  display: none;
+  z-index: 100;
+}
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /*.picsEditCropHorizontalLine_top:after,
+			.picsEditCropHorizontalLine_bottom:after,
+			.picsEditCropVerticalLine_left:after,
+			.picsEditCropVerticalLine_right:after {
+				content: ' ';
+				width: 12px;
+				height: 12px;
+				border-radius: 6px;
+				background: #000;
+				display: block;
+				position: absolute;
+			}
+
+			.picsEditCropHorizontalLine_top:after {
+				top: 0;
+				left: 33.3%;
+				margin: -6px 0 0 -6px;
+			}
+
+			.picsEditCropHorizontalLine_bottom:after {
+				top: 0;
+				left: 66.6%;
+				margin: -6px 0 0 -6px;
+			}
+
+			.picsEditCropVerticalLine_left:after {
+				top: 66.6%;
+				left: 0;
+				margin: -6px 0 0 -6px;
+			}
+
+			.picsEditCropVerticalLine_right:after {
+				top: 33.3%;
+				left: 0;
+				margin: -6px 0 0 -6px;
+			}*/
+}
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-left-top,
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-left-middle,
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-right-middle,
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-left-bottom,
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-right-top,
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-bottom-middle,
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-top-middle,
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-right-bottom {
+  position: absolute;
+  z-index: 2;
+  display: block;
+}
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-left-top {
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  z-index: 3;
+  cursor: nw-resize;
+}
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-top-middle {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 1px;
+  cursor: n-resize;
+  padding-bottom: 3px;
+}
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-top-middle::before {
+  content: '';
+  display: block;
+  height: 0px;
+  width: 100%;
+  border-top: 1px dashed #fff;
+  background: #000;
+}
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-right-top {
+  right: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  z-index: 3;
+  cursor: ne-resize;
+}
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-left-middle {
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  cursor: w-resize;
+  padding-right: 3px;
+}
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-left-middle::before {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 0;
+  border-left: 1px dashed #fff;
+  background: #000;
+}
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-right-middle {
+  right: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background-position: right top;
+  cursor: e-resize;
+  padding-left: 3px;
+}
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-right-middle::before {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 0;
+  border-left: 1px dashed #fff;
+  background: #000;
+}
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-left-bottom {
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  z-index: 3;
+  cursor: sw-resize;
+}
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-bottom-middle {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  cursor: s-resize;
+  padding-top: 3px;
+}
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-bottom-middle::before {
+  content: '';
+  display: block;
+  height: 0px;
+  width: 100%;
+  border-top: 1px dashed #fff;
+  background: #000;
+}
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-right-bottom {
+  right: 0;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  z-index: 3;
+  cursor: se-resize;
+}
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-left-top:after,
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-left-middle:after,
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-right-middle:after,
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-left-bottom:after,
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-right-top:after,
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-bottom-middle:after,
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-top-middle:after,
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-right-bottom:after {
+  content: ' ';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  border-radius: 6px;
+}
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-left-top:after {
+  left: 0;
+  top: 0;
+  margin: -6px 0 0 -6px;
+}
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-top-middle:after {
+  top: 0;
+  left: 50%;
+  margin: -6px 0 0 -6px;
+}
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-right-top:after {
+  right: 0;
+  top: 0;
+  margin: -6px -6px 0 0;
+}
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-left-middle:after {
+  left: 0;
+  top: 50%;
+  margin: -6px 0 0 -6px;
+}
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-right-middle:after {
+  right: 0;
+  top: 50%;
+  margin: -6px -6px 0 0;
+}
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-left-bottom:after {
+  left: 0;
+  bottom: 0;
+  margin: 0 0 -6px -6px;
+}
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-bottom-middle:after {
+  left: 50%;
+  bottom: 0;
+  margin: 0 0 -6px -6px;
+}
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container #picsEdit-selector-right-bottom:after {
+  right: 0;
+  bottom: 0;
+  margin: 0 -6px -6px 0;
+}
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container .picsEditCropHorizontalLine_top,
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container .picsEditCropHorizontalLine_bottom {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 33.3%;
+  width: 100%;
+  height: 0;
+  border-top: 1px solid #000;
+}
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container .picsEditCropHorizontalLine_bottom {
+  top: 66.6%;
+}
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container .picsEditCropVerticalLine_left,
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container .picsEditCropVerticalLine_right {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 33.3%;
+  width: 0;
+  height: 100%;
+  border-left: 1px solid #000;
+}
+.picsioEditor #picsEdit-selector #picsEdit-selector-corner-container .picsEditCropVerticalLine_right {
+  left: 66.6%;
+}
+.picsioEditor #picsEdit-selector:after {
+  content: ' ';
+  background: rgba(0, 0, 0, 0.7);
+  display: block;
+  height: 100%;
+  width: 10000px;
+  position: absolute;
+  left: 100%;
+  top: 0;
+}
+.picsioEditor #picsEdit-selector:before {
+  content: ' ';
+  background: rgba(0, 0, 0, 0.7);
+  display: block;
+  height: 100%;
+  width: 10000px;
+  position: absolute;
+  right: 100%;
+  top: 0;
+}
+.picsioEditor #picsEdit-selector .picsEditCropTopOverlay {
+  position: absolute;
+  left: -2000px;
+  bottom: 100%;
+  width: 10000px;
+  height: 10000px;
+  background: rgba(0, 0, 0, 0.7);
+}
+.picsioEditor #picsEdit-selector .picsEditCropBottomOverlay {
+  position: absolute;
+  left: -2000px;
+  top: 100%;
+  width: 10000px;
+  height: 10000px;
+  background: rgba(0, 0, 0, 0.7);
+}
+/*************************INPUT_RANGE**************************/
+.picsioInputRange {
+  min-width: 110px;
+  position: relative;
+  margin: 10px 0 15px 0;
+}
+.picsioInputRange .labelInputRange {
+  line-height: 1;
+  display: block;
+  padding-bottom: 10px;
+  height: 30px;
+  line-height: 33px;
+  color: #a2a2a2;
+  font-size: 16px;
+  font-family: 'fira_sansbold';
+}
+.picsioInputRange .rangeInput {
+  height: 16px;
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+}
+.picsioInputRange .rangeInput .progress,
+.picsioInputRange .rangeInput .rangeProgress {
+  background: #ffcc00;
+  height: 16px;
+  position: relative;
+}
+.picsioInputRange .rangeInput .progress.progressRadius,
+.picsioInputRange .rangeInput .rangeProgress.progressRadius {
+  border-radius: 8px 0 0 8px;
+}
+.picsioInputRange .rangeInput .rangeHandle {
+  background: #bfbfbf;
+  height: 16px;
+  width: 16px;
+  top: -3px;
+  position: absolute;
+  display: block;
+  cursor: move;
+  border-radius: 16px;
+  z-index: 2;
+  border: 3px solid #fff;
+}
+.picsioInputRange input[type="text"].range {
+  margin: 0;
+  padding: 0;
+  width: 54px;
+  text-align: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.picsioInputRange .btnsInputrange {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  margin-top: 14px;
+}
+.picsioInputRange .btnsInputrange .someBtnInputrange {
+  display: table-cell;
+  height: 30px;
+  line-height: 30px;
+  background: rgba(255, 255, 255, 0.2);
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
+}
+.picsioInputRange .btnsInputrange .someBtnInputrange.act {
+  color: #000;
+  background: #fff;
+}
+.picsioInputRange.disabledInputRange .labelInputRange,
+.picsioInputRange.disabledInputRange input {
+  opacity: 0.3;
+}
+.picsioInputRange.disabledInputRange .rangeInput {
+  cursor: default;
+}
+.picsioInputRange.disabledInputRange .rangeInput .rangeProgress {
+  background: #4B4B4B;
+}
+.picsioInputRange.disabledInputRange .rangeInput .rangeHandle {
+  background: #807F7F;
+  cursor: default;
+}
+.picsioInputRange.disabledInputRange .btnsInputrange .someBtnInputrange {
+  cursor: default;
+}
+/*************************POPUP**************************/
+.layerUnderPicsioEditorPopup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+.picsioEditorPopup {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #fff;
+  font-family: 'fira_sansregular';
+  position: fixed !important;
+  top: 100px;
+  left: calc(50% - 170px);
+  z-index: 101;
+  width: 340px;
+  max-width: calc(100% - 22px);
+  -webkit-transition: all 0s ease 0s !important;
+  -moz-transition: all 0s ease 0s !important;
+  transition: all 0s ease 0s !important;
+  border: 1px solid #333;
+  -webkit-animation: animatePopup 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+  animation: animatePopup 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.picsioEditorPopup p {
+  font-family: 'fira_sansregular';
+  font-size: 14px;
+  color: #fff;
+  line-height: 1.4;
+  padding: 0;
+  margin: 0.5em 0 1em 0;
+}
+.picsioEditorPopup a {
+  font-family: 'fira_sansregular';
+  color: #ffcc00;
+  text-decoration: underline;
+}
+.picsioEditorPopup a:hover {
+  text-decoration: none;
+}
+.picsioEditorPopup textarea,
+.picsioEditorPopup input[type="text"],
+.picsioEditorPopup input[type="number"],
+.picsioEditorPopup input[type="password"],
+.picsioEditorPopup input[type="date"],
+.picsioEditorPopup [contenteditable] {
+  margin: 0;
+  padding: 7px 10px;
+  border-radius: 0;
+  border: none;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: #141414;
+  height: 30px;
+  line-height: 16px;
+  font-family: Arial;
+  font-size: 16px;
+  color: #999;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+}
+.picsioEditorPopup textarea:focus,
+.picsioEditorPopup input[type="text"]:focus,
+.picsioEditorPopup input[type="number"]:focus,
+.picsioEditorPopup input[type="password"]:focus,
+.picsioEditorPopup input[type="date"]:focus,
+.picsioEditorPopup [contenteditable]:focus {
+  outline: none;
+}
+.picsioEditorPopup textarea[disabled],
+.picsioEditorPopup input[type="text"][disabled],
+.picsioEditorPopup input[type="number"][disabled],
+.picsioEditorPopup input[type="password"][disabled],
+.picsioEditorPopup input[type="date"][disabled],
+.picsioEditorPopup [contenteditable][disabled] {
+  background: #151515;
+  border: none;
+}
+.picsioEditorPopup textarea[contenteditable],
+.picsioEditorPopup input[type="text"][contenteditable],
+.picsioEditorPopup input[type="number"][contenteditable],
+.picsioEditorPopup input[type="password"][contenteditable],
+.picsioEditorPopup input[type="date"][contenteditable],
+.picsioEditorPopup [contenteditable][contenteditable] {
+  height: 80px;
+  overflow: auto;
+  white-space: pre-line;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  user-select: text;
+}
+@-webkit-keyframes animatePopup {
+  0% {
+    -webkit-transform: translateY(-100px);
+  }
+  50% {
+    -webkit-transform: translateY(100px);
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+  }
+}
+@keyframes animatePopup {
+  0% {
+    -webkit-transform: translateY(-100px);
+  }
+  50% {
+    -webkit-transform: translateY(100px);
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+  }
+}
+@-webkit-keyframes animateHiddingPopup {
+  from {
+    -webkit-transform: translateY(0);
+  }
+  to {
+    -webkit-transform: translateY(-150%);
+  }
+}
+@keyframes animateHiddingPopup {
+  from {
+    -webkit-transform: translateY(0);
+  }
+  to {
+    -webkit-transform: translateY(-150%);
+  }
+}
+.picsioEditorPopup.hiddingPopup {
+  -webkit-animation: animateHiddingPopup 0.15s linear;
+  animation: animateHiddingPopup 0.15s linear;
+}
+.picsioEditorPopup .headerPicsioEditorPopup .titlePicsioEditorPopup {
+  height: 50px;
+  line-height: 50px;
+  display: block;
+  padding-left: 15px;
+  font-size: 30px;
+  color: #fff;
+  cursor: move;
+  font-family: 'fira_sansultralight';
+  letter-spacing: -1px;
+  background: #000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.picsioEditorPopup .headerPicsioEditorPopup .titlePicsioEditorPopup:first-letter {
+  text-transform: uppercase;
+}
+.picsioEditorPopup .headerPicsioEditorPopup .closePicsioEditorPopup,
+.picsioEditorPopup .headerPicsioEditorPopup .towindowPicsioEditorPopup {
+  float: right;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+}
+.picsioEditorPopup .headerPicsioEditorPopup .closePicsioEditorPopup {
+  background: #000;
+  text-align: center;
+  line-height: 50px;
+}
+.picsioEditorPopup .headerPicsioEditorPopup .towindowPicsioEditorPopup {
+  background: #000 url('/assets/img/towindowPicsioEditorPopup.png') no-repeat 50% 50%;
+}
+.picsioEditorPopup .contentPicsioEditorPopup {
+  padding: 15px 15px 15px 15px;
+  font-size: 14px;
+  color: #fff;
+  background: #1c1c1c;
+  display: table;
+  width: calc(100% - 30px);
+}
+.picsioEditorPopup .contentPicsioEditorPopup .iconPicsioEditorPopup {
+  float: left;
+  min-height: 80px;
+  min-width: 65px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.picsioEditorPopup .contentPicsioEditorPopup .iconPicsioEditorPopup:before {
+  color: #ffcc00;
+  font-size: 70px;
+  line-height: 1;
+  margin: 0 15px 0 0;
+}
+.picsioEditorPopup .contentPicsioEditorPopup .iconPicsioEditorPopup + .innerContentPicsioEditorPopup {
+  margin-left: 85px;
+}
+.picsioEditorPopup .contentPicsioEditorPopup .innerContentPicsioEditorPopup .dialogButton {
+  border: 1px solid #666;
+  height: 22px;
+  line-height: 22px;
+  padding: 0 12px;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 16px;
+  color: #c3c3c3;
+  font-family: 'fira_sansbold';
+  cursor: pointer;
+}
+.picsioEditorPopup .contentPicsioEditorPopup .innerContentPicsioEditorPopup .dialogButton.disable {
+  color: #666;
+  border-color: #666;
+  cursor: default;
+}
+.picsioEditorPopup .contentPicsioEditorPopup .innerContentPicsioEditorPopup .shareInSocial {
+  padding: 0 0 0 55px;
+}
+.picsioEditorPopup .contentPicsioEditorPopup .innerContentPicsioEditorPopup .redEyeCanvas {
+  max-width: 100%;
+  max-height: 300px;
+  margin: 40px auto 0 auto;
+  display: block;
+}
+.picsioEditorPopup .contentPicsioEditorPopup .innerContentPicsioEditorPopup .warningPopupString {
+  color: #ff0066;
+}
+.picsioEditorPopup .contentPicsioEditorPopup .innerContentPicsioEditorPopup .warningPopupString:before {
+  margin: 0 6px 0 -20px;
+}
+.picsioEditorPopup .footerPicsioEditorPopup {
+  clear: both;
+  display: table;
+  width: 100%;
+  background: #000;
+  table-layout: fixed;
+}
+.picsioEditorPopup .footerPicsioEditorPopup .btnPicsioEditorPopup {
+  display: table-cell;
+  height: 50px;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  font-family: 'fira_sansregular';
+  font-weight: 600;
+  border-left: 1px solid #333;
+  vertical-align: middle;
+  line-height: 1.1;
+}
+.picsioEditorPopup .footerPicsioEditorPopup .btnPicsioEditorPopup:first-child {
+  border-left: none;
+}
+.picsioEditorPopup .footerPicsioEditorPopup .btnPicsioEditorPopup:hover {
+  background: #000;
+  color: #99ff00;
+}
+.picsioEditorPopup .footerPicsioEditorPopup .btnPicsioEditorPopup.hide {
+  display: none;
+}
+.picsioEditorPopup .footerPicsioEditorPopup .btnPicsioEditorPopup.cancelPicsioEditorPopup:hover {
+  color: #ff6600;
+}
+@media screen and (max-width: 568px) {
+  .picsioEditorPopup {
+    left: 10px !important;
+    margin-left: 0 !important;
+    width: calc(100% - 22px);
+    background: #333333;
+  }
+  .picsioEditorPopup .headerPicsioEditorPopup .closePicsioEditorPopup {
+    display: none;
+  }
+  .picsioEditorPopup .headerPicsioEditorPopup .titlePicsioEditorPopup {
+    background: none;
+    text-align: center;
+    padding: 0;
+    font-size: 26px;
+  }
+  .picsioEditorPopup .contentPicsioEditorPopup {
+    background: none;
+  }
+}
+.picsioEditorPopup.textPopup {
+  top: 100px;
+  left: calc(50% - 250px);
+  width: 500px;
+}
+.picsioEditorPopup.textPopup .contentPicsioEditorPopup {
+  font-family: 'fira_sansregular';
+  font-size: 15px;
+  color: #999;
+  line-height: 21px;
+  padding: 42px 50px;
+  width: calc(100% - 100px);
+  user-select: initial;
+  -moz-user-select: initial;
+  -webkit-user-select: initial;
+}
+.picsioEditorPopup.textPopup .contentPicsioEditorPopup .innerContentPicsioEditorPopup .center {
+  text-align: center;
+}
+.picsioEditorPopup.textPopup .contentPicsioEditorPopup .innerContentPicsioEditorPopup .hTextPopup {
+  font-size: 18px;
+  color: #fff;
+  padding-bottom: 4px;
+  display: block;
+}
+.picsioEditorPopup.textPopup .contentPicsioEditorPopup .innerContentPicsioEditorPopup a {
+  font-family: inherit;
+  font-size: inherit;
+  color: #ffcc00;
+  text-decoration: none;
+}
+.picsioEditorPopup.textPopup .contentPicsioEditorPopup .innerContentPicsioEditorPopup a:hover {
+  text-decoration: underline;
+}
+.picsioEditorPopup.textPopup .contentPicsioEditorPopup .innerContentPicsioEditorPopup p {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  line-height: inherit;
+  padding: 0 0 22px 0;
+  margin: 0;
+}
+.picsioEditorPopup.textPopup .contentPicsioEditorPopup .innerContentPicsioEditorPopup *:last-child {
+  padding-bottom: 0;
+}
+/*********************CONFIRMATION_BTNS*************************/
+.picsEdit-confirmation {
+  position: absolute;
+  top: 0;
+  left: 496px;
+  z-index: 200;
+}
+.picsEdit-confirmation .confirmationBtn {
+  position: relative;
+  height: 50px;
+  width: 50px;
+  display: block;
+  background: #4f4f4f;
+  cursor: pointer;
+  float: left;
+  font-size: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.picsEdit-confirmation .confirmationBtn:before {
+  font-size: 20px;
+  color: #fff;
+}
+.picsEdit-confirmation .confirmationBtn:hover {
+  background: #fff;
+}
+.picsEdit-confirmation .confirmationBtn:hover:before {
+  color: #000;
+}
+/**********************HIDE_IFRAME_GOOGLE_ANALYTICS**************************/
+iframe[name='google_conversion_frame'] {
+  display: none;
+}
+/******************************TABCONTROL*********************************/
+.picsioTabControl.hslTabControl .tabList {
+  margin-top: 18px;
+}
+.picsioTabControl.hslTabControl .tabList ul {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.picsioTabControl.hslTabControl .tabList ul li {
+  display: table-cell;
+  height: 40px;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  position: relative;
+}
+.picsioTabControl.hslTabControl .tabList ul li.act {
+  border-bottom: 2px solid #fff;
+  height: 38px;
+}
+.picsioTabControl.hslTabControl .tabList ul li.act:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  border-style: solid;
+  border-color: transparent transparent #fff transparent;
+  border-width: 0 4px 8px 4px;
+  margin-left: -4px;
+  width: 0;
+  height: 0;
+  display: block;
+}
+.picsioTabControl.hslTabControl .tabContent {
+  position: relative;
+  margin: 20px 0 10px 0;
+}
+.picsioTabControl.hslTabControl .tabContent .someTabContent {
+  visibility: hidden;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+.picsioTabControl.hslTabControl .tabContent .someTabContent.act {
+  visibility: visible;
+  position: static;
+  width: 100%;
+  z-index: 2;
+}
+/********************************CHECKBOX***********************************/
+.picsioCheckbox {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 12px;
+  color: #c3c3c3;
+  height: 15px;
+  line-height: 16px;
+  margin-right: 7px;
+  cursor: default;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+.picsioCheckbox.disable {
+  opacity: 0.3;
+}
+.picsioCheckbox:before {
+  content: ' ';
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  vertical-align: top;
+  box-shadow: inset 0 0 0 1px #999999;
+  margin-right: 10px;
+}
+.picsioCheckbox[data-checked='true']:before {
+  background: url('/assets/img/editor/picsioCheckbox.png') no-repeat left top;
+  background-size: cover;
+  box-shadow: none;
+}
+@media screen and (max-width: 1000px) {
+  .picsioCheckbox {
+    height: 22.5px;
+    line-height: 24px;
+  }
+  .picsioCheckbox:before {
+    width: 22.5px;
+    height: 22.5px;
+  }
+}
+.picsioCheckbox.checkboxHide:before {
+  display: none;
+}
+.picsioSwitcher {
+  height: 16px;
+  line-height: 18px;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  vertical-align: top;
+  margin: 0 7px 0 3px;
+  cursor: default;
+  padding-right: 30px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.picsioSwitcher img {
+  height: 150%;
+  margin: -4px 10px 0 0;
+}
+.picsioSwitcher:after {
+  content: ' ';
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  right: 8px;
+  top: -3px;
+  background: #fbfbfb;
+  border: 3px solid #fff;
+  border-radius: 11px;
+  display: block;
+  transition: all 0.2s ease;
+  -webkit-transform: translate(-3px, 0px);
+  transform: translate(-3px, 0);
+}
+.picsioSwitcher:before {
+  content: ' ';
+  width: 28px;
+  height: 16px;
+  position: absolute;
+  right: 3px;
+  top: 0;
+  display: block;
+  background: #333;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+.picsioSwitcher[data-checked='true']:before {
+  background: #ffcc00;
+}
+.picsioSwitcher[data-checked='true']:after {
+  -webkit-transform: translate(9px, 0px);
+  transform: translate(9px, 0);
+}
+/********************************INPUT_RADIO***********************************/
+.picsioInputRadio {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 7px;
+  cursor: default;
+  font-size: 0;
+}
+.picsioInputRadio .innerPicsioInputRadio {
+  display: inline-block;
+  font-size: 12px;
+  color: #c3c3c3;
+  height: 14px;
+  line-height: 18px;
+}
+.picsioInputRadio .innerPicsioInputRadio .iconPicsioInputRadio {
+  content: ' ';
+  width: 13px;
+  height: 13px;
+  display: inline-block;
+  vertical-align: top;
+  border: 1px solid #fff;
+  margin-right: 10px;
+  border-radius: 50%;
+  position: relative;
+}
+.picsioInputRadio .innerPicsioInputRadio.checked .iconPicsioInputRadio:before {
+  content: '';
+  width: 9px;
+  height: 9px;
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  display: block;
+  border-radius: 50%;
+  background: #ffcc00;
+}
+/*************************** SELECT *******************************/
+.labelPicsioSelect {
+  display: block;
+  font-size: 16px;
+  color: #919191;
+  display: inline-block;
+  vertical-align: top;
+  height: 30px;
+  line-height: 32px;
+  font-family: 'fira_sansbold';
+}
+.picsioSelect {
+  position: relative;
+  z-index: 10;
+}
+.picsioSelect.disable {
+  opacity: 0.3;
+}
+.picsioSelect.disable .txtCheckedOption {
+  cursor: default;
+}
+.picsioSelect .txtCheckedOption {
+  display: block;
+  position: relative;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.6);
+  height: 28px;
+  line-height: 30px;
+  color: #999;
+  font-size: 16px;
+  padding: 0 0 0 12px;
+  cursor: pointer;
+}
+.picsioSelect .txtCheckedOption:after {
+  content: ' ';
+  position: absolute;
+  right: 9px;
+  top: 13px;
+  width: 0;
+  height: 0;
+  display: block;
+  border-color: #fff transparent transparent transparent;
+  border-style: solid;
+  border-width: 4px 3px 0px 3px;
+}
+.picsioSelect .listOptions {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  background: #000;
+  color: #999;
+  font-size: 16px;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.2s;
+}
+.picsioSelect .listOptions ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 6px 0 4px 0;
+}
+.picsioSelect .listOptions ul li {
+  height: 23px;
+  line-height: 25px;
+  padding: 0 0 0 12px;
+  margin: 0 0 8px 0;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: 10px;
+}
+.picsioSelect .listOptions ul li:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+.picsioSelect .listOptions ul li.act {
+  color: #fff;
+}
+.picsioSelect.act .txtCheckedOption {
+  border-bottom: 1px solid transparent;
+}
+.picsioSelect.act .txtCheckedOption:after {
+  top: 12px;
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.picsioSelect.act .listOptions {
+  max-height: 1000px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+/*************************** HORIZONTAL_SELECT *******************************/
+.picsioHorizontalSelect {
+  font-family: 'fira_sansregular';
+}
+.picsioHorizontalSelect .label {
+  display: block;
+  font-size: 13px;
+  height: 13px;
+  line-height: 13px;
+  padding-bottom: 5px;
+}
+.picsioHorizontalSelect .container {
+  overflow: hidden;
+  position: relative;
+  margin-top: 15px;
+}
+.picsioHorizontalSelect .container .inner {
+  white-space: nowrap;
+  position: relative;
+  -webkit-transition: margin-left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  -moz-transition: margin-left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: margin-left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.picsioHorizontalSelect .container .inner .item {
+  white-space: normal;
+  display: inline-block;
+  width: 100%;
+}
+.picsioHorizontalSelect .container .inner .item .title {
+  font-size: 20px;
+  color: #fff;
+  line-height: 1;
+  display: block;
+  margin-bottom: 10px;
+}
+.picsioHorizontalSelect .container .inner .item .img {
+  margin: 0 0 10px 0;
+  padding: 0 30px;
+  font-size: 0;
+  text-align: center;
+  position: relative;
+}
+.picsioHorizontalSelect .container .inner .item .img img {
+  width: 340px;
+  height: 180px;
+}
+.picsioHorizontalSelect .container .inner .item .description {
+  font-size: 13px;
+  color: #939598;
+  line-height: 20px;
+}
+.picsioHorizontalSelect .container .inner .item .example {
+  display: block;
+}
+.picsioHorizontalSelect .container .inner .item .example a {
+  font-family: 'fira_sansregular';
+  font-size: 13px;
+  color: #ffcc00;
+  text-decoration: none;
+}
+.picsioHorizontalSelect .container .arrowPrev,
+.picsioHorizontalSelect .container .arrowNext {
+  position: absolute;
+  top: 0;
+  height: 180px;
+  width: 30px;
+  background: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  display: none;
+}
+.picsioHorizontalSelect .container .arrowPrev:before,
+.picsioHorizontalSelect .container .arrowNext:before {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: block;
+  font-size: 18px;
+  margin: -12.5px 0 0 -8px;
+  color: #ccc;
+}
+.picsioHorizontalSelect .container .arrowPrev:hover:before,
+.picsioHorizontalSelect .container .arrowNext:hover:before {
+  color: #fff;
+}
+.picsioHorizontalSelect .container .arrowPrev {
+  left: 0;
+}
+.picsioHorizontalSelect .container .arrowPrev:after {
+  border-color: transparent #fff transparent transparent;
+  border-width: 4px 7px 4px 0;
+}
+.picsioHorizontalSelect .container .arrowNext {
+  right: 0;
+}
+.picsioHorizontalSelect .container .arrowNext:after {
+  border-color: transparent transparent transparent #fff;
+  border-width: 4px 0 4px 7px;
+}
+/****************************** pProgress *********************************/
+.pProgressWrapper {
+  width: 96px;
+  height: 96px;
+  position: absolute;
+  padding: 4px;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 53px;
+}
+.pProgressWrapper .pProgressValue {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  z-index: 2;
+  font-size: 36px;
+  color: #fff;
+  font-family: 'fira_sanslight';
+}
+.pProgressWrapper .pProgressValue:after {
+  content: ' ';
+  display: inline-block;
+  vertical-align: middle;
+  height: 104%;
+  width: 0;
+}
+.pProgressWrapper .pProgressAnimation {
+  position: absolute;
+  left: 52px;
+  top: 4px;
+  overflow: hidden;
+}
+.pProgressWrapper .pProgressAnimation.alreadyCenter {
+  overflow: visible;
+}
+.pProgressWrapper .pProgressAnimation .pProgressAnimatedElem,
+.pProgressWrapper .pProgressAnimation .pProgressConstantElem {
+  width: 48px;
+  height: 96px;
+  padding-left: 48px;
+  margin-left: -48px;
+  -webkit-transform: rotate(0deg);
+}
+.pProgressWrapper .pProgressAnimation .pProgressAnimatedElem .pProgressAnimatedInner,
+.pProgressWrapper .pProgressAnimation .pProgressConstantElem .pProgressAnimatedInner {
+  overflow: hidden;
+  width: 48px;
+  height: 96px;
+  margin-left: -48px;
+}
+.pProgressWrapper .pProgressAnimation .pProgressAnimatedElem .pProgressAnimatedInner:after,
+.pProgressWrapper .pProgressAnimation .pProgressConstantElem .pProgressAnimatedInner:after {
+  content: ' ';
+  display: block;
+  border: 7px solid #ffcc00;
+  border-radius: 50px;
+  width: 82px;
+  height: 82px;
+}
+/****************************** inputText *********************************/
+.picsioInputText {
+  display: inline-block;
+  vertical-align: top;
+}
+.picsioInputText.disable {
+  opacity: 0.3;
+}
+.picsioInputText .labelInputText {
+  font-size: 16px;
+  color: #919191;
+  display: inline-block;
+  vertical-align: top;
+  height: 30px;
+  line-height: 32px;
+  font-family: 'fira_sansbold';
+}
+.picsioInputText.errorWarn input {
+  border: 1px solid red;
+}
+.picsioInputText .helpLinkInputText {
+  float: right;
+  line-height: 32px;
+}
+.picsioInputText.imageSizeSaver .labelInputText {
+  color: #c1c1c1;
+  font-size: 14px;
+  font-family: 'fira_sanslight';
+  padding-right: 7px;
+  display: inline-block;
+  line-height: 32px;
+}
+.picsioInputText.imageSizeSaver input {
+  width: 65px;
+  display: inline-block;
+}
+.picsioInputText.proportionsLockSaver {
+  margin-left: 27px;
+  display: inline-block;
+}
+.picsioInputText.proportionsLockSaver:after {
+  content: ' ';
+  width: 14px;
+  height: 8px;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  top: -2px;
+  margin: 0 12px 0 10px;
+}
+.picsioInputText.proportionsPxSaver {
+  position: relative;
+  display: inline-block;
+}
+.picsioInputText.proportionsPxSaver:after {
+  content: 'px';
+  height: 15px;
+  line-height: 17px;
+  font-family: 'fira_sansbold';
+  display: block;
+  font-size: 10px;
+  color: #262626;
+  position: absolute;
+  left: 100%;
+  top: 7px;
+  margin: 0 0 0 7px;
+  background: #fff;
+  padding: 0 5px;
+}
+.picsioInputText.inputDensity .labelInputText:not(.error),
+.picsioInputText.inputFilenameAndType .labelInputText:not(.error) {
+  font-size: 16px;
+  color: #919191;
+  font-family: fira_sansbold;
+  display: block;
+  padding-bottom: 0;
+}
+/****************************** picsioHr *********************************/
+.picsioHr {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.05);
+  margin: 15px 0;
+}
+/****************************** shortcutsPopup *********************************/
+.picsioEditorPopup.shortcutsPopup {
+  width: 930px;
+  left: calc(50% - 465px);
+}
+.picsioEditorPopup.shortcutsPopup .headerPicsioEditorPopup .titlePicsioEditorPopup {
+  padding-left: 30px;
+}
+.containerShortcuts .shortcutsCategory {
+  display: inline-block;
+  vertical-align: top;
+  width: 270px;
+  margin: 0 15px 20px 15px;
+}
+.containerShortcuts .shortcutsCategory .titleShortcutsCategory {
+  display: block;
+  font-size: 30px;
+  color: #fff;
+  font-family: 'fira_sanslight';
+  border-bottom: 1px solid #1d2633;
+  margin-bottom: 9px;
+}
+.containerShortcuts .shortcutsCategory .listShortcuts {
+  line-height: 1.2;
+}
+.containerShortcuts .shortcutsCategory .listShortcuts div {
+  font-family: 'fira_sanslight';
+  font-size: 18px;
+}
+.containerShortcuts .shortcutsCategory .listShortcuts div span {
+  font-family: 'fira_sansregular';
+  font-size: 14px;
+  color: #fff;
+  width: 140px;
+  display: inline-block;
+  padding-right: 25px;
+  text-align: right;
+  vertical-align: middle;
+}
+.opentip-container canvas {
+  width: calc(100% + 15px) !important;
+  left: -6px !important;
+}
+.opentip-container .opentip {
+  position: relative;
+  font-size: 14px;
+  color: #fff;
+  font-family: 'fira_sansregular';
+  padding: 5px 10px !important;
+  text-indent: 0;
+}
+.opentip-container.stem-right.stem-top {
+  margin-left: 10px;
+}
+.opentip-container.stem-right.stem-top .opentip {
+  text-indent: -3px;
+}
+/************************** colorPicker **************************/
+#picsEdit-colorDropper-box {
+  display: block;
+  background: none;
+  display: inline-block;
+  border-radius: 0;
+  -moz-border-radius: 0;
+  width: 333px;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+.colorPicker .oned {
+  margin: 0;
+}
+.colorPicker .oned .pointer .shape {
+  border: none;
+  height: 2px;
+  background: #fff;
+  border-radius: 0;
+  margin-left: 1px;
+  margin-top: 0;
+  width: 18px;
+}
+.colorPicker .oned .bg {
+  border: 1px solid #666;
+  width: 18px;
+}
+.colorPicker .twod {
+  margin: 0 3px 0 0;
+}
+.colorPicker .twod .pointer .shape1 {
+  display: none;
+}
+.colorPicker .twod .pointer .shape2 {
+  width: 15px;
+  height: 15px;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  background: transparent;
+  margin-left: -8px;
+  margin-top: -8px;
+}
+.colorPicker .twod .pointer .shape2:after {
+  content: ' ';
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  border: 1px solid #000;
+  border-radius: 2px;
+  width: 1px;
+  height: 1px;
+  display: block;
+}
+.colorPicker .extras {
+  margin: 0 0 0 10px;
+}
+.colorPicker .extras .colorFields input {
+  width: 80px;
+}
+.colorPicker .extras .currentColor {
+  float: left;
+  width: 60px;
+  height: 40px;
+  border: none;
+  border-radius: 0;
+}
+.colorPicker .extras .close {
+  display: none;
+}
+.colorPicker .extras .colorFields {
+  margin: 10px 0 0 0;
+}
+.colorPicker .extras .colorFields .color {
+  margin: 0 0 8px 0;
+}
+.colorPicker .extras .colorFields .color label {
+  text-transform: uppercase;
+  color: #ccc;
+  font-size: 13px;
+  padding-left: 4px;
+  width: 16px;
+  display: inline-block;
+  text-align: left;
+  line-height: 1;
+  vertical-align: middle;
+  position: relative;
+  top: -2px;
+}
+.colorPicker .extras .colorFields .color input {
+  margin-left: 0;
+  width: 40px;
+  font-size: 18px;
+  font-family: 'fira_sanslight';
+  padding: 0;
+  text-align: center;
+}
+.color-dropper {
+  position: absolute;
+  width: 135px;
+  height: 160px;
+  bottom: 0px;
+  left: 0px;
+  border: #000 1px solid;
+  z-index: 100;
+}
+.color-dropper .picker-cell {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  float: left;
+  border: #000 1px solid;
+}
+.color-dropper .presizeIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.color-dropper .presizeIcon::before {
+  content: '+';
+  font-size: 12px;
+  color: #000;
+  font-family: Arial, sans-serif;
+}
+.color-dropper .rgb-field {
+  width: 99%;
+  float: left;
+  height: 25px;
+  border: #000 1px solid;
+  position: relative;
+  background: rgba(0, 0, 0, 0.95);
+}
+.color-dropper .rgb-field span {
+  line-height: 25px;
+  font-size: 14px;
+  font-family: 'fira_sansregular';
+  color: #CCC;
+  margin-left: 5px;
+}
+.picker-colorBox {
+  height: 50px;
+  width: 50px;
+  background-color: #fff;
+  display: block;
+  cursor: pointer;
+}
+.picsioEditorPopup.colorPickerDialog {
+  width: 364px;
+  left: calc(50% - 182px);
+}
+/************************** colorPicker **************************/
+.picsEdit-GradientFilter {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100% !important;
+  top: 0px;
+  height: 200px;
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -moz-user-select: -moz-none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.picsEdit-GradientFilter * {
+  -webkit-backface-visibility: hidden;
+}
+.picsEdit-GradientFilter.gradientIsOpen {
+  display: block;
+}
+.picsEdit-GradientFilter .gradientSeparateLine {
+  width: 100%;
+  height: 1px;
+  background: #000;
+  position: absolute;
+  left: 0;
+  top: 50%;
+}
+.picsEdit-GradientFilter .gradientRotateBlock {
+  position: absolute;
+  width: 86px;
+  top: 50%;
+  left: 50%;
+  margin: -57px 0 0 -57px;
+  border-radius: 57px;
+  height: 86px;
+  background: none;
+  border: 14px solid rgba(0, 0, 0, 0.5);
+  cursor: move;
+  z-index: 3;
+}
+.picsEdit-GradientFilter .gradientRotateBlock .arrowRotateBlock_1,
+.picsEdit-GradientFilter .gradientRotateBlock .arrowRotateBlock_2 {
+  position: absolute;
+  left: -14px;
+  top: -14px;
+  width: 57px;
+  height: 114px;
+}
+.picsEdit-GradientFilter .gradientRotateBlock .arrowRotateBlock_2 {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  transform: rotate(180deg);
+  left: 43px;
+}
+.picsEdit-GradientFilter .gradientFilterVertical {
+  position: absolute;
+  width: 1px;
+  left: 50%;
+  height: 100%;
+  background: #ffffff;
+}
+.picsEdit-GradientFilter .centerGradientPoint {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  background: #fff;
+  margin-left: -8px;
+  margin-top: -8px;
+  border-radius: 8px;
+  z-index: 4;
+}
+.picsEdit-GradientFilter .topGradientPoint {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  margin-left: -8px;
+  margin-top: -8px;
+  border-radius: 8px;
+  box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+.picsEdit-GradientFilter .bottomGradientPoint {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  margin-left: -8px;
+  margin-top: -8px;
+  border-radius: 8px;
+  box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+.picsEdit-GradientFilter .topGradientLine {
+  position: absolute;
+  top: 0px;
+  width: 200%;
+  height: 1px;
+  cursor: row-resize;
+  padding: 2px 0;
+}
+.picsEdit-GradientFilter .topGradientLine span {
+  width: 100%;
+  height: 1px;
+  background: #000;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.picsEdit-GradientFilter .bottomGradientLine {
+  position: absolute;
+  bottom: 0px;
+  width: 200%;
+  height: 1px;
+  padding: 2px 0;
+  cursor: row-resize;
+}
+.picsEdit-GradientFilter .bottomGradientLine span {
+  width: 100%;
+  height: 1px;
+  background: #000;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+/******************************** UI TOGGLE ******************************/
+.picsioToggle {
+  font-size: 0;
+}
+.picsioToggle div {
+  cursor: default;
+  width: 50%;
+  display: inline-block;
+  font-family: 'fira_sansbold';
+  font-size: 16px;
+  color: #999999;
+  border: 1px solid #999999;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.picsioToggle div:first-child {
+  border-right: none;
+}
+.picsioToggle div:last-child {
+  border-left: none;
+}
+.picsioToggle div:hover {
+  border-color: #fff;
+  background: #000;
+  color: #ffcc00;
+}
+.picsioToggle div[data-selected='true'] {
+  color: #000;
+  background: #ffcc00;
+  border-color: #ffcc00;
+}
+/******************************** UI KEYWORDS_TEXTAREA ******************************/
+.picsioKeywordsTextarea .labelKeywordsTextarea {
+  display: block;
+  color: #939598;
+  font-size: 14px;
+}
+.picsioKeywordsTextarea .contentKeywordsTextarea {
+  background: #000;
+  display: block;
+  padding: 2px 2px 0 2px;
+  font-size: 0;
+  cursor: text;
+}
+.picsioKeywordsTextarea .contentKeywordsTextarea .keywordTextarea {
+  margin: 0 2px 2px 0;
+  display: inline-block;
+  vertical-align: top;
+}
+.picsioKeywordsTextarea .contentKeywordsTextarea .keywordTextarea .removeKeywordTextarea {
+  display: block;
+  cursor: pointer;
+  float: right;
+  width: 26px;
+  height: 26px;
+  line-height: 27px;
+  text-align: center;
+  font-size: 11px;
+  color: #fff;
+  background: #262626;
+}
+.picsioKeywordsTextarea .contentKeywordsTextarea .keywordTextarea .valueKeywordTextarea {
+  height: 26px;
+  line-height: 26px;
+  padding: 0 14px 0 8px;
+  background: #414042;
+  color: #fff;
+  font-size: 12px;
+  margin-right: 26px;
+  cursor: default;
+}
+.picsioKeywordsTextarea .contentKeywordsTextarea textarea {
+  margin: 0;
+  padding: 4px 0;
+  border: none;
+  resize: none;
+  height: 28px;
+  line-height: 20px;
+  outline: none;
+  background: none;
+  font-family: 'fira_sansregular';
+  font-size: 12px;
+  color: #fff;
+  overflow: hidden;
+  vertical-align: top;
+  text-indent: 5px;
+}
+.picsioDetailsBox .labelDetailsBox {
+  display: block;
+  margin-bottom: 15px;
+  position: relative;
+  color: #c3c3c3;
+  font-size: 14px;
+  cursor: pointer;
+  padding-left: 15px;
+  margin-left: -15px;
+}
+.picsioDetailsBox .labelDetailsBox span {
+  cursor: default;
+}
+.picsioDetailsBox .labelDetailsBox:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -3px;
+  border-style: solid;
+  border-width: 3px 0 3px 5px;
+  border-color: transparent transparent transparent #c3c3c3;
+  width: 0;
+  height: 0;
+  display: block;
+}
+.picsioDetailsBox .innerDetailsBox {
+  display: none;
+}
+.picsioDetailsBox.showContentDetailsBox .labelDetailsBox:after {
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.picsioDetailsBox.showContentDetailsBox .innerDetailsBox {
+  display: block;
+}
+.picsioNotifications {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 10000000000;
+  width: calc(100% - 40px);
+  text-align: center;
+}
+.picsioNotifications .infoNotifications {
+  background: #ffcc00;
+}
+.picsioNotifications .errorNotifications {
+  background: #9a0034;
+}
+.picsioNotifications .successNotifications {
+  background: #9acd34;
+}
+.picsioNotifications .infoNotifications,
+.picsioNotifications .errorNotifications,
+.picsioNotifications .successNotifications {
+  width: 400px;
+  max-width: 100% !important;
+  padding: 4px 0 2px 0;
+  text-align: center;
+  position: relative;
+  display: block;
+  margin: 10px auto 0 auto;
+  font-size: 0;
+  animation: animationFrames linear 1s;
+  animation-iteration-count: 1;
+  transform-origin: 50% 50%;
+  -webkit-animation: animationFrames linear 1s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-transform-origin: 50% 50%;
+  -moz-animation: animationFrames linear 1s;
+  -moz-animation-iteration-count: 1;
+  -moz-transform-origin: 50% 50%;
+}
+.picsioNotifications .infoNotifications .textPicsioNotification,
+.picsioNotifications .errorNotifications .textPicsioNotification,
+.picsioNotifications .successNotifications .textPicsioNotification {
+  display: inline-block;
+  padding: 0 25px;
+  font-family: 'fira_sansregular';
+  font-size: 14px;
+  color: #000;
+  line-height: 17px;
+}
+.picsioNotifications .infoNotifications .textPicsioNotification.clickablePicsioNotification,
+.picsioNotifications .errorNotifications .textPicsioNotification.clickablePicsioNotification,
+.picsioNotifications .successNotifications .textPicsioNotification.clickablePicsioNotification {
+  cursor: pointer;
+}
+.picsioNotifications .infoNotifications.errorNotifications .textPicsioNotification,
+.picsioNotifications .errorNotifications.errorNotifications .textPicsioNotification,
+.picsioNotifications .successNotifications.errorNotifications .textPicsioNotification {
+  color: #fff;
+}
+.picsioNotifications .infoNotifications .closePicsioNotification,
+.picsioNotifications .errorNotifications .closePicsioNotification,
+.picsioNotifications .successNotifications .closePicsioNotification {
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  font-size: 0;
+  color: #fff;
+  line-height: 15px;
+  height: 15px;
+  width: 15px;
+  display: block;
+  cursor: pointer;
+}
+.picsioNotifications .infoNotifications .closePicsioNotification:before,
+.picsioNotifications .errorNotifications .closePicsioNotification:before,
+.picsioNotifications .successNotifications .closePicsioNotification:before {
+  font-size: 8px;
+}
+.wrapperAlerts {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  z-index: 10000000000;
+}
+.wrapperAlerts .picsioAlert .popup,
+.wrapperAlerts .picsioPrompt .popup {
+  color: #fff;
+  background: #404040;
+  width: 500px;
+  margin: 10px 0 0 0;
+  position: relative;
+}
+@media screen and (max-width: 1000px) {
+  .wrapperAlerts .picsioAlert .popup,
+  .wrapperAlerts .picsioPrompt .popup {
+    width: calc(100% - 20px);
+    right: 10px;
+    max-width: 300px;
+    background: #27282a;
+    top: 50%;
+    margin-top: -120px;
+  }
+}
+.wrapperAlerts .picsioAlert .popup .btns,
+.wrapperAlerts .picsioPrompt .popup .btns {
+  position: absolute;
+  right: 0;
+  top: 20px;
+  bottom: 20px;
+  border-left: 1px solid #333333;
+  width: 150px;
+}
+.wrapperAlerts .picsioAlert .popup .btns + .body,
+.wrapperAlerts .picsioPrompt .popup .btns + .body {
+  margin-right: 150px;
+}
+.wrapperAlerts .picsioAlert .popup .btns .btn,
+.wrapperAlerts .picsioPrompt .popup .btns .btn {
+  text-align: center;
+  cursor: pointer;
+  font-family: 'fira_sansregular';
+  font-size: 14px;
+  color: #ffcc00;
+  height: 100%;
+  display: block;
+}
+.wrapperAlerts .picsioAlert .popup .btns .btn span,
+.wrapperAlerts .picsioPrompt .popup .btns .btn span {
+  display: inline-block;
+  vertical-align: middle;
+}
+.wrapperAlerts .picsioAlert .popup .btns .btn:after,
+.wrapperAlerts .picsioPrompt .popup .btns .btn:after {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  width: 0;
+  height: 100%;
+}
+@media screen and (max-width: 1000px) {
+  .wrapperAlerts .picsioAlert .popup .btns,
+  .wrapperAlerts .picsioPrompt .popup .btns {
+    top: 100%;
+    width: 100%;
+    height: 60px;
+  }
+  .wrapperAlerts .picsioAlert .popup .btns + .body,
+  .wrapperAlerts .picsioPrompt .popup .btns + .body {
+    padding-right: 30px;
+  }
+  .wrapperAlerts .picsioAlert .popup .btns .btn,
+  .wrapperAlerts .picsioPrompt .popup .btns .btn {
+    display: table-cell;
+    border-left: 1px solid #262626;
+  }
+  .wrapperAlerts .picsioAlert .popup .btns .btn:first-child,
+  .wrapperAlerts .picsioPrompt .popup .btns .btn:first-child {
+    border-left: none;
+  }
+  .wrapperAlerts .picsioAlert .popup .btns .btn span,
+  .wrapperAlerts .picsioPrompt .popup .btns .btn span {
+    font-family: 'fira_sanslight';
+    font-size: 19px;
+  }
+}
+.wrapperAlerts .picsioAlert .popup .body,
+.wrapperAlerts .picsioPrompt .popup .body {
+  min-height: 60px;
+  padding: 25px;
+  color: #fff;
+  font-size: 0;
+}
+.wrapperAlerts .picsioAlert .popup .body .text,
+.wrapperAlerts .picsioPrompt .popup .body .text {
+  font-family: 'fira_sansregular';
+  font-size: 14px;
+  color: #cccccc;
+  line-height: 20px;
+  display: block;
+  padding: 5px 0;
+}
+.wrapperAlerts .picsioAlert .popup .body .promptInput,
+.wrapperAlerts .picsioPrompt .popup .body .promptInput {
+  padding: 7px 10px;
+  width: 100%;
+  height: 30px;
+  line-height: 16px;
+  margin: 10px 0 0 0;
+  border-radius: 0;
+  border: none;
+  background: #fff;
+  color: #000;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+.wrapperAlerts .picsioAlert .popup .body .promptInput:focus,
+.wrapperAlerts .picsioPrompt .popup .body .promptInput:focus {
+  outline: none;
+}
+.wrapperAlerts .picsioAlert .popup .body:after,
+.wrapperAlerts .picsioPrompt .popup .body:after {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  width: 0;
+  height: 100%;
+}
+@media screen and (max-width: 1000px) {
+  .wrapperAlerts .picsioAlert .popup .body,
+  .wrapperAlerts .picsioPrompt .popup .body {
+    padding: 15px 30px 15px 30px;
+    text-align: center;
+    display: block;
+    min-height: 80px;
+    height: auto;
+  }
+  .wrapperAlerts .picsioAlert .popup .body .promptInput,
+  .wrapperAlerts .picsioPrompt .popup .body .promptInput {
+    padding: 5px 5px;
+    height: 25px;
+    font-size: 15px;
+    width: 100%;
+    margin-top: 18px;
+  }
+  .wrapperAlerts .picsioAlert .popup .body .text,
+  .wrapperAlerts .picsioPrompt .popup .body .text {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    font-family: 'fira_sanslight';
+    font-size: 15px;
+    line-height: 17px;
+  }
+}
+.wrapperAlerts .picsioAlert .popup .btnClose,
+.wrapperAlerts .picsioPrompt .popup .btnClose {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  color: #cccccc;
+  font-size: 11px;
+  cursor: pointer;
+  text-align: center;
+}
+/********************************** copyToClipboard **************************************/
+.copyToClipboard {
+  position: relative;
+  text-align: center;
+  background: #3a3a3a;
+  width: 62px;
+  height: 30px;
+  line-height: 30px;
+  font-family: 'fira_sansregular';
+  font-size: 14px;
+  color: #ccc;
+}
+.copyToClipboard.disabled {
+  color: #666;
+}
+@-webkit-keyframes animateLink {
+  from {
+    opacity: 1;
+    top: 0;
+  }
+  to {
+    opacity: 0;
+    top: -20px;
+  }
+}
+@keyframes animateLink {
+  from {
+    opacity: 1;
+    top: 0;
+  }
+  to {
+    opacity: 0;
+    top: -20px;
+  }
+}
+.animateLink {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  opacity: 0;
+}
+.animateLink.copied {
+  -webkit-animation: animateLink 1s alternate;
+  animation: animateLink 1s alternate;
+}
+/********************************** picsioTextarea **************************************/
+.picsioTextarea {
+  display: inline-block;
+  vertical-align: top;
+}
+.picsioTextarea .labelPicsioTextarea {
+  font-size: 16px;
+  color: #919191;
+  display: inline-block;
+  vertical-align: top;
+  height: 30px;
+  line-height: 32px;
+  font-family: 'fira_sansbold';
+}
+/****************************** TOOLBOX *********************************/
+.picsioToolbox .toolboxNavigation {
+  border: 1px solid #000;
+}
+.picsioToolbox .toolboxNavigation ul li.act {
+  color: red;
+}
+.picsioToolbox .toolboxNavigation ul li.highlight {
+  background: #000;
+}
+.picsioToolbox .toolboxWrapperContents {
+  border: 1px solid #000;
+}
+.picsioToolbox .toolboxWrapperContents .toolboxSingleContent {
+  display: none;
+}
+.picsioToolbox .toolboxWrapperContents .toolboxSingleContent.act {
+  display: block;
+}
+/****************************** HelpButton *********************************/
+.picsioHelpButton {
+  position: relative;
+  z-index: 10000;
+  display: inline-block;
+  font-family: 'fira_sansregular';
+  font-size: 14px;
+  color: #fff;
+}
+.picsioHelpButton .picsioHelpButtonIcon {
+  width: 20px;
+  height: 20px;
+  line-height: 22px;
+  border-radius: 50%;
+  background: #ffcc00;
+  color: #000;
+  display: block;
+  text-align: center;
+}
+.picsioHelpButton .picsioHelpButtonPopup {
+  display: none;
+  position: absolute;
+  width: 200px;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  transform: translateX(-50%);
+  padding: 10px;
+}
+.picsioHelpButton .picsioHelpButtonPopup .picsioHelpButtonInnerPopup {
+  background: #000;
+  border: 1px solid #181818;
+  padding: 15px;
+  border-radius: 5px;
+  position: relative;
+}
+.picsioHelpButton .picsioHelpButtonPopup .picsioHelpButtonInnerPopup:after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border: 4px solid #000;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.picsioHelpButton.showPopup {
+  z-index: 10001;
+}
+.picsioHelpButton.showPopup .picsioHelpButtonPopup {
+  display: block;
+}
+.picsioHelpButton.bottom .picsioHelpButtonPopup {
+  left: 50%;
+  top: 100%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.picsioHelpButton.bottom .picsioHelpButtonPopup .picsioHelpButtonInnerPopup:after {
+  left: 50%;
+  top: -4px;
+  margin-left: -4px;
+}
+.picsioHelpButton.top .picsioHelpButtonPopup {
+  left: 50%;
+  bottom: 100%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.picsioHelpButton.top .picsioHelpButtonPopup .picsioHelpButtonInnerPopup:after {
+  left: 50%;
+  bottom: -4px;
+  margin-left: -4px;
+}
+.picsioHelpButton.left .picsioHelpButtonPopup {
+  top: 50%;
+  right: 100%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.picsioHelpButton.left .picsioHelpButtonPopup .picsioHelpButtonInnerPopup:after {
+  right: -4px;
+  top: 50%;
+  margin-top: -4px;
+}
+.picsioHelpButton.right .picsioHelpButtonPopup {
+  top: 50%;
+  left: 100%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.picsioHelpButton.right .picsioHelpButtonPopup .picsioHelpButtonInnerPopup:after {
+  left: -4px;
+  top: 50%;
+  margin-top: -4px;
+}
+.picsioSpinner {
+  min-height: 50px;
+  font-family: 'fira_sansultralight';
+  color: #fff;
+}
+@-webkit-keyframes rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes bounce {
+  0%,
+  100% {
+    -webkit-transform: scale(0);
+  }
+  50% {
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes bounce {
+  0%,
+  100% {
+    transform: scale(0);
+    -webkit-transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
+.picsioSpinner .innerPicsioSpinner {
+  text-align: center;
+}
+.picsioSpinner .innerPicsioSpinner .spinner {
+  display: inline-block;
+  vertical-align: middle;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto;
+  -webkit-animation: rotate 2s infinite linear;
+  animation: rotate 2s infinite linear;
+}
+.picsioSpinner .innerPicsioSpinner .spinner div,
+.picsioSpinner .innerPicsioSpinner .spinner span {
+  width: 60%;
+  height: 60%;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  background-color: #fff;
+  border-radius: 100%;
+  -webkit-animation: bounce 2s infinite ease-in-out;
+  animation: bounce 2s infinite ease-in-out;
+}
+.picsioSpinner .innerPicsioSpinner .spinner span {
+  top: auto;
+  bottom: 0px;
+  -webkit-animation-delay: -1s;
+  animation-delay: -1s;
+}
+.picsioSpinner .innerPicsioSpinner .titleSpinner {
+  display: none;
+  font-size: 16px;
+  padding: 20px 14px 0 14px;
+  vertical-align: middle;
+}
+.picsioSpinner .innerPicsioSpinner .titleSpinner.show {
+  display: inline-block;
+}
+.picsioSpinner .innerPicsioSpinner .textSpinner {
+  display: none;
+  max-width: 500px;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 20px;
+  padding-top: 20px;
+  text-align: left;
+}
+.picsioSpinner .innerPicsioSpinner .textSpinner.show {
+  display: block;
+}
+.picsioSpinner.blockUI {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.9);
+}
+.picsioSpinner.blockUI .innerPicsioSpinner {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.picsioSpinner.blockUI .innerPicsioSpinner .spinner {
+  display: block;
+}
+.picsioSpinner.blockUI .innerPicsioSpinner .titleSpinner {
+  padding-left: 0;
+  font-size: 24px;
+}
+.picsioSpinner.blockUI .innerPicsioSpinner .titleSpinner.show {
+  display: block;
+}
+.picsioSpinner.blockUI .innerPicsioSpinner .textSpinner {
+  font-size: 20px;
+  line-height: 25px;
+}
+.picsioSpinner.partial {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+.picsioSpinner.partial .innerPicsioSpinner {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -20px;
+  width: 100%;
+}
+.picsioSpinner.center .innerPicsioSpinner .textSpinner {
+  text-align: center;
+}
+

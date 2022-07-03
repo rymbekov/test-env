@@ -1,0 +1,23 @@
+@import 'base/colors.scss';
+
+$picsioImgUrl: 'https://assets.pics.io/img';
+
+// fonts
+$base-font: 'Fira Sans', Helvetica, Arial, sans-serif;
+$base-font-mono: 'Fira Mono', monospace;
+$base-font-size: 14px;
+$line-height-base: 1.2;
+
+// forms
+$formElementHeight: 30px;
+$formElementHeightMobile: 50px;
+
+$shadowModalLightTheme: 0 0 30px 0 rgba(0, 0, 0, 0.13);
+
+$widthShort: 250px;
+$widthMedium: 384px;
+
+$baseTransitionDuration: 0.2s;
+$baseTransitionTimingFunction: linear;
+
+@import 'mixins.scss';

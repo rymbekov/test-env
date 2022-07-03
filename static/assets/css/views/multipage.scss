@@ -1,0 +1,275 @@
+.multipageView {
+	height: 100%;
+	overflow: hidden;
+	background-color: #242424;
+	color: #666;
+
+	&Pages {
+		position: relative;
+		width: 200px;
+		height: 100%;
+		float: left;
+		font-size: 14px;
+		line-height: 17px;
+		padding: 35px 20px 17px;
+		overflow-y: auto;
+		overflow-x: hidden;
+		border-right: 2px solid #000;
+		box-sizing: border-box;
+
+		.panelResizer {
+			position: absolute;
+    		right: 0;
+			top: 0;
+			height: 100%;
+			width: 7px;
+			cursor: ew-resize;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		& + .multipageViewPages {
+			float: right;
+			border-left: 1px solid #000;
+			border-right: 0;
+		}
+
+		&.hidePanel {
+			display: none;
+		}
+	}
+
+	&Content {
+		overflow: hidden;
+		height: 100%;
+	}
+
+	.toolbarButton.pages {
+		&::after {
+			content: '';
+			position: absolute;
+			left: 10px;
+			right: 10px;
+			bottom: 0;
+			height: 1px;
+			background: $gray;
+			display: block;
+		}
+
+		&.active {
+			&::before,
+			.svg-icon {
+				z-index: 1;
+			}
+		}
+	}
+}
+
+.listPages {
+	&.absolute {
+		position: relative;
+
+		.listPage {
+			position: absolute;
+			left: 0;
+			right: 0;
+		}
+	}
+	.listPage {
+		position: relative;
+		margin-bottom: 18px;
+		text-align: center;
+	}
+
+	.listPageImage {
+		margin-bottom: 6px;
+		position: relative;
+
+		img {
+			display: inline-block;
+			max-width: 100%;
+			max-height: 115px;
+			box-shadow: 0px 0px 18px -10px var(--secondary-main-color);
+		}
+		canvas {
+			width: 100%;
+			display: block;
+			background-color: #fff;
+			box-shadow: 0px 0px 18px -10px var(--secondary-main-color);
+		}
+		.tmp {
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			border-radius: 5px;
+			background: rgba(0, 0, 0, .5);
+			animation: blink 1.2s linear infinite;
+		}
+	}
+
+	.listPageName {
+		display: flex;
+
+		&Text {
+			order: 2;
+			flex: 1;
+			text-align: center;
+		}
+
+		&Num {
+			margin: 0 4px 0 0;
+			order: 1;
+		}
+	}
+
+	.listPageNameText + .listPageNameNum {
+		display: none;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.listPages {
+		.listPage {
+			&Active {
+				img, canvas {
+					outline: 3px solid $brandColor;
+					box-shadow: 0px 0px 18px -10px var(--primary-main-color);
+				}
+			}
+
+			&:hover {
+				img, canvas {
+					box-shadow: 0px 0px 18px -10px var(--primary-main-color);
+					cursor: pointer;
+				}
+			}
+		}
+
+		.listPageNameNum {
+			span {
+				display: none;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $mediaDevice) {
+	.multipageView {
+		.theMediaFile {
+			width: calc(100vw - 200px) !important;
+		}
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.multipageView {
+		&Pages {
+			max-width: 50px;
+			padding: 0;
+			background-color: #4F4F4F;
+			color: #999;
+			border: 0;
+			.mobile & {
+				.panelResizer {
+					display: none;
+				}
+			}
+		}
+
+		.theMediaFile {
+			width: calc(100vw - 50px) !important;
+		}
+
+		.toolbarButton.pages {
+			&::after {
+				display: none;
+			}
+		}
+	}
+
+	.listPages {
+
+		.listPage {
+			margin-bottom: 0;
+			padding: 2px;
+			text-align: center;
+			width: 50px;
+			height: 50px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			&Active {
+				background-color: #000;
+				color: #fff;
+			}
+		}
+
+		.listPageImage {
+			display: none;
+		}
+
+		.listPageNameText {
+			display: none;
+		}
+
+		.listPageNameText + .listPageNameNum {
+			display: block;
+		}
+	}
+}
+
+.picsioThemeLight {
+	.multipageView {
+		background-color: #fff;
+
+		&Pages {
+			border-color: $light-lightgray;
+		}
+	}
+
+	@media screen and (min-width: 768px) {
+		.listPages {
+			.listPage {
+				&Active {
+					img {
+						box-shadow: 0 0 20px 0 rgba(0,0,0,0.35);
+					}
+					&:hover {
+						img {
+							box-shadow: 0 0 20px 0 rgba(0,0,0,0.35);
+						}
+					}
+				}
+
+				&:hover {
+					img {
+						box-shadow: 0 0 20px 0 rgba(0,0,0,0.08);
+					}
+				}
+			}
+		}
+	}
+
+	@media screen and (max-width: 767px) {
+		.multipageView {
+			&Pages {
+				background-color: #E7E7E7;
+				border-color: #fff;
+			}
+		}
+
+		.listPages {
+			.listPage {
+				&Active {
+					background-color: #8F8F8F;
+					color: #000;
+				}
+			}
+		}
+	}
+}

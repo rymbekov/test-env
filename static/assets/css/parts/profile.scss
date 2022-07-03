@@ -1,0 +1,25 @@
+.profile {
+	max-width: 550px;
+
+	@include media('>=desktop') {
+		display: flex;
+	}
+}
+
+.profileFields {
+	@include media('>=desktop') {
+		flex: 1;
+	}
+}
+
+.profilePhoto {
+	text-align: center;
+	margin-bottom: 30px;
+	
+	@include media('>=desktop') {
+		order: 2;
+		text-align: right;
+		flex: 0 0 200px;
+		margin-bottom: 0;
+	}
+}

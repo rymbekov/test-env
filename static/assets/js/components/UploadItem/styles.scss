@@ -1,0 +1,199 @@
+@import '../../../css/mixins.scss';
+@import '../../../css/variables.scss';
+
+.importFileItem {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 10px;
+  color: #999;
+  font-family: $base-font-mono;
+  cursor: default;
+  box-sizing: border-box;
+
+  * {
+    box-sizing: inherit;
+  }
+
+  &.tmp {
+    display: block;
+    background: rgba(255, 255, 255, .05) !important;
+    border: 2px solid #242424;
+    border-radius: 5px;
+    animation: blink 1.2s linear infinite;
+    position: static;
+  }
+
+  &.odd {
+    background: #1f1f1f;
+  }
+
+  &.isInProgress {
+    color: var(--secondary-contrast-color);
+    background-color: #ffdf7e54;
+  }
+
+  &.collectionPath {
+    font-family: $base-font-mono;
+    font-size: 14px;
+    height: auto;
+    padding: 5px 5px 5px 0;
+    margin: 0;
+
+    .icon-folder {
+      margin: 0 2px 0 0;
+      font-size: 14px !important;
+      position: relative;
+      top: 1px;
+    }
+  }
+
+  &.isComplete {
+    background-color:#242724;
+
+    .importFileItemProgress {
+      display: none;
+    }
+
+    &.odd {
+      background: #1f221f;
+    }
+  }
+
+  &:hover {
+    color: #fff;
+  }
+
+  .importFileItemHolder {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 0 5px 0 0;
+    height: 25px;
+    line-height: 26px;
+  }
+
+  .iconHolder {
+    height: 100%;
+    width: 20px;
+    flex: 0 0 20px;
+    margin: auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.importItemCell {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.importCell {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+}
+
+
+.btnImportItemAction {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: auto;
+  width: 20px;
+  flex: 0 0 20px;
+  height: 20px;
+
+  .isComplete &.statusUploadComlete {
+    cursor: default;
+    pointer-events: none;
+    color: $positive;
+  }
+}
+
+.importItemCurrentName {
+  display: block;
+  min-width: 0;
+  padding-left: 5px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.importItemRestoreFile {
+  position: relative;
+  margin: 0 5px 0 15px;
+  overflow: hidden;
+  color: $brandColor;
+
+  input {
+    position: absolute;
+    font-size: 200px;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+}
+
+.importItemSize {
+  position: relative;
+  z-index: 2;
+  white-space: nowrap;
+}
+
+.importFileItemProgress {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: $brandColor;
+  width: 0;
+  overflow: hidden;
+  color: #fff;
+  transition: width 0.1s linear;
+}
+
+.importItemError {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 0 0 20px;
+  height: 25px;
+  font-size: .9em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: var(--error-main-color);
+}
+
+/** LIGHT THEME */
+.picsioThemeLight {
+  .importFileItem {
+    &.odd {
+      background: #f4f4f4;
+    }
+    &.isInProgress {
+      background-color: #cee5ff;
+    }
+    &:hover {
+      color: #242424;
+    }
+    &.tmp {
+      background: rgba(0, 0, 0, .05) !important;
+      border: 2px solid #fff;
+    }
+  }
+  .importItemRestoreFile {
+    color: $brandColorLightTheme;
+  }
+  .importFileItemProgress {
+    background: $brandColorLightTheme;
+  }
+}

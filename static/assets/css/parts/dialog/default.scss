@@ -1,0 +1,335 @@
+#dialogRoot {
+  position: fixed;
+  top: 0;
+  z-index: 1200;
+}
+
+.wrapperDialog {
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 1002; // was 4
+
+	&:empty {
+		display: none;
+	}
+}
+
+/** Dialog */
+.simpleDialog {
+	position: fixed;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 4;
+	display: flex;
+	background: rgba(51, 51, 51, .8);
+
+	.simpleDialogFooterBtn,
+	.simpleDialogBtnCross {
+		font-family: inherit;
+		color: inherit;
+		margin: 0;
+		padding: 0;
+		background: none;
+		outline: none;
+		border: none;
+	}
+
+	&.errorDialog {
+		.simpleDialogBox {
+			max-width: 700px;
+		}
+		.simpleDialogIcon {
+			color: #f7cd46;
+			&::before, &::after, .svg-icon {
+				color: #f7cd46;
+			}
+		}
+	}
+
+	.simpleDialogUnderlayer {
+		position: fixed;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 100;
+		z-index: 1;
+	}
+
+	.simpleDialogBox {
+		z-index: 2;
+		margin: auto;
+		max-width: 500px;
+		width: 100%;
+		background: $lightblack;
+		box-shadow: 0 0 30px rgba(0, 0, 0, .4);
+
+		@-webkit-keyframes animatePopup {
+			0% {  -webkit-transform: translateY(-100px);}
+			50% {  -webkit-transform: translateY(100px);}
+			100% {  -webkit-transform: translateY(0px);}
+		}
+		@keyframes animatePopup {
+			0% {  -webkit-transform: translateY(-100px);}
+			50% {  -webkit-transform: translateY(100px);}
+			100% {  -webkit-transform: translateY(0px);}
+		}
+		@-webkit-keyframes animateHiddingPopup {
+			from {  -webkit-transform: translateY(0);}
+			to {  -webkit-transform: translateY(-150%);}
+		}
+		@keyframes animateHiddingPopup {
+			from {  -webkit-transform: translateY(0);}
+			to {  -webkit-transform: translateY(-150%);}
+		}
+
+		-webkit-animation: animatePopup 0.5s cubic-bezier(0.25,0.1,0.25,1);
+		animation: animatePopup 0.5s cubic-bezier(0.25,0.1,0.25,1);
+
+		&.hiddingPopup {
+			-webkit-animation: animateHiddingPopup 0.15s linear;
+			animation: animateHiddingPopup 0.15s linear;
+		}
+	}
+}
+
+.simpleDialogHeader {
+	color: #fff;
+	display: flex;
+
+	.simpleDialogTitle {
+		flex: 0 1 100%;
+		height: 50px;
+		line-height: 50px;
+		padding-left: 25px;
+		font-size: 30px;
+		font-weight: 200;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		&:first-letter {
+			text-transform: uppercase;
+		}
+
+		@media (max-width: 767px) {
+			font-size: 24px;
+			padding-left: 20px;
+		}
+	}
+
+	.simpleDialogBtnCross {
+		flex: none;
+		width: 50px;
+		height: 50px;
+		line-height: 50px;
+		text-align: center;
+		cursor: pointer;
+		&:hover {
+			color: #ff6600;
+		}
+	}
+
+	.toolbarButton {
+		margin-right: -10px;
+	}
+}
+
+.simpleDialogContent {
+	padding: 0 0 0 45px;
+	font-size: 16px;
+	color: #ccc;
+	line-height: 1.25; // 20px
+	display: block;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	display: flex;
+
+	.simpleDialogIcon {
+		font-size: 75px;
+		color: $brandColor;
+		flex-shrink: 0;
+		margin: 24px 37px 0 -12px;
+	}
+
+	.simpleDialogContentInner {
+		flex: 0 1 100%;
+		max-height: calc(100vh - 200px);
+		overflow: auto;
+		padding: 24px 50px 48px 5px;
+
+		.simpleDialogDescription {
+			margin-bottom: 20px;
+		}
+
+		p {
+			font: inherit;
+			padding: 0;
+			margin: 0.5em 0 1em 0;
+		}
+		.UICheckbox__label {
+			font-size: 13px;
+		}
+
+		code {
+			display: block;
+			padding: 5px 25px;
+			margin: 1em 0;
+			background: #242424;
+			word-wrap: break-word;
+			font: 1.1em/1.3em monospace;
+		}
+
+		a {
+			font: inherit;
+			color: $brandColor;
+			text-decoration: none;
+			&:hover {
+				text-decoration: none;
+				color: #ffff00;
+			}
+		}
+
+		*:last-child {
+			margin-bottom: 0;
+		}
+
+		.dialogLink {
+		  color: #ffff00;
+		  cursor: pointer;
+
+		  &:hover,
+		  &:focus {
+			text-decoration: underline;
+		  }
+		}
+	}
+
+	.tag {
+		margin: 4px 4px 0 0;
+		vertical-align: bottom;
+	}
+
+	@media (max-width: 767px) {
+		padding: 0 0 0 15px;
+
+		.simpleDialogContentInner {
+			padding-right: 20px;
+		}
+	}
+}
+
+.simpleDialogFooter {
+	display: flex;
+	justify-content: flex-end;
+	color: #fff;
+	padding: 0 25px 25px;
+
+	.simpleDialogFooterBtn + .simpleDialogFooterBtn {
+		margin: 0 0 0 50px;
+	}
+
+	.simpleDialogFooterBtn {
+		font-size: 24px;
+		text-align-last: left;
+		cursor: pointer;
+		font-weight: 300;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		@include media('<=phone') {
+			br {
+				display: none;
+			}
+		}
+
+		&:hover {
+			color: #99ff00;
+		}
+		&.hide {
+			display: none;
+		}
+		&.simpleDialogFooterBtnCancel:hover {
+			color: #ff6600;
+		}
+		&.disabled {
+			opacity: 0.2;
+			cursor: default;
+			&:hover {
+				color: currentColor;
+			}
+		}
+	}
+}
+
+/** Theme light */
+.picsioThemeLight {
+	.simpleDialog {
+
+		.simpleDialogBox {
+			box-shadow: 0 0 5px rgba(0,0,0,.25);
+			// background: #eaeaea;
+			background: #fff;
+		}
+	}
+
+	.simpleDialogHeader {
+		color: #000;
+		.simpleDialogBtnCross {
+			&:hover {
+				color: #cc0000;
+			}
+		}
+	}
+
+	.simpleDialogContent {
+		color: #666;
+		.simpleDialogIcon {
+			color: #0099ff;
+		}
+
+		.simpleDialogContentInner {
+			a {
+				color: $brandColorLightTheme;
+				&:hover {
+					color: #0099ff;
+				}
+		}
+			code {
+				background: rgba(0, 0, 0, .1);
+			}
+
+			.dialogLink {
+				color: #0099ff;
+				cursor: pointer;
+
+				&:hover,
+		        &:focus {
+			      text-decoration: underline;
+		        }
+			  }
+		}
+	}
+
+	.simpleDialogFooter {
+		color: #000;
+
+		.simpleDialogFooterBtn {
+			&:hover {
+				color: #0bc800;
+			}
+			&.simpleDialogFooterBtnCancel:hover {
+				color: #cc0000;
+			}
+			&.disabled {
+				&:hover {
+					color: currentColor;
+				}
+			}
+		}
+	}
+}

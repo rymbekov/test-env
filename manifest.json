@@ -1,0 +1,41 @@
+{
+  "name": "Pics.io - Online Raw Photo Editor",
+  "short_name": "Pics.io",
+  "description": "Pics.io is a cloud-based service that enables photographers to work with no syncing hassles and storage issues.",
+  "version": "0.26.0",
+  "manifest_version": 2,
+  "icons": {
+    "16": "assets/img/chrome/icon16.png",
+    "48": "assets/img/chrome/icon48.png",
+    "128": "assets/img/chrome/icon128.png"
+  },
+  
+  "author": "TopTechPhoto",
+  "minimum_chrome_version": "29",
+  "app": {
+    "background": {
+      "scripts": [
+        "chrome.js"
+      ]
+    }
+  },
+  "permissions": [
+    "identity",
+    "storage",
+    "webview",
+    "https://www.google-analytics.com/",
+    "http://picsio.local/",
+    "http://pics.io/"
+  ],
+  "oauth2": {
+    "client_id": "190238897195-i94def827efajj4duqs3vac9g9tgn3ps.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/drive",
+      "https://www.googleapis.com/auth/drive.file",
+      "https://www.googleapis.com/auth/drive.readonly",
+      "https://www.googleapis.com/auth/drive.metadata.readonly",
+      "https://www.googleapis.com/auth/drive.appdata",
+      "https://www.googleapis.com/auth/drive.apps.readonly"
+    ]
+  }
+}

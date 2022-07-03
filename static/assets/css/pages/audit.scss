@@ -1,0 +1,591 @@
+.wrapperPageAudit {
+	.page .pageContent .pageInnerContent {
+		padding-top: 30px;
+		padding-left: 0;
+		padding-right: 0;
+
+		.pageTabsAnalytics {
+			width: 93%;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 20px;
+		}
+	}
+
+	.page .pageContent  {
+		height: 100%;
+	}
+	
+	@media screen and (max-width: 768px) {
+		.pageMenu {
+			display: inline-flex;
+			justify-content: center;
+		}
+	}
+
+	.pageAudit {
+		width: 100%;
+
+		.pageContent {
+			max-width: initial;
+			margin: 0;
+		}
+
+		.pageAudit__topControls {
+			flex: none;
+			display: flex;
+			padding-top: 15px;
+			max-width: 1000px;
+			margin: 0 auto;
+			width: 100%;
+
+			@media screen and (max-width: 1270px) {
+				width: 95%;
+			}
+		}
+
+// base styles for dropdowns
+		.timeDropdown,
+		.userDropdown,
+		.eventDropdown {
+			flex: 1 1 0;
+			position: relative;
+
+			&__head {
+				font-size: 14px;
+				line-height: 1.1;
+				padding: 10px 5px;
+				color: #999;
+				border-bottom: 1px solid #1d1d1d;
+
+				&__item {
+					display: inline-flex;
+					align-items: center;
+					cursor: pointer;
+
+					&:hover {
+						color: #fff;
+
+						.timeDropdown__head__triangle,
+						.userDropdown__head__triangle,
+						.eventDropdown__head__triangle {
+							border-top-color: #fff;
+						}
+					}
+				}
+
+				&__triangle {
+					margin-left: 25px;
+					font-size: 6px;
+					width: 0;
+					height: 0;
+					border-style: solid;
+					border-width: 6px 3px 0px 3px;
+					border-color: #999 transparent transparent transparent;
+				}
+			}
+
+			&__list {
+				position: absolute;
+				overflow: hidden;
+				background: $screenBgDark;
+				margin: 0;
+				padding: 0;
+				list-style-type: none;
+				box-sizing: border-box;
+				width: 250px;
+				top: 43px;
+				left: -10px;
+				z-index: 3;
+				max-height: 0;
+				box-shadow: 0px 2px 21px 0px rgba(0, 0, 0, 0.8);
+				backface-visibility: hidden;
+
+				@media screen and (max-width: 768px) {
+					left: 0;
+				}
+
+				&__item {
+					font-size: 14px;
+					line-height: 1.1;
+					padding: 9px 35px 9px 10px;
+					color: #ccc;
+					cursor: pointer;
+					position: relative;
+
+					&:hover {
+						background: $brandColor;
+						color: #000;
+					}
+				}
+
+				.searchUsers {
+					padding: 0 15px 0 15px;
+				}
+			}
+
+			&.act {
+
+				.userDropdown,
+				.timeDropdown,
+				.eventDropdown {
+
+					&__head {
+						color: #fff;
+
+						&__triangle {
+							border-top-color: #fff;
+						}
+					}
+
+					&__list {
+						overflow: visible;
+						max-height: 265px;
+						padding: 10px 0;
+					}
+				}
+
+				.userDropdown,
+				.eventDropdown {
+
+					&__list {
+						overflow: auto;
+					}
+				}
+			}
+		}
+
+//styles for checked items (checked from dropdown)
+		.timeDropdown,
+		.userDropdown,
+		.eventDropdown {
+			font-size: 0;
+
+			&__checkedItems {
+				padding: 10px 5px 5px 0;
+			}
+
+			.tag {
+				margin: 0 5px 5px 0;
+			}
+		}
+
+// styles for each drop separately
+
+		.timeDropdown {
+			.timeDropdown__list__item {
+				padding: 9px 35px;
+			}
+
+			.auditTrailCustomDatePicker {
+				background: $screenBgDark;
+				box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.844);
+				margin-top: 10px;
+				.react-datepicker-wrapper {
+					width: 100%;
+					.react-datepicker__input-container {
+						width: 100%;
+					}
+				}
+
+				.PicsioInput {
+					width: 100%;
+				}
+			}
+
+			&__list {
+
+				&__item {
+
+					&__act {
+						background: $brandColor;
+						color: #000;
+
+						.timeDropdown__inner__list {
+							display: block;
+						}
+					}
+				}
+			}
+		}
+
+		.userDropdown {
+
+			&__list {
+				left: -25px;
+
+				@media screen and (max-width: 768px) {
+					left: 0;
+				}
+
+				&__item {
+					padding-left: 30px;
+					position: relative;
+					display: flex;
+					align-items: center;
+
+					&__avatar {
+						width: 20px;
+						height: 20px;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						margin-right: 10px;
+					}
+					.avatar {
+						margin-right: 10px;
+						flex: 0 0 20px;
+					}
+					.icon-ok {
+						display: none;
+						font-size: 16px;
+						position: absolute;
+						right: 12px;
+						top: 10px;
+					}
+
+					&__act {
+
+						.icon-ok {
+							display: inline-block;
+						}
+					}
+				}
+			}
+		}
+
+		.eventDropdown {
+
+			&__list {
+
+				&__item {
+					padding-left: 35px;
+					position: relative;
+
+					&:first-child {
+						padding-left: 15px;
+					}
+
+					.icon-ok {
+						display: none;
+						font-size: 16px;
+						position: absolute;
+						right: 12px;
+						top: 8px;
+					}
+
+					&__act {
+
+						.icon-ok {
+							display: inline-block;
+						}
+					}
+				}
+			}
+		}
+
+		.linkHolder {
+			flex: 1 1 0;
+			text-align: right;
+
+			div {
+				border-bottom: 1px solid #1d1d1d;
+				padding: 6px 0 9px;
+			}
+
+			.picsioLink {
+				font-size: 14px;
+				line-height: 1.1;
+			}
+		}
+	}
+}
+// styles for "audit (history) list"
+
+.pageAudit__list {
+	flex: auto;
+	// max-width: 600px;
+	overflow: auto;
+	padding: 25px calc((100vw - 700px)/2) 0 5px;
+	margin-left: calc((100vw - 980px)/2);
+	position: relative;
+
+	.retentionString {
+		font-weight: 300;
+		padding-left: 130px;
+		padding-bottom: 70px;
+		padding-top: 20px;
+		margin: 0 auto;
+	}
+
+	@include media('<desktop') {
+		margin: 0 -15px;
+		padding: 0;
+		max-width: none;
+		
+		.retentionString {
+			max-width: 512px;
+			padding-left: 0;
+			text-align: center;
+		}
+
+		.datedPack {
+			margin: 0 auto;
+			max-width: 512px;
+		}
+	}
+
+	@include media('<tablet') {
+		margin: 0;
+		padding: 0 15px;
+	}
+
+	.fieldRowValue {
+		font-weight: 300;
+	}
+
+	.tag {
+		margin: 0 0 2px;
+		z-index: 0;
+		vertical-align: middle;
+	}
+
+	&__date {
+		font-size: 24px;
+		font-weight: 300;
+		line-height: 1.2;
+		margin-bottom: 20px;
+		padding-top: 30px;
+		margin-top: -30px;
+		background: $screenBgDark;
+		position: relative;
+		&+.pageAudit__list__item {
+			.pageAudit__list__item__dot {
+				display: block;
+			}
+		}
+	}
+
+	&__item {
+		display: flex;
+		align-items: flex-start;
+		padding-bottom: 30px;
+		position: relative;
+	
+		&::before {
+			content: '';
+			display: block;
+			position: absolute;
+			left: 31px;
+			top: 6px;
+			width: 1px;
+			height: 100%;
+			background: #333;
+		}
+
+		.datedPackWithLastEvent & {
+			&::before {
+				height: 0;
+			}
+		}
+
+		&__icon {
+			font-size: 14px;
+			line-height: 1.1;
+			flex: 0 0 14px;
+			margin-right: 15px;
+			color: #666;
+			text-align: center;
+		
+			span {
+				font-size: 15px;
+				font-weight: bold;
+			}
+		}
+
+		&__dot {
+			position: relative;
+			width: 5px;
+			height: 5px;
+			z-index: 1;
+			margin-top: 5px;
+			&::before {
+				display: block;
+				content: '';
+				width: 5px;
+				height: 5px;
+				border-radius: 50%;
+				background: #999;
+			}
+		}
+
+		&__time {
+			font-family: $base-font-mono;
+			font-size: 14px;
+			color: #666;
+			margin: 0 13px;
+			flex: 0 0 68px;
+			margin-top: -2px;
+			white-space: nowrap;
+		}
+
+		&__text {
+			font-size: 14px;
+			line-height: 21px;
+			color: #ccc;
+			max-width: 850px;
+			margin-top: -2px;
+
+			//.picsioLink,
+			i {
+				word-break: break-all;
+			}
+		}
+	}
+}
+
+@include media('<desktop') {
+	.pageAudit__list__item {
+		flex-wrap: wrap;
+		align-items: center;
+
+		&::before {
+			margin-top: 0;
+		}
+
+		&__dot {
+			margin-top: 0;
+		}
+
+		&__time {
+			order: 4;
+			margin-left: 15px;
+		}
+
+		&__text {
+			order: 5;
+			flex: 0 0 calc(100% - 50px);
+			margin-left: 50px;
+			margin-top: 10px;
+		}
+	}
+}
+
+.picsioThemeLight {
+
+	.wrapperPageAudit {
+
+		.pageAudit {
+			.timeDropdown,
+			.userDropdown,
+			.eventDropdown {
+				.auditTrailCustomDatePicker {
+					background: white;
+					box-shadow: 0px 2px 21px 0px rgba(21, 21, 21, 0.15);
+					margin-top: 10px;
+					.react-datepicker-wrapper {
+						width: 100%;
+						.react-datepicker__input-container {
+							width: 100%;
+						}
+					}
+		
+					.PicsioInput {
+						width: 100%;
+					}
+				}
+				&__head {
+					color: #666;
+					border-bottom-color: #d9d9d9;
+
+					&__triangle {
+						border-top-color: #666;
+					}
+
+					&__item {
+
+						&:hover {
+							color: #666;
+
+							.timeDropdown__head__triangle,
+							.userDropdown__head__triangle,
+							.eventDropdown__head__triangle {
+								border-top-color: #666;
+							}
+						}
+					}
+				}
+
+				&__list {
+					background: #fff;
+					box-shadow: 0px 2px 21px 0px rgba(0, 0, 0, 0.15);
+
+					&__item {
+						color: #666;
+						
+						&:hover {
+							background: $brandColorLightTheme;
+							color: #fff;
+							
+						}
+						&__act {
+							background: $brandColorLightTheme;
+							color: #fff;
+							
+						}
+					}
+				}
+
+				&.act {
+
+					.userDropdown,
+					.timeDropdown,
+					.eventDropdown {
+
+						&__head {
+							color: #666;
+
+							&__triangle {
+								border-top-color: #666;
+							}
+						}
+					}
+				}
+			}
+
+			.timeDropdown {
+				.timeDropdown__inner__list {
+					background: #fff;
+					box-shadow: 0px 2px 21px 0px rgba(0, 0, 0, 0.15);
+				}
+			}
+
+			.linkHolder {
+
+				div {
+					border-bottom-color: #d9d9d9;
+				}
+			}
+
+			.pageAudit__list__item__time,
+			.pageAudit__list__item__text,
+			.pageAudit__list__item__icon {
+				color: #666;
+			}
+
+			.pageAudit__list__item {
+				.pageAudit__list__item__dot {
+					&::before {
+						background: #999;
+					}
+				}
+				&::before {
+					background: #d9d9d9;
+				}
+			}
+			.pageAudit__list__date {
+				background: #fff;
+			}
+		}
+	}
+}

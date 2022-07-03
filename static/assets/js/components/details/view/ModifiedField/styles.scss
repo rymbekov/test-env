@@ -1,0 +1,89 @@
+@import 'cssVariables';
+
+.modifiedField {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 30px;
+	width: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	color: var(--secondary-contrast-color);
+	opacity: 0.2;
+	transition: opacity 0.3s ease;
+
+	&:hover {
+		opacity: 1;
+	}
+
+	.dropdown & {
+		right: 20px;
+	}
+
+	.icon-sync {
+		animation: spin 3s linear infinite;
+	}
+
+	@include media('<=desktop') {
+		height: 50px;
+	}
+}
+
+.inputWithModifiedField {
+	position: relative;
+}
+
+.inputWithModifiedFieldWithIcon {
+	textarea, input[type="text"], input[type="number"], input[type="password"], input[type="date"], [contenteditable] {
+		padding-right: 30px;
+	}
+}
+
+.markWithModifiedFieldWithIcon {
+	display: inline-block;
+	position: relative;
+	padding-right: 30px;
+}
+
+.customFieldWithIcon {
+	position: relative;
+
+  input[type="text"], input[type="number"], input[type="password"], input[type="date"], [contenteditable] {
+		padding-right: 30px;
+	}
+
+  textarea {
+    padding-right: 30px;
+  }
+
+	.modifiedField {
+		top: 16px;
+	}
+}
+
+.customInputField.customFieldWithIcon {
+  .modifiedField {
+    right: 10px;
+  }
+}
+
+.customFieldSelectWithModifiedField {
+	.modifiedField {
+		right: 20px;
+	}
+}
+
+.customFieldBooleanWithModifiedField {
+	&.customFieldWithIcon {
+		padding-right: 30px;
+	}
+	.modifiedField {
+		top: -6px;
+
+		@include media('<=desktop') {
+			height: 30px;
+		}
+	}
+}

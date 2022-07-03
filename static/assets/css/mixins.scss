@@ -1,0 +1,91 @@
+$breakpoints: (
+	'xs-phone': 320px,
+	'phone': 480px,
+	'tablet': 768px,
+	'desktop': 1024px,
+	'widescreen': 1230px,
+	'xwidescreen': 1360px,
+);
+
+$media-expressions: (
+	'screen': 'screen',
+	'print': 'print',
+	'handheld': 'handheld',
+	'landscape': '(orientation: landscape)',
+	'portrait': '(orientation: portrait)',
+	'retina2x': '(-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)',
+	'retina3x': '(-webkit-min-device-pixel-ratio: 2.5), (min-resolution: 240dpi)'
+);
+
+@import 'vendors/include-media';
+
+@mixin h2($colorDark: #fff, $colorLight: #222) {
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 300;
+  margin-top: 0;
+  margin-bottom: 17px;
+  color: $colorDark;
+
+  .picsioThemeLight & {
+    color: $colorLight;
+  }
+}
+
+@mixin checkers($color: #000, $size: 50px, $contrast: 0.07) {
+  $checkerColor: rgba($color, $contrast);
+  $angle: 45deg;
+  $tp: 25%;
+
+  background-image: linear-gradient($angle, $checkerColor $tp, transparent $tp),
+    linear-gradient(-$angle, $checkerColor $tp, transparent $tp),
+    linear-gradient($angle, transparent 3 * $tp, $checkerColor 3 * $tp),
+    linear-gradient(-$angle, transparent 3 * $tp, $checkerColor 3 * $tp);
+  background-size: $size $size;
+  background-position: 0 0, 0 $size/2, $size/2 -1 * $size/2, -1 * $size/2 0;
+}
+
+@mixin mediumTitle {
+  font-size: 18px;
+  font-weight: 300;
+  color: #999;
+
+  .picsioThemeLight & {
+    color: #666;
+  }
+}
+
+@mixin toolbarTitle {
+  color: $lightgray;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+
+  .picsioThemeLight & {
+    color: $darkgray;
+  }
+}
+
+@function is-hex($color) {
+	@if str-index($color, "#") == 1 {
+		@return true;
+	} @else {
+		@return false;
+	}
+}
+
+@function convertHexToRgb($hex) {
+	@if is-hex(quote($hex)) {
+		@return red($hex), green($hex), blue($hex);
+	}
+	@return null;
+}
+
+@mixin button-reset {
+  font: inherit;
+  color: inherit;
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
+}

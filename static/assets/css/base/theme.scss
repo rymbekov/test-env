@@ -1,0 +1,102 @@
+@import './colors';
+@import '../mixins';
+
+$themeColors: (
+  'light': (
+    'primary': (
+      'contrast': $white,
+      'light': $brandColorLightThemeHover,
+      'main': $brandColorLightTheme
+    ),
+    'secondary': (
+      'contrast': $black,
+      'light': $lightgray,
+      'main': $gray,
+      'dark': $darkgray,
+      'lightblack': $lightblack,
+    ),
+    'title': $black,
+    'text': $textColorLight,
+    'button': (
+      'primary': $buttonColorLight,
+      'secondary': $darkgray
+    ),
+    'button-background': (
+      'primary':  (linear-gradient(0deg, rgba(47, 101, 250, 0.48913) 0%, rgba(47, 101, 250, 5e-05) 100%), #3B94FB),
+      'secondary': (linear-gradient(0deg, rgba(50, 50, 50, 0.1) 0%, rgba(51, 51, 51, 1e-05) 100%), #FCFCFC)
+    ),
+    'background': (
+      'contrast': $white,
+      'light': #f9f9f9,
+      'dark': #f4f4f4,
+      'details-edit': #f4f4f4
+    ),
+    'border': (
+      'checkbox': #cccccc,
+    ),
+    'chart': (
+      'axis-line': $chartAxisLineColor
+    ),
+  ),
+  'dark': (
+    'primary': (
+      'contrast': $black,
+      'light': $brandColorHover,
+      'main': $brandColor
+    ),
+    'secondary': (
+      'contrast': $white,
+      'light': $lightgray,
+      'main': $gray,
+      'dark': $darkgray,
+    ),
+    'title': $white,
+    'text': $textColorDark,
+    'button': (
+      'primary': $buttonColorDark,
+      'secondary': $darkgray
+    ),
+    'button-background': (
+      'primary': (linear-gradient(to top, rgba(255, 153, 0, 0.2) 0%, rgba(255, 153, 0, 2e-05) 100%), #FFCC00),
+      'secondary': (linear-gradient(0deg, rgba(50, 50, 50, 0.3) 0%, rgba(51, 51, 51, 3e-05) 97.97%), #333333)
+    ),
+    'background': (
+      'contrast': #242424,
+      'light': #1f1f1f,
+      'dark': $black,
+      'details-edit': #1e1e1e
+    ),
+    'border': (
+      'checkbox': #ebebeb,
+    ),
+    'chart': (
+      'axis-line': $chartAxisLineDarkColor
+    )
+  )
+);
+
+@mixin useTheme($theme) {
+  $currentTheme: map-get($themeColors, $theme);
+
+  @each $variable, $color in $currentTheme {
+    @if type-of($color) == 'map' {
+      @each $sub-variable, $sub-color in $color {
+        $rgb-color: convertHexToRgb($sub-color);
+
+        --#{$variable}-#{$sub-variable}-color: #{$sub-color};
+
+        @if $rgb-color {
+          --#{$variable}-#{$sub-variable}-color-rgb: #{$rgb-color};
+        }
+     }
+    } @else {
+      $rgb-color: convertHexToRgb($color);
+
+      --#{$variable}-color: #{$color};
+
+      @if $rgb-color {
+        --#{$variable}-color-rgb: #{$rgb-color};
+      }
+    }
+  }
+}

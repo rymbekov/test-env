@@ -1,0 +1,84 @@
+// $bgColorDefault: rgba(36,36,36,1);
+// $bgColorDefaultTransparent: rgba(36,36,36,0);
+
+// $bgColorActItem: rgba(55,55,55,1);
+// $bgColorActItemTransparent: rgba(55,55,55,0);
+
+// $bgColorHoverItem: rgba(55,55,55,1);
+// $bgColorHoverItemTransparent: rgba(55,55,55,0);
+
+// .wrapperTree {
+// 	float: left;
+// 	height: 100%;
+// 	overflow: hidden;
+// 	position: relative;
+// 	z-index: 1;
+// 	box-sizing: border-box;
+// 	border-right: 2px solid #000;
+
+// 	&:empty {
+// 		border-right: 0;
+// 	}
+
+// 	.btnsManageCollection,
+// 	.btnsEditCollection {
+// 		display: none;
+// 		position: absolute;
+// 		right: 0;
+// 		top: 0;
+// 		z-index: 3;
+// 		background: inherit;
+
+// 		span:not(.PicsioButton__label) {
+// 			cursor: pointer;
+// 			// display: block;
+//       display: flex;
+// 			height: 28px;
+// 			line-height: 28px;
+// 			width: 26px;
+// 			text-align: center;
+// 			position: relative;
+// 			float: right;
+// 			z-index: 2;
+// 			color: rgba(255,255,255,0.9);
+// 			font-size: 14px;
+// 			overflow: hidden;
+// 			&:hover {
+// 				@include media('>=desktop') {
+// 					background: $treeButtonHoverBg;
+// 				}
+// 			}
+// 			&.yellow {
+// 				color: $brandColor;
+// 			}
+// 		}
+
+// 	}
+// 	.btnAddNew {
+// 		margin: 6px 0 0 6px;
+// 		display: flex;
+// 	}
+// }
+
+// .picsioThemeLight {
+// 	$lightBaseColor: #666;
+
+// 	.wrapperTree {
+// 		background: #fff;
+// 		color: $lightBaseColor;
+// 		border-right-color: $light-lightgray;
+
+// 		// .btnsManageCollection span,
+// 		// .btnsEditCollection span {
+// 		// 	color: currentColor;
+// 		// 	&:hover {
+// 		// 		@include media('>=desktop') {
+// 		// 			background: $treeButtonHoverBgLightTheme;
+// 		// 		}
+// 		// 	}
+// 		// 	&.yellow {
+// 		// 		color: $brandColorLightTheme;
+// 		// 	}
+// 		// }
+// 	}
+// }

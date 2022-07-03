@@ -1,0 +1,36 @@
+@import 'cssVariables';
+
+.customFieldsSelectorWrapper {
+	display: flex;
+	align-items: center;
+	margin: 0 0 10px 0;
+	min-height: 30px;
+
+	> .PicsioButton {
+		font-size: 14px;
+
+		@include media('>=desktop') {
+			margin-left: 100px;
+
+			#import & {
+				margin-left: 0;
+			}
+      .sharingSettingsBlock & {
+        margin-left: 5px;
+      }
+		}
+	}
+  .labelItemSearchFilters {
+    .sharingSettingsBlock & {
+      padding: 7px 0 0 5px;
+    }
+  }
+
+  .sharingSettingsBlock & {
+    margin-top: 10px;
+  }
+	.itemSearchFilters {
+		width: 100%;
+		margin-bottom: 0;
+	}
+}

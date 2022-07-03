@@ -1,0 +1,684 @@
+@import 'cssVariables';
+
+$graphSkeletonColor: #EBEBEB;
+
+.pageTabsAnalytics {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-bottom: 70px;
+  width: 100%;
+}
+
+.graphWrapper {
+  width: 100%;
+  max-width: 800px;
+  padding-top: 50px;
+  padding-bottom: 80px;
+  margin-bottom: 60px;
+  color: black;
+
+  @include media('>=tablet') {
+    display: flex;
+    flex-flow: column;
+    height: 400px;
+  }
+
+  @include media('>desktop') {
+    width: 80%;
+  }
+
+  @include media('>tablet') {
+    width: 95%;
+  }
+
+  .tableWrapper {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+  }
+}
+
+.graphTitle {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 0;
+  color: $lightgray;
+  font-size: 24px;
+  font-weight: 300;
+  text-align: left;
+  letter-spacing: -0.5px;
+
+  @include media('<desktop') {
+    font-size: 18px;
+  }
+
+  // @include media('<tablet') {
+  //   font-size: 14px;
+  // }
+
+  .axisY {
+    font-size: 14px;
+  }
+
+  .upgradePlan {
+    margin-left: 10px;
+  }
+}
+
+.graphContent {
+  width: 100%;
+  // height: 100%;
+  height: 400px;
+  display: flex;
+  position: relative;
+
+  // Fix bug with strengh animation of nivo/ResponsiveLine component
+  // related to this issue https://github.com/plouc/nivo/issues/109
+  @include media('>=tablet') {
+    > div {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.graphSubTitle {
+  padding-top: 5px;
+  width: 100%;
+  height: 50px;
+}
+
+.axisX {
+  margin-left: 5px;
+  letter-spacing: -0.5px;
+  color: $lightgray;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.graphBar {
+  padding: 0;
+  height: 200px;
+}
+
+.googleDrive {
+  border: none;
+}
+
+.pieGraph {
+  margin-bottom: 50px;
+  padding-bottom: 20px;
+  height: auto;
+  min-height: 400px;
+  color: $lightgray;
+
+  @include media('<tablet') {
+    .graphContent {
+      height: auto;
+    }
+  }
+
+  .graphTitle {
+    border: none;
+  }
+
+  .pieGraphInner {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    &.loading {
+      .pieWrapper {
+        > div {
+          visibility: hidden;
+        }
+
+        &:after {
+          width: 130%;
+          height: 130%;
+          top: -15%;
+          left: -15%;
+          background: url('#{$picsioImgUrl}/chart_placeholders/Pie_blur.png');
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
+          visibility: visible;
+          animation: pulse-chart 2s ease-in-out infinite;
+        }
+      }
+    }
+
+    @include media('<desktop') {
+      .pieWrapper {
+        width: 50%;
+      }
+    }
+
+    @include media('<tablet') {
+      flex-direction: column;
+
+      .pieWrapper {
+        width: 100%;
+        height: 200px;
+      }
+    }
+
+    .infoBlock {
+      margin-top: 30px;
+      font-size: 18px;
+
+      .title {
+        margin-bottom: 10px;
+      }
+    }
+
+    .pieLegendGoogle {
+      margin-top: 30px;
+    }
+  }
+
+  .pieLegendBlock {
+    margin-bottom: 20px;
+
+    .changeButton {
+      margin-left: 10px;
+      text-decoration: none;
+      color: $yellow;
+    }
+  }
+
+  .pieLegendLine {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+
+    @include media('<tablet') {
+      font-size: 14px;
+    }
+
+    .spot {
+      margin-right: 10px;
+      border-radius: 50%;
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  .pieWrapper {
+    margin-top: 25px;
+    width: 400px;
+    height: 300px;
+  }
+
+  .pieLegend {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 20px;
+  }
+}
+
+.ratingTableGraph {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  border: none;
+  height: auto;
+  min-height: 300px;
+
+  .skeletonGraphWrapper {
+    width: 100%;
+  }
+
+  .rowProgressLine {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient(90deg, $darkgray 0%, rgba(0, 190, 76, 1) 100%);
+    width: 70%;
+    height: 2px;
+  }
+
+  .graphTitle {
+    border: none;
+    padding-bottom: 0;
+    padding-bottom: 20px;
+  }
+
+  .tableTitle {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  .tableTitle,
+  .tableRow {
+    padding-top: 7px;
+    width: 100%;
+    height: auto;
+  }
+
+  .tableRowWrapper .tableRowAssets {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .tableRowAssets {
+    width: 100%;
+    display: flex;
+
+    .assetsName {
+      flex: 1 auto;
+      color: $lightgray;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .tableRowRightSide {
+      justify-content: flex-end;
+
+      span {
+        width: 30px;
+      }
+    }
+  }
+
+  .tableRowWrapper {
+    width: 100%;
+    display: flex;
+    font-weight: 300;
+    position: relative;
+  }
+
+  .tableRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid $darkgray;
+
+    .tag {
+      margin-left: 0;
+    }
+  }
+}
+
+.tableTitleRightSide,
+.tableRowRightSide {
+  flex: 0 1 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: $lightgray;
+  font-size: 14px;
+
+  @include media('<tablet') {
+    font-size: 12px;
+  }
+
+  span {
+    width: 30%;
+    text-align: center;
+  }
+}
+
+.tableTitleRightSideAssets {
+  justify-content: flex-end;
+}
+
+.pieSkeletons {
+  display: inline-flex;
+}
+
+.legendSkeletons {
+  margin-right: 90px;
+  width: 200px;
+
+  span {
+    margin-bottom: 5px;
+  }
+}
+
+.skeletonGraphWrapper {
+  display: flex;
+  flex-direction: row;
+  height: auto;
+}
+
+.legendY {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 15px;
+  color: $lightgray;
+  font-size: 11px;
+
+  span:last-child {
+    margin-bottom: 30px;
+  }
+}
+
+.skeletonWrapper {
+  width: 96%;
+  height: 380px;
+
+  .legend {
+    border-top: 1px solid $darkgray;
+    padding-top: 10px;
+  }
+
+  .legend span:first-child {
+    margin-left: 0;
+  }
+
+  .legend span:last-child {
+    margin-right: 0;
+  }
+}
+
+.skeleton {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+
+  // padding-top: 30px;
+  .skeletonLile {
+    background: linear-gradient(to left, rgba(0, 224, 131, 0), rgba(0, 190, 76, 100));
+    width: 25%;
+    height: 5px;
+  }
+
+  span {
+    color: $lightgray;
+    font-size: 14px;
+  }
+
+  .picsioLink {
+    color: $yellow;
+  }
+}
+
+.storageTools {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  margin-left: 10px;
+}
+
+.storage-info {
+  display: flex;
+}
+
+.storage-info__canvas {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+}
+
+.google_chart,
+.picsio_chart {
+  position: absolute;
+}
+
+.storage-info__block {
+  margin-bottom: 20px;
+}
+
+.storage-info__list {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  li {
+    position: relative;
+    margin: 7px 0;
+  }
+}
+
+.picsioThemeLight {
+  .ratingTableGraph .tableRow {
+    border-bottom: 2px solid $lightgray;
+  }
+
+  .rowProgressLine {
+    background: linear-gradient(90deg, $lightgray 0%, rgba(0, 190, 76, 1) 100%);
+  }
+
+  .assetAnalytics {
+    background: $bgColorLightTheme;
+  }
+
+  .graphTitle,
+  .pieLegendLine {
+    color: $black;
+  }
+
+  .graphSubTitle {
+    .axisX {
+      color: $black;
+    }
+  }
+
+  .ratingTableGraph {
+    .tableTitleRightSide {
+      color: $black;
+    }
+
+    .tableRowWrapper {
+      .tableRowRightSide {
+        color: $black;
+      }
+    }
+  }
+
+  .skeleton {
+    span {
+      color: $black;
+    }
+
+    .picsioLink {
+      color: $blue;
+    }
+  }
+
+  .tab:hover {
+    cursor: pointer;
+    color: red;
+  }
+}
+
+.assetAnalytics {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: fixed;
+  z-index: 102;
+  background: #242424;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  overflow-y: scroll;
+
+  .graphWrapper {
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+.legend {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: -30px;
+  width: 100%;
+  color: $lightgray;
+  font-size: 11px;
+}
+
+.legend span:first-child {
+  margin-left: 3%;
+}
+
+.legend span:last-child {
+  margin-right: 6%;
+}
+
+.pieWrapper,
+.graphSkeleton {
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    z-index: 1;
+  }
+}
+
+.graphSkeleton {
+  flex: 1 auto;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+
+  .graphSkeletonMessage {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+
+    span {
+      font-size: 14px;
+    }
+  }
+
+  .graphSkeletonLine {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--chart-axis-line-color);
+    position: relative;
+
+    .picsioThemeLight & {
+      border-color: #ebebeb;
+    }
+  }
+
+  &.linearGraphSkeleton {
+    .graphSkeletonLine {
+      border-bottom-style: dotted;
+    }
+  }
+
+  &.tableGraphSkeleton {
+    height: 350px;
+
+    .graphSkeletonLine {
+      border-bottom-style: dotted;
+      animation: pulse-table 2s ease-in-out infinite;
+
+      div {
+        width: 49px;
+        height: 8px;
+        margin-bottom: 5px;
+        background-color: $graphSkeletonColor;
+        border-radius: 4px;
+        overflow: hidden;
+
+        > span {
+          background-color: transparent;
+        }
+      }
+    }
+  }
+
+  &.loading {
+    &:after {
+      visibility: visible;
+    }
+
+    &.linearGraph {
+      &:after {
+        background: url('#{$picsioImgUrl}/chart_placeholders/Line_blur.png');
+      }
+    }
+    &.barGraph {
+      &:after {
+        background: url('#{$picsioImgUrl}/chart_placeholders/Bar_blur.png');
+      }
+    }
+
+    &.linearGraph,
+    &.barGraph {
+      &:after {
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        animation: pulse-chart 2s ease-in-out infinite;
+      }
+    }
+  }
+}
+
+.picsioThemeDark {
+  .graphSkeleton {
+    .graphSkeletonMessage {
+      span {
+        color: $lightgray;
+      }
+    }
+  }
+}
+
+@keyframes pulse-chart {
+  0% {
+    opacity: .8;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: .8;
+  }
+}
+
+@keyframes pulse-table {
+  0% {
+    opacity: .5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: .5;
+  }
+}

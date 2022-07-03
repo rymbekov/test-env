@@ -1,0 +1,216 @@
+.wrapperPageStorage {
+	.pageStorage {
+		color: #ccc;
+
+		.pageInnerContent {
+			max-width: 570px;
+			margin: 0 auto;
+			padding: 0 8px;
+		}
+
+		.pageContent {
+			padding-top: 30px;
+			padding-left: 10px;
+			padding-right: 10px;
+			font-size: 14px;
+
+			@media screen and (min-width: 768px) {
+				padding-left: 0;
+				padding-right: 0;
+				padding-top: 73px;
+			}
+		}
+	}
+
+	.storage-info {
+		display: flex;
+		margin: 0 auto 28px;
+		width: 570px;
+		align-items: center;
+
+		@include media('>=tablet', '<desktop') {
+			width: 555px;
+		}
+
+		&__column,
+		&__canvas {
+			flex: 1 0 200px;
+			position: relative;
+
+			.google_chart,
+			.picsio_chart {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%)
+			}
+
+		}
+
+		&__canvas {
+			flex: 1 0 250px;
+
+			@include media('>=tablet', '<desktop') {
+				flex: 1 0 300px;
+
+				.google_chart {
+					width: 300px;
+					height: 300px;
+				}
+
+				.picsio_chart {
+					width: 250px;
+					height: 250px;
+				}
+			}
+		}
+
+		&__column {
+
+			&-title {
+				display: block;
+				margin-bottom: 12px;
+				font-weight: 200;
+				font-size: 18px;
+			}
+		}
+
+		&__block {
+			&:not(:first-child) {
+				margin-top: 40px;
+			}
+		}
+
+    &__button {
+      margin-top: 25px;
+    }
+
+    &__additional {
+      margin-top: 25px;
+
+      .PicsioButton--text {
+        display: inline-block;
+      }
+    }
+
+
+		@include media('<tablet') {
+			flex-direction: column;
+			width: auto;
+
+			&__canvas {
+				margin-top: 0;
+				margin-bottom: 20px;
+				order: -1;
+			}
+
+			&__column {
+				width: 100%;
+
+				&-title {
+					font-weight: 300;
+					font-size: 24px;
+					line-height: 25px;
+
+					span {
+						display: block;
+					}
+				}
+			}
+		}
+
+		&__list {
+			list-style-type: none;
+			position: relative;
+			margin: 0;
+			padding: 0;
+			padding-left: 15px;
+
+			li {
+				position: relative;
+				margin: 7px 0;
+
+				&::before {
+					content: '';
+					position: absolute;
+					top: 7px;
+					left: -15px;
+					display: block;
+					width: 3px;
+					height: 3px;
+					border-radius: 50%;
+					background: $gray;
+					box-sizing: border-box;
+				}
+			}
+		}
+	}
+}
+
+.storageTools {
+	font-size: 14px;
+	margin-bottom: 57px;
+	margin-top: 3px;
+
+	.storageTool {
+		position: relative;
+		padding-left: 25px;
+		line-height: 20px;
+
+		div {
+			display: inline;
+		}
+
+		&:not(:first-child) {
+			margin-top: 13px;
+		}
+	}
+
+	[class*="svg-icon"] {
+		position: absolute;
+		top: -3px;
+		left: -8px;
+		width: 24px;
+		font-size: 23px;
+		text-align: center;
+	}
+
+	.changeLink {
+		color: $brandDark;
+		margin-left: 4px;
+		cursor: pointer;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	@include media('<tablet') {
+		margin-bottom: 20px;
+
+		.storageTool {
+			div {
+				display: block;
+			}
+		}
+
+		.changeLink {
+			margin-left: 0;
+		}
+	}
+}
+
+
+.picsioThemeLight {
+	.wrapperPageStorage {
+		color: #999;
+
+		.changeLink {
+			color: $brandLight;
+		}
+
+		.pageStorage {
+			color: #999;
+		}
+	}
+}

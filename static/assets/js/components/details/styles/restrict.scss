@@ -1,0 +1,58 @@
+@import 'cssVariables';
+
+.restrictSettings {
+	color: #999;
+
+	.datepickerField {
+		margin-bottom: 25px;
+	}
+
+	.UIInput__label {
+		font-size: 11px;
+		color: #666;
+	}
+
+	.react-datepicker-wrapper,
+	.react-datepicker__input-container {
+		width: 100%;
+	}
+}
+
+.tiles {
+	display: flex;
+	align-items: center;
+	position: absolute;
+	top: 30px;
+	left: 8px;
+	z-index: 3;
+
+	> div {
+		margin-right: 8px;
+	}
+
+	.tileResticted {
+		color: $warning;
+	}
+
+	.tileArchived {
+		.icon {
+			width: 14px;
+			height: 14px;
+			color: var(--primary-main-color);
+			opacity: 0.9;
+		}
+
+		&:hover {
+			.icon {
+				opacity: 1;
+			}
+		}
+	}
+}
+
+
+.restrictedAsset {
+	color: $warning;
+	font-size: 14px;
+	padding: 0 15px;
+}

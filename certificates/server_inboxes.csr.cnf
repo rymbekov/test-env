@@ -1,0 +1,14 @@
+[req]
+default_bits = 2048
+prompt = no
+default_md = sha256
+distinguished_name = dn
+
+[dn]
+C=us
+ST=ny
+L=ny
+O=picsio
+OU=picsio.local
+emailAddress=roman@pics.io
+CN = inboxes.picsio.local

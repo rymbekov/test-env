@@ -1,0 +1,154 @@
+li[role="treeitem"] {
+	.treeList-title {
+		&:hover, &.act {
+			background: $dark-darkgray;
+		}
+	}
+}
+
+.treeList {
+	padding: 21px 1px 0;
+
+	@include media('>=desktop') {
+		padding-top: 16px;
+	}
+
+	&-title {
+		@include mediumTitle;
+		box-sizing: border-box;
+		height: 28px;
+		padding-left: 36px;
+		position: relative;
+		padding-top: 2px;
+		padding-bottom: 2px;
+		max-width: none;
+		white-space: nowrap;
+
+		&:hover, &.act {
+			color: #fff;
+			cursor: pointer;
+
+			.btnsManageCollection {
+				display: block;
+			}
+
+			.itemCount {
+				display: none;
+			}
+		}
+
+		&-text {
+			max-width: none;
+			height: 24px;
+			line-height: 24px;
+		}
+	}
+
+	.itemCount {
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: 2;
+		padding: 0 5px 0 0;
+		height: 28px;
+		line-height: 30px;
+		font-family: $base-font-mono;
+		font-size: 11px;
+		color: #666;
+	}
+
+	> ul {
+		> li {
+			padding-top: 0;
+
+			.nameFolder {
+				.collectionTextValue {
+					color: #999;
+					font-size: 14px;
+					font-style: normal;
+					max-width: calc(100% - 30px);
+					height: 24px;
+					line-height: 24px;
+					display: block;
+					overflow: hidden;
+					position: relative;
+					z-index: 2;
+					border: none;
+					resize: none;
+					white-space: nowrap;
+					font-weight: 400;
+				}
+
+				> .iconHolder {
+					display: block;
+
+					.icon-inbox {
+						font-size: 14px;
+					}
+				}
+			}
+
+
+			.disabled {
+				cursor: default;
+				opacity: .1;
+				pointer-events: none;
+			}
+		}
+	}
+
+	.act {
+		> .nameFolder {
+			color: #fff;
+			background: $dark-darkgray;
+
+			&:before {
+				color: $brandColor;
+			}
+		}
+	}
+}
+
+.treeButton {
+	margin-top: 10px;
+	padding: 5px;
+
+	.button {
+		width: 100%;
+	}
+}
+
+.picsioThemeLight {
+	li[role="treeitem"] {
+		.treeList-title {
+			&:hover, &.act {
+				background: #f1f1f1;
+			}
+		}
+	}
+
+	.treeList {
+		&-title {
+			color: #666;
+
+			&:hover, &.act {
+				color: #000;
+			}
+		}
+
+		.act {
+			> .nameFolder {
+				background: #f1f1f1;
+				color: #000;
+
+				.collectionTextValue {
+					color: inherit;
+				}
+
+				&:before {
+					color: $brandColorLightTheme;
+				}
+			}
+		}
+	}
+}

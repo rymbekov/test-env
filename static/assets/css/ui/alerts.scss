@@ -1,0 +1,178 @@
+.wrapperAlerts {
+	position: fixed;
+	right: 30px;
+	bottom: 30px;
+	z-index: 10000000000;
+	@media screen and (max-width: $mediaDevice) {
+		right: 50%;
+		transform: translateX(50%);
+	}
+	.picsioAlert,
+	.picsioPrompt {
+		.popup {
+			color: #fff;
+			background: #404040;
+			width: 500px;
+			margin: 10px 0 0 0;
+			position: relative;
+			display: flex;
+			@media screen and (max-width: $mediaDevice) {
+				max-width: 300px;
+				background: #27282a;
+				flex-direction: column;
+			}
+			@include media('<tablet') {
+				right: 0;
+			}
+			.btns {
+				border-left: 1px solid #333333;
+				width: 110px;
+				display: flex;
+				flex-direction: column;
+				flex: none;
+				position: static;
+				justify-content: center;
+				.btn {
+					text-align: center;
+					cursor: pointer;
+					font-size: 14px;
+					color: $brandColor;
+					display: flex;
+					flex: auto;
+					span {
+						margin: auto;
+					}
+				}
+				@media screen and (max-width: $mediaDevice) {
+					width: 100%;
+					.btn {
+						min-height: 30px;
+						border-bottom: 1px solid #262626;
+						display: flex;
+						flex-direction: column;
+						justify-content: center;
+						&:last-child {
+							border-bottom: none;
+						}
+						span {
+							font-weight: 300;
+							font-size: 19px;
+						}
+					}
+				}
+			}
+			.body {
+				padding: 25px;
+				color: #fff;
+				font-size: 0;
+				flex: auto;
+				max-width: 340px;
+				min-height: 60px;
+				.text {
+					font-size: 14px;
+					color: #cccccc;
+					line-height: 20px;
+					display: block;
+					padding: 5px 0;
+					word-wrap: break-word;
+				}
+				.promptInput {
+					padding: 7px 10px;
+					width: 100%;
+					height: 30px;
+					line-height: 16px;
+					margin: 10px 0 0 0;
+					border-radius: 0;
+					border: none;
+					background: #fff;
+					color: #000;
+					font-size: 16px;
+					box-sizing: border-box;
+					&:focus {
+						outline: none;
+					}
+				}
+				@media screen and (max-width: $mediaDevice) {
+					padding: 15px 30px 15px 30px;
+					text-align: center;
+					display: block;
+					min-height: auto;
+					.promptInput {
+						padding: 5px 5px;
+						height: 25px;
+						font-size: 15px;
+						width: 100%;
+						margin-top: 18px;
+					}
+					.text {
+						display: inline-block;
+						vertical-align: middle;
+						width: 100%;
+						font-weight: 300;
+						font-size: 15px;
+						line-height: 17px;
+					}
+				}
+			}
+			.btnClose {
+				position: absolute;
+				right: 0;
+				top: 0;
+				z-index: 2;
+				width: 30px;
+				height: 30px;
+				box-sizing: border-box;
+				line-height: normal;
+				color: #cccccc;
+				font-size: 11px;
+				cursor: pointer;
+				text-align: center;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				svg {
+					fill: currentColor;
+					width: 11px;
+					height: 11px;
+				}
+			}
+		}
+	}
+}
+
+.picsioThemeLight {
+	.wrapperAlerts {
+		.picsioAlert,
+		.picsioPrompt {
+			box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+			.popup {
+				color: #666;
+				background: #fff;
+				@media screen and (max-width: $mediaDevice) {
+					background: #fff;
+				}
+				.btns {
+					border-left-color: #efefef;
+					.btn {
+						color: $brandColorLightTheme;
+					}
+					@media screen and (max-width: $mediaDevice) {
+						.btn {
+							border-bottom-color: currentColor;
+						}
+					}
+				}
+				.body {
+					color: inherit;
+					.text {
+						color: inherit;
+					}
+				}
+				.btnClose {
+					color: inherit;
+				}
+			}
+		}
+	}
+}

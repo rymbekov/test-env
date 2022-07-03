@@ -1,0 +1,66 @@
+
+/****************************** pProgress *********************************/
+.pProgressWrapper {
+	width: 96px;
+	height: 96px;
+	position: absolute;
+	padding: 4px;
+	bottom: 24px;
+	right: 24px;
+	z-index: 1000;
+	background: rgba(0, 0, 0, 0.5);
+	border-radius: 53px;
+}
+.pProgressWrapper .pProgressValue {
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: block;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	z-index: 2;
+	font-size: 36px;
+	color: #fff;
+	font-family: 'fira_sanslight';
+}
+.pProgressWrapper .pProgressValue:after {
+	content: ' ';
+	display: inline-block;
+	vertical-align: middle;
+	height: 104%;
+	width: 0;
+}
+.pProgressWrapper .pProgressAnimation {
+	position: absolute;
+	left: 52px;
+	top: 4px;
+	overflow: hidden;
+}
+.pProgressWrapper .pProgressAnimation.alreadyCenter {
+	overflow: visible;
+}
+.pProgressWrapper .pProgressAnimation .pProgressAnimatedElem,
+.pProgressWrapper .pProgressAnimation .pProgressConstantElem {
+	width: 48px;
+	height: 96px;
+	padding-left: 48px;
+	margin-left: -48px;
+	-webkit-transform: rotate(0deg);
+}
+.pProgressWrapper .pProgressAnimation .pProgressAnimatedElem .pProgressAnimatedInner,
+.pProgressWrapper .pProgressAnimation .pProgressConstantElem .pProgressAnimatedInner {
+	overflow: hidden;
+	width: 48px;
+	height: 96px;
+	margin-left: -48px;
+}
+.pProgressWrapper .pProgressAnimation .pProgressAnimatedElem .pProgressAnimatedInner:after,
+.pProgressWrapper .pProgressAnimation .pProgressConstantElem .pProgressAnimatedInner:after {
+	content: ' ';
+	display: block;
+	border: 7px solid #ffcc00;
+	border-radius: 50px;
+	width: 82px;
+	height: 82px;
+}

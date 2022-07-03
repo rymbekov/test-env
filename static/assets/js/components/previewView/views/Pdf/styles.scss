@@ -1,0 +1,162 @@
+@import 'cssVariables';
+.pdfHolder {
+  height: 100%;
+  display: flex;
+  background-color: var(--background-main-color);
+  color: #666;
+}
+.pdfFrame {
+  position: relative;
+  width: 100%;
+}
+.pdfViewerContainer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 55px;
+  bottom: 0;
+  overflow: auto;
+  user-select: text;
+
+  &.onTheRight {
+    left: auto;
+    width: 50%;
+  }
+
+  &.diffPdfContainer {
+    overflow: hidden;
+    width: 50%;
+    border-right: 1px solid #000;
+  }
+}
+
+.pdfDiffName {
+  position: absolute;
+  right: 50%;
+  font-size: 18px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  height: 30px;
+  line-height: 30px;
+  margin: 15px 15px 0 0;
+  padding: 0 10px;
+  top: 50px;
+  z-index: 2;
+
+  &.original {
+    left: 50%;
+    right: auto;
+    margin: 15px 0 0 15px;
+  }
+}
+
+.pdfViewerControls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 55px;
+  z-index: 2;
+  font-size: 15px !important;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  border-bottom: 1px solid var(--background-contrast-color);
+
+  &Part {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    @include media('<=desktop') {
+      flex-grow: 1;
+
+      .customSelect {
+        flex-grow: 1;
+      }
+    }
+  }
+  .customSelect select,
+  .PicsioButton {
+    margin: 0;
+  }
+  .pdfCurrentPage input {
+    width: 26px;
+    text-align: center;
+  }
+}
+.pdfMatchesCount { white-space: nowrap; }
+
+.pdfMarkersContainer {
+  position: absolute;
+  visibility: hidden;
+  top: 56px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+
+  .markersForPage {
+    position: relative;
+    direction: ltr;
+    margin: 1px auto -8px;
+    position: relative;
+    overflow: visible;
+    border: 9px solid transparent;
+        border-image-outset: 0;
+        border-image-repeat: stretch;
+        border-image-slice: 100%;
+        border-image-source: none;
+        border-image-width: 1;
+    background-clip: content-box;
+    background-color: rgba(255, 255, 255, 1);
+
+    > div { visibility: visible; }
+  }
+  .page {
+    text-align: left;
+  }
+}
+
+.pdfViewerSpreadItems {
+  display: inline-flex;
+  gap: 5px;
+  height: 30px;
+}
+.pdfViewerSpreadItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--secondary-button-bd-color);
+  width: 40px;
+  text-align: center;
+  color: var(--secondary-button-color);
+  background: var(--secondary-button-bg-color);
+
+  &:hover {
+    color: var(--secondary-contrast-color);
+    background: var(--secondary-button-bg-hover-color);
+    border-color: var(--secondary-button-bd-hover-color);
+    box-shadow: var(--secondary-button-shadow-color);
+    cursor: pointer;
+  }
+  &:active {
+    background: var(--secondary-button-bg-active-color);
+    border-color: var(--secondary-button-bd-active-color);
+  }
+
+  &.active {
+    background-color: var(--secondary-button-bg-active-color);
+    border-color: transparent;
+    outline: 1px solid var(--primary-main-color);
+  }
+
+  > span {
+    display: inline-block;
+    border: 1px solid #666;
+    font-size: 11px;
+    margin: 0 2px;
+    padding: 3px;
+  }
+}

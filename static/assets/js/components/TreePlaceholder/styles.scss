@@ -1,0 +1,38 @@
+@import 'cssVariables';
+
+.treePlaceholder {
+	height: 100%;
+	padding-top: 50px;
+	text-align: center;
+	padding: 40px 5px 20px;
+	color: #999;
+
+	.button {
+		width: 100%;
+		margin-top: 8px;
+	}
+}
+
+.treePlaceholderTitle {
+	@include h2(#ccc, #666);
+}
+
+.treePlaceholderIcon {
+	font-size: 80px;
+	margin: 20px 0;
+	color: #fff;
+	opacity: 0.15;
+}
+
+.treePlaceholderDescription {
+	font-weight: 400;
+	min-height: 40px;
+	margin-bottom: 17px;
+	padding: 0 10px;
+}
+
+.picsioThemeLight {
+	.treePlaceholderIcon {
+		color: #000;
+	}
+}

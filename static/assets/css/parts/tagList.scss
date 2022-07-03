@@ -1,0 +1,127 @@
+.tagList {
+	margin-bottom: 30px;
+
+	&Tags {
+		text-align: left;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		padding: 4px 0 0 4px;
+		box-shadow: 0 0 5px transparent;
+		min-height: 24px;
+		border: 1px solid transparent;
+		border-top: 1px solid #181818;
+		border-bottom: 1px solid #353535;
+		background: #303030;
+
+		.isDisabled & {
+			background: rgba(48,48,48,0.2);
+			color: #999;
+			border-top-color: rgba(24, 24, 24, 0.2);
+			border-bottom-color: rgba(53, 53, 53, 0.2);
+			pointer-events: none;
+			cursor: default;
+			-webkit-text-fill-color: #666;  //fix for safari
+		}
+	}
+
+	.tag {
+		color: #4a4a4a;
+		margin-right: 4px;
+		margin-left: 0;
+		margin-bottom: 4px;
+	}
+
+
+	&Filter {
+		padding: 0;
+		width: auto;
+		flex: 1 0 auto;
+
+		[type="text"] {
+			caret-color: $brand-color;
+			border: none;
+			background: transparent !important;
+			margin: 0 0 4px;
+			padding: 0 0 0 5px;
+			line-height: 20px;
+			height: 20px;
+			box-sizing: border-box;
+			-webkit-appearance: initial;
+			border-radius: 0;
+			font-size: 14px;
+			color: #999;
+			max-width: calc(100% - 4px);
+			width: 100%;
+			min-width: 0;
+			display: block;
+
+			&:focus {
+				color: #ccc;
+			}
+
+			@include media('<desktop') {
+				height: 40px;
+			}
+		}
+	}
+
+	&.isInputFocused {
+		.tagListTags {
+			box-shadow: 0 0 0 2px $brandColorLightTheme;
+			background-color: #000;
+		}
+
+		.tagListFilter [type="text"] {
+			box-shadow: none;
+			background-color: transparent;
+		}
+	}
+
+	&Error {
+		.tagListTags {
+			outline: 2px solid $error;
+		}
+
+		&Text {
+			color: $error;
+			font-size: 12px;
+			margin: 5px;
+		}
+	}
+}
+
+.picsioThemeLight .tagList {
+	color: #666;
+
+	.tag {
+		color: #e2e2e2;
+	}
+	
+	&Tags {
+		background: $bgColorLight;
+		border-top-color: #dfdede;
+		border-bottom-color: #f4f4f4;
+		color: #333333;
+	}
+
+	&.isDisabled .tagListTags {
+		background: rgba(244, 244, 244, 0.3);
+		color: $darkgray;
+		border-top-color: rgba(223, 222, 222, 0.3);
+		border-bottom-color: rgba(244, 244, 244, 0.3);
+		-webkit-text-fill-color: #666;  //fix for safari
+	}
+
+	&Error {
+		.tagListTags {
+			outline: 2px solid $error;
+		}
+	}
+
+	&.isInputFocused {
+		.tagListTags {
+			background-color: #fff;
+		}
+	}
+}

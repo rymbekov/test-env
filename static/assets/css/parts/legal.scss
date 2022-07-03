@@ -1,0 +1,145 @@
+.pageTabsContentLegal {
+	font-family: $base-font;
+	font-size: 14px;
+	max-width: 1016px;
+	margin: 0 auto;
+	box-sizing: border-box;
+
+	.legalTitle {
+		@include h1-bold;
+	}
+
+	.legalTabContent {
+		width: 100%;
+		max-width: 600px;
+		padding-top: 9px;
+		//margin: 0 auto;
+		font: 14px/20px 'Fira Sans', Arial, Helvetica, sans-serif;
+		color: #ccc;
+
+		a {
+			color: $brandColor;
+		}
+
+		.legalText {
+			margin-bottom: 50px;
+		}
+	}
+
+	.legalSupportTab {
+		p {
+			margin: 0;
+			font-size: 14px;
+			line-height: normal;
+			margin-top: 18px;
+			margin-left: 15px + 9px;
+		}
+	}
+
+	@include media('>=desktop') {
+		display: flex;
+
+		.pageTabs {
+			flex: 0 0 165px;
+			margin: 0 30px 0 0;
+			border-width: 0 1px 0 0;
+			font-size: 16px;
+		}
+	}
+}
+
+.youCan {
+	margin-bottom: 30px;
+
+	.youCanItem {
+		display: flex;
+		justify-content: space-between;
+		padding: 0 0 15px;
+		flex-wrap: wrap;
+
+		&:not(:first-child) {
+			border-top: 1px solid var(--separate-border-color);
+			padding: 15px 0;
+		}
+	}
+
+	.youCanItemName {
+		flex: 2 1 200px;
+		color: var(--primary-main-color);
+
+		&.isNotAvailable {
+			color: var(--title-color);
+		}
+
+		.warning {
+			margin: 0.5em 0
+		}
+
+		.youCanItemLink {
+			@include button-reset;
+			padding: 0;
+		}
+
+		a,
+		.youCanItemLink {
+			color: currentColor;
+			text-decoration: none;
+			cursor: pointer;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+		.youCanItemText {
+			color: #666;
+		}
+	}
+
+	.description {
+		flex: 3 1 200px;
+	}
+}
+
+.pageTabs {
+	border-style: solid;
+	border-color: var(--separate-border-color);
+
+	button {
+		@include button-reset;
+		display: block;
+		padding: 15px;
+
+		@include media('>=desktop') {
+			width: 100%;
+			text-align: left;
+		}
+
+		&.active {
+			background-color: var(--separate-border-color);
+		}
+	}
+}
+
+@include media('<desktop') {
+	.pageTabsContentLegal {
+		padding: 0;
+	}
+
+	.pageTabs {
+		display: flex;
+		justify-content: center;
+		border-width: 0 0 1px;
+		margin-bottom: 30px;
+	}
+}
+
+.picsioThemeLight {
+	.pageTabsContentLegal {
+		.legalTabContent {
+			color: #666;
+
+			// a {
+			// 	color: $brandColorLightTheme;
+			// }
+		}
+	}
+}
