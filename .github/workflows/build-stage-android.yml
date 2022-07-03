@@ -121,8 +121,8 @@ jobs:
             key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
         - name: Install Dependencies
           run: npm install --no-audit
-        - name: Build Stage Mobile sources
-          run: npm run build:stage:mobile
+#         - name: Build Stage Mobile sources
+#           run: npm run build:stage:mobile
         - name: Sync Android
           run: npx cap sync android
         - name: Decode Keystore file
