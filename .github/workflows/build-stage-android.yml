@@ -123,8 +123,8 @@ jobs:
           run: npm install --no-audit
 #         - name: Build Stage Mobile sources
 #           run: npm run build:stage:mobile
-        - name: Sync Android
-          run: npx cap sync android
+#         - name: Sync Android
+#           run: npx cap sync android
         - name: Decode Keystore file
           run: echo ${{ secrets.ANDROID_KEYSTORE }} | base64 -d | tee android-keystore.jks android/app/android-keystore.jks
         - run: ls
