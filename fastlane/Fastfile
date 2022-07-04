@@ -134,7 +134,7 @@ platform :android do
       success: options[:success],
       slack_url: ENV["SLACK_URL"],
       default_payloads: ["lane", "test_result"],
-      channel: "#es-test" #TODO: remove
+      channel: "es-test"
     )
   end
 end
