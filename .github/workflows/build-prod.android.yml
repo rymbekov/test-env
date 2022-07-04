@@ -16,7 +16,7 @@ jobs:
       steps:
         - name: Update Version Number & Build Number
           run: |
-            echo "VERSION_NUMBER=${GIT_TAG/*}" >> $GITHUB_ENV
+            echo "VERSION_NUMBER=${GIT_TAG/+*}" >> $GITHUB_ENV
             echo "BUILD_NUMBER=$(date +%y%m%d%H)" >> $GITHUB_ENV
         - uses: actions/checkout@v3
         - run: echo $GIT_TAG - $VERSION_NUMBER - $BUILD_NUMBER
