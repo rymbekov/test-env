@@ -3,7 +3,7 @@ name: Build and Upload Android app - Production
 on:
   push:
      tags:
-       - "[0-9]+.[0-9]+.[0-9]++android"
+       - "[0-9]+.[0-9]+.[0-9]+\+android"
 
 env:
   GIT_TAG: ${{ github.ref_name }}
@@ -16,7 +16,7 @@ jobs:
       steps:
         - name: Update Version Number & Build Number
           run: |
-            echo "VERSION_NUMBER=${GIT_TAG/-*}" >> $GITHUB_ENV
+            echo "VERSION_NUMBER=${GIT_TAG/*}" >> $GITHUB_ENV
             echo "BUILD_NUMBER=$(date +%y%m%d%H)" >> $GITHUB_ENV
         - uses: actions/checkout@v3
         - run: echo $GIT_TAG - $VERSION_NUMBER - $BUILD_NUMBER
