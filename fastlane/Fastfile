@@ -30,7 +30,7 @@ platform :ios do
 
   lane :test do
     puts ENV["APPLE_ID"]
-    match(type: "development")
+    match(type: "development", git_basic_authorization: ENV["GITHUB_REPO_TOKEN"])
   end
 
   desc "Build Pics.io IOS app & upload to TestFlight"
@@ -68,7 +68,8 @@ platform :ios do
     slack(
       message: options[:message],
       success: options[:success],
-      slack_url: slack_url
+      slack_url: slack_url,
+      channel: "es-test"
     )
   end
 
