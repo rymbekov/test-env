@@ -30,6 +30,7 @@ platform :ios do
 
   lane :test do
     puts ENV["APPLE_ID"]
+    match(type: "development")
   end
 
   desc "Build Pics.io IOS app & upload to TestFlight"
