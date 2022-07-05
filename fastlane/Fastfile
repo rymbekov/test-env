@@ -29,7 +29,7 @@ platform :ios do
   end
 
   lane :test do
-    puts "Say hi"
+    puts ENV["APPLE_ID"]
   end
 
   desc "Build Pics.io IOS app & upload to TestFlight"
@@ -50,7 +50,7 @@ platform :ios do
         skip_waiting_for_build_processing: true,
         apple_id: ENV["APP_APPLE_ID"]
       )
-      send_message(message: "🍏🤝😌 Pics.io #{ENV["CIRCLE_TAG"]}, build_number: #{ENV["BUILD_NUMBER"]} IOS App Successfully uploaded to TestFlight", success: true)
+      send_message(message: "🍏🤝😌 Pics.io #{ENV["GIT_TAG"]}, build_number: #{ENV["BUILD_NUMBER"]} IOS App Successfully uploaded to TestFlight", success: true)
     rescue => exception
       send_message(message: "⛔️😔 Something went wrong during uploading to TestFlight \n Lane failed with exception: #{exception}", success: false)
     end

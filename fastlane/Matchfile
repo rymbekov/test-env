@@ -15,7 +15,7 @@ for_platform :ios do
 
 	for_lane :match_certs do
 		readonly(true)
-		git_branch(ENV["CERTS_BRANCH"])
+		git_branch("master")
                  username(ENV["APPLE_ID"])
                  team_id(ENV["TEAM_ID"])
 	end
@@ -23,7 +23,7 @@ for_platform :ios do
 	for_lane :match_certs_force do
 		readonly(false)
 		force(true)
-		git_branch(ENV["CERTS_BRANCH"])
+		git_branch("master")
 			 username(ENV["APPLE_ID"])
 			 team_id(ENV["TEAM_ID"])
 	end

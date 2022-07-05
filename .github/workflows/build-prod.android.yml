@@ -1,9 +1,9 @@
-name: Build and Upload Android app - Production
+name: Build and Upload IOS app - Production
 
 on:
   push:
      tags:
-       - "[0-9]+.[0-9]+.[0-9]+\\+android"
+       - "[0-9]+.[0-9]+.[0-9]+\\+ios"
 
 env:
   GIT_TAG: ${{ github.ref_name }}
@@ -11,7 +11,7 @@ env:
 
 jobs:
    build_and_upload:
-      name: Build and Upload Android app - stage
+      name: Build and Upload IOS app - Production
       runs-on: ubuntu-20.04
       steps:
         - name: Update Version Number & Build Number
@@ -20,11 +20,13 @@ jobs:
             echo "BUILD_NUMBER=$(date +%y%m%d%H)" >> $GITHUB_ENV
         - uses: actions/checkout@v3
         - run: echo $GIT_TAG - $VERSION_NUMBER - $BUILD_NUMBER
-        # - name: Set up Ruby env
-        #   uses: ruby/setup-ruby@v1
-        #   with:
-        #     ruby-version: 3.1
-            # bundler-cache: true
+        - name: Set up Ruby env
+          uses: ruby/setup-ruby@v1
+          with:
+            ruby-version: 3.1
+            bundler-cache: true
+        - name: Check
+          run: bundle exec fastlane ios test
         # - name: Use node.js 14
         #   uses: actions/setup-node@v3
         #   with:
