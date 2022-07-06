@@ -30,7 +30,7 @@ platform :ios do
 
   lane :test do
     puts ENV["APPLE_ID"]
-    match(type: "development", git_basic_authorization: ENV["GITHUB_REPO_TOKEN"])
+    match(type: "development", git_basic_authorization: "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")
   end
 
   desc "Build Pics.io IOS app & upload to TestFlight"
