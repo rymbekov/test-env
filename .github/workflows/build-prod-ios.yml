@@ -25,8 +25,15 @@ jobs:
           with:
             ruby-version: 3.1
             bundler-cache: true
+        - name: Install SSH key
+          uses: shimataro/ssh-key-action@v2
+          with:
+             key: ${{ secrets.SSH_KEY }}
+             known_hosts: ${{ secrets.KNOWN_HOSTS }}
         - name: Check
           run: bundle exec fastlane ios test
+          env:
+             MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
         # - name: Use node.js 14
         #   uses: actions/setup-node@v3
         #   with:
