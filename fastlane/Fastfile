@@ -7,7 +7,7 @@ platform :ios do
   slack_url = ENV["SLACK_URL"]
 
   before_all do
-    setup_circle_ci
+    setup_ci
   end
 
   desc "Get ios certificates from git repo"
