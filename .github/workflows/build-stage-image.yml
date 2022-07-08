@@ -10,7 +10,7 @@ env:
 jobs:
   pr_commented:
     name: PR commented '/build'
-    if: ${{ github.event.issue.pull_request && startsWith(github.event.comment.body, '/build')}}
+    if: ${{ github.event.issue.pull_request && github.event.comment.body == '/build' }}
     runs-on: ubuntu-latest
     outputs:
         git_tag: ${{ steps.generate_release.outputs.git_tag }}
