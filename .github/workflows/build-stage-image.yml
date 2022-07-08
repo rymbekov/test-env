@@ -10,7 +10,7 @@ env:
 jobs:
   pr_commented:
     name: PR commented '/build'
-    if: ${{ github.event.issue.pull_request && startsWith(github.event.comment.body, '/build-test')}}
+    if: ${{ github.event.issue.pull_request && startsWith(github.event.comment.body, '/build')}}
     runs-on: ubuntu-latest
     outputs:
         git_tag: ${{ steps.generate_release.outputs.git_tag }}
@@ -92,29 +92,31 @@ jobs:
       GIT_TAG: ${{ needs.pr_commented.outputs.git_tag }}
       BRANCH: ${{ needs.pr_commented.outputs.branch}}
     steps:
-       - uses: actions/checkout@v3
-         with:
-            fetch-depth: 0
-            ref: ${{ env.BRANCH }}
-    #    - name: Use node.js 14
-    #      uses: actions/setup-node@v3
-    #      with:
-    #        node-version: '14'
-    #        registry-url: 'https://registry.npmjs.org'
-    #      env:
-    #        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-    #    - name: Copy .npmrc
-    #      run: cp $NPM_CONFIG_USERCONFIG $HOME/.npmrc
-       - name: Configure AWS credentials
-         uses: aws-actions/configure-aws-credentials@v1
-         with:
-           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-           aws-region: us-east-1
-       - name: Build docker image for service
-         run: ./scripts/build.sh test $GIT_TAG true
-       - uses: ./.github/actions/slack
-         if: always()
-         with:
-           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-           SLACK_SUCCESS_MESSAGE: "📦 Docker image *${{ env.REPO_NAME }}@${{ env.GIT_TAG }}* created! (by ${{ github.actor }})!"
+        - name: Hi stage image
+          run: echo "Hi stage image"
+#        - uses: actions/checkout@v3
+#          with:
+#             fetch-depth: 0
+#             ref: ${{ env.BRANCH }}
+#     #    - name: Use node.js 14
+#     #      uses: actions/setup-node@v3
+#     #      with:
+#     #        node-version: '14'
+#     #        registry-url: 'https://registry.npmjs.org'
+#     #      env:
+#     #        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+#     #    - name: Copy .npmrc
+#     #      run: cp $NPM_CONFIG_USERCONFIG $HOME/.npmrc
+#        - name: Configure AWS credentials
+#          uses: aws-actions/configure-aws-credentials@v1
+#          with:
+#            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#            aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#            aws-region: us-east-1
+#        - name: Build docker image for service
+#          run: ./scripts/build.sh test $GIT_TAG true
+#        - uses: ./.github/actions/slack
+#          if: always()
+#          with:
+#            SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+#            SLACK_SUCCESS_MESSAGE: "📦 Docker image *${{ env.REPO_NAME }}@${{ env.GIT_TAG }}* created! (by ${{ github.actor }})!"
