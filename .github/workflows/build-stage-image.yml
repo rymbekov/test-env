@@ -6,6 +6,10 @@ on:
 
 env:
   REPO_NAME: ${{ github.event.repository.name }}
+  
+concurrency:
+  group: build-stage-image-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   pr_commented:
